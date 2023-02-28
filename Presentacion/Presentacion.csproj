@@ -160,123 +160,123 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigConnection.cs" />
-    <Compile Include="FormsCaja\FormAbrirCaja.cs">
+    <Compile Include="Caja\FormAbrirCaja.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormsCaja\FormAbrirCaja.Designer.cs">
+    <Compile Include="Caja\FormAbrirCaja.Designer.cs">
       <DependentUpon>FormAbrirCaja.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormsCaja\FormGestionarCaja.cs">
+    <Compile Include="Caja\FormGestionarCaja.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormsCaja\FormGestionarCaja.Designer.cs">
+    <Compile Include="Caja\FormGestionarCaja.Designer.cs">
       <DependentUpon>FormGestionarCaja.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormsEntrenador\FormGestionarEntrenador.cs">
+    <Compile Include="Entrenador\FormGestionarEntrenador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormsEntrenador\FormGestionarEntrenador.Designer.cs">
+    <Compile Include="Entrenador\FormGestionarEntrenador.Designer.cs">
       <DependentUpon>FormGestionarEntrenador.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormsPlanDeEjercicio\FormGestionarPlanEjercicio.cs">
+    <Compile Include="PlanDeEjercicio\FormGestionarPlanEjercicio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormsPlanDeEjercicio\FormGestionarPlanEjercicio.Designer.cs">
+    <Compile Include="PlanDeEjercicio\FormGestionarPlanEjercicio.Designer.cs">
       <DependentUpon>FormGestionarPlanEjercicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormsMenu Principal\FormMenuPrincipal.cs">
+    <Compile Include="Principal\FormMenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormsMenu Principal\FormMenuPrincipal.Designer.cs">
+    <Compile Include="Principal\FormMenuPrincipal.Designer.cs">
       <DependentUpon>FormMenuPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="ConfigDeInicio.cs" />
-    <Compile Include="FormsCliente\FormGestionarCliente.cs">
+    <Compile Include="Cliente\FormGestionarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormsCliente\FormGestionarCliente.Designer.cs">
+    <Compile Include="Cliente\FormGestionarCliente.Designer.cs">
       <DependentUpon>FormGestionarCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormPapelera\FormPapelera.cs">
+    <Compile Include="Papelera\FormPapelera.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPapelera\FormPapelera.Designer.cs">
+    <Compile Include="Papelera\FormPapelera.Designer.cs">
       <DependentUpon>FormPapelera.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormsCliente\FormRegistrarCliente.cs">
+    <Compile Include="Cliente\FormRegistrarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormsCliente\FormRegistrarCliente.Designer.cs">
+    <Compile Include="Cliente\FormRegistrarCliente.Designer.cs">
       <DependentUpon>FormRegistrarCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormsEntrenador\FormRegistrarEntrenador.cs">
+    <Compile Include="Entrenador\FormRegistrarEntrenador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormsEntrenador\FormRegistrarEntrenador.Designer.cs">
+    <Compile Include="Entrenador\FormRegistrarEntrenador.Designer.cs">
       <DependentUpon>FormRegistrarEntrenador.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormsPlanDeEjercicio\FormRegistrarPlanEjercicio.cs">
+    <Compile Include="PlanDeEjercicio\FormRegistrarPlanEjercicio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormsPlanDeEjercicio\FormRegistrarPlanEjercicio.Designer.cs">
+    <Compile Include="PlanDeEjercicio\FormRegistrarPlanEjercicio.Designer.cs">
       <DependentUpon>FormRegistrarPlanEjercicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormsMenu Principal\FormSumario.cs">
+    <Compile Include="Principal\FormSumario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormsMenu Principal\FormSumario.designer.cs">
+    <Compile Include="Principal\FormSumario.designer.cs">
       <DependentUpon>FormSumario.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormsCliente\FormProgresoDeCliente.cs">
+    <Compile Include="Cliente\FormProgresoDeCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormsCliente\FormProgresoDeCliente.Designer.cs">
+    <Compile Include="Cliente\FormProgresoDeCliente.Designer.cs">
       <DependentUpon>FormProgresoDeCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormsEntrenador\FormContratoDeEntrenador.cs">
+    <Compile Include="Entrenador\FormContratoDeEntrenador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormsEntrenador\FormContratoDeEntrenador.Designer.cs">
+    <Compile Include="Entrenador\FormContratoDeEntrenador.Designer.cs">
       <DependentUpon>FormContratoDeEntrenador.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormsCaja\FormAbrirCaja.resx">
+    <EmbeddedResource Include="Caja\FormAbrirCaja.resx">
       <DependentUpon>FormAbrirCaja.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormsCaja\FormGestionarCaja.resx">
+    <EmbeddedResource Include="Caja\FormGestionarCaja.resx">
       <DependentUpon>FormGestionarCaja.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormsCliente\FormGestionarCliente.resx">
+    <EmbeddedResource Include="Cliente\FormGestionarCliente.resx">
       <DependentUpon>FormGestionarCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormsEntrenador\FormGestionarEntrenador.resx">
+    <EmbeddedResource Include="Entrenador\FormGestionarEntrenador.resx">
       <DependentUpon>FormGestionarEntrenador.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormsPlanDeEjercicio\FormGestionarPlanEjercicio.resx">
+    <EmbeddedResource Include="PlanDeEjercicio\FormGestionarPlanEjercicio.resx">
       <DependentUpon>FormGestionarPlanEjercicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormsMenu Principal\FormMenuPrincipal.resx">
+    <EmbeddedResource Include="Principal\FormMenuPrincipal.resx">
       <DependentUpon>FormMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormPapelera\FormPapelera.resx">
+    <EmbeddedResource Include="Papelera\FormPapelera.resx">
       <DependentUpon>FormPapelera.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormsCliente\FormRegistrarCliente.resx">
+    <EmbeddedResource Include="Cliente\FormRegistrarCliente.resx">
       <DependentUpon>FormRegistrarCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormsEntrenador\FormRegistrarEntrenador.resx">
+    <EmbeddedResource Include="Entrenador\FormRegistrarEntrenador.resx">
       <DependentUpon>FormRegistrarEntrenador.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormsPlanDeEjercicio\FormRegistrarPlanEjercicio.resx">
+    <EmbeddedResource Include="PlanDeEjercicio\FormRegistrarPlanEjercicio.resx">
       <DependentUpon>FormRegistrarPlanEjercicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormsMenu Principal\FormSumario.resx">
+    <EmbeddedResource Include="Principal\FormSumario.resx">
       <DependentUpon>FormSumario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormsCliente\FormProgresoDeCliente.resx">
+    <EmbeddedResource Include="Cliente\FormProgresoDeCliente.resx">
       <DependentUpon>FormProgresoDeCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormsEntrenador\FormContratoDeEntrenador.resx">
+    <EmbeddedResource Include="Entrenador\FormContratoDeEntrenador.resx">
       <DependentUpon>FormContratoDeEntrenador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
