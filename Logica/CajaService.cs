@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Entidades;
-using Datos;
+using Entity;
+using DAL;
 
-namespace Logica
+namespace BLL
 {
     public class CajaRegistradoraService
     {
         private readonly ConnectionManager conexion;
-        private readonly CajaRegistradoraRepository repositorio;
+        private readonly CajaRepository repositorio;
         public CajaRegistradoraService(string connectionString)
         {
             conexion = new ConnectionManager(connectionString);
-            repositorio = new CajaRegistradoraRepository(conexion);
+            repositorio = new CajaRepository(conexion);
         }
-        public string Guardar(CajaRegistradora cajaRegistradora)
+        public string Guardar(Caja cajaRegistradora)
         {
             try
             {
@@ -58,6 +58,27 @@ namespace Logica
             }
             finally { conexion.Close(); }
 
+        }
+        public ConsultaCajaRegistradoraRespuesta ConsultarPorEstadosCajas(string estado)
+        {
+            ConsultaCajaRegistradoraRespuesta respuesta = new ConsultaCajaRegistradoraRespuesta();
+            try
+            {
+
+                conexion.Open();
+                respuesta.CajasRegistradoras = repositorio.ConsultarPorEstadosCajas(estado);
+                conexion.Close();
+                respuesta.Mensaje = (respuesta.CajasRegistradoras != null) ? "Se consulto el estante buscado" : "el estante consultado no existe";
+                respuesta.Error = false;
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { conexion.Close(); }
         }
         public BusquedaCajaRegistradoraRespuesta BuscarPorEstado(string estado)
         {
@@ -125,7 +146,7 @@ namespace Logica
             finally { conexion.Close(); }
 
         }
-        public string ModificarCash(CajaRegistradora cajaRegistradoraNueva)
+        public string ModificarCash(Caja cajaRegistradoraNueva)
         {
             try
             {
@@ -133,8 +154,8 @@ namespace Logica
                 var cajaRegistradora = repositorio.BuscarPorIdentificacion(cajaRegistradoraNueva.IdCaja);
                 if (cajaRegistradora != null)
                 {
-                    repositorio.Modificar(cajaRegistradoraNueva);
-                    return ($"El registro de {cajaRegistradoraNueva.IdCaja} se ha modificado satisfactoriamente.");
+                    repositorio.ModificarCash(cajaRegistradoraNueva);
+                    return ($"los productos se han generado en la caja {cajaRegistradoraNueva.IdCaja} satisfactoriamente.");
                 }
                 else
                 {
@@ -148,7 +169,7 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
-        public string Modificar(CajaRegistradora cajaRegistradoraNueva)
+        public string Modificar(Caja cajaRegistradoraNueva)
         {
             try
             {
@@ -243,13 +264,13 @@ namespace Logica
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public IList<CajaRegistradora> CajasRegistradoras { get; set; }
+        public IList<Caja> CajasRegistradoras { get; set; }
     }
     public class BusquedaCajaRegistradoraRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public CajaRegistradora CajaRegistradora { get; set; }
+        public Caja CajaRegistradora { get; set; }
     }
     public class ConteoCajaRegistradoraRespuesta
     {

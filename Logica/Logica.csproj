@@ -41,13 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CajaRegistradoraService.cs" />
+    <Compile Include="CadenaConexionXMLService.cs" />
+    <Compile Include="CajaService.cs" />
     <Compile Include="ClienteService.cs" />
+    <Compile Include="DrogueriaService.cs" />
     <Compile Include="EntrenadorService.cs" />
+    <Compile Include="IdEmpleadoTxtConsultaResponse.cs" />
+    <Compile Include="IdEmpleadoTxtService.cs" />
+    <Compile Include="LicenciaService.cs" />
     <Compile Include="PapeleraConsultaResponse.cs" />
     <Compile Include="PapeleraService.cs" />
     <Compile Include="PlanDeEjercicioService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RutasTxtConsultaResponse.cs" />
+    <Compile Include="RutasTxtService.cs" />
+    <Compile Include="SoftwareService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Datos\Datos.csproj">

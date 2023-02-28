@@ -19,11 +19,11 @@ Direccion_Domicilio text,
 Telefono varchar(15),
 Correo varchar(100),
 Clasificacion_Por_Peso varchar(50),
-IndMC float,
-IndGC float,
-IndMM float,
-IndMO float,
-IndMR float,
+Indice_Masa_Corporal float,
+Indice_Grasa_Corporal float,
+Indice_Masa_Muscular float,
+Indice_Masa_Osea float,
+Indice_Masa_Residual float,
 );
 
 create table ENTRENADOR(
@@ -43,7 +43,7 @@ Meses_De_Contrato int,
 Tipo_De_Contrato varchar(20)
 );
 
-create table SERVICIO(
+create table PLAN_EJERCICIO(
 Id_Plan_De_Ejercicio varchar(12) primary key not null,
 Tipo_De_Tiempo varchar(10)not null,
 Numero_DiasMeses int,
@@ -58,8 +58,12 @@ Precio int
 
 create table CAJA_REGISTRADORA(
 Id_Caja varchar(12) primary key not null,
-Fecha_De_Apertura datetime not null,
-Fecha_De_Cierre datetime not null,
+Fecha_De_Apertura varchar(20) not null,
+Hora_De_Apertura varchar(15)not null,
+Fecha_De_Cierre varchar(20) not null,
+Hora_De_Cierre varchar(15)not null,
 Estado varchar(10) not null,
-Monto int
+Monto_Inicial int,
+Monto_Final int,
+Venta_Del_Dia int
 );

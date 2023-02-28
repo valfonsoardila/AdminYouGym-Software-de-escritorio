@@ -159,7 +159,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigConnection.cs" />
     <Compile Include="Caja\FormAbrirCaja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +171,7 @@
     <Compile Include="Caja\FormGestionarCaja.Designer.cs">
       <DependentUpon>FormGestionarCaja.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfigConnection.cs" />
     <Compile Include="Entrenador\FormGestionarEntrenador.cs">
       <SubType>Form</SubType>
     </Compile>
