@@ -146,8 +146,11 @@ namespace Datos
             Cliente cliente = new Cliente();
 
             cliente.Identificacion = (string)dataReader["Id"];
+
             cliente.TipoDeIdentificacion = (string)dataReader["Tipo_De_Id"];
+
             cliente.CodigoCliente = (string)dataReader["Codigo_Cliente"];
+
             cliente.Nombres = (string)dataReader["Nombres"];
             cliente.Apellidos = (string)dataReader["Apellidos"];
             cliente.FechaDeNacimiento = (DateTime)dataReader["Fecha_De_Nacimiento"];

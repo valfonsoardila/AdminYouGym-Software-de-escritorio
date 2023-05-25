@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Entity;
+using Entidades;
 using System.IO;
 
-namespace DAL
+namespace Datos
 {
     public class IdEmpleadoTxtRepository
     {
-        private string ruta = @"IdEmpleadoSesion.txt";
-        public void Guardar(IdEmpleadoTxt idEmpleadoTxt)
+        private string ruta = @"IdEmpleadoSesion.config";
+        public void Guardar(IdUsuarioTxt idEmpleadoTxt)
         {
             FileStream file = new FileStream(ruta, FileMode.Append);
             StreamWriter escritor = new StreamWriter(file);
@@ -19,16 +19,16 @@ namespace DAL
             escritor.Close();
             file.Close();
         }
-        public List<IdEmpleadoTxt> Consultar()
+        public List<IdUsuarioTxt> Consultar()
         {
-            List<IdEmpleadoTxt> idEmpleadoTxts = new List<IdEmpleadoTxt>();
+            List<IdUsuarioTxt> idEmpleadoTxts = new List<IdUsuarioTxt>();
             FileStream file = new FileStream(ruta, FileMode.OpenOrCreate, FileAccess.Read);
             StreamReader lector = new StreamReader(ruta);
             var linea = "";
             while ((linea = lector.ReadLine()) != null)
             {
                 string[] dato = linea.Split(';');
-                IdEmpleadoTxt idEmpleadoTxt = new IdEmpleadoTxt()
+                IdUsuarioTxt idEmpleadoTxt = new IdUsuarioTxt()
                 {
                     Identificacion = dato[0],
                 };
@@ -40,7 +40,7 @@ namespace DAL
         }
         public bool FiltroIdentificaicon(string referencia)
         {
-            List<IdEmpleadoTxt> idEmpleadoTxts = new List<IdEmpleadoTxt>();
+            List<IdUsuarioTxt> idEmpleadoTxts = new List<IdUsuarioTxt>();
             FileStream file = new FileStream(ruta, FileMode.OpenOrCreate, FileAccess.Read);
             StreamReader lector = new StreamReader(ruta);
             var linea = "";
@@ -62,9 +62,9 @@ namespace DAL
         {
             return referenciaRegistrada == referenciaBuscada;
         }
-        public void Modificar(IdEmpleadoTxt idEmpleadoTxt, string referencia)
+        public void Modificar(IdUsuarioTxt idEmpleadoTxt, string referencia)
         {
-            List<IdEmpleadoTxt> idEmpleadoTxts = new List<IdEmpleadoTxt>();
+            List<IdUsuarioTxt> idEmpleadoTxts = new List<IdUsuarioTxt>();
             idEmpleadoTxts = Consultar();
             FileStream file = new FileStream(ruta, FileMode.Create);
             file.Close();
@@ -86,7 +86,7 @@ namespace DAL
         }
         public void Eliminar(string referencia)
         {
-            List<IdEmpleadoTxt> idEmpleadoTxts = Consultar();
+            List<IdUsuarioTxt> idEmpleadoTxts = Consultar();
             FileStream file = new FileStream(ruta, FileMode.Create);
             file.Close();
 

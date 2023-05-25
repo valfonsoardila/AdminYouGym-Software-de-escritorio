@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL;
-using Entity;
+using Datos;
+using Entidades;
 
-namespace BLL
+namespace Logica
 {
     public class RutasTxtService
     {
@@ -65,6 +65,18 @@ namespace BLL
                 return false;
             }
 
+        }
+        public string ModificarRutasTxt(RutasTxt rutasTxt, string referencia)
+        {
+            try
+            {
+                rutasTxtRepository.ModificarRutasTxt(rutasTxt, referencia);
+                return "Producto Modificado Satisfactoriamente";
+            }
+            catch (Exception e)
+            {
+                return "Error al Modificar:" + e.Message;
+            }
         }
         public string ModificarFacturaCierreDeCajas(RutasTxt rutasTxt, string referencia)
         {

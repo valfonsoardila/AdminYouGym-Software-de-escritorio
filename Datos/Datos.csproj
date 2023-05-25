@@ -41,19 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArchivoRespaldoRepository.cs" />
     <Compile Include="CadenaConexionXMLRepository.cs" />
     <Compile Include="CajaRepository.cs" />
     <Compile Include="ClienteRepository.cs" />
     <Compile Include="ConnectionManager.cs" />
-    <Compile Include="DrogueriaRepository.cs" />
+    <Compile Include="EmailRepository.cs" />
     <Compile Include="EntrenadorRepository.cs" />
     <Compile Include="IdEmpleadoTxtRepository.cs" />
     <Compile Include="LicenciaRepository.cs" />
-    <Compile Include="PapeleraRepository.cs" />
     <Compile Include="PlanDeEjercicioRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RutasTxtRepository.cs" />
     <Compile Include="SoftwareRepository.cs" />
+    <Compile Include="UsuarioRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entidades\Entidades.csproj">

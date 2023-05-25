@@ -18,6 +18,11 @@ namespace Logica
             conexion = new ConnectionManager(connectionString);
             repositorio = new ClienteRepository(conexion);
         }
+
+        public ClienteService()
+        {
+        }
+
         //<Validaciones por mensajes de botones de los formularios>
         public string ValidarIndiceMasaCorporal(Cliente cliente)
         {
@@ -161,6 +166,13 @@ namespace Logica
         {
             try
             {
+                cliente.GenerarCodigoCliente();
+                cliente.CalcularEdad();
+                cliente.ObtenerIndiceMasaCorporal();
+                cliente.ObtenerIndiceGrasaMuscular();
+                cliente.ObtenerIndiceMasaResidual();
+                cliente.ObtenerIndiceMasaOsea();
+                cliente.ObtenerIndiceMasaMuscular();
                 conexion.Open();
                 if (repositorio.BuscarPorIdentificacion(cliente.Identificacion) == null)
                 {
@@ -223,6 +235,13 @@ namespace Logica
         {
             try
             {
+                clienteNuevo.CalcularEdad();
+                clienteNuevo.ObtenerIndiceMasaCorporal();
+                clienteNuevo.ObtenerIndiceGrasaMuscular();
+                clienteNuevo.ObtenerIndiceMasaResidual();
+                clienteNuevo.ObtenerIndiceMasaOsea();
+                clienteNuevo.ObtenerIndiceMasaMuscular();
+                
                 conexion.Open();
                 var clienteAntiguo = repositorio.BuscarPorIdentificacion(clienteNuevo.Identificacion);
 

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-using Entity;
+using Entidades;
 using System.Data;
 
-namespace DAL
+namespace Datos
 {
     public class SoftwareRepository
     {

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Entity;
+using Entidades;
 using System.IO;
 
-namespace DAL
+namespace Datos
 {
     public class RutasTxtRepository
     {
-        private string ruta = @"RutasDeGuardado.txt";
+        private string ruta = @"RutasDeGuardado.config";
         public void Guardar(RutasTxt rutasTxt)
         {
             FileStream file = new FileStream(ruta, FileMode.Append);
@@ -93,6 +93,24 @@ namespace DAL
             foreach (var item in rutasTxts)
             {
                 if (!EsEncontrado(item.RutaCierreDeCaja, referencia))
+                {
+                    Guardar(item);
+                }
+                else
+                {
+                    Guardar(rutasTxt);
+                }
+            }
+        }
+        public void ModificarRutasTxt(RutasTxt rutasTxt, string referencia)
+        {
+            List<RutasTxt> rutasTxts = new List<RutasTxt>();
+            rutasTxts = Consultar();
+            FileStream file = new FileStream(ruta, FileMode.Create);
+            file.Close();
+            foreach (var item in rutasTxts)
+            {
+                if (!EsEncontrado(item.Referencia.ToString(), referencia))
                 {
                     Guardar(item);
                 }

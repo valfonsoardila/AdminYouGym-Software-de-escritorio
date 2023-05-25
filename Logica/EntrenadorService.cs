@@ -43,6 +43,7 @@ namespace Logica
             ConsultaEntrenadorRespuesta respuesta = new ConsultaEntrenadorRespuesta();
             try
             {
+
                 conexion.Open();
                 respuesta.Entrenadores = repositorio.ConsultarTodos();
                 conexion.Close();
@@ -57,6 +58,7 @@ namespace Logica
                 return respuesta;
             }
             finally { conexion.Close(); }
+
         }
         public string Eliminar(string identificacion)
         {

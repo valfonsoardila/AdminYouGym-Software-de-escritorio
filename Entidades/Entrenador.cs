@@ -10,7 +10,7 @@ namespace Entidades
     {
 
         //Constructor
-        public Entrenador(string identificacion, string tipoDeIdentificacion, string nombres, string apellidos, DateTime fechaDeNacimiento, int edad,string direccion, string sexo,string correoElectronico)
+        public Entrenador(string identificacion, string tipoDeIdentificacion, string nombres, string apellidos, DateTime fechaDeNacimiento, int edad,string direccion, string sexo,string telefono,string correoElectronico)
         {
             Identificacion = identificacion;
             TipoDeIdentificacion = tipoDeIdentificacion;
@@ -20,6 +20,7 @@ namespace Entidades
             Edad = edad;
             Sexo = sexo;
             Direccion = direccion;
+            Telefono = telefono;
             CorreoElectronico = correoElectronico;
         }
 
@@ -37,6 +38,7 @@ namespace Entidades
         public int Edad { get; set; }
         public string Sexo { get; set; }
         public string Direccion { get; set; }
+        public string Telefono { get; set; }
         public string CorreoElectronico { get; set; }
         public string CodigoEntrenador { get; set; }
         public int PagoDeSalario { get; set; }
