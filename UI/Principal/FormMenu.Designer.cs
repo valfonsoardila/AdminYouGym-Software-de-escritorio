@@ -29,6 +29,7 @@ namespace UI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenu));
             panelHeaderbar = new Panel();
             btnWindowMaximize = new FontAwesome.Sharp.IconPictureBox();
             btnWindowRestore = new FontAwesome.Sharp.IconPictureBox();
@@ -105,6 +106,7 @@ namespace UI
             panelHeaderbar.Name = "panelHeaderbar";
             panelHeaderbar.Size = new Size(1027, 31);
             panelHeaderbar.TabIndex = 2;
+            panelHeaderbar.MouseDown += panelHeaderbar_MouseDown;
             // 
             // btnWindowMaximize
             // 
@@ -195,6 +197,7 @@ namespace UI
             panelSidebar.Name = "panelSidebar";
             panelSidebar.Size = new Size(217, 632);
             panelSidebar.TabIndex = 3;
+            panelSidebar.MouseDown += panelSidebar_MouseDown;
             // 
             // panelSelectionMembresia
             // 
@@ -331,7 +334,7 @@ namespace UI
             btnGestionMembresia.Name = "btnGestionMembresia";
             btnGestionMembresia.Size = new Size(217, 43);
             btnGestionMembresia.TabIndex = 15;
-            btnGestionMembresia.Text = "    Membresias";
+            btnGestionMembresia.Text = "   Membresias";
             btnGestionMembresia.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnGestionMembresia.UseVisualStyleBackColor = false;
             btnGestionMembresia.Click += btnGestionMembresia_Click;
@@ -503,6 +506,7 @@ namespace UI
             panelLogoContainer.Name = "panelLogoContainer";
             panelLogoContainer.Size = new Size(217, 115);
             panelLogoContainer.TabIndex = 0;
+            panelLogoContainer.MouseDown += panelLogoContainer_MouseDown;
             // 
             // panelSidebarClose
             // 
@@ -773,6 +777,7 @@ namespace UI
             Controls.Add(panelSidebar);
             Controls.Add(panelHeaderbar);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 3, 4, 3);
             Name = "FormMenu";
             Text = "Form1";

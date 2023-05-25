@@ -34,14 +34,14 @@
             label6 = new Label();
             pictureBox1 = new PictureBox();
             label5 = new Label();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
-            tabControl1 = new TabControl();
+            btnVolver = new FontAwesome.Sharp.IconButton();
+            tabControlEntrenador = new TabControl();
             tabGeneral = new TabPage();
             panelClient = new Panel();
             panel1 = new Panel();
-            btnProgreso = new FontAwesome.Sharp.IconButton();
-            btnAddClient = new FontAwesome.Sharp.IconButton();
-            btnUpdateClient = new FontAwesome.Sharp.IconButton();
+            btnContrato = new FontAwesome.Sharp.IconButton();
+            btnAddEntrenador = new FontAwesome.Sharp.IconButton();
+            btnUpdateEntrenador = new FontAwesome.Sharp.IconButton();
             panelContenedorClient = new Panel();
             dataGridClient = new DataGridView();
             panelDownDataGrid = new Panel();
@@ -126,7 +126,7 @@
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            tabControl1.SuspendLayout();
+            tabControlEntrenador.SuspendLayout();
             tabGeneral.SuspendLayout();
             panelClient.SuspendLayout();
             panel1.SuspendLayout();
@@ -161,7 +161,7 @@
             panel2.Controls.Add(iconPictureBox1);
             panel2.Controls.Add(panel3);
             panel2.Controls.Add(label5);
-            panel2.Controls.Add(iconButton1);
+            panel2.Controls.Add(btnVolver);
             panel2.Location = new Point(0, 12);
             panel2.Name = "panel2";
             panel2.Size = new Size(827, 57);
@@ -222,29 +222,30 @@
             label5.TabIndex = 2;
             label5.Text = "GESTION DE ENTRENADORES";
             // 
-            // iconButton1
+            // btnVolver
             // 
-            iconButton1.BackColor = Color.Silver;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.AngleLeft;
-            iconButton1.IconColor = Color.Black;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            iconButton1.IconSize = 32;
-            iconButton1.Location = new Point(12, 12);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(34, 33);
-            iconButton1.TabIndex = 5;
-            iconButton1.UseVisualStyleBackColor = false;
+            btnVolver.BackColor = Color.Silver;
+            btnVolver.IconChar = FontAwesome.Sharp.IconChar.AngleLeft;
+            btnVolver.IconColor = Color.Black;
+            btnVolver.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnVolver.IconSize = 32;
+            btnVolver.Location = new Point(12, 12);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(34, 33);
+            btnVolver.TabIndex = 5;
+            btnVolver.UseVisualStyleBackColor = false;
+            btnVolver.Click += btnVolver_Click;
             // 
-            // tabControl1
+            // tabControlEntrenador
             // 
-            tabControl1.Controls.Add(tabGeneral);
-            tabControl1.Controls.Add(tabRegistro);
-            tabControl1.Controls.Add(tabContrato);
-            tabControl1.Location = new Point(1, 76);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(827, 454);
-            tabControl1.TabIndex = 5;
+            tabControlEntrenador.Controls.Add(tabGeneral);
+            tabControlEntrenador.Controls.Add(tabRegistro);
+            tabControlEntrenador.Controls.Add(tabContrato);
+            tabControlEntrenador.Location = new Point(1, 76);
+            tabControlEntrenador.Name = "tabControlEntrenador";
+            tabControlEntrenador.SelectedIndex = 0;
+            tabControlEntrenador.Size = new Size(827, 454);
+            tabControlEntrenador.TabIndex = 5;
             // 
             // tabGeneral
             // 
@@ -268,53 +269,56 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(btnProgreso);
-            panel1.Controls.Add(btnAddClient);
-            panel1.Controls.Add(btnUpdateClient);
+            panel1.Controls.Add(btnContrato);
+            panel1.Controls.Add(btnAddEntrenador);
+            panel1.Controls.Add(btnUpdateEntrenador);
             panel1.Dock = DockStyle.Bottom;
             panel1.Location = new Point(0, 367);
             panel1.Name = "panel1";
             panel1.Size = new Size(734, 38);
             panel1.TabIndex = 1;
             // 
-            // btnProgreso
+            // btnContrato
             // 
-            btnProgreso.BackColor = Color.MediumSpringGreen;
-            btnProgreso.IconChar = FontAwesome.Sharp.IconChar.Dumbbell;
-            btnProgreso.IconColor = Color.Black;
-            btnProgreso.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            btnProgreso.IconSize = 32;
-            btnProgreso.Location = new Point(427, 3);
-            btnProgreso.Name = "btnProgreso";
-            btnProgreso.Size = new Size(69, 33);
-            btnProgreso.TabIndex = 4;
-            btnProgreso.UseVisualStyleBackColor = false;
+            btnContrato.BackColor = Color.MediumSpringGreen;
+            btnContrato.IconChar = FontAwesome.Sharp.IconChar.FileCircleCheck;
+            btnContrato.IconColor = Color.Black;
+            btnContrato.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnContrato.IconSize = 32;
+            btnContrato.Location = new Point(427, 3);
+            btnContrato.Name = "btnContrato";
+            btnContrato.Size = new Size(69, 33);
+            btnContrato.TabIndex = 4;
+            btnContrato.UseVisualStyleBackColor = false;
+            btnContrato.Click += btnContrato_Click;
             // 
-            // btnAddClient
+            // btnAddEntrenador
             // 
-            btnAddClient.BackColor = Color.LimeGreen;
-            btnAddClient.IconChar = FontAwesome.Sharp.IconChar.UserPlus;
-            btnAddClient.IconColor = Color.Black;
-            btnAddClient.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            btnAddClient.IconSize = 32;
-            btnAddClient.Location = new Point(236, 3);
-            btnAddClient.Name = "btnAddClient";
-            btnAddClient.Size = new Size(69, 33);
-            btnAddClient.TabIndex = 1;
-            btnAddClient.UseVisualStyleBackColor = false;
+            btnAddEntrenador.BackColor = Color.LimeGreen;
+            btnAddEntrenador.IconChar = FontAwesome.Sharp.IconChar.UserPlus;
+            btnAddEntrenador.IconColor = Color.Black;
+            btnAddEntrenador.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnAddEntrenador.IconSize = 32;
+            btnAddEntrenador.Location = new Point(236, 3);
+            btnAddEntrenador.Name = "btnAddEntrenador";
+            btnAddEntrenador.Size = new Size(69, 33);
+            btnAddEntrenador.TabIndex = 1;
+            btnAddEntrenador.UseVisualStyleBackColor = false;
+            btnAddEntrenador.Click += btnAddEntrenador_Click;
             // 
-            // btnUpdateClient
+            // btnUpdateEntrenador
             // 
-            btnUpdateClient.BackColor = Color.Gold;
-            btnUpdateClient.IconChar = FontAwesome.Sharp.IconChar.UserEdit;
-            btnUpdateClient.IconColor = Color.Black;
-            btnUpdateClient.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            btnUpdateClient.IconSize = 32;
-            btnUpdateClient.Location = new Point(311, 3);
-            btnUpdateClient.Name = "btnUpdateClient";
-            btnUpdateClient.Size = new Size(69, 33);
-            btnUpdateClient.TabIndex = 2;
-            btnUpdateClient.UseVisualStyleBackColor = false;
+            btnUpdateEntrenador.BackColor = Color.Gold;
+            btnUpdateEntrenador.IconChar = FontAwesome.Sharp.IconChar.UserEdit;
+            btnUpdateEntrenador.IconColor = Color.Black;
+            btnUpdateEntrenador.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnUpdateEntrenador.IconSize = 32;
+            btnUpdateEntrenador.Location = new Point(311, 3);
+            btnUpdateEntrenador.Name = "btnUpdateEntrenador";
+            btnUpdateEntrenador.Size = new Size(69, 33);
+            btnUpdateEntrenador.TabIndex = 2;
+            btnUpdateEntrenador.UseVisualStyleBackColor = false;
+            btnUpdateEntrenador.Click += btnUpdateEntrenador_Click;
             // 
             // panelContenedorClient
             // 
@@ -354,54 +358,63 @@
             // 
             // textHombres
             // 
-            textHombres.Location = new Point(669, 3);
+            textHombres.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            textHombres.Location = new Point(663, 4);
             textHombres.Name = "textHombres";
             textHombres.Size = new Size(52, 23);
-            textHombres.TabIndex = 8;
+            textHombres.TabIndex = 13;
+            textHombres.Text = "0";
+            textHombres.TextAlign = HorizontalAlignment.Center;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(493, 6);
+            label3.Location = new Point(487, 7);
             label3.Name = "label3";
             label3.Size = new Size(61, 17);
-            label3.TabIndex = 7;
+            label3.TabIndex = 11;
             label3.Text = "Mujeres:";
             // 
             // textMujeres
             // 
-            textMujeres.Location = new Point(551, 3);
+            textMujeres.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            textMujeres.Location = new Point(545, 4);
             textMujeres.Name = "textMujeres";
             textMujeres.Size = new Size(52, 23);
-            textMujeres.TabIndex = 8;
+            textMujeres.TabIndex = 14;
+            textMujeres.Text = "0";
+            textMujeres.TextAlign = HorizontalAlignment.Center;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(354, 7);
+            label2.Location = new Point(348, 8);
             label2.Name = "label2";
             label2.Size = new Size(84, 17);
-            label2.TabIndex = 5;
+            label2.TabIndex = 9;
             label2.Text = "Registrados:";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(605, 6);
+            label4.Location = new Point(599, 7);
             label4.Name = "label4";
             label4.Size = new Size(68, 17);
-            label4.TabIndex = 7;
+            label4.TabIndex = 12;
             label4.Text = "Hombres:";
             // 
             // textTotal
             // 
-            textTotal.Location = new Point(436, 3);
+            textTotal.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            textTotal.Location = new Point(430, 4);
             textTotal.Name = "textTotal";
             textTotal.Size = new Size(52, 23);
-            textTotal.TabIndex = 6;
+            textTotal.TabIndex = 10;
+            textTotal.Text = "0";
+            textTotal.TextAlign = HorizontalAlignment.Center;
             // 
             // panelTopDataGrid
             // 
@@ -417,6 +430,7 @@
             // comboFiltroSexo
             // 
             comboFiltroSexo.FormattingEnabled = true;
+            comboFiltroSexo.Items.AddRange(new object[] { "M", "F", "Otro" });
             comboFiltroSexo.Location = new Point(295, 2);
             comboFiltroSexo.Name = "comboFiltroSexo";
             comboFiltroSexo.Size = new Size(121, 23);
@@ -494,7 +508,7 @@
             iconButton5.IconChar = FontAwesome.Sharp.IconChar.FilePdf;
             iconButton5.IconColor = Color.White;
             iconButton5.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            iconButton5.IconSize = 28;
+            iconButton5.IconSize = 25;
             iconButton5.Location = new Point(418, 238);
             iconButton5.Name = "iconButton5";
             iconButton5.Size = new Size(107, 33);
@@ -1179,7 +1193,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(826, 542);
-            Controls.Add(tabControl1);
+            Controls.Add(tabControlEntrenador);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormGestionEntrenador";
@@ -1190,7 +1204,7 @@
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            tabControl1.ResumeLayout(false);
+            tabControlEntrenador.ResumeLayout(false);
             tabGeneral.ResumeLayout(false);
             panelClient.ResumeLayout(false);
             panel1.ResumeLayout(false);
@@ -1236,24 +1250,18 @@
         private Label label6;
         private PictureBox pictureBox1;
         private Label label5;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnVolver;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
-        private TabControl tabControl1;
+        private TabControl tabControlEntrenador;
         private TabPage tabGeneral;
         private Panel panelClient;
         private Panel panel1;
-        private FontAwesome.Sharp.IconButton btnProgreso;
-        private FontAwesome.Sharp.IconButton btnAddClient;
-        private FontAwesome.Sharp.IconButton btnUpdateClient;
+        private FontAwesome.Sharp.IconButton btnContrato;
+        private FontAwesome.Sharp.IconButton btnAddEntrenador;
+        private FontAwesome.Sharp.IconButton btnUpdateEntrenador;
         private Panel panelContenedorClient;
         private DataGridView dataGridClient;
         private Panel panelDownDataGrid;
-        private TextBox textHombres;
-        private Label label3;
-        private TextBox textMujeres;
-        private Label label2;
-        private Label label4;
-        private TextBox textTotal;
         private Panel panelTopDataGrid;
         private ComboBox comboFiltroSexo;
         private Label label1;
@@ -1325,5 +1333,11 @@
         private TextBox textBox5;
         private Label label27;
         private Label label32;
+        private TextBox textHombres;
+        private Label label3;
+        private TextBox textMujeres;
+        private Label label2;
+        private Label label4;
+        private TextBox textTotal;
     }
 }

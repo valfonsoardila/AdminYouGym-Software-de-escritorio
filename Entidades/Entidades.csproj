@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrador.cs" />
     <Compile Include="Ajuste.cs" />
     <Compile Include="ArchivoRespaldo.cs" />
     <Compile Include="CadenaConexionXML.cs" />

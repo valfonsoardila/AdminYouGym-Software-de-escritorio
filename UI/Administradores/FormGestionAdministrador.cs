@@ -16,5 +16,20 @@ namespace UI
         {
             InitializeComponent();
         }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAddAdmin_Click(object sender, EventArgs e)
+        {
+            tabControlAdmins.SelectedIndex = 1;
+        }
+
+        private void btnUpdateAdmin_Click(object sender, EventArgs e)
+        {
+            tabControlAdmins.SelectedIndex = 1;
+        }
     }
 }

@@ -16,5 +16,25 @@ namespace UI
         {
             InitializeComponent();
         }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAddEntrenador_Click(object sender, EventArgs e)
+        {
+            tabControlEntrenador.SelectedIndex = 1;
+        }
+
+        private void btnUpdateEntrenador_Click(object sender, EventArgs e)
+        {
+            tabControlEntrenador.SelectedIndex = 1;
+        }
+
+        private void btnContrato_Click(object sender, EventArgs e)
+        {
+            tabControlEntrenador.SelectedIndex = 2;
+        }
     }
 }

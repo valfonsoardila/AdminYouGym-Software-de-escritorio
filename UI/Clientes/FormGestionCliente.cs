@@ -16,5 +16,25 @@ namespace UI
         {
             InitializeComponent();
         }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAddClient_Click(object sender, EventArgs e)
+        {
+            tabControlCliente.SelectedIndex = 1;
+        }
+
+        private void btnUpdateClient_Click(object sender, EventArgs e)
+        {
+            tabControlCliente.SelectedIndex = 1;
+        }
+
+        private void btnProgreso_Click(object sender, EventArgs e)
+        {
+            tabControlCliente.SelectedIndex = 2;
+        }
     }
 }

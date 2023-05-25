@@ -34,8 +34,8 @@
             label6 = new Label();
             pictureBox1 = new PictureBox();
             label5 = new Label();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
-            tabControl1 = new TabControl();
+            btnVolver = new FontAwesome.Sharp.IconButton();
+            tabControlCliente = new TabControl();
             tabGeneral = new TabPage();
             panelClient = new Panel();
             panel1 = new Panel();
@@ -47,10 +47,10 @@
             panelDownDataGrid = new Panel();
             textHombres = new TextBox();
             label3 = new Label();
-            textMujeres = new TextBox();
-            label2 = new Label();
-            label4 = new Label();
             textTotal = new TextBox();
+            textMujeres = new TextBox();
+            label4 = new Label();
+            label2 = new Label();
             panelTopDataGrid = new Panel();
             comboFiltroSexo = new ComboBox();
             label1 = new Label();
@@ -66,6 +66,7 @@
             panel8 = new Panel();
             label10 = new Label();
             panel7 = new Panel();
+            iconButton3 = new FontAwesome.Sharp.IconButton();
             pictureBox3 = new PictureBox();
             comboBox2 = new ComboBox();
             label26 = new Label();
@@ -118,12 +119,11 @@
             pictureBox2 = new PictureBox();
             panel5 = new Panel();
             label8 = new Label();
-            iconButton3 = new FontAwesome.Sharp.IconButton();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            tabControl1.SuspendLayout();
+            tabControlCliente.SuspendLayout();
             tabGeneral.SuspendLayout();
             panelClient.SuspendLayout();
             panel1.SuspendLayout();
@@ -158,7 +158,7 @@
             panel2.Controls.Add(iconPictureBox1);
             panel2.Controls.Add(panel3);
             panel2.Controls.Add(label5);
-            panel2.Controls.Add(iconButton1);
+            panel2.Controls.Add(btnVolver);
             panel2.Location = new Point(0, 12);
             panel2.Name = "panel2";
             panel2.Size = new Size(827, 57);
@@ -219,29 +219,30 @@
             label5.TabIndex = 2;
             label5.Text = "GESTION DE CLIENTES";
             // 
-            // iconButton1
+            // btnVolver
             // 
-            iconButton1.BackColor = Color.Silver;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.AngleLeft;
-            iconButton1.IconColor = Color.Black;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            iconButton1.IconSize = 32;
-            iconButton1.Location = new Point(12, 12);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(34, 33);
-            iconButton1.TabIndex = 5;
-            iconButton1.UseVisualStyleBackColor = false;
+            btnVolver.BackColor = Color.Silver;
+            btnVolver.IconChar = FontAwesome.Sharp.IconChar.AngleLeft;
+            btnVolver.IconColor = Color.Black;
+            btnVolver.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnVolver.IconSize = 32;
+            btnVolver.Location = new Point(12, 12);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(34, 33);
+            btnVolver.TabIndex = 5;
+            btnVolver.UseVisualStyleBackColor = false;
+            btnVolver.Click += btnVolver_Click;
             // 
-            // tabControl1
+            // tabControlCliente
             // 
-            tabControl1.Controls.Add(tabGeneral);
-            tabControl1.Controls.Add(tabRegistro);
-            tabControl1.Controls.Add(tabProgreso);
-            tabControl1.Location = new Point(0, 68);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(827, 474);
-            tabControl1.TabIndex = 2;
+            tabControlCliente.Controls.Add(tabGeneral);
+            tabControlCliente.Controls.Add(tabRegistro);
+            tabControlCliente.Controls.Add(tabProgreso);
+            tabControlCliente.Location = new Point(0, 68);
+            tabControlCliente.Name = "tabControlCliente";
+            tabControlCliente.SelectedIndex = 0;
+            tabControlCliente.Size = new Size(827, 474);
+            tabControlCliente.TabIndex = 2;
             // 
             // tabGeneral
             // 
@@ -286,6 +287,7 @@
             btnProgreso.Size = new Size(69, 33);
             btnProgreso.TabIndex = 4;
             btnProgreso.UseVisualStyleBackColor = false;
+            btnProgreso.Click += btnProgreso_Click;
             // 
             // btnAddClient
             // 
@@ -299,6 +301,7 @@
             btnAddClient.Size = new Size(69, 33);
             btnAddClient.TabIndex = 1;
             btnAddClient.UseVisualStyleBackColor = false;
+            btnAddClient.Click += btnAddClient_Click;
             // 
             // btnUpdateClient
             // 
@@ -312,6 +315,7 @@
             btnUpdateClient.Size = new Size(69, 33);
             btnUpdateClient.TabIndex = 2;
             btnUpdateClient.UseVisualStyleBackColor = false;
+            btnUpdateClient.Click += btnUpdateClient_Click;
             // 
             // panelContenedorClient
             // 
@@ -339,10 +343,10 @@
             panelDownDataGrid.BackColor = Color.Gainsboro;
             panelDownDataGrid.Controls.Add(textHombres);
             panelDownDataGrid.Controls.Add(label3);
-            panelDownDataGrid.Controls.Add(textMujeres);
-            panelDownDataGrid.Controls.Add(label2);
-            panelDownDataGrid.Controls.Add(label4);
             panelDownDataGrid.Controls.Add(textTotal);
+            panelDownDataGrid.Controls.Add(textMujeres);
+            panelDownDataGrid.Controls.Add(label4);
+            panelDownDataGrid.Controls.Add(label2);
             panelDownDataGrid.Dock = DockStyle.Bottom;
             panelDownDataGrid.Location = new Point(0, 338);
             panelDownDataGrid.Name = "panelDownDataGrid";
@@ -351,54 +355,63 @@
             // 
             // textHombres
             // 
-            textHombres.Location = new Point(669, 3);
+            textHombres.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            textHombres.Location = new Point(666, 4);
             textHombres.Name = "textHombres";
             textHombres.Size = new Size(52, 23);
-            textHombres.TabIndex = 8;
+            textHombres.TabIndex = 13;
+            textHombres.Text = "0";
+            textHombres.TextAlign = HorizontalAlignment.Center;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(493, 6);
+            label3.Location = new Point(490, 7);
             label3.Name = "label3";
             label3.Size = new Size(61, 17);
-            label3.TabIndex = 7;
+            label3.TabIndex = 11;
             label3.Text = "Mujeres:";
+            // 
+            // textTotal
+            // 
+            textTotal.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            textTotal.Location = new Point(433, 4);
+            textTotal.Name = "textTotal";
+            textTotal.Size = new Size(52, 23);
+            textTotal.TabIndex = 10;
+            textTotal.Text = "0";
+            textTotal.TextAlign = HorizontalAlignment.Center;
             // 
             // textMujeres
             // 
-            textMujeres.Location = new Point(551, 3);
+            textMujeres.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            textMujeres.Location = new Point(548, 4);
             textMujeres.Name = "textMujeres";
             textMujeres.Size = new Size(52, 23);
-            textMujeres.TabIndex = 8;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(354, 7);
-            label2.Name = "label2";
-            label2.Size = new Size(84, 17);
-            label2.TabIndex = 5;
-            label2.Text = "Registrados:";
+            textMujeres.TabIndex = 14;
+            textMujeres.Text = "0";
+            textMujeres.TextAlign = HorizontalAlignment.Center;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(605, 6);
+            label4.Location = new Point(602, 7);
             label4.Name = "label4";
             label4.Size = new Size(68, 17);
-            label4.TabIndex = 7;
+            label4.TabIndex = 12;
             label4.Text = "Hombres:";
             // 
-            // textTotal
+            // label2
             // 
-            textTotal.Location = new Point(436, 3);
-            textTotal.Name = "textTotal";
-            textTotal.Size = new Size(52, 23);
-            textTotal.TabIndex = 6;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(351, 8);
+            label2.Name = "label2";
+            label2.Size = new Size(84, 17);
+            label2.TabIndex = 9;
+            label2.Text = "Registrados:";
             // 
             // panelTopDataGrid
             // 
@@ -413,8 +426,9 @@
             // 
             // comboFiltroSexo
             // 
-            comboFiltroSexo.BackColor = Color.Gainsboro;
+            comboFiltroSexo.BackColor = SystemColors.Window;
             comboFiltroSexo.FormattingEnabled = true;
+            comboFiltroSexo.Items.AddRange(new object[] { "M", "F", "Otro" });
             comboFiltroSexo.Location = new Point(295, 2);
             comboFiltroSexo.Name = "comboFiltroSexo";
             comboFiltroSexo.Size = new Size(121, 23);
@@ -497,10 +511,13 @@
             // textBox14
             // 
             textBox14.BorderStyle = BorderStyle.FixedSingle;
+            textBox14.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             textBox14.Location = new Point(613, 60);
             textBox14.Name = "textBox14";
-            textBox14.Size = new Size(133, 23);
+            textBox14.Size = new Size(133, 25);
             textBox14.TabIndex = 5;
+            textBox14.Text = "0";
+            textBox14.TextAlign = HorizontalAlignment.Center;
             // 
             // label28
             // 
@@ -515,10 +532,13 @@
             // textBox13
             // 
             textBox13.BorderStyle = BorderStyle.FixedSingle;
+            textBox13.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             textBox13.Location = new Point(170, 60);
             textBox13.Name = "textBox13";
             textBox13.Size = new Size(133, 23);
             textBox13.TabIndex = 3;
+            textBox13.Text = "0";
+            textBox13.TextAlign = HorizontalAlignment.Center;
             // 
             // label27
             // 
@@ -577,6 +597,18 @@
             panel7.Name = "panel7";
             panel7.Size = new Size(813, 189);
             panel7.TabIndex = 2;
+            // 
+            // iconButton3
+            // 
+            iconButton3.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconButton3.IconColor = Color.Black;
+            iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton3.Location = new Point(643, 158);
+            iconButton3.Name = "iconButton3";
+            iconButton3.Size = new Size(92, 23);
+            iconButton3.TabIndex = 19;
+            iconButton3.Text = "Cargar Foto";
+            iconButton3.UseVisualStyleBackColor = true;
             // 
             // pictureBox3
             // 
@@ -1104,24 +1136,12 @@
             label8.TabIndex = 0;
             label8.Text = "Progreso de cliente";
             // 
-            // iconButton3
-            // 
-            iconButton3.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton3.IconColor = Color.Black;
-            iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton3.Location = new Point(643, 158);
-            iconButton3.Name = "iconButton3";
-            iconButton3.Size = new Size(92, 23);
-            iconButton3.TabIndex = 19;
-            iconButton3.Text = "Cargar Foto";
-            iconButton3.UseVisualStyleBackColor = true;
-            // 
             // FormGestionCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(826, 542);
-            Controls.Add(tabControl1);
+            Controls.Add(tabControlCliente);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormGestionCliente";
@@ -1132,7 +1152,7 @@
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            tabControl1.ResumeLayout(false);
+            tabControlCliente.ResumeLayout(false);
             tabGeneral.ResumeLayout(false);
             panelClient.ResumeLayout(false);
             panel1.ResumeLayout(false);
@@ -1177,11 +1197,11 @@
         private Panel panel2;
         private Panel panel3;
         private Label label5;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnVolver;
         private PictureBox pictureBox1;
         private Label label6;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
-        private TabControl tabControl1;
+        private TabControl tabControlCliente;
         private TabPage tabGeneral;
         private Panel panelClient;
         private Panel panel1;
@@ -1191,12 +1211,6 @@
         private Panel panelContenedorClient;
         private DataGridView dataGridClient;
         private Panel panelDownDataGrid;
-        private TextBox textHombres;
-        private Label label3;
-        private TextBox textMujeres;
-        private Label label2;
-        private Label label4;
-        private TextBox textTotal;
         private Panel panelTopDataGrid;
         private ComboBox comboFiltroSexo;
         private Label label1;
@@ -1265,5 +1279,11 @@
         private TextBox textSearch;
         private FontAwesome.Sharp.IconPictureBox btnSearch;
         private FontAwesome.Sharp.IconButton iconButton3;
+        private TextBox textHombres;
+        private Label label3;
+        private TextBox textTotal;
+        private TextBox textMujeres;
+        private Label label4;
+        private Label label2;
     }
 }
