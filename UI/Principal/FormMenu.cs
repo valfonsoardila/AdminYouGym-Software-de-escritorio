@@ -12,6 +12,9 @@ using Logica;
 using Entidades;
 using System.Runtime.InteropServices;
 using System.Threading;
+using DocumentFormat.OpenXml.Presentation;
+using DocumentFormat.OpenXml.Drawing;
+using Org.BouncyCastle.Ocsp;
 
 namespace UI
 {
@@ -89,7 +92,6 @@ namespace UI
                 labelTiempoLicencia.Visible = true;
                 btnVerLicencia.Visible = true;
                 textTiempoLicencia.Visible = true;
-                labelTheme.Visible = true;
                 btnModeLight.Visible = true;
                 iconThemeSun.Visible = true;
             }
@@ -128,6 +130,7 @@ namespace UI
             subMenuUsuario.Visible = false;
             btnCloseSidebar_Click(sender, e);
             AbrirSumadorDelSistema();
+            iconThemeMoon.IconColor = Color.LightGray;
             //AbrirFormulario<FormGestionarCaja>();
         }
         private void hideSubMenu()
@@ -160,8 +163,10 @@ namespace UI
             labelLogoName.Visible = false;
             btnGestionCaja.Text = "";
             btnGestionUsurio.Text = "";
-            btnGestionProductos.Text = "";
+            btnGestionMembresia.Text = "";
             btnGestionPlanesDeEjercicio.Text = "";
+            btnGestionProductos.Text = "";
+            btnAjustes.Text = "";
             panelSidebarClose.Visible = true;
         }
 
@@ -176,7 +181,7 @@ namespace UI
             btnGestionMembresia.Text = "Membresias";
             btnGestionProductos.Text = "Productos";
             btnGestionPlanesDeEjercicio.Text = "Planes de ejercicio";
-            btnGestionPlanesDeEjercicio.Text = "Ajustes";
+            btnAjustes.Text = "Ajustes";
             panelSidebarClose.Visible = false;
         }
         private void btnGestionCaja_Click(object sender, EventArgs e)
@@ -355,6 +360,26 @@ namespace UI
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnModeDark_Click(object sender, EventArgs e)
+        {
+            iconThemeSun.Enabled = false;
+            iconThemeMoon.Enabled = true;
+            btnModeDark.Visible = false;
+            btnModeLight.Visible = true;
+            iconThemeSun.IconColor = Color.LightGray;
+            iconThemeMoon.IconColor = Color.FromArgb(4,140,128);
+        }
+
+        private void btnModeLight_Click(object sender, EventArgs e)
+        {
+            iconThemeMoon.Enabled = false;
+            iconThemeSun.Enabled = true;
+            btnModeLight.Visible = false;
+            btnModeDark.Visible = true;
+            iconThemeMoon.IconColor = Color.LightGray;
+            iconThemeSun.IconColor = Color.Yellow;
         }
     }
 }

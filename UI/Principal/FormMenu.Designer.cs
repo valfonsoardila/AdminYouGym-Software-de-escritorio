@@ -63,15 +63,16 @@ namespace UI
             panelContenedorInterno = new Panel();
             btnModeLight = new FontAwesome.Sharp.IconPictureBox();
             panelHeader = new Panel();
-            textTiempoLicencia = new TextBox();
+            btnModeDark = new FontAwesome.Sharp.IconPictureBox();
+            iconClock = new FontAwesome.Sharp.IconPictureBox();
+            pictureAlert = new PictureBox();
             iconThemeSun = new FontAwesome.Sharp.IconPictureBox();
+            textTiempoLicencia = new TextBox();
             labelTiempoLicencia = new Label();
             btnVerLicencia = new FontAwesome.Sharp.IconButton();
             labelAvsio = new Label();
             labelHeaderRuta = new Label();
             iconThemeMoon = new FontAwesome.Sharp.IconPictureBox();
-            labelTheme = new Label();
-            btnModeDark = new FontAwesome.Sharp.IconPictureBox();
             panelHeaderbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnWindowMaximize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnWindowRestore).BeginInit();
@@ -85,12 +86,13 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)btnOpenSidebar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnCloseSidebar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureLogo).BeginInit();
-            panelContenedorInterno.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnModeLight).BeginInit();
             panelHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)btnModeDark).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconClock).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureAlert).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconThemeSun).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconThemeMoon).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)btnModeDark).BeginInit();
             SuspendLayout();
             // 
             // panelHeaderbar
@@ -598,7 +600,6 @@ namespace UI
             // 
             // panelContenedorInterno
             // 
-            panelContenedorInterno.Controls.Add(btnModeLight);
             panelContenedorInterno.Dock = DockStyle.Fill;
             panelContenedorInterno.Location = new Point(217, 60);
             panelContenedorInterno.Margin = new Padding(4, 3, 4, 3);
@@ -614,32 +615,91 @@ namespace UI
             btnModeLight.IconColor = Color.White;
             btnModeLight.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnModeLight.IconSize = 28;
-            btnModeLight.Location = new Point(749, -29);
+            btnModeLight.Location = new Point(746, -1);
             btnModeLight.Margin = new Padding(4, 3, 4, 3);
             btnModeLight.Name = "btnModeLight";
             btnModeLight.Size = new Size(28, 29);
             btnModeLight.TabIndex = 6;
             btnModeLight.TabStop = false;
-            btnModeLight.Visible = false;
+            btnModeLight.Click += btnModeLight_Click;
             // 
             // panelHeader
             // 
             panelHeader.BackColor = Color.FromArgb(41, 34, 33);
-            panelHeader.Controls.Add(textTiempoLicencia);
+            panelHeader.Controls.Add(btnModeDark);
+            panelHeader.Controls.Add(btnModeLight);
+            panelHeader.Controls.Add(iconClock);
+            panelHeader.Controls.Add(pictureAlert);
             panelHeader.Controls.Add(iconThemeSun);
+            panelHeader.Controls.Add(textTiempoLicencia);
             panelHeader.Controls.Add(labelTiempoLicencia);
             panelHeader.Controls.Add(btnVerLicencia);
             panelHeader.Controls.Add(labelAvsio);
             panelHeader.Controls.Add(labelHeaderRuta);
             panelHeader.Controls.Add(iconThemeMoon);
-            panelHeader.Controls.Add(labelTheme);
-            panelHeader.Controls.Add(btnModeDark);
             panelHeader.Dock = DockStyle.Top;
             panelHeader.Location = new Point(217, 31);
             panelHeader.Margin = new Padding(4, 3, 4, 3);
             panelHeader.Name = "panelHeader";
             panelHeader.Size = new Size(810, 29);
             panelHeader.TabIndex = 5;
+            // 
+            // btnModeDark
+            // 
+            btnModeDark.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnModeDark.BackColor = Color.FromArgb(41, 34, 33);
+            btnModeDark.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
+            btnModeDark.IconColor = Color.White;
+            btnModeDark.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnModeDark.IconSize = 28;
+            btnModeDark.Location = new Point(746, -1);
+            btnModeDark.Margin = new Padding(4, 3, 4, 3);
+            btnModeDark.Name = "btnModeDark";
+            btnModeDark.Size = new Size(28, 29);
+            btnModeDark.TabIndex = 7;
+            btnModeDark.TabStop = false;
+            btnModeDark.Click += btnModeDark_Click;
+            // 
+            // iconClock
+            // 
+            iconClock.BackColor = Color.FromArgb(41, 34, 33);
+            iconClock.IconChar = FontAwesome.Sharp.IconChar.ClockFour;
+            iconClock.IconColor = Color.White;
+            iconClock.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconClock.IconSize = 28;
+            iconClock.Location = new Point(456, 0);
+            iconClock.Name = "iconClock";
+            iconClock.Size = new Size(28, 28);
+            iconClock.TabIndex = 7;
+            iconClock.TabStop = false;
+            iconClock.Visible = false;
+            // 
+            // pictureAlert
+            // 
+            pictureAlert.Image = Properties.Resources.Alert;
+            pictureAlert.Location = new Point(280, 1);
+            pictureAlert.Name = "pictureAlert";
+            pictureAlert.Size = new Size(29, 26);
+            pictureAlert.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureAlert.TabIndex = 7;
+            pictureAlert.TabStop = false;
+            pictureAlert.Visible = false;
+            // 
+            // iconThemeSun
+            // 
+            iconThemeSun.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            iconThemeSun.BackColor = Color.FromArgb(41, 34, 33);
+            iconThemeSun.ForeColor = Color.Yellow;
+            iconThemeSun.IconChar = FontAwesome.Sharp.IconChar.Sun;
+            iconThemeSun.IconColor = Color.Yellow;
+            iconThemeSun.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconThemeSun.IconSize = 28;
+            iconThemeSun.Location = new Point(716, 0);
+            iconThemeSun.Margin = new Padding(4, 3, 4, 3);
+            iconThemeSun.Name = "iconThemeSun";
+            iconThemeSun.Size = new Size(28, 29);
+            iconThemeSun.TabIndex = 9;
+            iconThemeSun.TabStop = false;
             // 
             // textTiempoLicencia
             // 
@@ -651,35 +711,18 @@ namespace UI
             textTiempoLicencia.TabIndex = 54;
             textTiempoLicencia.Visible = false;
             // 
-            // iconThemeSun
-            // 
-            iconThemeSun.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            iconThemeSun.BackColor = Color.FromArgb(41, 34, 33);
-            iconThemeSun.ForeColor = Color.Yellow;
-            iconThemeSun.IconChar = FontAwesome.Sharp.IconChar.Sun;
-            iconThemeSun.IconColor = Color.Yellow;
-            iconThemeSun.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconThemeSun.IconSize = 28;
-            iconThemeSun.Location = new Point(777, 0);
-            iconThemeSun.Margin = new Padding(4, 3, 4, 3);
-            iconThemeSun.Name = "iconThemeSun";
-            iconThemeSun.Size = new Size(28, 29);
-            iconThemeSun.TabIndex = 9;
-            iconThemeSun.TabStop = false;
-            iconThemeSun.Visible = false;
-            // 
             // labelTiempoLicencia
             // 
             labelTiempoLicencia.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             labelTiempoLicencia.AutoSize = true;
             labelTiempoLicencia.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             labelTiempoLicencia.ForeColor = SystemColors.ControlLightLight;
-            labelTiempoLicencia.Location = new Point(462, 5);
+            labelTiempoLicencia.Location = new Point(482, 6);
             labelTiempoLicencia.Margin = new Padding(4, 0, 4, 0);
             labelTiempoLicencia.Name = "labelTiempoLicencia";
-            labelTiempoLicencia.Size = new Size(115, 16);
+            labelTiempoLicencia.Size = new Size(111, 16);
             labelTiempoLicencia.TabIndex = 13;
-            labelTiempoLicencia.Text = "Tiempo de uso:";
+            labelTiempoLicencia.Text = "Tiempo de uso";
             labelTiempoLicencia.Visible = false;
             // 
             // btnVerLicencia
@@ -689,10 +732,10 @@ namespace UI
             btnVerLicencia.IconColor = Color.DarkGoldenrod;
             btnVerLicencia.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnVerLicencia.IconSize = 20;
-            btnVerLicencia.Location = new Point(596, -1);
+            btnVerLicencia.Location = new Point(596, 0);
             btnVerLicencia.Margin = new Padding(4, 3, 4, 3);
             btnVerLicencia.Name = "btnVerLicencia";
-            btnVerLicencia.Size = new Size(37, 30);
+            btnVerLicencia.Size = new Size(35, 28);
             btnVerLicencia.TabIndex = 12;
             btnVerLicencia.UseVisualStyleBackColor = true;
             btnVerLicencia.Visible = false;
@@ -701,13 +744,13 @@ namespace UI
             // 
             labelAvsio.AutoSize = true;
             labelAvsio.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            labelAvsio.ForeColor = SystemColors.ControlLightLight;
-            labelAvsio.Location = new Point(371, 7);
+            labelAvsio.ForeColor = Color.Orange;
+            labelAvsio.Location = new Point(310, 8);
             labelAvsio.Margin = new Padding(4, 0, 4, 0);
             labelAvsio.Name = "labelAvsio";
-            labelAvsio.Size = new Size(91, 13);
+            labelAvsio.Size = new Size(144, 13);
             labelAvsio.TabIndex = 11;
-            labelAvsio.Text = "!!!Advertencia:";
+            labelAvsio.Text = "Alerta                          ";
             labelAvsio.Visible = false;
             // 
             // labelHeaderRuta
@@ -726,6 +769,7 @@ namespace UI
             // 
             iconThemeMoon.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             iconThemeMoon.BackColor = Color.FromArgb(41, 34, 33);
+            iconThemeMoon.Enabled = false;
             iconThemeMoon.ForeColor = Color.FromArgb(4, 140, 128);
             iconThemeMoon.IconChar = FontAwesome.Sharp.IconChar.Moon;
             iconThemeMoon.IconColor = Color.FromArgb(4, 140, 128);
@@ -737,35 +781,6 @@ namespace UI
             iconThemeMoon.Size = new Size(28, 29);
             iconThemeMoon.TabIndex = 8;
             iconThemeMoon.TabStop = false;
-            // 
-            // labelTheme
-            // 
-            labelTheme.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            labelTheme.AutoSize = true;
-            labelTheme.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            labelTheme.ForeColor = SystemColors.ControlLightLight;
-            labelTheme.Location = new Point(674, 5);
-            labelTheme.Margin = new Padding(4, 0, 4, 0);
-            labelTheme.Name = "labelTheme";
-            labelTheme.Size = new Size(59, 16);
-            labelTheme.TabIndex = 6;
-            labelTheme.Text = "Theme:";
-            labelTheme.Visible = false;
-            // 
-            // btnModeDark
-            // 
-            btnModeDark.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnModeDark.BackColor = Color.FromArgb(41, 34, 33);
-            btnModeDark.IconChar = FontAwesome.Sharp.IconChar.ToggleOff;
-            btnModeDark.IconColor = Color.White;
-            btnModeDark.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnModeDark.IconSize = 28;
-            btnModeDark.Location = new Point(746, 0);
-            btnModeDark.Margin = new Padding(4, 3, 4, 3);
-            btnModeDark.Name = "btnModeDark";
-            btnModeDark.Size = new Size(28, 29);
-            btnModeDark.TabIndex = 7;
-            btnModeDark.TabStop = false;
             // 
             // FormMenu
             // 
@@ -796,13 +811,14 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)btnOpenSidebar).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnCloseSidebar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureLogo).EndInit();
-            panelContenedorInterno.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)btnModeLight).EndInit();
             panelHeader.ResumeLayout(false);
             panelHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)btnModeDark).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconClock).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureAlert).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconThemeSun).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconThemeMoon).EndInit();
-            ((System.ComponentModel.ISupportInitialize)btnModeDark).EndInit();
             ResumeLayout(false);
         }
 
@@ -841,7 +857,6 @@ namespace UI
         private Label labelHeaderRuta;
         private FontAwesome.Sharp.IconPictureBox iconThemeSun;
         private FontAwesome.Sharp.IconPictureBox iconThemeMoon;
-        private Label labelTheme;
         private FontAwesome.Sharp.IconPictureBox btnModeLight;
         private FontAwesome.Sharp.IconPictureBox btnModeDark;
         private FontAwesome.Sharp.IconButton btnAdministrador;
@@ -850,6 +865,8 @@ namespace UI
         private Panel panelSelectionProductos;
         private Panel panelSelectionAjustes;
         private Panel panelSelectionMembresia;
+        private PictureBox pictureAlert;
+        private FontAwesome.Sharp.IconPictureBox iconClock;
     }
 }
 

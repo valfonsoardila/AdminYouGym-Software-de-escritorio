@@ -16,5 +16,20 @@ namespace UI
         {
             InitializeComponent();
         }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAddMembership_Click(object sender, EventArgs e)
+        {
+            tabControlMembership.SelectedIndex = 1;
+        }
+
+        private void btnUpdateMembership_Click(object sender, EventArgs e)
+        {
+            tabControlMembership.SelectedIndex = 1;
+        }
     }
 }

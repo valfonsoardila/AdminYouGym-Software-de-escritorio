@@ -52,6 +52,7 @@
     <Compile Include="Factura.cs" />
     <Compile Include="IdUsuarioTxt.cs" />
     <Compile Include="Licencia.cs" />
+    <Compile Include="Membresia.cs" />
     <Compile Include="PlanDeEjercicio.cs" />
     <Compile Include="Producto.cs" />
     <Compile Include="ProductoFacturaTxt.cs" />

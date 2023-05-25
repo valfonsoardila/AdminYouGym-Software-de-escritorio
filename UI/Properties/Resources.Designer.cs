@@ -73,6 +73,16 @@ namespace UI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap bronze_ {
+            get {
+                object obj = ResourceManager.GetObject("bronze-", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Caja_Registradora {
             get {
                 object obj = ResourceManager.GetObject("Caja-Registradora", resourceCulture);
@@ -183,6 +193,26 @@ namespace UI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Gold_ {
+            get {
+                object obj = ResourceManager.GetObject("Gold-", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Green_dot_svg {
+            get {
+                object obj = ResourceManager.GetObject("Green_dot.svg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Ico_Contrato {
             get {
                 object obj = ResourceManager.GetObject("Ico_Contrato", resourceCulture);
@@ -283,6 +313,16 @@ namespace UI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Red_dot {
+            get {
+                object obj = ResourceManager.GetObject("Red_dot", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Regresar {
             get {
                 object obj = ResourceManager.GetObject("Regresar", resourceCulture);
@@ -336,6 +376,16 @@ namespace UI.Properties {
         public static System.Drawing.Bitmap selector {
             get {
                 object obj = ResourceManager.GetObject("selector", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Silver_ {
+            get {
+                object obj = ResourceManager.GetObject("Silver-", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
