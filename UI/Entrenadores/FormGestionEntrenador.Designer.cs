@@ -37,7 +37,7 @@
             btnVolver = new FontAwesome.Sharp.IconButton();
             tabControlEntrenador = new TabControl();
             tabGeneral = new TabPage();
-            panelClient = new Panel();
+            panelEntrenador = new Panel();
             panel1 = new Panel();
             btnContrato = new FontAwesome.Sharp.IconButton();
             btnAddEntrenador = new FontAwesome.Sharp.IconButton();
@@ -128,7 +128,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControlEntrenador.SuspendLayout();
             tabGeneral.SuspendLayout();
-            panelClient.SuspendLayout();
+            panelEntrenador.SuspendLayout();
             panel1.SuspendLayout();
             panelContenedorClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridClient).BeginInit();
@@ -249,7 +249,7 @@
             // 
             // tabGeneral
             // 
-            tabGeneral.Controls.Add(panelClient);
+            tabGeneral.Controls.Add(panelEntrenador);
             tabGeneral.Location = new Point(4, 24);
             tabGeneral.Name = "tabGeneral";
             tabGeneral.Padding = new Padding(3);
@@ -258,14 +258,15 @@
             tabGeneral.Text = "General";
             tabGeneral.UseVisualStyleBackColor = true;
             // 
-            // panelClient
+            // panelEntrenador
             // 
-            panelClient.Controls.Add(panel1);
-            panelClient.Controls.Add(panelContenedorClient);
-            panelClient.Location = new Point(42, 21);
-            panelClient.Name = "panelClient";
-            panelClient.Size = new Size(734, 405);
-            panelClient.TabIndex = 1;
+            panelEntrenador.Controls.Add(panel1);
+            panelEntrenador.Controls.Add(panelContenedorClient);
+            panelEntrenador.Dock = DockStyle.Fill;
+            panelEntrenador.Location = new Point(3, 3);
+            panelEntrenador.Name = "panelEntrenador";
+            panelEntrenador.Size = new Size(813, 420);
+            panelEntrenador.TabIndex = 1;
             // 
             // panel1
             // 
@@ -273,9 +274,9 @@
             panel1.Controls.Add(btnAddEntrenador);
             panel1.Controls.Add(btnUpdateEntrenador);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 367);
+            panel1.Location = new Point(0, 382);
             panel1.Name = "panel1";
-            panel1.Size = new Size(734, 38);
+            panel1.Size = new Size(813, 38);
             panel1.TabIndex = 1;
             // 
             // btnContrato
@@ -328,7 +329,7 @@
             panelContenedorClient.Dock = DockStyle.Top;
             panelContenedorClient.Location = new Point(0, 0);
             panelContenedorClient.Name = "panelContenedorClient";
-            panelContenedorClient.Size = new Size(734, 368);
+            panelContenedorClient.Size = new Size(813, 368);
             panelContenedorClient.TabIndex = 0;
             // 
             // dataGridClient
@@ -338,7 +339,7 @@
             dataGridClient.Location = new Point(0, 26);
             dataGridClient.Name = "dataGridClient";
             dataGridClient.RowTemplate.Height = 25;
-            dataGridClient.Size = new Size(734, 312);
+            dataGridClient.Size = new Size(813, 312);
             dataGridClient.TabIndex = 2;
             // 
             // panelDownDataGrid
@@ -353,7 +354,7 @@
             panelDownDataGrid.Dock = DockStyle.Bottom;
             panelDownDataGrid.Location = new Point(0, 338);
             panelDownDataGrid.Name = "panelDownDataGrid";
-            panelDownDataGrid.Size = new Size(734, 30);
+            panelDownDataGrid.Size = new Size(813, 30);
             panelDownDataGrid.TabIndex = 1;
             // 
             // textHombres
@@ -424,7 +425,7 @@
             panelTopDataGrid.Dock = DockStyle.Top;
             panelTopDataGrid.Location = new Point(0, 0);
             panelTopDataGrid.Name = "panelTopDataGrid";
-            panelTopDataGrid.Size = new Size(734, 26);
+            panelTopDataGrid.Size = new Size(813, 26);
             panelTopDataGrid.TabIndex = 0;
             // 
             // comboFiltroSexo
@@ -1206,7 +1207,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tabControlEntrenador.ResumeLayout(false);
             tabGeneral.ResumeLayout(false);
-            panelClient.ResumeLayout(false);
+            panelEntrenador.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panelContenedorClient.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridClient).EndInit();
@@ -1254,7 +1255,7 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private TabControl tabControlEntrenador;
         private TabPage tabGeneral;
-        private Panel panelClient;
+        private Panel panelEntrenador;
         private Panel panel1;
         private FontAwesome.Sharp.IconButton btnContrato;
         private FontAwesome.Sharp.IconButton btnAddEntrenador;

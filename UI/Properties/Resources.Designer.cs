@@ -293,6 +293,16 @@ namespace UI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Plan_de_ejercicio {
+            get {
+                object obj = ResourceManager.GetObject("Plan de ejercicio", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Planes_de_ejercicio {
             get {
                 object obj = ResourceManager.GetObject("Planes de ejercicio", resourceCulture);

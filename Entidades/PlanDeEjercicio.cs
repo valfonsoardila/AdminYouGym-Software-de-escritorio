@@ -8,14 +8,13 @@ namespace Entidades
 {
     public class PlanDeEjercicio
     {
-        public PlanDeEjercicio(string tipoDeTiempo, int numeroDiasMeses, DateTime fechaDeEntreno,string sesion, string objetivo, string descripcionPlanEjercicio, string estado, string ciclo)
+        public PlanDeEjercicio(string tipoDeTiempo, int numeroDiasMeses, DateTime fechaDeEntreno,string jornada, string objetivo, string descripcionPlanEjercicio, string estado, string ciclo)
         {
             TipoDeTiempo = tipoDeTiempo;
             NumeroDiasMeses = numeroDiasMeses;
             FechaDeEntreno = fechaDeEntreno;
-            Sesion = sesion;
+            Jornada = jornada;
             Objetivo = objetivo;
-            DescripcionPlanEjercicio = sesion;
             DescripcionPlanEjercicio = descripcionPlanEjercicio;
             Estado = estado;
             Ciclo = ciclo;
@@ -30,16 +29,12 @@ namespace Entidades
         public string TipoDeTiempo { get; set; }
         public int NumeroDiasMeses { get; set; }
         public DateTime FechaDeEntreno { get; set; }
-        public string Sesion { get; set; }
+        public string Jornada { get; set; }
         public string Objetivo { get; set; }
         public string DescripcionPlanEjercicio { get; set; }
         public string Estado { get; set; }
         public string Ciclo { get; set; }
         public double Precio { get; set; }
-        public string IdCliente { get; set; }
-        public string TipoIdCliente { get; set; }
-        public string NombreCliente { get; set; }
-
         //Metodos De la clase
         public void CalcularPrecio()
         {

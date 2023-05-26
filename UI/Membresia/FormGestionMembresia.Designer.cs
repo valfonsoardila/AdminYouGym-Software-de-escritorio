@@ -30,7 +30,7 @@
         {
             tabControlMembership = new TabControl();
             tabGeneral = new TabPage();
-            panelClient = new Panel();
+            panelMembresia = new Panel();
             panel1 = new Panel();
             btnProgreso = new FontAwesome.Sharp.IconButton();
             btnAddMembership = new FontAwesome.Sharp.IconButton();
@@ -80,7 +80,6 @@
             label20 = new Label();
             pictureBox7 = new PictureBox();
             pictureBox6 = new PictureBox();
-            iconButton3 = new FontAwesome.Sharp.IconButton();
             pictureBox3 = new PictureBox();
             panel6 = new Panel();
             btnSearch = new FontAwesome.Sharp.IconPictureBox();
@@ -89,32 +88,6 @@
             label9 = new Label();
             panel4 = new Panel();
             label7 = new Label();
-            tabProgreso = new TabPage();
-            textBox5 = new TextBox();
-            panel17 = new Panel();
-            panel16 = new Panel();
-            textBox3 = new TextBox();
-            panel15 = new Panel();
-            panel14 = new Panel();
-            textBox1 = new TextBox();
-            panel13 = new Panel();
-            panel12 = new Panel();
-            label17 = new Label();
-            iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
-            textBox6 = new TextBox();
-            label16 = new Label();
-            label15 = new Label();
-            label14 = new Label();
-            label13 = new Label();
-            label12 = new Label();
-            textBox4 = new TextBox();
-            textBox2 = new TextBox();
-            panel10 = new Panel();
-            panel11 = new Panel();
-            label11 = new Label();
-            pictureBox2 = new PictureBox();
-            panel5 = new Panel();
-            label8 = new Label();
             panel2 = new Panel();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             panel3 = new Panel();
@@ -124,7 +97,7 @@
             btnVolver = new FontAwesome.Sharp.IconButton();
             tabControlMembership.SuspendLayout();
             tabGeneral.SuspendLayout();
-            panelClient.SuspendLayout();
+            panelMembresia.SuspendLayout();
             panel1.SuspendLayout();
             panelContenedorClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridClient).BeginInit();
@@ -143,13 +116,6 @@
             ((System.ComponentModel.ISupportInitialize)btnSearch).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnCloseTextSearch).BeginInit();
             panel4.SuspendLayout();
-            tabProgreso.SuspendLayout();
-            panel12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).BeginInit();
-            panel10.SuspendLayout();
-            panel11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            panel5.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             panel3.SuspendLayout();
@@ -160,7 +126,6 @@
             // 
             tabControlMembership.Controls.Add(tabGeneral);
             tabControlMembership.Controls.Add(tabRegistro);
-            tabControlMembership.Controls.Add(tabProgreso);
             tabControlMembership.Location = new Point(0, 66);
             tabControlMembership.Name = "tabControlMembership";
             tabControlMembership.SelectedIndex = 0;
@@ -169,7 +134,7 @@
             // 
             // tabGeneral
             // 
-            tabGeneral.Controls.Add(panelClient);
+            tabGeneral.Controls.Add(panelMembresia);
             tabGeneral.Location = new Point(4, 24);
             tabGeneral.Name = "tabGeneral";
             tabGeneral.Padding = new Padding(3);
@@ -178,14 +143,15 @@
             tabGeneral.Text = "General";
             tabGeneral.UseVisualStyleBackColor = true;
             // 
-            // panelClient
+            // panelMembresia
             // 
-            panelClient.Controls.Add(panel1);
-            panelClient.Controls.Add(panelContenedorClient);
-            panelClient.Location = new Point(42, 21);
-            panelClient.Name = "panelClient";
-            panelClient.Size = new Size(734, 405);
-            panelClient.TabIndex = 1;
+            panelMembresia.Controls.Add(panel1);
+            panelMembresia.Controls.Add(panelContenedorClient);
+            panelMembresia.Dock = DockStyle.Fill;
+            panelMembresia.Location = new Point(3, 3);
+            panelMembresia.Name = "panelMembresia";
+            panelMembresia.Size = new Size(813, 440);
+            panelMembresia.TabIndex = 1;
             // 
             // panel1
             // 
@@ -193,9 +159,9 @@
             panel1.Controls.Add(btnAddMembership);
             panel1.Controls.Add(btnUpdateMembership);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 367);
+            panel1.Location = new Point(0, 402);
             panel1.Name = "panel1";
-            panel1.Size = new Size(734, 38);
+            panel1.Size = new Size(813, 38);
             panel1.TabIndex = 1;
             // 
             // btnProgreso
@@ -248,7 +214,7 @@
             panelContenedorClient.Dock = DockStyle.Top;
             panelContenedorClient.Location = new Point(0, 0);
             panelContenedorClient.Name = "panelContenedorClient";
-            panelContenedorClient.Size = new Size(734, 368);
+            panelContenedorClient.Size = new Size(813, 368);
             panelContenedorClient.TabIndex = 0;
             // 
             // dataGridClient
@@ -258,7 +224,7 @@
             dataGridClient.Location = new Point(0, 26);
             dataGridClient.Name = "dataGridClient";
             dataGridClient.RowTemplate.Height = 25;
-            dataGridClient.Size = new Size(734, 312);
+            dataGridClient.Size = new Size(813, 312);
             dataGridClient.TabIndex = 2;
             // 
             // panelDownDataGrid
@@ -273,7 +239,7 @@
             panelDownDataGrid.Dock = DockStyle.Bottom;
             panelDownDataGrid.Location = new Point(0, 338);
             panelDownDataGrid.Name = "panelDownDataGrid";
-            panelDownDataGrid.Size = new Size(734, 30);
+            panelDownDataGrid.Size = new Size(813, 30);
             panelDownDataGrid.TabIndex = 1;
             // 
             // textHombres
@@ -344,19 +310,19 @@
             panelTopDataGrid.Dock = DockStyle.Top;
             panelTopDataGrid.Location = new Point(0, 0);
             panelTopDataGrid.Name = "panelTopDataGrid";
-            panelTopDataGrid.Size = new Size(734, 26);
+            panelTopDataGrid.Size = new Size(813, 26);
             panelTopDataGrid.TabIndex = 0;
             // 
             // comboFiltroSexo
             // 
             comboFiltroSexo.BackColor = SystemColors.Window;
             comboFiltroSexo.FormattingEnabled = true;
-            comboFiltroSexo.Items.AddRange(new object[] { "M", "F", "Otro" });
+            comboFiltroSexo.Items.AddRange(new object[] { "Matutina", "Vespertina", "Nocturna" });
             comboFiltroSexo.Location = new Point(295, 2);
             comboFiltroSexo.Name = "comboFiltroSexo";
             comboFiltroSexo.Size = new Size(121, 23);
             comboFiltroSexo.TabIndex = 1;
-            comboFiltroSexo.Text = "Filtro sexo";
+            comboFiltroSexo.Text = "Filtro estado";
             // 
             // label1
             // 
@@ -669,7 +635,6 @@
             panel7.Controls.Add(label20);
             panel7.Controls.Add(pictureBox7);
             panel7.Controls.Add(pictureBox6);
-            panel7.Controls.Add(iconButton3);
             panel7.Controls.Add(pictureBox3);
             panel7.Dock = DockStyle.Top;
             panel7.Location = new Point(3, 53);
@@ -735,24 +700,12 @@
             pictureBox6.TabStop = false;
             pictureBox6.Visible = false;
             // 
-            // iconButton3
-            // 
-            iconButton3.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton3.IconColor = Color.Black;
-            iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton3.Location = new Point(634, 134);
-            iconButton3.Name = "iconButton3";
-            iconButton3.Size = new Size(92, 23);
-            iconButton3.TabIndex = 19;
-            iconButton3.Text = "Cargar Foto";
-            iconButton3.UseVisualStyleBackColor = true;
-            // 
             // pictureBox3
             // 
             pictureBox3.Image = Properties.Resources.User;
             pictureBox3.Location = new Point(607, 6);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(140, 119);
+            pictureBox3.Size = new Size(140, 150);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 18;
             pictureBox3.TabStop = false;
@@ -838,275 +791,6 @@
             label7.Size = new Size(185, 21);
             label7.TabIndex = 0;
             label7.Text = "Registro de membresia";
-            // 
-            // tabProgreso
-            // 
-            tabProgreso.Controls.Add(textBox5);
-            tabProgreso.Controls.Add(panel17);
-            tabProgreso.Controls.Add(panel16);
-            tabProgreso.Controls.Add(textBox3);
-            tabProgreso.Controls.Add(panel15);
-            tabProgreso.Controls.Add(panel14);
-            tabProgreso.Controls.Add(textBox1);
-            tabProgreso.Controls.Add(panel13);
-            tabProgreso.Controls.Add(panel12);
-            tabProgreso.Controls.Add(label16);
-            tabProgreso.Controls.Add(label15);
-            tabProgreso.Controls.Add(label14);
-            tabProgreso.Controls.Add(label13);
-            tabProgreso.Controls.Add(label12);
-            tabProgreso.Controls.Add(textBox4);
-            tabProgreso.Controls.Add(textBox2);
-            tabProgreso.Controls.Add(panel10);
-            tabProgreso.Controls.Add(panel5);
-            tabProgreso.Location = new Point(4, 24);
-            tabProgreso.Name = "tabProgreso";
-            tabProgreso.Size = new Size(819, 446);
-            tabProgreso.TabIndex = 2;
-            tabProgreso.Text = "Progreso";
-            tabProgreso.UseVisualStyleBackColor = true;
-            // 
-            // textBox5
-            // 
-            textBox5.BorderStyle = BorderStyle.FixedSingle;
-            textBox5.Location = new Point(386, 332);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(100, 23);
-            textBox5.TabIndex = 8;
-            textBox5.Text = "0.0";
-            // 
-            // panel17
-            // 
-            panel17.BackColor = Color.Black;
-            panel17.Location = new Point(217, 344);
-            panel17.Name = "panel17";
-            panel17.Size = new Size(230, 1);
-            panel17.TabIndex = 19;
-            // 
-            // panel16
-            // 
-            panel16.BackColor = Color.Black;
-            panel16.Location = new Point(219, 282);
-            panel16.Name = "panel16";
-            panel16.Size = new Size(230, 1);
-            panel16.TabIndex = 18;
-            // 
-            // textBox3
-            // 
-            textBox3.BorderStyle = BorderStyle.FixedSingle;
-            textBox3.Location = new Point(386, 211);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 6;
-            textBox3.Text = "0.0";
-            // 
-            // panel15
-            // 
-            panel15.BackColor = Color.Black;
-            panel15.Location = new Point(219, 223);
-            panel15.Name = "panel15";
-            panel15.Size = new Size(230, 1);
-            panel15.TabIndex = 17;
-            // 
-            // panel14
-            // 
-            panel14.BackColor = Color.Black;
-            panel14.Location = new Point(220, 161);
-            panel14.Name = "panel14";
-            panel14.Size = new Size(230, 1);
-            panel14.TabIndex = 16;
-            // 
-            // textBox1
-            // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(386, 97);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 4;
-            textBox1.Text = "0.0";
-            // 
-            // panel13
-            // 
-            panel13.BackColor = Color.Black;
-            panel13.Location = new Point(217, 108);
-            panel13.Name = "panel13";
-            panel13.Size = new Size(230, 1);
-            panel13.TabIndex = 15;
-            // 
-            // panel12
-            // 
-            panel12.Controls.Add(label17);
-            panel12.Controls.Add(iconPictureBox2);
-            panel12.Controls.Add(textBox6);
-            panel12.Dock = DockStyle.Top;
-            panel12.Location = new Point(217, 26);
-            panel12.Name = "panel12";
-            panel12.Size = new Size(602, 27);
-            panel12.TabIndex = 14;
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label17.ForeColor = Color.Black;
-            label17.Location = new Point(17, 2);
-            label17.Name = "label17";
-            label17.Size = new Size(162, 21);
-            label17.TabIndex = 2;
-            label17.Text = "Buscar Id de cliente:";
-            // 
-            // iconPictureBox2
-            // 
-            iconPictureBox2.BackColor = Color.Transparent;
-            iconPictureBox2.ForeColor = Color.Black;
-            iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Sistrix;
-            iconPictureBox2.IconColor = Color.Black;
-            iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox2.IconSize = 24;
-            iconPictureBox2.Location = new Point(445, 1);
-            iconPictureBox2.Name = "iconPictureBox2";
-            iconPictureBox2.Size = new Size(24, 24);
-            iconPictureBox2.TabIndex = 9;
-            iconPictureBox2.TabStop = false;
-            // 
-            // textBox6
-            // 
-            textBox6.BorderStyle = BorderStyle.FixedSingle;
-            textBox6.Location = new Point(185, 2);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(258, 23);
-            textBox6.TabIndex = 0;
-            textBox6.Text = "Busqueda";
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label16.Location = new Point(488, 335);
-            label16.Name = "label16";
-            label16.Size = new Size(132, 17);
-            label16.TabIndex = 13;
-            label16.Text = "Indice de masa osea";
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label15.Location = new Point(555, 275);
-            label15.Name = "label15";
-            label15.Size = new Size(153, 17);
-            label15.TabIndex = 12;
-            label15.Text = "Indice de masa residual";
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label14.Location = new Point(489, 215);
-            label14.Name = "label14";
-            label14.Size = new Size(160, 17);
-            label14.TabIndex = 11;
-            label14.Text = "Indice de masa muscular";
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label13.Location = new Point(555, 154);
-            label13.Name = "label13";
-            label13.Size = new Size(156, 17);
-            label13.TabIndex = 10;
-            label13.Text = "Indice de grasa corporal";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label12.Location = new Point(489, 100);
-            label12.Name = "label12";
-            label12.Size = new Size(155, 17);
-            label12.TabIndex = 9;
-            label12.Text = "Indice de masa corporal";
-            // 
-            // textBox4
-            // 
-            textBox4.BorderStyle = BorderStyle.FixedSingle;
-            textBox4.Location = new Point(452, 272);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(100, 23);
-            textBox4.TabIndex = 7;
-            textBox4.Text = "0.0";
-            // 
-            // textBox2
-            // 
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Location = new Point(452, 151);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 5;
-            textBox2.Text = "0.0";
-            // 
-            // panel10
-            // 
-            panel10.Controls.Add(panel11);
-            panel10.Controls.Add(pictureBox2);
-            panel10.Dock = DockStyle.Left;
-            panel10.Location = new Point(0, 26);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(217, 420);
-            panel10.TabIndex = 3;
-            // 
-            // panel11
-            // 
-            panel11.Controls.Add(label11);
-            panel11.Dock = DockStyle.Top;
-            panel11.Location = new Point(0, 0);
-            panel11.Name = "panel11";
-            panel11.Size = new Size(217, 27);
-            panel11.TabIndex = 4;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label11.ForeColor = Color.Black;
-            label11.Location = new Point(77, 2);
-            label11.Name = "label11";
-            label11.Size = new Size(61, 21);
-            label11.TabIndex = 1;
-            label11.Text = "Estado";
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Dock = DockStyle.Fill;
-            pictureBox2.Image = Properties.Resources.SaludableM;
-            pictureBox2.Location = new Point(0, 0);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(217, 420);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 2;
-            pictureBox2.TabStop = false;
-            // 
-            // panel5
-            // 
-            panel5.BackColor = Color.Black;
-            panel5.Controls.Add(label8);
-            panel5.Dock = DockStyle.Top;
-            panel5.Location = new Point(0, 0);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(819, 26);
-            panel5.TabIndex = 1;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.ForeColor = SystemColors.ControlLightLight;
-            label8.Location = new Point(4, 2);
-            label8.Name = "label8";
-            label8.Size = new Size(157, 21);
-            label8.TabIndex = 0;
-            label8.Text = "Progreso de cliente";
             // 
             // panel2
             // 
@@ -1202,7 +886,7 @@
             Text = "FormMembresia";
             tabControlMembership.ResumeLayout(false);
             tabGeneral.ResumeLayout(false);
-            panelClient.ResumeLayout(false);
+            panelMembresia.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panelContenedorClient.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridClient).EndInit();
@@ -1229,17 +913,6 @@
             ((System.ComponentModel.ISupportInitialize)btnCloseTextSearch).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
-            tabProgreso.ResumeLayout(false);
-            tabProgreso.PerformLayout();
-            panel12.ResumeLayout(false);
-            panel12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).EndInit();
-            panel10.ResumeLayout(false);
-            panel11.ResumeLayout(false);
-            panel11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
@@ -1253,7 +926,7 @@
 
         private TabControl tabControlMembership;
         private TabPage tabGeneral;
-        private Panel panelClient;
+        private Panel panelMembresia;
         private Panel panel1;
         private FontAwesome.Sharp.IconButton btnProgreso;
         private FontAwesome.Sharp.IconButton btnAddMembership;
@@ -1276,7 +949,6 @@
         private Panel panel8;
         private Label label10;
         private Panel panel7;
-        private FontAwesome.Sharp.IconButton iconButton3;
         private PictureBox pictureBox3;
         private TextBox textBox7;
         private Label label18;
@@ -1287,32 +959,6 @@
         private Label label9;
         private Panel panel4;
         private Label label7;
-        private TabPage tabProgreso;
-        private TextBox textBox5;
-        private Panel panel17;
-        private Panel panel16;
-        private TextBox textBox3;
-        private Panel panel15;
-        private Panel panel14;
-        private TextBox textBox1;
-        private Panel panel13;
-        private Panel panel12;
-        private Label label17;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
-        private TextBox textBox6;
-        private Label label16;
-        private Label label15;
-        private Label label14;
-        private Label label13;
-        private Label label12;
-        private TextBox textBox4;
-        private TextBox textBox2;
-        private Panel panel10;
-        private Panel panel11;
-        private Label label11;
-        private PictureBox pictureBox2;
-        private Panel panel5;
-        private Label label8;
         private Panel panel2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private Panel panel3;

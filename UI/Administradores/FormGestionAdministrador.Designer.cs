@@ -37,7 +37,7 @@
             btnVolver = new FontAwesome.Sharp.IconButton();
             tabControlAdmins = new TabControl();
             tabGeneral = new TabPage();
-            panelClient = new Panel();
+            panelAdministrador = new Panel();
             panel1 = new Panel();
             btnProgreso = new FontAwesome.Sharp.IconButton();
             btnAddAdmin = new FontAwesome.Sharp.IconButton();
@@ -91,7 +91,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureAlert).BeginInit();
             tabControlAdmins.SuspendLayout();
             tabGeneral.SuspendLayout();
-            panelClient.SuspendLayout();
+            panelAdministrador.SuspendLayout();
             panel1.SuspendLayout();
             panelContenedorClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridClient).BeginInit();
@@ -200,7 +200,7 @@
             // 
             // tabGeneral
             // 
-            tabGeneral.Controls.Add(panelClient);
+            tabGeneral.Controls.Add(panelAdministrador);
             tabGeneral.Location = new Point(4, 24);
             tabGeneral.Name = "tabGeneral";
             tabGeneral.Padding = new Padding(3);
@@ -209,14 +209,15 @@
             tabGeneral.Text = "General";
             tabGeneral.UseVisualStyleBackColor = true;
             // 
-            // panelClient
+            // panelAdministrador
             // 
-            panelClient.Controls.Add(panel1);
-            panelClient.Controls.Add(panelContenedorClient);
-            panelClient.Location = new Point(42, 21);
-            panelClient.Name = "panelClient";
-            panelClient.Size = new Size(734, 405);
-            panelClient.TabIndex = 1;
+            panelAdministrador.Controls.Add(panel1);
+            panelAdministrador.Controls.Add(panelContenedorClient);
+            panelAdministrador.Dock = DockStyle.Fill;
+            panelAdministrador.Location = new Point(3, 3);
+            panelAdministrador.Name = "panelAdministrador";
+            panelAdministrador.Size = new Size(813, 436);
+            panelAdministrador.TabIndex = 1;
             // 
             // panel1
             // 
@@ -224,9 +225,9 @@
             panel1.Controls.Add(btnAddAdmin);
             panel1.Controls.Add(btnUpdateAdmin);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 367);
+            panel1.Location = new Point(0, 398);
             panel1.Name = "panel1";
-            panel1.Size = new Size(734, 38);
+            panel1.Size = new Size(813, 38);
             panel1.TabIndex = 1;
             // 
             // btnProgreso
@@ -279,7 +280,7 @@
             panelContenedorClient.Dock = DockStyle.Top;
             panelContenedorClient.Location = new Point(0, 0);
             panelContenedorClient.Name = "panelContenedorClient";
-            panelContenedorClient.Size = new Size(734, 368);
+            panelContenedorClient.Size = new Size(813, 368);
             panelContenedorClient.TabIndex = 0;
             // 
             // dataGridClient
@@ -289,7 +290,7 @@
             dataGridClient.Location = new Point(0, 26);
             dataGridClient.Name = "dataGridClient";
             dataGridClient.RowTemplate.Height = 25;
-            dataGridClient.Size = new Size(734, 312);
+            dataGridClient.Size = new Size(813, 312);
             dataGridClient.TabIndex = 2;
             // 
             // panelDownDataGrid
@@ -304,7 +305,7 @@
             panelDownDataGrid.Dock = DockStyle.Bottom;
             panelDownDataGrid.Location = new Point(0, 338);
             panelDownDataGrid.Name = "panelDownDataGrid";
-            panelDownDataGrid.Size = new Size(734, 30);
+            panelDownDataGrid.Size = new Size(813, 30);
             panelDownDataGrid.TabIndex = 1;
             // 
             // textHombres
@@ -375,7 +376,7 @@
             panelTopDataGrid.Dock = DockStyle.Top;
             panelTopDataGrid.Location = new Point(0, 0);
             panelTopDataGrid.Name = "panelTopDataGrid";
-            panelTopDataGrid.Size = new Size(734, 26);
+            panelTopDataGrid.Size = new Size(813, 26);
             panelTopDataGrid.TabIndex = 0;
             // 
             // comboFiltroSexo
@@ -754,7 +755,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureAlert).EndInit();
             tabControlAdmins.ResumeLayout(false);
             tabGeneral.ResumeLayout(false);
-            panelClient.ResumeLayout(false);
+            panelAdministrador.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panelContenedorClient.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridClient).EndInit();
@@ -786,7 +787,7 @@
         private FontAwesome.Sharp.IconButton btnVolver;
         private TabControl tabControlAdmins;
         private TabPage tabGeneral;
-        private Panel panelClient;
+        private Panel panelAdministrador;
         private Panel panel1;
         private FontAwesome.Sharp.IconButton btnProgreso;
         private FontAwesome.Sharp.IconButton btnAddAdmin;

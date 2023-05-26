@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class FormGestionProductos : Form
+    public partial class FormGestionPoducto : Form
     {
-        public FormGestionProductos()
+        public FormGestionPoducto()
         {
             InitializeComponent();
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

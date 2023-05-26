@@ -261,7 +261,7 @@ namespace UI
             panelSelectionPlanes.Visible = false;
             panelSelectionAjustes.Visible = false;
             CerrarFormulariosCiclo();
-            AbrirFormulario<FormPlanEjercicio>();
+            AbrirFormulario<FormGestionPoducto>();
         }
         private void btnAjustes_Click(object sender, EventArgs e)
         {
@@ -327,6 +327,18 @@ namespace UI
                     break;
                 case 4:
                     CerrarFormulario<FormGestionEntrenador>();
+                    break;
+                case 5:
+                    CerrarFormulario<FormMembresia>();
+                    break;
+                case 6:
+                    CerrarFormulario<FormPlanEjercicio>();
+                    break;
+                case 7:
+                    CerrarFormulario<FormGestionPoducto>();
+                    break;
+                case 8:
+                    CerrarFormulario<FormAjustes>();
                     break;
             }
         }

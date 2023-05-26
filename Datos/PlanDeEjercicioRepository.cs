@@ -28,13 +28,10 @@ namespace Datos
                 command.Parameters.AddWithValue("@Tipo_De_Tiempo", planDeEjercicio.TipoDeTiempo);
                 command.Parameters.AddWithValue("@Numero_DiasMeses", planDeEjercicio.NumeroDiasMeses);
                 command.Parameters.AddWithValue("@Fecha_De_Entreno", planDeEjercicio.FechaDeEntreno);
-                command.Parameters.AddWithValue("@Sesion", planDeEjercicio.Sesion);
+                command.Parameters.AddWithValue("@Jornada", planDeEjercicio.Jornada);
                 command.Parameters.AddWithValue("@Objetivo", planDeEjercicio.Objetivo);
                 command.Parameters.AddWithValue("@Estado", planDeEjercicio.Estado);
                 command.Parameters.AddWithValue("@Ciclo", planDeEjercicio.Ciclo);
-                command.Parameters.AddWithValue("@Id_Cliente", planDeEjercicio.IdCliente);
-                command.Parameters.AddWithValue("@Tipo_Id_Cliente", planDeEjercicio.IdPlanDeEjercicio);
-                command.Parameters.AddWithValue("@Nombre_Cliente", planDeEjercicio.NombreCliente);
                 command.Parameters.AddWithValue("@Descripcion_Plan_Ejercicio", planDeEjercicio.DescripcionPlanEjercicio);
                 command.Parameters.AddWithValue("@Precio", planDeEjercicio.Precio);
                 command.ExecuteNonQuery();
@@ -51,13 +48,10 @@ namespace Datos
                 command.Parameters.AddWithValue("@Tipo_De_Tiempo", planDeEjercicio.TipoDeTiempo);
                 command.Parameters.AddWithValue("@Numero_DiasMeses", planDeEjercicio.NumeroDiasMeses);
                 command.Parameters.AddWithValue("@Fecha_De_Entreno", planDeEjercicio.FechaDeEntreno);
-                command.Parameters.AddWithValue("@Sesion", planDeEjercicio.Sesion);
+                command.Parameters.AddWithValue("@Jornada", planDeEjercicio.Jornada);
                 command.Parameters.AddWithValue("@Objetivo", planDeEjercicio.Objetivo);
                 command.Parameters.AddWithValue("@Estado", planDeEjercicio.Estado);
                 command.Parameters.AddWithValue("@Ciclo", planDeEjercicio.Ciclo);
-                command.Parameters.AddWithValue("@Id_Cliente", planDeEjercicio.IdCliente);
-                command.Parameters.AddWithValue("@Tipo_Id_Cliente", planDeEjercicio.TipoIdCliente);
-                command.Parameters.AddWithValue("@Nombre_Cliente", planDeEjercicio.NombreCliente);
                 command.Parameters.AddWithValue("@Descripcion_Plan_Ejercicio", planDeEjercicio.DescripcionPlanEjercicio);
                 command.Parameters.AddWithValue("@Precio", planDeEjercicio.Precio);
                 var filas = command.ExecuteNonQuery();
@@ -112,13 +106,10 @@ namespace Datos
                 command.Parameters.AddWithValue("@Tipo_De_Tiempo", planDeEjercicio.TipoDeTiempo);
                 command.Parameters.AddWithValue("@Numero_DiasMeses", planDeEjercicio.NumeroDiasMeses);
                 command.Parameters.AddWithValue("@Fecha_De_Entreno", planDeEjercicio.FechaDeEntreno);
-                command.Parameters.AddWithValue("@Sesion", planDeEjercicio.Sesion);
+                command.Parameters.AddWithValue("@Jornada", planDeEjercicio.Jornada);
                 command.Parameters.AddWithValue("@Objetivo", planDeEjercicio.Objetivo);
                 command.Parameters.AddWithValue("@Estado", planDeEjercicio.Estado);
                 command.Parameters.AddWithValue("@Ciclo", planDeEjercicio.Ciclo);
-                command.Parameters.AddWithValue("@Id_Cliente", planDeEjercicio.IdCliente);
-                command.Parameters.AddWithValue("@Tipo_Id_Cliente", planDeEjercicio.IdPlanDeEjercicio);
-                command.Parameters.AddWithValue("@Nombre_Cliente", planDeEjercicio.NombreCliente);
                 command.Parameters.AddWithValue("@Descripcion_Plan_Ejercicio", planDeEjercicio.DescripcionPlanEjercicio);
                 command.Parameters.AddWithValue("@Precio", planDeEjercicio.Precio);
                 var filas = command.ExecuteNonQuery();
@@ -132,13 +123,10 @@ namespace Datos
             planDeEjercicio.TipoDeTiempo = (string)dataReader["Tipo_De_Tiempo"];
             planDeEjercicio.NumeroDiasMeses = (int)dataReader["Numero_DiasMeses"];
             planDeEjercicio.FechaDeEntreno = (DateTime)dataReader["Fecha_De_Entreno"];
-            planDeEjercicio.Sesion = (string)dataReader["Sesion"];
+            planDeEjercicio.Jornada = (string)dataReader["Jornada"];
             planDeEjercicio.Objetivo = (string)dataReader["Objetivo"];
             planDeEjercicio.Estado = (string)dataReader["Estado"];
             planDeEjercicio.Ciclo = (string)dataReader["Ciclo"];
-            planDeEjercicio.IdCliente = (string)dataReader["Id_Cliente"];
-            planDeEjercicio.TipoIdCliente = (string)dataReader["Tipo_Id_Cliente"];
-            planDeEjercicio.NombreCliente = (string)dataReader["Nombre_Cliente"];
             planDeEjercicio.DescripcionPlanEjercicio = (string)dataReader["Descripcion_Plan_Ejercicio"];
             planDeEjercicio.Precio = (double)dataReader["Precio"];
             return planDeEjercicio;
@@ -150,7 +138,7 @@ namespace Datos
         }
         public int TotalizarTipo(string tipo)
         {
-            return ConsultarTodos().Where(p => p.Sesion.Equals(tipo)).Count();
+            return ConsultarTodos().Where(p => p.Jornada.Equals(tipo)).Count();
         }
     }
 }

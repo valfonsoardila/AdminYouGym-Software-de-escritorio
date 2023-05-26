@@ -8,16 +8,16 @@ namespace Entidades
 {
     public class Membresia
     {
-        public string codigoMiembro { get; set; }
-        public string categoria { get; set; }
-        public string estado { get; set; }
-        public string nombres { get; set; }
-        public string apellidos { get; set; }
-        public string foto { get; set; }
-        public int creditos { get; set; }
-        public int valorInscripcion { get; set; }
-        public int valorMensual { get; set; }
-        public int abono { get; set; }
-        public int saldo { get; set; }
+        public string CodigoMiembro { get; set; }
+        public string Categoria { get; set; }
+        public string Estado { get; set; }
+        public string Nombres { get; set; }
+        public string Apellidos { get; set; }
+        public string Foto { get; set; }
+        public int Creditos { get; set; }
+        public int ValorInscripcion { get; set; }
+        public int ValorMensual { get; set; }
+        public int Abono { get; set; }
+        public int Saldo { get; set; }
     }
 }

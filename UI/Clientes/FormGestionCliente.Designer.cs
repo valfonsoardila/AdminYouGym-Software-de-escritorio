@@ -259,9 +259,10 @@
             // 
             panelClient.Controls.Add(panel1);
             panelClient.Controls.Add(panelContenedorClient);
-            panelClient.Location = new Point(42, 21);
+            panelClient.Dock = DockStyle.Fill;
+            panelClient.Location = new Point(3, 3);
             panelClient.Name = "panelClient";
-            panelClient.Size = new Size(734, 405);
+            panelClient.Size = new Size(813, 440);
             panelClient.TabIndex = 1;
             // 
             // panel1
@@ -270,9 +271,9 @@
             panel1.Controls.Add(btnAddClient);
             panel1.Controls.Add(btnUpdateClient);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 367);
+            panel1.Location = new Point(0, 402);
             panel1.Name = "panel1";
-            panel1.Size = new Size(734, 38);
+            panel1.Size = new Size(813, 38);
             panel1.TabIndex = 1;
             // 
             // btnProgreso
@@ -325,7 +326,7 @@
             panelContenedorClient.Dock = DockStyle.Top;
             panelContenedorClient.Location = new Point(0, 0);
             panelContenedorClient.Name = "panelContenedorClient";
-            panelContenedorClient.Size = new Size(734, 368);
+            panelContenedorClient.Size = new Size(813, 368);
             panelContenedorClient.TabIndex = 0;
             // 
             // dataGridClient
@@ -335,7 +336,7 @@
             dataGridClient.Location = new Point(0, 26);
             dataGridClient.Name = "dataGridClient";
             dataGridClient.RowTemplate.Height = 25;
-            dataGridClient.Size = new Size(734, 312);
+            dataGridClient.Size = new Size(813, 312);
             dataGridClient.TabIndex = 2;
             // 
             // panelDownDataGrid
@@ -350,7 +351,7 @@
             panelDownDataGrid.Dock = DockStyle.Bottom;
             panelDownDataGrid.Location = new Point(0, 338);
             panelDownDataGrid.Name = "panelDownDataGrid";
-            panelDownDataGrid.Size = new Size(734, 30);
+            panelDownDataGrid.Size = new Size(813, 30);
             panelDownDataGrid.TabIndex = 1;
             // 
             // textHombres
@@ -421,7 +422,7 @@
             panelTopDataGrid.Dock = DockStyle.Top;
             panelTopDataGrid.Location = new Point(0, 0);
             panelTopDataGrid.Name = "panelTopDataGrid";
-            panelTopDataGrid.Size = new Size(734, 26);
+            panelTopDataGrid.Size = new Size(813, 26);
             panelTopDataGrid.TabIndex = 0;
             // 
             // comboFiltroSexo
