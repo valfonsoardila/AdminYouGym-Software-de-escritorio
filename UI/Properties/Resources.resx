@@ -124,6 +124,9 @@
   <data name="Contrato" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Contrato.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Entrenador" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Entrenador.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Alert.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -163,6 +166,9 @@
   <data name="gmail" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gmail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Reset" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Reset.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -172,6 +178,9 @@
   <data name="SobrePesoF" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SobrePesoF.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Plan de ejercicio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Plan de ejercicio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="conexion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\conexion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -180,9 +189,6 @@
   </data>
   <data name="Ico_Contrato" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Ico_Contrato.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="selector" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\selector.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Caja-Registradora" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Caja-Registradora.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -199,14 +205,11 @@
   <data name="DelgadoM" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DelgadoM.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Silver-" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Silver-.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="deleRojBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\deleRojBlack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cash" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Silver-" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Silver-.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="licencia_true" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\licencia_true.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -217,8 +220,8 @@
   <data name="Miembros" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Miembros1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Entrenador" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Entrenador.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="selector" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\selector.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="licencia_false" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\licencia_false.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,7 +229,7 @@
   <data name="bronze-" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bronze-.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Plan de ejercicio" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Plan de ejercicio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CodigoDeBarras" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CodigoDeBarras.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

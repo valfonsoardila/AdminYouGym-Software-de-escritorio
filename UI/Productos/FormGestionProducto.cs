@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class FormGestionPoducto : Form
+    public partial class FormGestionProducto : Form
     {
-        public FormGestionPoducto()
+        public FormGestionProducto()
         {
             InitializeComponent();
         }

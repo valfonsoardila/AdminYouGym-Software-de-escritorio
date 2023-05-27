@@ -95,6 +95,14 @@
             pictureBox1 = new PictureBox();
             label5 = new Label();
             btnVolver = new FontAwesome.Sharp.IconButton();
+            label8 = new Label();
+            labelBase = new Label();
+            label11 = new Label();
+            label12 = new Label();
+            iconBase = new FontAwesome.Sharp.IconPictureBox();
+            labelCash = new Label();
+            labelTextFondo = new Label();
+            iconCash = new FontAwesome.Sharp.IconPictureBox();
             tabControlMembership.SuspendLayout();
             tabGeneral.SuspendLayout();
             panelMembresia.SuspendLayout();
@@ -120,6 +128,8 @@
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconBase).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconCash).BeginInit();
             SuspendLayout();
             // 
             // tabControlMembership
@@ -818,6 +828,14 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(label8);
+            panel3.Controls.Add(labelBase);
+            panel3.Controls.Add(label11);
+            panel3.Controls.Add(label12);
+            panel3.Controls.Add(iconBase);
+            panel3.Controls.Add(labelCash);
+            panel3.Controls.Add(labelTextFondo);
+            panel3.Controls.Add(iconCash);
             panel3.Controls.Add(label6);
             panel3.Controls.Add(pictureBox1);
             panel3.Dock = DockStyle.Right;
@@ -831,7 +849,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label6.ForeColor = Color.Orange;
-            label6.Location = new Point(76, 16);
+            label6.Location = new Point(51, 16);
             label6.Name = "label6";
             label6.Size = new Size(168, 25);
             label6.TabIndex = 9;
@@ -841,7 +859,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.Alert;
-            pictureBox1.Location = new Point(28, 8);
+            pictureBox1.Location = new Point(8, 8);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(42, 41);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -873,6 +891,116 @@
             btnVolver.TabIndex = 5;
             btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click;
+            // 
+            // label8
+            // 
+            label8.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label8.AutoSize = true;
+            label8.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.ForeColor = Color.White;
+            label8.Location = new Point(371, 29);
+            label8.Margin = new Padding(4, 0, 4, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(15, 16);
+            label8.TabIndex = 96;
+            label8.Text = "$";
+            // 
+            // labelBase
+            // 
+            labelBase.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            labelBase.AutoSize = true;
+            labelBase.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            labelBase.ForeColor = Color.White;
+            labelBase.Location = new Point(281, 30);
+            labelBase.Margin = new Padding(4, 0, 4, 0);
+            labelBase.Name = "labelBase";
+            labelBase.Size = new Size(13, 15);
+            labelBase.TabIndex = 95;
+            labelBase.Text = "*";
+            // 
+            // label11
+            // 
+            label11.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label11.AutoSize = true;
+            label11.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.ForeColor = Color.White;
+            label11.Location = new Point(260, 27);
+            label11.Margin = new Padding(4, 0, 4, 0);
+            label11.Name = "label11";
+            label11.Size = new Size(15, 16);
+            label11.TabIndex = 94;
+            label11.Text = "$";
+            // 
+            // label12
+            // 
+            label12.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label12.AutoSize = true;
+            label12.Font = new Font("Microsoft Sans Serif", 6.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.ForeColor = Color.White;
+            label12.Location = new Point(261, 11);
+            label12.Margin = new Padding(4, 0, 4, 0);
+            label12.Name = "label12";
+            label12.Size = new Size(38, 12);
+            label12.TabIndex = 93;
+            label12.Text = "-BASE";
+            // 
+            // iconBase
+            // 
+            iconBase.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            iconBase.BackColor = SystemColors.MenuText;
+            iconBase.ForeColor = Color.FromArgb(192, 64, 0);
+            iconBase.IconChar = FontAwesome.Sharp.IconChar.Coins;
+            iconBase.IconColor = Color.FromArgb(192, 64, 0);
+            iconBase.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBase.IconSize = 37;
+            iconBase.Location = new Point(219, 12);
+            iconBase.Margin = new Padding(4, 3, 4, 3);
+            iconBase.Name = "iconBase";
+            iconBase.Size = new Size(37, 37);
+            iconBase.TabIndex = 92;
+            iconBase.TabStop = false;
+            // 
+            // labelCash
+            // 
+            labelCash.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            labelCash.AutoSize = true;
+            labelCash.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            labelCash.ForeColor = Color.White;
+            labelCash.Location = new Point(386, 30);
+            labelCash.Margin = new Padding(4, 0, 4, 0);
+            labelCash.Name = "labelCash";
+            labelCash.Size = new Size(13, 16);
+            labelCash.TabIndex = 90;
+            labelCash.Text = "*";
+            // 
+            // labelTextFondo
+            // 
+            labelTextFondo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            labelTextFondo.AutoSize = true;
+            labelTextFondo.Font = new Font("Microsoft Sans Serif", 6.75F, FontStyle.Bold, GraphicsUnit.Point);
+            labelTextFondo.ForeColor = Color.White;
+            labelTextFondo.Location = new Point(370, 15);
+            labelTextFondo.Margin = new Padding(4, 0, 4, 0);
+            labelTextFondo.Name = "labelTextFondo";
+            labelTextFondo.Size = new Size(42, 12);
+            labelTextFondo.TabIndex = 91;
+            labelTextFondo.Text = "VENTA";
+            // 
+            // iconCash
+            // 
+            iconCash.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            iconCash.BackColor = SystemColors.MenuText;
+            iconCash.ForeColor = Color.Gold;
+            iconCash.IconChar = FontAwesome.Sharp.IconChar.Coins;
+            iconCash.IconColor = Color.Gold;
+            iconCash.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconCash.IconSize = 37;
+            iconCash.Location = new Point(330, 12);
+            iconCash.Margin = new Padding(4, 3, 4, 3);
+            iconCash.Name = "iconCash";
+            iconCash.Size = new Size(37, 37);
+            iconCash.TabIndex = 89;
+            iconCash.TabStop = false;
             // 
             // FormMembresia
             // 
@@ -919,6 +1047,8 @@
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconBase).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconCash).EndInit();
             ResumeLayout(false);
         }
 
@@ -991,5 +1121,13 @@
         private Label label26;
         private Label label32;
         private Label label31;
+        private Label label8;
+        private Label labelBase;
+        private Label label11;
+        private Label label12;
+        private FontAwesome.Sharp.IconPictureBox iconBase;
+        private Label labelCash;
+        private Label labelTextFondo;
+        private FontAwesome.Sharp.IconPictureBox iconCash;
     }
 }
