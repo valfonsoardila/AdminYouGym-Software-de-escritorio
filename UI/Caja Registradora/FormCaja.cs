@@ -19,12 +19,12 @@ namespace UI
     {
         RutasTxtService rutasTxtService = new RutasTxtService();
         CajaRegistradoraService cajaRegistradoraService;
-        //ProductoVendidoTxtService productoVendidoTxtService;
-        //ProductoVendidoTxt productoVendidoTxt;
-        //List<ProductoVendidoTxt> productoVendidoTxts;
+        ProductoVendidoTxtService productoVendidoTxtService;
+        ProductoVendidoTxt productoVendidoTxt;
+        List<ProductoVendidoTxt> productoVendidoTxts;
         List<Caja> cajasRegistradoras;
         Caja cajaRegistradora;
-        //FacturaService facturaService;
+        FacturaService facturaService;
         //DrogueriaService drogueriaService;
         string rutasVendidos;
         string rutaTxtCierreDeCaja;
@@ -68,9 +68,9 @@ namespace UI
         public FormCaja()
         {
             //drogueriaService = new DrogueriaService(ConfigConnection.ConnectionString);
-            //productoVendidoTxtService = new ProductoVendidoTxtService();
-            //facturaService = new FacturaService(ConfigConnection.ConnectionString);
-            //cajaRegistradoraService = new CajaRegistradoraService(ConfigConnection.ConnectionString);
+            productoVendidoTxtService = new ProductoVendidoTxtService();
+            facturaService = new FacturaService(ConfigConnection.ConnectionString);
+            cajaRegistradoraService = new CajaRegistradoraService(ConfigConnection.ConnectionString);
             InitializeComponent();
             ObtenerRutaDeGuardado();
             ObtenerRutaDeVendido();
@@ -199,7 +199,7 @@ namespace UI
             if (rutasVendidos != null && rutaTxtCierreDeCaja != null)
             {
                 FormAbrirCaja frm = new FormAbrirCaja();
-                //frm.ShowDialog();
+                frm.ShowDialog();
                 BuscarPorEstado();
             }
             else
@@ -277,87 +277,87 @@ namespace UI
         }
         private void ProductosRegistradosEnCaja()
         {
-            //productoVendidoTxts = new List<ProductoVendidoTxt>();
-            //ProductoVendidoTxtConsultaResponse productoTxtConsultaResponse = productoVendidoTxtService.Consultar(rutasVendidos);
-            //if (productoTxtConsultaResponse.ProductoTxts.Count > 0)
-            //{
-            //    string fecha;
-            //    DateTime fechaActual = DateTime.Now;
-            //    fecha = fechaActual.ToString("dd/MM/yyyy");
-            //    foreach (var item in productoTxtConsultaResponse.ProductoTxts)
-            //    {
-            //        if(item.FechaDeVenta == fecha)
-            //        {
-            //            productoVendidoTxt = new ProductoVendidoTxt();
-            //            productoVendidoTxt.Cantidad = item.Cantidad;
-            //            productoVendidoTxt.Referencia = item.Referencia;
-            //            productoVendidoTxt.Nombre = item.Nombre;
-            //            productoVendidoTxt.Detalle = item.Detalle;
-            //            productoVendidoTxt.Precio = item.Precio;
-            //            precioProductos = precioProductos + item.Precio;
-            //            precioProductosRedondeado = Math.Ceiling(precioProductos);
-            //            valorDeRedondeo = precioProductosRedondeado - precioProductos;
-            //            productoVendidoTxts.Add(productoVendidoTxt);
-            //        }
-            //    }
-            //    FacturarProductosVendidosEnCaja();
-            //}
-            //else
-            //{
-            //    if (productoTxtConsultaResponse.ProductoTxts.Count == 0)
-            //    {
-            //        string mensaje = "No hay productos vendidos";
-            //        MessageBox.Show(mensaje, "Mensaje de campos", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            //    }
-            //}
+            productoVendidoTxts = new List<ProductoVendidoTxt>();
+            ProductoVendidoTxtConsultaResponse productoTxtConsultaResponse = productoVendidoTxtService.Consultar(rutasVendidos);
+            if (productoTxtConsultaResponse.ProductoTxts.Count > 0)
+            {
+                string fecha;
+                DateTime fechaActual = DateTime.Now;
+                fecha = fechaActual.ToString("dd/MM/yyyy");
+                foreach (var item in productoTxtConsultaResponse.ProductoTxts)
+                {
+                    if (item.FechaDeVenta == fecha)
+                    {
+                        productoVendidoTxt = new ProductoVendidoTxt();
+                        productoVendidoTxt.Cantidad = item.Cantidad;
+                        productoVendidoTxt.Referencia = item.Referencia;
+                        productoVendidoTxt.Nombre = item.Nombre;
+                        productoVendidoTxt.Detalle = item.Detalle;
+                        productoVendidoTxt.Precio = item.Precio;
+                        precioProductos = precioProductos + item.Precio;
+                        precioProductosRedondeado = Math.Ceiling(precioProductos);
+                        valorDeRedondeo = precioProductosRedondeado - precioProductos;
+                        productoVendidoTxts.Add(productoVendidoTxt);
+                    }
+                }
+                FacturarProductosVendidosEnCaja();
+            }
+            else
+            {
+                if (productoTxtConsultaResponse.ProductoTxts.Count == 0)
+                {
+                    string mensaje = "No hay productos vendidos";
+                    MessageBox.Show(mensaje, "Mensaje de campos", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                }
+            }
         }
         private void EliminarProductosVendidos()
         {
-            //string mensaje = productoVendidoTxtService.EliminarHistorial(rutasVendidos);
+            string mensaje = productoVendidoTxtService.EliminarHistorial(rutasVendidos);
         }
         private void FacturarProductosVendidosEnCaja()
         {
             fechaFactura = DateTime.Now;
             ciudad = "Valledupar, Cesar";
         }
-        private void ValidarDatosDeCaja(/*ProductoVendidoTxtService productoVendidoTxtService*/)
+        private void ValidarDatosDeCaja(ProductoVendidoTxtService productoVendidoTxtService)
         {
-            //ProductoVendidoTxtConsultaResponse productoVendidoTxtConsultaResponse = productoVendidoTxtService.Consultar(rutasVendidos);
-            //if (productoVendidoTxtConsultaResponse.ProductoTxts.Count >= 0)
-            //{
-            //    productoLeido = productoVendidoTxtConsultaResponse.ProductoTxts.Count;
-            //    Caja cajaRegistradora = MapearCaja();
-            //    string mensaje = cajaRegistradoraService.Modificar(cajaRegistradora);
-            //    ProductosRegistradosEnCaja();
-            //    GuardarFactura();
-            //    ConsultarYLlenarGridDeCajas();
-            //    btnAbrirCaja.Enabled = true;
-            //    btnCerrarCaja.Enabled = false;
-            //    btnHistorial.Enabled = true;
-            //    labelCash.Text = "Sin definir";
-            //    labelBase.Text = "Sin definir";
-            //    if (productoLeido > 0)
-            //    {
-            //        FormVisorDeFactura frm = new FormVisorDeFactura();
-            //        frm.nombreDeArchivo = nombreDeFactura;
-            //        frm.rutaDeGuardado = notExistFileName;
-            //        frm.ShowDialog();
-            //    }
-            //}
-            //else
-            //{
-            //    if (productoVendidoTxtConsultaResponse.ProductoTxts.Count == 0)
-            //    {
-            //        string mensaje = "No hay productos vendidos, no puede cerrar la caja";
-            //        MessageBox.Show(mensaje, "Mensaje de campos", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            //    }
-            //}
+            ProductoVendidoTxtConsultaResponse productoVendidoTxtConsultaResponse = productoVendidoTxtService.Consultar(rutasVendidos);
+            if (productoVendidoTxtConsultaResponse.ProductoTxts.Count >= 0)
+            {
+                productoLeido = productoVendidoTxtConsultaResponse.ProductoTxts.Count;
+                Caja cajaRegistradora = MapearCaja();
+                string mensaje = cajaRegistradoraService.Modificar(cajaRegistradora);
+                ProductosRegistradosEnCaja();
+                GuardarFactura();
+                ConsultarYLlenarGridDeCajas();
+                btnAbrirCaja.Enabled = true;
+                btnCerrarCaja.Enabled = false;
+                btnHistorial.Enabled = true;
+                labelCash.Text = "Sin definir";
+                labelBase.Text = "Sin definir";
+                if (productoLeido > 0)
+                {
+                    FormVisorDeFactura frm = new FormVisorDeFactura();
+                    frm.nombreDeArchivo = nombreDeFactura;
+                    frm.rutaDeGuardado = notExistFileName;
+                    frm.ShowDialog();
+                }
+            }
+            else
+            {
+                if (productoVendidoTxtConsultaResponse.ProductoTxts.Count == 0)
+                {
+                    string mensaje = "No hay productos vendidos, no puede cerrar la caja";
+                    MessageBox.Show(mensaje, "Mensaje de campos", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                }
+            }
         }
         private void btnCerrarCaja_Click(object sender, EventArgs e)
         {
             if (rutasVendidos != null && rutaTxtCierreDeCaja != null)
             {
-                //ValidarDatosDeCaja(productoVendidoTxtService);
+                ValidarDatosDeCaja(productoVendidoTxtService);
             }
             else
             {
@@ -519,13 +519,13 @@ namespace UI
             e.Graphics.DrawString(" Cantidad " + " Nombre " + " Detalle " + " Precio ", font, Brushes.Black, new RectangleF(0, y + 220, ancho, 14));
             int r = 0;
             int j = 234;
-            //foreach (var item in /*productoVendidoTxts*/ )
-            //{
-            //    e.Graphics.DrawString("    " + Convert.ToString(item.Cantidad) + " " + Convert.ToString(item.Nombre) + " " + Convert.ToString(item.Detalle) + " " + Convert.ToString(item.Precio), font, Brushes.Black, new RectangleF(0, y + j, ancho, 14));
-            //    j = j + 14;
-            //    int x = y + j;
-            //    r = x;
-            //}
+            foreach (var item in productoVendidoTxts)
+            {
+                e.Graphics.DrawString("    " + Convert.ToString(item.Cantidad) + " " + Convert.ToString(item.Nombre) + " " + Convert.ToString(item.Detalle) + " " + Convert.ToString(item.Precio), font, Brushes.Black, new RectangleF(0, y + j, ancho, 14));
+                j = j + 14;
+                int x = y + j;
+                r = x;
+            }
             e.Graphics.DrawString("Total Cierre: " + labelCash.Text, font, Brushes.Black, new RectangleF(-30, r + 30, ancho, 14), stringFormatRight);
 
             e.Graphics.DrawString("!Gracias por su compra! ", font, Brushes.Black, new RectangleF(-20, r + 56, ancho, 14), stringFormatCenter);

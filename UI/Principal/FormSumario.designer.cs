@@ -40,8 +40,8 @@
             panel13 = new Panel();
             pictureBox5 = new PictureBox();
             labelEstantes = new FontAwesome.Sharp.IconButton();
-            labelTitleAcerca = new Label();
             panel14 = new Panel();
+            labelTitleAcerca = new Label();
             label15 = new Label();
             panel11 = new Panel();
             pictureBox3 = new PictureBox();
@@ -189,6 +189,10 @@
             lblhora.Text = "10:59:58";
             lblhora.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick;
+            // 
             // panel13
             // 
             panel13.Anchor = AnchorStyles.Top;
@@ -232,6 +236,17 @@
             labelEstantes.Text = "lbl1";
             labelEstantes.UseVisualStyleBackColor = true;
             // 
+            // panel14
+            // 
+            panel14.BackColor = Color.Black;
+            panel14.Controls.Add(labelTitleAcerca);
+            panel14.Dock = DockStyle.Top;
+            panel14.Location = new Point(0, 0);
+            panel14.Margin = new Padding(4, 3, 4, 3);
+            panel14.Name = "panel14";
+            panel14.Size = new Size(126, 35);
+            panel14.TabIndex = 0;
+            // 
             // labelTitleAcerca
             // 
             labelTitleAcerca.AutoSize = true;
@@ -244,17 +259,6 @@
             labelTitleAcerca.Size = new Size(77, 18);
             labelTitleAcerca.TabIndex = 15;
             labelTitleAcerca.Text = "Productos";
-            // 
-            // panel14
-            // 
-            panel14.BackColor = Color.Black;
-            panel14.Controls.Add(labelTitleAcerca);
-            panel14.Dock = DockStyle.Top;
-            panel14.Location = new Point(0, 0);
-            panel14.Margin = new Padding(4, 3, 4, 3);
-            panel14.Name = "panel14";
-            panel14.Size = new Size(126, 35);
-            panel14.TabIndex = 0;
             // 
             // label15
             // 
@@ -518,6 +522,7 @@
             btnRefresh.Size = new Size(31, 32);
             btnRefresh.TabIndex = 40;
             btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // labelRefresh
             // 

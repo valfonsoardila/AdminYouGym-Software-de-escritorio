@@ -65,6 +65,7 @@ namespace UI
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
             btnVolver = new FontAwesome.Sharp.IconButton();
+            iconButton3 = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnCerrar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnMinimizar).BeginInit();
@@ -124,7 +125,7 @@ namespace UI
             // labelCorreo
             // 
             labelCorreo.AutoSize = true;
-            labelCorreo.Location = new Point(16, 216);
+            labelCorreo.Location = new Point(11, 237);
             labelCorreo.Margin = new Padding(4, 0, 4, 0);
             labelCorreo.Name = "labelCorreo";
             labelCorreo.Size = new Size(108, 15);
@@ -134,7 +135,7 @@ namespace UI
             // textCorreo
             // 
             textCorreo.ForeColor = SystemColors.WindowFrame;
-            textCorreo.Location = new Point(125, 212);
+            textCorreo.Location = new Point(120, 233);
             textCorreo.Margin = new Padding(4, 3, 4, 3);
             textCorreo.Name = "textCorreo";
             textCorreo.Size = new Size(188, 23);
@@ -146,7 +147,7 @@ namespace UI
             // textUsuario
             // 
             textUsuario.ForeColor = SystemColors.WindowFrame;
-            textUsuario.Location = new Point(77, 242);
+            textUsuario.Location = new Point(72, 263);
             textUsuario.Margin = new Padding(4, 3, 4, 3);
             textUsuario.Name = "textUsuario";
             textUsuario.Size = new Size(166, 23);
@@ -158,7 +159,7 @@ namespace UI
             // labelUsuario
             // 
             labelUsuario.AutoSize = true;
-            labelUsuario.Location = new Point(16, 246);
+            labelUsuario.Location = new Point(11, 267);
             labelUsuario.Margin = new Padding(4, 0, 4, 0);
             labelUsuario.Name = "labelUsuario";
             labelUsuario.Size = new Size(50, 15);
@@ -168,7 +169,7 @@ namespace UI
             // textContraseña
             // 
             textContraseña.ForeColor = SystemColors.WindowFrame;
-            textContraseña.Location = new Point(320, 242);
+            textContraseña.Location = new Point(315, 263);
             textContraseña.Margin = new Padding(4, 3, 4, 3);
             textContraseña.Name = "textContraseña";
             textContraseña.Size = new Size(177, 23);
@@ -180,7 +181,7 @@ namespace UI
             // labelContraseña
             // 
             labelContraseña.AutoSize = true;
-            labelContraseña.Location = new Point(246, 247);
+            labelContraseña.Location = new Point(241, 268);
             labelContraseña.Margin = new Padding(4, 0, 4, 0);
             labelContraseña.Name = "labelContraseña";
             labelContraseña.Size = new Size(70, 15);
@@ -211,7 +212,7 @@ namespace UI
             // textIdentificacion
             // 
             textIdentificacion.ForeColor = Color.Black;
-            textIdentificacion.Location = new Point(97, 273);
+            textIdentificacion.Location = new Point(92, 294);
             textIdentificacion.Margin = new Padding(4, 3, 4, 3);
             textIdentificacion.Name = "textIdentificacion";
             textIdentificacion.Size = new Size(131, 23);
@@ -220,7 +221,7 @@ namespace UI
             // labelIdentificacion
             // 
             labelIdentificacion.AutoSize = true;
-            labelIdentificacion.Location = new Point(16, 278);
+            labelIdentificacion.Location = new Point(11, 299);
             labelIdentificacion.Margin = new Padding(4, 0, 4, 0);
             labelIdentificacion.Name = "labelIdentificacion";
             labelIdentificacion.Size = new Size(82, 15);
@@ -231,7 +232,7 @@ namespace UI
             // 
             comboTipoDeId.FormattingEnabled = true;
             comboTipoDeId.Items.AddRange(new object[] { "CC", "TI" });
-            comboTipoDeId.Location = new Point(296, 273);
+            comboTipoDeId.Location = new Point(291, 294);
             comboTipoDeId.Margin = new Padding(4, 3, 4, 3);
             comboTipoDeId.Name = "comboTipoDeId";
             comboTipoDeId.Size = new Size(72, 23);
@@ -241,7 +242,7 @@ namespace UI
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(230, 279);
+            label3.Location = new Point(225, 300);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(62, 15);
@@ -251,7 +252,7 @@ namespace UI
             // textNombre
             // 
             textNombre.ForeColor = Color.Black;
-            textNombre.Location = new Point(74, 302);
+            textNombre.Location = new Point(69, 323);
             textNombre.Margin = new Padding(4, 3, 4, 3);
             textNombre.Name = "textNombre";
             textNombre.Size = new Size(140, 23);
@@ -260,7 +261,7 @@ namespace UI
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(16, 307);
+            label4.Location = new Point(11, 328);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(59, 15);
@@ -270,7 +271,7 @@ namespace UI
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(217, 307);
+            label5.Location = new Point(212, 328);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(59, 15);
@@ -280,7 +281,7 @@ namespace UI
             // textApellido
             // 
             textApellido.ForeColor = Color.Black;
-            textApellido.Location = new Point(274, 303);
+            textApellido.Location = new Point(269, 324);
             textApellido.Margin = new Padding(4, 3, 4, 3);
             textApellido.Name = "textApellido";
             textApellido.Size = new Size(140, 23);
@@ -289,7 +290,7 @@ namespace UI
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(16, 336);
+            label6.Location = new Point(11, 357);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(120, 15);
@@ -298,7 +299,7 @@ namespace UI
             // 
             // dateTimeFechaDeNacimiento
             // 
-            dateTimeFechaDeNacimiento.Location = new Point(141, 331);
+            dateTimeFechaDeNacimiento.Location = new Point(136, 352);
             dateTimeFechaDeNacimiento.Margin = new Padding(4, 3, 4, 3);
             dateTimeFechaDeNacimiento.Name = "dateTimeFechaDeNacimiento";
             dateTimeFechaDeNacimiento.Size = new Size(233, 23);
@@ -307,7 +308,7 @@ namespace UI
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(377, 336);
+            label7.Location = new Point(372, 357);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(35, 15);
@@ -318,7 +319,7 @@ namespace UI
             // 
             comboSexo.FormattingEnabled = true;
             comboSexo.Items.AddRange(new object[] { "M", "F" });
-            comboSexo.Location = new Point(414, 332);
+            comboSexo.Location = new Point(409, 353);
             comboSexo.Margin = new Padding(4, 3, 4, 3);
             comboSexo.Name = "comboSexo";
             comboSexo.Size = new Size(72, 23);
@@ -328,7 +329,7 @@ namespace UI
             // textDireccion
             // 
             textDireccion.ForeColor = Color.Black;
-            textDireccion.Location = new Point(82, 360);
+            textDireccion.Location = new Point(77, 381);
             textDireccion.Margin = new Padding(4, 3, 4, 3);
             textDireccion.Name = "textDireccion";
             textDireccion.Size = new Size(140, 23);
@@ -337,7 +338,7 @@ namespace UI
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(20, 365);
+            label8.Location = new Point(15, 386);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
             label8.Size = new Size(60, 15);
@@ -347,7 +348,7 @@ namespace UI
             // textTelefono
             // 
             textTelefono.ForeColor = Color.Black;
-            textTelefono.Location = new Point(290, 361);
+            textTelefono.Location = new Point(285, 382);
             textTelefono.Margin = new Padding(4, 3, 4, 3);
             textTelefono.Name = "textTelefono";
             textTelefono.Size = new Size(140, 23);
@@ -356,7 +357,7 @@ namespace UI
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(230, 365);
+            label9.Location = new Point(225, 386);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
             label9.Size = new Size(55, 15);
@@ -371,7 +372,7 @@ namespace UI
             btnRegistrar.FlatStyle = FlatStyle.Flat;
             btnRegistrar.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnRegistrar.ForeColor = Color.White;
-            btnRegistrar.Location = new Point(208, 405);
+            btnRegistrar.Location = new Point(203, 426);
             btnRegistrar.Margin = new Padding(4, 3, 4, 3);
             btnRegistrar.Name = "btnRegistrar";
             btnRegistrar.Size = new Size(128, 32);
@@ -385,7 +386,7 @@ namespace UI
             comboRol.ForeColor = Color.Maroon;
             comboRol.FormattingEnabled = true;
             comboRol.Items.AddRange(new object[] { "Administrador", "Empleado" });
-            comboRol.Location = new Point(412, 276);
+            comboRol.Location = new Point(407, 297);
             comboRol.Margin = new Padding(4, 3, 4, 3);
             comboRol.Name = "comboRol";
             comboRol.Size = new Size(109, 23);
@@ -395,7 +396,7 @@ namespace UI
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(374, 279);
+            label2.Location = new Point(369, 300);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(27, 15);
@@ -424,7 +425,7 @@ namespace UI
             iconSeePasword.IconColor = SystemColors.ControlText;
             iconSeePasword.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconSeePasword.IconSize = 24;
-            iconSeePasword.Location = new Point(498, 242);
+            iconSeePasword.Location = new Point(493, 263);
             iconSeePasword.Margin = new Padding(4, 3, 4, 3);
             iconSeePasword.Name = "iconSeePasword";
             iconSeePasword.Size = new Size(24, 25);
@@ -441,7 +442,7 @@ namespace UI
             iconNoSeePasword.IconColor = SystemColors.ControlText;
             iconNoSeePasword.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconNoSeePasword.IconSize = 24;
-            iconNoSeePasword.Location = new Point(498, 242);
+            iconNoSeePasword.Location = new Point(493, 263);
             iconNoSeePasword.Margin = new Padding(4, 3, 4, 3);
             iconNoSeePasword.Name = "iconNoSeePasword";
             iconNoSeePasword.Size = new Size(24, 25);
@@ -451,18 +452,19 @@ namespace UI
             // 
             // panel2
             // 
+            panel2.Controls.Add(iconButton3);
             panel2.Controls.Add(pictureBox1);
             panel2.Location = new Point(0, 67);
             panel2.Margin = new Padding(4, 3, 4, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(536, 138);
+            panel2.Size = new Size(536, 160);
             panel2.TabIndex = 52;
             panel2.MouseDown += panel2_MouseDown;
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = UI.Properties.Resources.User;
-            pictureBox1.Location = new Point(181, 9);
+            pictureBox1.Image = Properties.Resources.User;
+            pictureBox1.Location = new Point(190, 0);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(155, 121);
@@ -489,6 +491,18 @@ namespace UI
             btnVolver.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnVolver.UseVisualStyleBackColor = true;
             btnVolver.Click += btnVolver_Click;
+            // 
+            // iconButton3
+            // 
+            iconButton3.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconButton3.IconColor = Color.Black;
+            iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton3.Location = new Point(223, 127);
+            iconButton3.Name = "iconButton3";
+            iconButton3.Size = new Size(92, 23);
+            iconButton3.TabIndex = 20;
+            iconButton3.Text = "Cargar Foto";
+            iconButton3.UseVisualStyleBackColor = true;
             // 
             // FormRegistrarUsuario
             // 
@@ -583,5 +597,6 @@ namespace UI
         private FontAwesome.Sharp.IconPictureBox iconSeePasword;
         private FontAwesome.Sharp.IconPictureBox iconNoSeePasword;
         private Label labelAdvertencia;
+        private FontAwesome.Sharp.IconButton iconButton3;
     }
 }

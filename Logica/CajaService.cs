@@ -64,7 +64,6 @@ namespace Logica
             ConsultaCajaRegistradoraRespuesta respuesta = new ConsultaCajaRegistradoraRespuesta();
             try
             {
-
                 conexion.Open();
                 respuesta.CajasRegistradoras = repositorio.ConsultarPorEstadosCajas(estado);
                 conexion.Close();

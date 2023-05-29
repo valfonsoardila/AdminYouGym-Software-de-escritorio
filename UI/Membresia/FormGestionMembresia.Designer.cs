@@ -91,10 +91,6 @@
             panel2 = new Panel();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             panel3 = new Panel();
-            label6 = new Label();
-            pictureBox1 = new PictureBox();
-            label5 = new Label();
-            btnVolver = new FontAwesome.Sharp.IconButton();
             label8 = new Label();
             labelBase = new Label();
             label11 = new Label();
@@ -103,6 +99,10 @@
             labelCash = new Label();
             labelTextFondo = new Label();
             iconCash = new FontAwesome.Sharp.IconPictureBox();
+            label6 = new Label();
+            pictureBox1 = new PictureBox();
+            label5 = new Label();
+            btnVolver = new FontAwesome.Sharp.IconButton();
             tabControlMembership.SuspendLayout();
             tabGeneral.SuspendLayout();
             panelMembresia.SuspendLayout();
@@ -127,9 +127,9 @@
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconBase).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconCash).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // tabControlMembership
@@ -375,6 +375,7 @@
             panel9.Controls.Add(label19);
             panel9.Controls.Add(iconButton1);
             panel9.Dock = DockStyle.Top;
+            panel9.Enabled = false;
             panel9.Location = new Point(3, 238);
             panel9.Name = "panel9";
             panel9.Size = new Size(813, 208);
@@ -844,54 +845,6 @@
             panel3.Size = new Size(430, 57);
             panel3.TabIndex = 6;
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.ForeColor = Color.Orange;
-            label6.Location = new Point(51, 16);
-            label6.Name = "label6";
-            label6.Size = new Size(168, 25);
-            label6.TabIndex = 9;
-            label6.Text = "Mensaje de alerta";
-            label6.Visible = false;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.Alert;
-            pictureBox1.Location = new Point(8, 8);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(42, 41);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            pictureBox1.Visible = false;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(83, 12);
-            label5.Name = "label5";
-            label5.Size = new Size(315, 32);
-            label5.TabIndex = 2;
-            label5.Text = "GESTION DE MEMBRESIAS";
-            // 
-            // btnVolver
-            // 
-            btnVolver.BackColor = Color.Silver;
-            btnVolver.IconChar = FontAwesome.Sharp.IconChar.AngleLeft;
-            btnVolver.IconColor = Color.Black;
-            btnVolver.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            btnVolver.IconSize = 32;
-            btnVolver.Location = new Point(12, 12);
-            btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(34, 33);
-            btnVolver.TabIndex = 5;
-            btnVolver.UseVisualStyleBackColor = false;
-            btnVolver.Click += btnVolver_Click;
-            // 
             // label8
             // 
             label8.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -1002,6 +955,54 @@
             iconCash.TabIndex = 89;
             iconCash.TabStop = false;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.ForeColor = Color.Orange;
+            label6.Location = new Point(51, 16);
+            label6.Name = "label6";
+            label6.Size = new Size(168, 25);
+            label6.TabIndex = 9;
+            label6.Text = "Mensaje de alerta";
+            label6.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.Alert;
+            pictureBox1.Location = new Point(8, 8);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(42, 41);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            pictureBox1.Visible = false;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(83, 12);
+            label5.Name = "label5";
+            label5.Size = new Size(315, 32);
+            label5.TabIndex = 2;
+            label5.Text = "GESTION DE MEMBRESIAS";
+            // 
+            // btnVolver
+            // 
+            btnVolver.BackColor = Color.Silver;
+            btnVolver.IconChar = FontAwesome.Sharp.IconChar.AngleLeft;
+            btnVolver.IconColor = Color.Black;
+            btnVolver.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnVolver.IconSize = 32;
+            btnVolver.Location = new Point(12, 12);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(34, 33);
+            btnVolver.TabIndex = 5;
+            btnVolver.UseVisualStyleBackColor = false;
+            btnVolver.Click += btnVolver_Click;
+            // 
             // FormMembresia
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1046,9 +1047,9 @@
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconBase).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconCash).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 

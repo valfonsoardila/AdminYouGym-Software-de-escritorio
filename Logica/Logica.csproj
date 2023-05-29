@@ -49,6 +49,7 @@
     <Compile Include="EmailConsultaResponse.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="EntrenadorService.cs" />
+    <Compile Include="FacturaService.cs" />
     <Compile Include="IdUsuarioTxtConsultaResponse.cs" />
     <Compile Include="IdUsuarioTxtService.cs" />
     <Compile Include="LicenciaService.cs" />

@@ -21,5 +21,25 @@ namespace UI
         {
             this.Close();
         }
+
+        private void btnAddProducto_Click(object sender, EventArgs e)
+        {
+            tabControlProducto.SelectedIndex = 1;
+        }
+
+        private void btnUpdateProducto_Click(object sender, EventArgs e)
+        {
+            tabControlProducto.SelectedIndex = 1;
+        }
+
+        private void btnVerVencidos_Click(object sender, EventArgs e)
+        {
+            tabControlProducto.SelectedIndex = 2;
+        }
+
+        private void btnVerVendios_Click(object sender, EventArgs e)
+        {
+            tabControlProducto.SelectedIndex = 3;
+        }
     }
 }

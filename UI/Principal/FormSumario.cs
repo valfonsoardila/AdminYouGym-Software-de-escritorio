@@ -19,5 +19,18 @@ namespace UI
         {
             InitializeComponent();
         }
+        public void MostrarDatos()
+        {
+
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblhora.Text = DateTime.Now.ToString("hh:mm:ss ");
+            lblFecha.Text = DateTime.Now.ToLongDateString();
+        }
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            MostrarDatos();
+        }
     }
 }

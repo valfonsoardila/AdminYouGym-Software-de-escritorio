@@ -128,7 +128,7 @@ namespace Logica
             {
 
                 conexion.Open();
-                respuesta.Producto = repositorio.BuscarExistenciaDeLaboratorio(laboratoio);
+                respuesta.Producto = repositorio.BuscarExistenciaDeMarca(laboratoio);
                 conexion.Close();
                 respuesta.Mensaje = (respuesta.Producto != null) ? "Se encontró el producto" : "la refecrencia de producto buscada no existe";
                 respuesta.Error = false;
@@ -149,7 +149,7 @@ namespace Logica
             {
 
                 conexion.Open();
-                respuesta.Productos = repositorio.ConsultarTodosLaboratorios();
+                respuesta.Productos = repositorio.ConsultarTodasLasMarcas();
                 conexion.Close();
                 respuesta.Mensaje = (respuesta.Productos != null) ? "Se consulto el estante buscado" : "el estante consultado no existe";
                 respuesta.Error = false;
@@ -170,7 +170,7 @@ namespace Logica
             {
 
                 conexion.Open();
-                respuesta.Productos = repositorio.ConsultarPorLaboratoio(laboratorio);
+                respuesta.Productos = repositorio.ConsultarPorMarca(laboratorio);
                 conexion.Close();
                 respuesta.Mensaje = (respuesta.Productos != null) ? "Se consulto el estante buscado" : "el estante consultado no existe";
                 respuesta.Error = false;
@@ -214,28 +214,6 @@ namespace Logica
 
                 conexion.Open();
                 respuesta.Productos = repositorio.BuscarPorEstado(estado);
-                conexion.Close();
-                respuesta.Error = false;
-                respuesta.Mensaje = (respuesta.Productos.Count > 0) ? "Se consultan los Datos" : "No hay datos para consultar";
-                return respuesta;
-            }
-            catch (Exception e)
-            {
-                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
-                respuesta.Error = true;
-                return respuesta;
-            }
-            finally { conexion.Close(); }
-
-        }
-        public ConsultaProductoRespuesta BuscarPorViaAdminitracion(string via)
-        {
-            ConsultaProductoRespuesta respuesta = new ConsultaProductoRespuesta();
-            try
-            {
-
-                conexion.Open();
-                respuesta.Productos = repositorio.BuscarPorViaAdminitracion(via);
                 conexion.Close();
                 respuesta.Error = false;
                 respuesta.Mensaje = (respuesta.Productos.Count > 0) ? "Se consultan los Datos" : "No hay datos para consultar";

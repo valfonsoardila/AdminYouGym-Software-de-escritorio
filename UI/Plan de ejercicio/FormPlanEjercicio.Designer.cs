@@ -365,6 +365,7 @@
             panel20.Controls.Add(label23);
             panel20.Controls.Add(textBox8);
             panel20.Dock = DockStyle.Fill;
+            panel20.Enabled = false;
             panel20.Location = new Point(0, 132);
             panel20.Name = "panel20";
             panel20.Size = new Size(523, 217);

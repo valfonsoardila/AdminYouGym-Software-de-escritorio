@@ -9,7 +9,7 @@ namespace Entidades
     public class Producto
     {
         //Constructor
-        public Producto(int cantidad, string referencia, double precioDeVenta, string nombre, string detalle, DateTime fechaDeRegistro, DateTime fechaDeVencimiento, string lote, string laboratorio, string estado, string tipo, string via, double valorPorUnidad, double valorPorBlister, double valorPorPaquete, double precioDeNegocio, double gananciaPorProducto, string ubicacion)
+        public Producto(int cantidad, string referencia, double precioDeVenta, string nombre, string detalle, DateTime fechaDeRegistro, DateTime fechaDeVencimiento, string lote, string marca, string estado, string tipo, double valorPorUnidad, double valorPorBlister, double valorPorPaquete, double precioDeNegocio, double gananciaPorProducto, string ubicacion)
         {
             Cantidad = cantidad;
             Referencia = referencia;
@@ -19,10 +19,9 @@ namespace Entidades
             FechaDeRegistro = fechaDeRegistro;
             FechaDeVencimiento = fechaDeVencimiento;
             Lote = lote;
-            Laboratorio = laboratorio;
+            Marca = marca;
             Estado = estado;
             Tipo = tipo;
-            Via = via;
             ValorPorUnidad = valorPorUnidad;
             ValorPorBlister = valorPorBlister;
             ValorPorPaquete = valorPorPaquete;
@@ -44,10 +43,9 @@ namespace Entidades
         public DateTime FechaDeRegistro { get; set; }
         public DateTime FechaDeVencimiento { get; set; }
         public string Lote { get; set; }
-        public string Laboratorio { get; set; }
+        public string Marca { get; set; }
         public string Estado { get; set; }
         public string Tipo { get; set; }
-        public string Via { get; set; }
         public double ValorPorUnidad { get; set; }
         public double ValorPorBlister { get; set; }
         public double ValorPorPaquete { get; set; }

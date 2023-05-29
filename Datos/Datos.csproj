@@ -48,6 +48,7 @@
     <Compile Include="ConnectionManager.cs" />
     <Compile Include="EmailRepository.cs" />
     <Compile Include="EntrenadorRepository.cs" />
+    <Compile Include="FacturaRepository.cs" />
     <Compile Include="IdEmpleadoTxtRepository.cs" />
     <Compile Include="LicenciaRepository.cs" />
     <Compile Include="PlanDeEjercicioRepository.cs" />

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tabControlCliente = new TabControl();
+            tabControlProducto = new TabControl();
             tabGeneral = new TabPage();
             panelProducto = new Panel();
             panel4 = new Panel();
@@ -37,11 +37,11 @@
             panel5 = new Panel();
             label2 = new Label();
             panel1 = new Panel();
-            iconButton2 = new FontAwesome.Sharp.IconButton();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
-            btnProgreso = new FontAwesome.Sharp.IconButton();
-            btnAddClient = new FontAwesome.Sharp.IconButton();
-            btnUpdateClient = new FontAwesome.Sharp.IconButton();
+            btnVerVencidos = new FontAwesome.Sharp.IconButton();
+            btnUpdateProducto = new FontAwesome.Sharp.IconButton();
+            btnVerVendios = new FontAwesome.Sharp.IconButton();
+            btnVender = new FontAwesome.Sharp.IconButton();
+            btnAddProducto = new FontAwesome.Sharp.IconButton();
             panelContenedorClient = new Panel();
             dataGridProductos = new DataGridView();
             Column1 = new DataGridViewCheckBoxColumn();
@@ -66,8 +66,8 @@
             btnSiguientePagina = new FontAwesome.Sharp.IconPictureBox();
             panelTopDataGrid = new Panel();
             iconButton4 = new FontAwesome.Sharp.IconButton();
-            iconCloseSearch = new FontAwesome.Sharp.IconButton();
-            textBox1 = new TextBox();
+            btnCloseSearchConsulta = new FontAwesome.Sharp.IconButton();
+            textSearchConsulta = new TextBox();
             btnRefresh = new FontAwesome.Sharp.IconButton();
             comboFiltroEstado = new ComboBox();
             comboFiltroUbicacion = new ComboBox();
@@ -120,15 +120,30 @@
             pictureBox2 = new PictureBox();
             panel8 = new Panel();
             btnSearch = new FontAwesome.Sharp.IconPictureBox();
-            textSearch = new TextBox();
-            btnCloseTextSearch = new FontAwesome.Sharp.IconPictureBox();
+            textSearchRegistro = new TextBox();
+            btnCloseSearchRegistro = new FontAwesome.Sharp.IconPictureBox();
             label9 = new Label();
             panel7 = new Panel();
             label7 = new Label();
             tabVencido = new TabPage();
             panel14 = new Panel();
+            dataGridProductosVencidos = new DataGridView();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            FechaDeRegistro = new DataGridViewTextBoxColumn();
+            FechaDeVencimiento = new DataGridViewTextBoxColumn();
+            Lote = new DataGridViewTextBoxColumn();
+            Laboratorio = new DataGridViewTextBoxColumn();
+            Estado = new DataGridViewTextBoxColumn();
+            Tipo = new DataGridViewTextBoxColumn();
+            Via = new DataGridViewTextBoxColumn();
+            PrecioDeNegocio = new DataGridViewTextBoxColumn();
+            PrecioDeVenta = new DataGridViewTextBoxColumn();
+            GananciaPorProducto = new DataGridViewTextBoxColumn();
             panel18 = new Panel();
-            textBox2 = new TextBox();
+            textTotalVencido = new TextBox();
             label16 = new Label();
             label20 = new Label();
             iconButton3 = new FontAwesome.Sharp.IconButton();
@@ -137,7 +152,7 @@
             iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             panel13 = new Panel();
-            iconButton6 = new FontAwesome.Sharp.IconButton();
+            btnLimpiarHistorialVencidos = new FontAwesome.Sharp.IconButton();
             panel12 = new Panel();
             label14 = new Label();
             tabVendidos = new TabPage();
@@ -154,9 +169,9 @@
             panel19 = new Panel();
             labelFiltroFecha = new Label();
             comboFecha = new ComboBox();
-            textBox8 = new TextBox();
+            textDineroVendido = new TextBox();
             label23 = new Label();
-            textBox7 = new TextBox();
+            textTotalVendido = new TextBox();
             label22 = new Label();
             label26 = new Label();
             iconButton5 = new FontAwesome.Sharp.IconButton();
@@ -165,7 +180,7 @@
             iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
             iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
             panel16 = new Panel();
-            btnLimpiarHistorial = new FontAwesome.Sharp.IconButton();
+            btnLimpiarHistorialVendidos = new FontAwesome.Sharp.IconButton();
             panel15 = new Panel();
             label15 = new Label();
             panel2 = new Panel();
@@ -179,26 +194,12 @@
             labelCash = new Label();
             labelTextFondo = new Label();
             iconCash = new FontAwesome.Sharp.IconPictureBox();
-            label6 = new Label();
-            pictureBox1 = new PictureBox();
+            labelAlerta = new Label();
+            pictureAlerta = new PictureBox();
             label5 = new Label();
             btnVolver = new FontAwesome.Sharp.IconButton();
-            dataGridProductosVencidos = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            FechaDeRegistro = new DataGridViewTextBoxColumn();
-            FechaDeVencimiento = new DataGridViewTextBoxColumn();
-            Lote = new DataGridViewTextBoxColumn();
-            Laboratorio = new DataGridViewTextBoxColumn();
-            Estado = new DataGridViewTextBoxColumn();
-            Tipo = new DataGridViewTextBoxColumn();
-            Via = new DataGridViewTextBoxColumn();
-            PrecioDeNegocio = new DataGridViewTextBoxColumn();
-            PrecioDeVenta = new DataGridViewTextBoxColumn();
-            GananciaPorProducto = new DataGridViewTextBoxColumn();
-            tabControlCliente.SuspendLayout();
+            comboFiltroTipo = new ComboBox();
+            tabControlProducto.SuspendLayout();
             tabGeneral.SuspendLayout();
             panelProducto.SuspendLayout();
             panel4.SuspendLayout();
@@ -222,10 +223,11 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnSearch).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)btnCloseTextSearch).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnCloseSearchRegistro).BeginInit();
             panel7.SuspendLayout();
             tabVencido.SuspendLayout();
             panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridProductosVencidos).BeginInit();
             panel18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox3).BeginInit();
@@ -244,22 +246,21 @@
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconBase).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconCash).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridProductosVencidos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureAlerta).BeginInit();
             SuspendLayout();
             // 
-            // tabControlCliente
+            // tabControlProducto
             // 
-            tabControlCliente.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tabControlCliente.Controls.Add(tabGeneral);
-            tabControlCliente.Controls.Add(tabNuevoProducto);
-            tabControlCliente.Controls.Add(tabVencido);
-            tabControlCliente.Controls.Add(tabVendidos);
-            tabControlCliente.Location = new Point(0, 62);
-            tabControlCliente.Name = "tabControlCliente";
-            tabControlCliente.SelectedIndex = 0;
-            tabControlCliente.Size = new Size(847, 474);
-            tabControlCliente.TabIndex = 4;
+            tabControlProducto.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tabControlProducto.Controls.Add(tabGeneral);
+            tabControlProducto.Controls.Add(tabNuevoProducto);
+            tabControlProducto.Controls.Add(tabVencido);
+            tabControlProducto.Controls.Add(tabVendidos);
+            tabControlProducto.Location = new Point(0, 62);
+            tabControlProducto.Name = "tabControlProducto";
+            tabControlProducto.SelectedIndex = 0;
+            tabControlProducto.Size = new Size(847, 474);
+            tabControlProducto.TabIndex = 4;
             // 
             // tabGeneral
             // 
@@ -337,97 +338,101 @@
             // panel1
             // 
             panel1.BackColor = Color.Black;
-            panel1.Controls.Add(iconButton2);
-            panel1.Controls.Add(iconButton1);
-            panel1.Controls.Add(btnProgreso);
-            panel1.Controls.Add(btnAddClient);
-            panel1.Controls.Add(btnUpdateClient);
+            panel1.Controls.Add(btnVerVencidos);
+            panel1.Controls.Add(btnUpdateProducto);
+            panel1.Controls.Add(btnVerVendios);
+            panel1.Controls.Add(btnVender);
+            panel1.Controls.Add(btnAddProducto);
             panel1.Dock = DockStyle.Bottom;
             panel1.Location = new Point(0, 395);
             panel1.Name = "panel1";
             panel1.Size = new Size(833, 45);
             panel1.TabIndex = 1;
             // 
-            // iconButton2
+            // btnVerVencidos
             // 
-            iconButton2.BackColor = Color.Gold;
-            iconButton2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.Warning;
-            iconButton2.IconColor = Color.Black;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            iconButton2.IconSize = 32;
-            iconButton2.Location = new Point(258, 4);
-            iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(115, 40);
-            iconButton2.TabIndex = 6;
-            iconButton2.Text = "Vencidos";
-            iconButton2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton2.UseVisualStyleBackColor = false;
+            btnVerVencidos.BackColor = Color.Gold;
+            btnVerVencidos.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnVerVencidos.IconChar = FontAwesome.Sharp.IconChar.Warning;
+            btnVerVencidos.IconColor = Color.Black;
+            btnVerVencidos.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnVerVencidos.IconSize = 32;
+            btnVerVencidos.Location = new Point(258, 4);
+            btnVerVencidos.Name = "btnVerVencidos";
+            btnVerVencidos.Size = new Size(115, 40);
+            btnVerVencidos.TabIndex = 6;
+            btnVerVencidos.Text = "Vencidos";
+            btnVerVencidos.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnVerVencidos.UseVisualStyleBackColor = false;
+            btnVerVencidos.Click += btnVerVencidos_Click;
             // 
-            // iconButton1
+            // btnUpdateProducto
             // 
-            iconButton1.BackColor = Color.Gold;
-            iconButton1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.PenToSquare;
-            iconButton1.IconColor = Color.Black;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            iconButton1.IconSize = 32;
-            iconButton1.Location = new Point(141, 3);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(115, 40);
-            iconButton1.TabIndex = 5;
-            iconButton1.Text = "Modificar";
-            iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton1.UseVisualStyleBackColor = false;
+            btnUpdateProducto.BackColor = Color.Gold;
+            btnUpdateProducto.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUpdateProducto.IconChar = FontAwesome.Sharp.IconChar.PenToSquare;
+            btnUpdateProducto.IconColor = Color.Black;
+            btnUpdateProducto.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnUpdateProducto.IconSize = 32;
+            btnUpdateProducto.Location = new Point(141, 3);
+            btnUpdateProducto.Name = "btnUpdateProducto";
+            btnUpdateProducto.Size = new Size(115, 40);
+            btnUpdateProducto.TabIndex = 5;
+            btnUpdateProducto.Text = "Modificar";
+            btnUpdateProducto.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnUpdateProducto.UseVisualStyleBackColor = false;
+            btnUpdateProducto.Click += btnUpdateProducto_Click;
             // 
-            // btnProgreso
+            // btnVerVendios
             // 
-            btnProgreso.BackColor = Color.Firebrick;
-            btnProgreso.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnProgreso.ForeColor = SystemColors.ControlLightLight;
-            btnProgreso.IconChar = FontAwesome.Sharp.IconChar.Handshake;
-            btnProgreso.IconColor = Color.White;
-            btnProgreso.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            btnProgreso.IconSize = 32;
-            btnProgreso.Location = new Point(516, 3);
-            btnProgreso.Name = "btnProgreso";
-            btnProgreso.Size = new Size(112, 40);
-            btnProgreso.TabIndex = 4;
-            btnProgreso.Text = "Vendidos";
-            btnProgreso.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnProgreso.UseVisualStyleBackColor = false;
+            btnVerVendios.BackColor = Color.Firebrick;
+            btnVerVendios.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnVerVendios.ForeColor = SystemColors.ControlLightLight;
+            btnVerVendios.IconChar = FontAwesome.Sharp.IconChar.Handshake;
+            btnVerVendios.IconColor = Color.White;
+            btnVerVendios.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnVerVendios.IconSize = 32;
+            btnVerVendios.Location = new Point(516, 3);
+            btnVerVendios.Name = "btnVerVendios";
+            btnVerVendios.Size = new Size(112, 40);
+            btnVerVendios.TabIndex = 4;
+            btnVerVendios.Text = "Vendidos";
+            btnVerVendios.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnVerVendios.UseVisualStyleBackColor = false;
+            btnVerVendios.Click += btnVerVendios_Click;
             // 
-            // btnAddClient
+            // btnVender
             // 
-            btnAddClient.BackColor = Color.LimeGreen;
-            btnAddClient.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnAddClient.IconChar = FontAwesome.Sharp.IconChar.SackDollar;
-            btnAddClient.IconColor = Color.Black;
-            btnAddClient.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnAddClient.IconSize = 32;
-            btnAddClient.Location = new Point(627, 3);
-            btnAddClient.Name = "btnAddClient";
-            btnAddClient.Size = new Size(106, 40);
-            btnAddClient.TabIndex = 1;
-            btnAddClient.Text = "Vender";
-            btnAddClient.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnAddClient.UseVisualStyleBackColor = false;
+            btnVender.BackColor = Color.LimeGreen;
+            btnVender.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnVender.IconChar = FontAwesome.Sharp.IconChar.SackDollar;
+            btnVender.IconColor = Color.Black;
+            btnVender.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnVender.IconSize = 32;
+            btnVender.Location = new Point(627, 3);
+            btnVender.Name = "btnVender";
+            btnVender.Size = new Size(106, 40);
+            btnVender.TabIndex = 1;
+            btnVender.Text = "Vender";
+            btnVender.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnVender.UseVisualStyleBackColor = false;
             // 
-            // btnUpdateClient
+            // btnAddProducto
             // 
-            btnUpdateClient.BackColor = Color.Gold;
-            btnUpdateClient.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnUpdateClient.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
-            btnUpdateClient.IconColor = Color.Black;
-            btnUpdateClient.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            btnUpdateClient.IconSize = 32;
-            btnUpdateClient.Location = new Point(25, 3);
-            btnUpdateClient.Name = "btnUpdateClient";
-            btnUpdateClient.Size = new Size(115, 40);
-            btnUpdateClient.TabIndex = 2;
-            btnUpdateClient.Text = "Agregar";
-            btnUpdateClient.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnUpdateClient.UseVisualStyleBackColor = false;
+            btnAddProducto.BackColor = Color.Gold;
+            btnAddProducto.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAddProducto.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
+            btnAddProducto.IconColor = Color.Black;
+            btnAddProducto.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnAddProducto.IconSize = 32;
+            btnAddProducto.Location = new Point(25, 3);
+            btnAddProducto.Name = "btnAddProducto";
+            btnAddProducto.Size = new Size(115, 40);
+            btnAddProducto.TabIndex = 2;
+            btnAddProducto.Text = "Agregar";
+            btnAddProducto.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnAddProducto.UseVisualStyleBackColor = false;
+            btnAddProducto.Click += btnAddProducto_Click;
             // 
             // panelContenedorClient
             // 
@@ -703,9 +708,10 @@
             // panelTopDataGrid
             // 
             panelTopDataGrid.BackColor = Color.Gainsboro;
+            panelTopDataGrid.Controls.Add(comboFiltroTipo);
             panelTopDataGrid.Controls.Add(iconButton4);
-            panelTopDataGrid.Controls.Add(iconCloseSearch);
-            panelTopDataGrid.Controls.Add(textBox1);
+            panelTopDataGrid.Controls.Add(btnCloseSearchConsulta);
+            panelTopDataGrid.Controls.Add(textSearchConsulta);
             panelTopDataGrid.Controls.Add(btnRefresh);
             panelTopDataGrid.Controls.Add(comboFiltroEstado);
             panelTopDataGrid.Controls.Add(comboFiltroUbicacion);
@@ -730,41 +736,43 @@
             iconButton4.IconColor = Color.Black;
             iconButton4.IconFont = FontAwesome.Sharp.IconFont.Solid;
             iconButton4.IconSize = 20;
-            iconButton4.Location = new Point(805, 3);
+            iconButton4.Location = new Point(807, 3);
             iconButton4.Margin = new Padding(4, 3, 4, 3);
             iconButton4.Name = "iconButton4";
             iconButton4.Size = new Size(24, 24);
             iconButton4.TabIndex = 81;
             iconButton4.UseVisualStyleBackColor = true;
             // 
-            // iconCloseSearch
+            // btnCloseSearchConsulta
             // 
-            iconCloseSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            iconCloseSearch.Cursor = Cursors.Hand;
-            iconCloseSearch.FlatAppearance.BorderColor = Color.FromArgb(170, 170, 173);
-            iconCloseSearch.FlatAppearance.BorderSize = 0;
-            iconCloseSearch.FlatAppearance.MouseDownBackColor = Color.WhiteSmoke;
-            iconCloseSearch.FlatAppearance.MouseOverBackColor = Color.DimGray;
-            iconCloseSearch.FlatStyle = FlatStyle.Flat;
-            iconCloseSearch.ForeColor = SystemColors.ControlDark;
-            iconCloseSearch.IconChar = FontAwesome.Sharp.IconChar.X;
-            iconCloseSearch.IconColor = Color.Red;
-            iconCloseSearch.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            iconCloseSearch.IconSize = 20;
-            iconCloseSearch.Location = new Point(804, 3);
-            iconCloseSearch.Margin = new Padding(4, 3, 4, 3);
-            iconCloseSearch.Name = "iconCloseSearch";
-            iconCloseSearch.Size = new Size(24, 24);
-            iconCloseSearch.TabIndex = 80;
-            iconCloseSearch.UseVisualStyleBackColor = true;
+            btnCloseSearchConsulta.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCloseSearchConsulta.Cursor = Cursors.Hand;
+            btnCloseSearchConsulta.FlatAppearance.BorderColor = Color.FromArgb(170, 170, 173);
+            btnCloseSearchConsulta.FlatAppearance.BorderSize = 0;
+            btnCloseSearchConsulta.FlatAppearance.MouseDownBackColor = Color.WhiteSmoke;
+            btnCloseSearchConsulta.FlatAppearance.MouseOverBackColor = Color.DimGray;
+            btnCloseSearchConsulta.FlatStyle = FlatStyle.Flat;
+            btnCloseSearchConsulta.ForeColor = SystemColors.ControlDark;
+            btnCloseSearchConsulta.IconChar = FontAwesome.Sharp.IconChar.X;
+            btnCloseSearchConsulta.IconColor = Color.Red;
+            btnCloseSearchConsulta.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnCloseSearchConsulta.IconSize = 20;
+            btnCloseSearchConsulta.Location = new Point(804, 3);
+            btnCloseSearchConsulta.Margin = new Padding(4, 3, 4, 3);
+            btnCloseSearchConsulta.Name = "btnCloseSearchConsulta";
+            btnCloseSearchConsulta.Size = new Size(24, 24);
+            btnCloseSearchConsulta.TabIndex = 80;
+            btnCloseSearchConsulta.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // textSearchConsulta
             // 
-            textBox1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            textBox1.Location = new Point(650, 2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(153, 27);
-            textBox1.TabIndex = 79;
+            textSearchConsulta.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            textSearchConsulta.Location = new Point(650, 1);
+            textSearchConsulta.Name = "textSearchConsulta";
+            textSearchConsulta.Size = new Size(153, 27);
+            textSearchConsulta.TabIndex = 79;
+            textSearchConsulta.Text = "Buscar en existencia";
+            textSearchConsulta.Visible = false;
             // 
             // btnRefresh
             // 
@@ -780,7 +788,7 @@
             btnRefresh.IconColor = SystemColors.ActiveCaptionText;
             btnRefresh.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnRefresh.IconSize = 24;
-            btnRefresh.Location = new Point(517, 3);
+            btnRefresh.Location = new Point(587, 4);
             btnRefresh.Margin = new Padding(4, 3, 4, 3);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(24, 24);
@@ -793,7 +801,7 @@
             comboFiltroEstado.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboFiltroEstado.FormattingEnabled = true;
             comboFiltroEstado.Items.AddRange(new object[] { "Vigente", "Cuarentena", "Vencido" });
-            comboFiltroEstado.Location = new Point(389, 0);
+            comboFiltroEstado.Location = new Point(322, 1);
             comboFiltroEstado.Name = "comboFiltroEstado";
             comboFiltroEstado.Size = new Size(121, 28);
             comboFiltroEstado.TabIndex = 3;
@@ -805,7 +813,7 @@
             comboFiltroUbicacion.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboFiltroUbicacion.FormattingEnabled = true;
             comboFiltroUbicacion.Items.AddRange(new object[] { "M", "F", "Otro" });
-            comboFiltroUbicacion.Location = new Point(256, 0);
+            comboFiltroUbicacion.Location = new Point(189, 1);
             comboFiltroUbicacion.Name = "comboFiltroUbicacion";
             comboFiltroUbicacion.Size = new Size(129, 28);
             comboFiltroUbicacion.TabIndex = 2;
@@ -1332,8 +1340,8 @@
             // panel8
             // 
             panel8.Controls.Add(btnSearch);
-            panel8.Controls.Add(textSearch);
-            panel8.Controls.Add(btnCloseTextSearch);
+            panel8.Controls.Add(textSearchRegistro);
+            panel8.Controls.Add(btnCloseSearchRegistro);
             panel8.Controls.Add(label9);
             panel8.Dock = DockStyle.Top;
             panel8.Location = new Point(0, 26);
@@ -1349,35 +1357,37 @@
             btnSearch.IconColor = Color.Black;
             btnSearch.IconFont = FontAwesome.Sharp.IconFont.Brands;
             btnSearch.IconSize = 24;
-            btnSearch.Location = new Point(787, 0);
+            btnSearch.Location = new Point(813, 0);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(24, 24);
             btnSearch.TabIndex = 12;
             btnSearch.TabStop = false;
             // 
-            // textSearch
+            // textSearchRegistro
             // 
-            textSearch.BorderStyle = BorderStyle.FixedSingle;
-            textSearch.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            textSearch.Location = new Point(642, -1);
-            textSearch.Name = "textSearch";
-            textSearch.Size = new Size(146, 25);
-            textSearch.TabIndex = 11;
-            textSearch.Text = "Buscar existencia";
+            textSearchRegistro.BorderStyle = BorderStyle.FixedSingle;
+            textSearchRegistro.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            textSearchRegistro.Location = new Point(667, -1);
+            textSearchRegistro.Name = "textSearchRegistro";
+            textSearchRegistro.Size = new Size(146, 25);
+            textSearchRegistro.TabIndex = 11;
+            textSearchRegistro.Text = "Buscar existencia";
+            textSearchRegistro.Visible = false;
             // 
-            // btnCloseTextSearch
+            // btnCloseSearchRegistro
             // 
-            btnCloseTextSearch.BackColor = Color.Transparent;
-            btnCloseTextSearch.ForeColor = Color.Red;
-            btnCloseTextSearch.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            btnCloseTextSearch.IconColor = Color.Red;
-            btnCloseTextSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnCloseTextSearch.IconSize = 24;
-            btnCloseTextSearch.Location = new Point(787, 0);
-            btnCloseTextSearch.Name = "btnCloseTextSearch";
-            btnCloseTextSearch.Size = new Size(24, 24);
-            btnCloseTextSearch.TabIndex = 10;
-            btnCloseTextSearch.TabStop = false;
+            btnCloseSearchRegistro.BackColor = Color.Transparent;
+            btnCloseSearchRegistro.ForeColor = Color.Red;
+            btnCloseSearchRegistro.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            btnCloseSearchRegistro.IconColor = Color.Red;
+            btnCloseSearchRegistro.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCloseSearchRegistro.IconSize = 24;
+            btnCloseSearchRegistro.Location = new Point(814, 0);
+            btnCloseSearchRegistro.Name = "btnCloseSearchRegistro";
+            btnCloseSearchRegistro.Size = new Size(24, 24);
+            btnCloseSearchRegistro.TabIndex = 10;
+            btnCloseSearchRegistro.TabStop = false;
+            btnCloseSearchRegistro.Visible = false;
             // 
             // label9
             // 
@@ -1433,10 +1443,93 @@
             panel14.Size = new Size(839, 362);
             panel14.TabIndex = 4;
             // 
+            // dataGridProductosVencidos
+            // 
+            dataGridProductosVencidos.AllowUserToAddRows = false;
+            dataGridProductosVencidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridProductosVencidos.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, FechaDeRegistro, FechaDeVencimiento, Lote, Laboratorio, Estado, Tipo, Via, PrecioDeNegocio, PrecioDeVenta, GananciaPorProducto });
+            dataGridProductosVencidos.Dock = DockStyle.Fill;
+            dataGridProductosVencidos.Location = new Point(0, 0);
+            dataGridProductosVencidos.Margin = new Padding(4, 3, 4, 3);
+            dataGridProductosVencidos.Name = "dataGridProductosVencidos";
+            dataGridProductosVencidos.RowHeadersVisible = false;
+            dataGridProductosVencidos.Size = new Size(839, 332);
+            dataGridProductosVencidos.TabIndex = 51;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.HeaderText = "Cantidad";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.HeaderText = "Referencia";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.HeaderText = "Nombre";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.HeaderText = "Detalle";
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // FechaDeRegistro
+            // 
+            FechaDeRegistro.HeaderText = "FechaDeRegistro";
+            FechaDeRegistro.Name = "FechaDeRegistro";
+            // 
+            // FechaDeVencimiento
+            // 
+            FechaDeVencimiento.HeaderText = "FechaDeVencimiento";
+            FechaDeVencimiento.Name = "FechaDeVencimiento";
+            // 
+            // Lote
+            // 
+            Lote.HeaderText = "Lote";
+            Lote.Name = "Lote";
+            // 
+            // Laboratorio
+            // 
+            Laboratorio.HeaderText = "Laboratorio";
+            Laboratorio.Name = "Laboratorio";
+            // 
+            // Estado
+            // 
+            Estado.HeaderText = "Estado";
+            Estado.Name = "Estado";
+            // 
+            // Tipo
+            // 
+            Tipo.HeaderText = "Tipo";
+            Tipo.Name = "Tipo";
+            // 
+            // Via
+            // 
+            Via.HeaderText = "Via";
+            Via.Name = "Via";
+            // 
+            // PrecioDeNegocio
+            // 
+            PrecioDeNegocio.HeaderText = "PrecioDeNegocio";
+            PrecioDeNegocio.Name = "PrecioDeNegocio";
+            // 
+            // PrecioDeVenta
+            // 
+            PrecioDeVenta.HeaderText = "PrecioDeVenta";
+            PrecioDeVenta.Name = "PrecioDeVenta";
+            // 
+            // GananciaPorProducto
+            // 
+            GananciaPorProducto.HeaderText = "GananciaPorProducto";
+            GananciaPorProducto.Name = "GananciaPorProducto";
+            // 
             // panel18
             // 
             panel18.BackColor = Color.Gainsboro;
-            panel18.Controls.Add(textBox2);
+            panel18.Controls.Add(textTotalVencido);
             panel18.Controls.Add(label16);
             panel18.Controls.Add(label20);
             panel18.Controls.Add(iconButton3);
@@ -1450,17 +1543,17 @@
             panel18.Size = new Size(839, 30);
             panel18.TabIndex = 2;
             // 
-            // textBox2
+            // textTotalVencido
             // 
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            textBox2.Location = new Point(99, 3);
-            textBox2.Margin = new Padding(4, 3, 4, 3);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(46, 25);
-            textBox2.TabIndex = 77;
-            textBox2.Text = "0";
-            textBox2.TextAlign = HorizontalAlignment.Center;
+            textTotalVencido.BorderStyle = BorderStyle.FixedSingle;
+            textTotalVencido.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            textTotalVencido.Location = new Point(99, 3);
+            textTotalVencido.Margin = new Padding(4, 3, 4, 3);
+            textTotalVencido.Name = "textTotalVencido";
+            textTotalVencido.Size = new Size(46, 25);
+            textTotalVencido.TabIndex = 77;
+            textTotalVencido.Text = "0";
+            textTotalVencido.TextAlign = HorizontalAlignment.Center;
             // 
             // label16
             // 
@@ -1563,25 +1656,25 @@
             // 
             // panel13
             // 
-            panel13.Controls.Add(iconButton6);
+            panel13.Controls.Add(btnLimpiarHistorialVencidos);
             panel13.Dock = DockStyle.Bottom;
             panel13.Location = new Point(0, 388);
             panel13.Name = "panel13";
             panel13.Size = new Size(839, 58);
             panel13.TabIndex = 3;
             // 
-            // iconButton6
+            // btnLimpiarHistorialVencidos
             // 
-            iconButton6.BackColor = Color.DarkRed;
-            iconButton6.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
-            iconButton6.IconColor = Color.White;
-            iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton6.IconSize = 32;
-            iconButton6.Location = new Point(374, 10);
-            iconButton6.Name = "iconButton6";
-            iconButton6.Size = new Size(90, 38);
-            iconButton6.TabIndex = 1;
-            iconButton6.UseVisualStyleBackColor = false;
+            btnLimpiarHistorialVencidos.BackColor = Color.DarkRed;
+            btnLimpiarHistorialVencidos.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            btnLimpiarHistorialVencidos.IconColor = Color.White;
+            btnLimpiarHistorialVencidos.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnLimpiarHistorialVencidos.IconSize = 32;
+            btnLimpiarHistorialVencidos.Location = new Point(374, 10);
+            btnLimpiarHistorialVencidos.Name = "btnLimpiarHistorialVencidos";
+            btnLimpiarHistorialVencidos.Size = new Size(90, 38);
+            btnLimpiarHistorialVencidos.TabIndex = 1;
+            btnLimpiarHistorialVencidos.UseVisualStyleBackColor = false;
             // 
             // panel12
             // 
@@ -1694,9 +1787,9 @@
             panel19.BackColor = Color.Gainsboro;
             panel19.Controls.Add(labelFiltroFecha);
             panel19.Controls.Add(comboFecha);
-            panel19.Controls.Add(textBox8);
+            panel19.Controls.Add(textDineroVendido);
             panel19.Controls.Add(label23);
-            panel19.Controls.Add(textBox7);
+            panel19.Controls.Add(textTotalVendido);
             panel19.Controls.Add(label22);
             panel19.Controls.Add(label26);
             panel19.Controls.Add(iconButton5);
@@ -1733,17 +1826,17 @@
             comboFecha.TabIndex = 80;
             comboFecha.Text = "Todos";
             // 
-            // textBox8
+            // textDineroVendido
             // 
-            textBox8.BorderStyle = BorderStyle.FixedSingle;
-            textBox8.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            textBox8.Location = new Point(263, 2);
-            textBox8.Margin = new Padding(4, 3, 4, 3);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(114, 25);
-            textBox8.TabIndex = 79;
-            textBox8.Text = "0";
-            textBox8.TextAlign = HorizontalAlignment.Center;
+            textDineroVendido.BorderStyle = BorderStyle.FixedSingle;
+            textDineroVendido.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            textDineroVendido.Location = new Point(263, 2);
+            textDineroVendido.Margin = new Padding(4, 3, 4, 3);
+            textDineroVendido.Name = "textDineroVendido";
+            textDineroVendido.Size = new Size(114, 25);
+            textDineroVendido.TabIndex = 79;
+            textDineroVendido.Text = "0";
+            textDineroVendido.TextAlign = HorizontalAlignment.Center;
             // 
             // label23
             // 
@@ -1756,17 +1849,17 @@
             label23.TabIndex = 78;
             label23.Text = "Dinero de ventas:";
             // 
-            // textBox7
+            // textTotalVendido
             // 
-            textBox7.BorderStyle = BorderStyle.FixedSingle;
-            textBox7.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            textBox7.Location = new Point(103, 2);
-            textBox7.Margin = new Padding(4, 3, 4, 3);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(46, 25);
-            textBox7.TabIndex = 77;
-            textBox7.Text = "0";
-            textBox7.TextAlign = HorizontalAlignment.Center;
+            textTotalVendido.BorderStyle = BorderStyle.FixedSingle;
+            textTotalVendido.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            textTotalVendido.Location = new Point(103, 2);
+            textTotalVendido.Margin = new Padding(4, 3, 4, 3);
+            textTotalVendido.Name = "textTotalVendido";
+            textTotalVendido.Size = new Size(46, 25);
+            textTotalVendido.TabIndex = 77;
+            textTotalVendido.Text = "0";
+            textTotalVendido.TextAlign = HorizontalAlignment.Center;
             // 
             // label22
             // 
@@ -1869,25 +1962,25 @@
             // 
             // panel16
             // 
-            panel16.Controls.Add(btnLimpiarHistorial);
+            panel16.Controls.Add(btnLimpiarHistorialVendidos);
             panel16.Dock = DockStyle.Bottom;
             panel16.Location = new Point(0, 394);
             panel16.Name = "panel16";
             panel16.Size = new Size(839, 52);
             panel16.TabIndex = 4;
             // 
-            // btnLimpiarHistorial
+            // btnLimpiarHistorialVendidos
             // 
-            btnLimpiarHistorial.BackColor = Color.DarkRed;
-            btnLimpiarHistorial.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
-            btnLimpiarHistorial.IconColor = Color.White;
-            btnLimpiarHistorial.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnLimpiarHistorial.IconSize = 32;
-            btnLimpiarHistorial.Location = new Point(360, 6);
-            btnLimpiarHistorial.Name = "btnLimpiarHistorial";
-            btnLimpiarHistorial.Size = new Size(90, 38);
-            btnLimpiarHistorial.TabIndex = 0;
-            btnLimpiarHistorial.UseVisualStyleBackColor = false;
+            btnLimpiarHistorialVendidos.BackColor = Color.DarkRed;
+            btnLimpiarHistorialVendidos.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            btnLimpiarHistorialVendidos.IconColor = Color.White;
+            btnLimpiarHistorialVendidos.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnLimpiarHistorialVendidos.IconSize = 32;
+            btnLimpiarHistorialVendidos.Location = new Point(360, 6);
+            btnLimpiarHistorialVendidos.Name = "btnLimpiarHistorialVendidos";
+            btnLimpiarHistorialVendidos.Size = new Size(90, 38);
+            btnLimpiarHistorialVendidos.TabIndex = 0;
+            btnLimpiarHistorialVendidos.UseVisualStyleBackColor = false;
             // 
             // panel15
             // 
@@ -1944,8 +2037,8 @@
             panel3.Controls.Add(labelCash);
             panel3.Controls.Add(labelTextFondo);
             panel3.Controls.Add(iconCash);
-            panel3.Controls.Add(label6);
-            panel3.Controls.Add(pictureBox1);
+            panel3.Controls.Add(labelAlerta);
+            panel3.Controls.Add(pictureAlerta);
             panel3.Dock = DockStyle.Right;
             panel3.Location = new Point(382, 0);
             panel3.Name = "panel3";
@@ -2062,28 +2155,28 @@
             iconCash.TabIndex = 81;
             iconCash.TabStop = false;
             // 
-            // label6
+            // labelAlerta
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.ForeColor = Color.Orange;
-            label6.Location = new Point(58, 16);
-            label6.Name = "label6";
-            label6.Size = new Size(168, 25);
-            label6.TabIndex = 9;
-            label6.Text = "Mensaje de alerta";
-            label6.Visible = false;
+            labelAlerta.AutoSize = true;
+            labelAlerta.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelAlerta.ForeColor = Color.Orange;
+            labelAlerta.Location = new Point(58, 16);
+            labelAlerta.Name = "labelAlerta";
+            labelAlerta.Size = new Size(168, 25);
+            labelAlerta.TabIndex = 9;
+            labelAlerta.Text = "Mensaje de alerta";
+            labelAlerta.Visible = false;
             // 
-            // pictureBox1
+            // pictureAlerta
             // 
-            pictureBox1.Image = Properties.Resources.Alert;
-            pictureBox1.Location = new Point(14, 8);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(42, 41);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            pictureBox1.Visible = false;
+            pictureAlerta.Image = Properties.Resources.Alert;
+            pictureAlerta.Location = new Point(14, 8);
+            pictureAlerta.Name = "pictureAlerta";
+            pictureAlerta.Size = new Size(42, 41);
+            pictureAlerta.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureAlerta.TabIndex = 0;
+            pictureAlerta.TabStop = false;
+            pictureAlerta.Visible = false;
             // 
             // label5
             // 
@@ -2110,100 +2203,29 @@
             btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click;
             // 
-            // dataGridProductosVencidos
+            // comboFiltroTipo
             // 
-            dataGridProductosVencidos.AllowUserToAddRows = false;
-            dataGridProductosVencidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridProductosVencidos.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, FechaDeRegistro, FechaDeVencimiento, Lote, Laboratorio, Estado, Tipo, Via, PrecioDeNegocio, PrecioDeVenta, GananciaPorProducto });
-            dataGridProductosVencidos.Dock = DockStyle.Fill;
-            dataGridProductosVencidos.Location = new Point(0, 0);
-            dataGridProductosVencidos.Margin = new Padding(4, 3, 4, 3);
-            dataGridProductosVencidos.Name = "dataGridProductosVencidos";
-            dataGridProductosVencidos.RowHeadersVisible = false;
-            dataGridProductosVencidos.Size = new Size(839, 332);
-            dataGridProductosVencidos.TabIndex = 51;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.HeaderText = "Cantidad";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.HeaderText = "Referencia";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.HeaderText = "Nombre";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.HeaderText = "Detalle";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // FechaDeRegistro
-            // 
-            FechaDeRegistro.HeaderText = "FechaDeRegistro";
-            FechaDeRegistro.Name = "FechaDeRegistro";
-            // 
-            // FechaDeVencimiento
-            // 
-            FechaDeVencimiento.HeaderText = "FechaDeVencimiento";
-            FechaDeVencimiento.Name = "FechaDeVencimiento";
-            // 
-            // Lote
-            // 
-            Lote.HeaderText = "Lote";
-            Lote.Name = "Lote";
-            // 
-            // Laboratorio
-            // 
-            Laboratorio.HeaderText = "Laboratorio";
-            Laboratorio.Name = "Laboratorio";
-            // 
-            // Estado
-            // 
-            Estado.HeaderText = "Estado";
-            Estado.Name = "Estado";
-            // 
-            // Tipo
-            // 
-            Tipo.HeaderText = "Tipo";
-            Tipo.Name = "Tipo";
-            // 
-            // Via
-            // 
-            Via.HeaderText = "Via";
-            Via.Name = "Via";
-            // 
-            // PrecioDeNegocio
-            // 
-            PrecioDeNegocio.HeaderText = "PrecioDeNegocio";
-            PrecioDeNegocio.Name = "PrecioDeNegocio";
-            // 
-            // PrecioDeVenta
-            // 
-            PrecioDeVenta.HeaderText = "PrecioDeVenta";
-            PrecioDeVenta.Name = "PrecioDeVenta";
-            // 
-            // GananciaPorProducto
-            // 
-            GananciaPorProducto.HeaderText = "GananciaPorProducto";
-            GananciaPorProducto.Name = "GananciaPorProducto";
+            comboFiltroTipo.BackColor = SystemColors.Window;
+            comboFiltroTipo.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            comboFiltroTipo.FormattingEnabled = true;
+            comboFiltroTipo.Items.AddRange(new object[] { "Suplemento", "Elemento", "Bebidas" });
+            comboFiltroTipo.Location = new Point(448, 1);
+            comboFiltroTipo.Name = "comboFiltroTipo";
+            comboFiltroTipo.Size = new Size(129, 28);
+            comboFiltroTipo.TabIndex = 82;
+            comboFiltroTipo.Text = "Filtro tipo";
             // 
             // FormGestionProducto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(850, 542);
-            Controls.Add(tabControlCliente);
+            Controls.Add(tabControlProducto);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormGestionProducto";
             Text = "FormGestionPoducto";
-            tabControlCliente.ResumeLayout(false);
+            tabControlProducto.ResumeLayout(false);
             tabGeneral.ResumeLayout(false);
             panelProducto.ResumeLayout(false);
             panel4.ResumeLayout(false);
@@ -2237,11 +2259,12 @@
             panel8.ResumeLayout(false);
             panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)btnSearch).EndInit();
-            ((System.ComponentModel.ISupportInitialize)btnCloseTextSearch).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnCloseSearchRegistro).EndInit();
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
             tabVencido.ResumeLayout(false);
             panel14.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridProductosVencidos).EndInit();
             panel18.ResumeLayout(false);
             panel18.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox2).EndInit();
@@ -2266,20 +2289,19 @@
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)iconBase).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconCash).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridProductosVencidos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureAlerta).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private TabControl tabControlCliente;
+        private TabControl tabControlProducto;
         private TabPage tabGeneral;
         private Panel panelProducto;
         private Panel panel1;
-        private FontAwesome.Sharp.IconButton btnProgreso;
-        private FontAwesome.Sharp.IconButton btnAddClient;
-        private FontAwesome.Sharp.IconButton btnUpdateClient;
+        private FontAwesome.Sharp.IconButton btnVerVendios;
+        private FontAwesome.Sharp.IconButton btnVender;
+        private FontAwesome.Sharp.IconButton btnAddProducto;
         private Panel panelContenedorClient;
         private Panel panelDownDataGrid;
         private Panel panelTopDataGrid;
@@ -2287,8 +2309,8 @@
         private Panel panel2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private Panel panel3;
-        private Label label6;
-        private PictureBox pictureBox1;
+        private Label labelAlerta;
+        private PictureBox pictureAlerta;
         private Label label5;
         private FontAwesome.Sharp.IconButton btnVolver;
         private Label label29;
@@ -2327,20 +2349,20 @@
         private FontAwesome.Sharp.IconButton btnRefresh;
         private Panel panel4;
         private Panel panel5;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnUpdateProducto;
         private Panel panel6;
         private Label label3;
         private Label label2;
-        private FontAwesome.Sharp.IconButton iconButton2;
-        private TextBox textBox1;
+        private FontAwesome.Sharp.IconButton btnVerVencidos;
+        private TextBox textSearchConsulta;
         private FontAwesome.Sharp.IconButton iconButton4;
-        private FontAwesome.Sharp.IconButton iconCloseSearch;
+        private FontAwesome.Sharp.IconButton btnCloseSearchConsulta;
         private Panel panel7;
         private Label label7;
         private Panel panel8;
         private FontAwesome.Sharp.IconPictureBox btnSearch;
-        private TextBox textSearch;
-        private FontAwesome.Sharp.IconPictureBox btnCloseTextSearch;
+        private TextBox textSearchRegistro;
+        private FontAwesome.Sharp.IconPictureBox btnCloseSearchRegistro;
         private Label label9;
         private Panel panel9;
         private Panel panel10;
@@ -2396,7 +2418,7 @@
         private Panel panel16;
         private Panel panel17;
         private Panel panel18;
-        private TextBox textBox2;
+        private TextBox textTotalVencido;
         private Label label16;
         private Label label20;
         private FontAwesome.Sharp.IconButton iconButton3;
@@ -2405,7 +2427,7 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
         private Panel panel19;
-        private TextBox textBox7;
+        private TextBox textTotalVendido;
         private Label label22;
         private Label label26;
         private FontAwesome.Sharp.IconButton iconButton5;
@@ -2422,12 +2444,12 @@
         private DataGridViewTextBoxColumn Detalle;
         private DataGridViewTextBoxColumn Unidad;
         private DataGridViewTextBoxColumn Total;
-        private FontAwesome.Sharp.IconButton btnLimpiarHistorial;
-        private TextBox textBox8;
+        private FontAwesome.Sharp.IconButton btnLimpiarHistorialVendidos;
+        private TextBox textDineroVendido;
         private Label label23;
         private Label labelFiltroFecha;
         private ComboBox comboFecha;
-        private FontAwesome.Sharp.IconButton iconButton6;
+        private FontAwesome.Sharp.IconButton btnLimpiarHistorialVencidos;
         private DataGridView dataGridProductosVencidos;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -2443,5 +2465,6 @@
         private DataGridViewTextBoxColumn PrecioDeNegocio;
         private DataGridViewTextBoxColumn PrecioDeVenta;
         private DataGridViewTextBoxColumn GananciaPorProducto;
+        private ComboBox comboFiltroTipo;
     }
 }

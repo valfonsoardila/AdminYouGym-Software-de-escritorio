@@ -16,7 +16,9 @@
   <ItemGroup>
     <PackageReference Include="FontAwesome.Sharp" Version="6.3.0" />
     <PackageReference Include="NETCore.MailKit" Version="2.1.0" />
+    <PackageReference Include="Pdfium.Net.SDK" Version="4.83.2704" />
     <PackageReference Include="SpreadsheetLight" Version="3.5.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
 
   <ItemGroup>
@@ -51,6 +53,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Victor Ardila\.nuget\packages\pdfium.net.sdk\4.83.2704\build\..\content\libpdfium.dylib" />
   </ItemGroup>
 
 </Project>

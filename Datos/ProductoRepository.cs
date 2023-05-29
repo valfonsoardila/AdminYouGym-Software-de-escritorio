@@ -20,8 +20,8 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"Insert Into PRODUCTO (Cantidad, Referencia, Precio_De_Venta, Nombre, Detalle, Fecha_De_Registro, Fecha_De_Vencimiento, Lote, Laboratorio, Estado, Tipo, Via, Valor_Por_Unidad, Valor_Por_Blister, Valor_Por_Caja, Porcentaje_De_Venta, Precio_De_Negocio, Ganancia_Por_Producto, Ubicacion) 
-                                        values (@Cantidad, @Referencia, @Precio_De_Venta, @Nombre, @Detalle, @Fecha_De_Registro, @Fecha_De_Vencimiento, @Lote, @Laboratorio, @Estado, @Tipo, @Via, @Valor_Por_Unidad, @Valor_Por_Blister, @Valor_Por_Caja, @Porcentaje_De_Venta, @Precio_De_Negocio, @Ganancia_Por_Producto, @Ubicacion)";
+                command.CommandText = @"Insert Into PRODUCTO (Cantidad, Referencia, Precio_De_Venta, Nombre, Detalle, Fecha_De_Registro, Fecha_De_Vencimiento, Lote, Marca, Estado, Tipo, Valor_Por_Unidad, Valor_Por_Blister, Valor_Por_Caja, Porcentaje_De_Venta, Precio_De_Negocio, Ganancia_Por_Producto, Ubicacion) 
+                                        values (@Cantidad, @Referencia, @Precio_De_Venta, @Nombre, @Detalle, @Fecha_De_Registro, @Fecha_De_Vencimiento, @Lote, @Marca, @Estado, @Tipo, @Valor_Por_Unidad, @Valor_Por_Blister, @Valor_Por_Caja, @Porcentaje_De_Venta, @Precio_De_Negocio, @Ganancia_Por_Producto, @Ubicacion)";
                 command.Parameters.AddWithValue("@Cantidad", producto.Cantidad);
                 command.Parameters.AddWithValue("@Referencia", producto.Referencia);
                 command.Parameters.AddWithValue("@Nombre", producto.Nombre);
@@ -30,10 +30,9 @@ namespace Datos
                 command.Parameters.AddWithValue("@Fecha_De_Registro", producto.FechaDeRegistro);
                 command.Parameters.AddWithValue("@Fecha_De_Vencimiento", producto.FechaDeVencimiento);
                 command.Parameters.AddWithValue("@Lote", producto.Lote);
-                command.Parameters.AddWithValue("@Laboratorio", producto.Laboratorio);
+                command.Parameters.AddWithValue("@Marca", producto.Marca);
                 command.Parameters.AddWithValue("@Estado", producto.Estado);
                 command.Parameters.AddWithValue("@Tipo", producto.Tipo);
-                command.Parameters.AddWithValue("@Via", producto.Via);
                 command.Parameters.AddWithValue("@Valor_Por_Unidad", producto.ValorPorUnidad);
                 command.Parameters.AddWithValue("@Valor_Por_Blister", producto.ValorPorBlister);
                 command.Parameters.AddWithValue("@Valor_Por_Caja", producto.ValorPorPaquete);
@@ -53,13 +52,13 @@ namespace Datos
                 command.ExecuteNonQuery();
             }
         }
-        public List<Producto> ConsultarPorLaboratoio(string laboratorio)
+        public List<Producto> ConsultarPorMarca(string marca)
         {
             List<Producto> productos = new List<Producto>();
             using (var command = _connection.CreateCommand())
             {
                 command.CommandText = "select * Laboratorio from PRODUCTO";
-                command.Parameters.AddWithValue("@Laboratorio", laboratorio);
+                command.Parameters.AddWithValue("@Laboratorio", marca);
                 var dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -72,12 +71,12 @@ namespace Datos
             }
             return productos;
         }
-        public List<Producto> ConsultarTodosLaboratorios()
+        public List<Producto> ConsultarTodasLasMarcas()
         {
             List<Producto> productos = new List<Producto>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select from PRODUCTO * Laboratorio";
+                command.CommandText = "Select from PRODUCTO * Marca";
                 var dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -95,7 +94,7 @@ namespace Datos
             List<Producto> productos = new List<Producto>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select Cantidad, Referencia, Precio_De_Venta, Nombre, Detalle, Fecha_De_Registro, Fecha_De_Vencimiento, Lote, Laboratorio, Estado, Tipo, Via, Valor_Por_Unidad, Valor_Por_Blister, Valor_Por_Caja, Porcentaje_De_Venta, Precio_De_Negocio, Ganancia_Por_Producto, Ubicacion from PRODUCTO";
+                command.CommandText = "Select Cantidad, Referencia, Precio_De_Venta, Nombre, Detalle, Fecha_De_Registro, Fecha_De_Vencimiento, Lote, Marca, Estado, Tipo, Valor_Por_Unidad, Valor_Por_Blister, Valor_Por_Caja, Porcentaje_De_Venta, Precio_De_Negocio, Ganancia_Por_Producto, Ubicacion from PRODUCTO";
                 var dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -108,13 +107,13 @@ namespace Datos
             }
             return productos;
         }
-        public Producto BuscarExistenciaDeLaboratorio(string laboratorio)
+        public Producto BuscarExistenciaDeMarca(string marca)
         {
             SqlDataReader dataReader;
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "select * from PRODUCTO where Laboratorio=@Laboratorio";
-                command.Parameters.AddWithValue("@Laboratorio", laboratorio);
+                command.CommandText = "select * from PRODUCTO where Marca=@Marca";
+                command.Parameters.AddWithValue("@Laboratorio", marca);
                 dataReader = command.ExecuteReader();
                 dataReader.Read();
                 return DataReaderMapToProducto(dataReader);
@@ -150,25 +149,6 @@ namespace Datos
             {
                 command.CommandText = "select * from PRODUCTO where Estado=@Estado";
                 command.Parameters.AddWithValue("@Estado", estado);
-                var dataReader = command.ExecuteReader();
-                if (dataReader.HasRows)
-                {
-                    while (dataReader.Read())
-                    {
-                        Producto producto = DataReaderMapToProducto(dataReader);
-                        productos.Add(producto);
-                    }
-                }
-            }
-            return productos;
-        }
-        public List<Producto> BuscarPorViaAdminitracion(string via)
-        {
-            List<Producto> productos = new List<Producto>();
-            using (var command = _connection.CreateCommand())
-            {
-                command.CommandText = "select * from PRODUCTO where Via=@Via";
-                command.Parameters.AddWithValue("@Via", via);
                 var dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -234,7 +214,7 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"update PRODUCTO set Cantidad=@Cantidad, Nombre=@Nombre, Detalle=@Detalle, Fecha_De_Registro=@Fecha_De_Registro, Fecha_De_Vencimiento=@Fecha_De_Vencimiento, Lote=@Lote, Laboratorio=@Laboratorio,Estado=@Estado, Tipo=@Tipo, Via=@Via, Valor_Por_Unidad=@Valor_Por_Unidad, Valor_Por_Blister=@Valor_Por_Blister, Valor_Por_Caja=@Valor_Por_Caja, Porcentaje_De_Venta=@Porcentaje_De_Venta, Precio_De_Negocio=@Precio_De_Negocio, Precio_De_Venta=@Precio_De_Venta, Ganancia_Por_Producto=@Ganancia_Por_Producto, Ubicacion=@Ubicacion
+                command.CommandText = @"update PRODUCTO set Cantidad=@Cantidad, Nombre=@Nombre, Detalle=@Detalle, Fecha_De_Registro=@Fecha_De_Registro, Fecha_De_Vencimiento=@Fecha_De_Vencimiento, Lote=@Lote, Marca=@Marca, Estado=@Estado, Tipo=@Tipo, Valor_Por_Unidad=@Valor_Por_Unidad, Valor_Por_Blister=@Valor_Por_Blister, Valor_Por_Caja=@Valor_Por_Caja, Porcentaje_De_Venta=@Porcentaje_De_Venta, Precio_De_Negocio=@Precio_De_Negocio, Precio_De_Venta=@Precio_De_Venta, Ganancia_Por_Producto=@Ganancia_Por_Producto, Ubicacion=@Ubicacion
                                         where Referencia=@Referencia";
                 command.Parameters.AddWithValue("@Cantidad", producto.Cantidad);
                 command.Parameters.AddWithValue("@Referencia", producto.Referencia);
@@ -243,10 +223,9 @@ namespace Datos
                 command.Parameters.AddWithValue("@Fecha_De_Registro", producto.FechaDeRegistro);
                 command.Parameters.AddWithValue("@Fecha_De_Vencimiento", producto.FechaDeVencimiento);
                 command.Parameters.AddWithValue("@Lote", producto.Lote);
-                command.Parameters.AddWithValue("@Laboratorio", producto.Laboratorio);
+                command.Parameters.AddWithValue("@Marca", producto.Marca);
                 command.Parameters.AddWithValue("@Estado", producto.Estado);
                 command.Parameters.AddWithValue("@Tipo", producto.Tipo);
-                command.Parameters.AddWithValue("@Via", producto.Via);
                 command.Parameters.AddWithValue("@Valor_Por_Unidad", producto.ValorPorUnidad);
                 command.Parameters.AddWithValue("@Valor_Por_Blister", producto.ValorPorBlister);
                 command.Parameters.AddWithValue("@Valor_Por_Caja", producto.ValorPorPaquete);
@@ -270,10 +249,9 @@ namespace Datos
             producto.FechaDeRegistro = (DateTime)dataReader["Fecha_De_Registro"];
             producto.FechaDeVencimiento = (DateTime)dataReader["Fecha_De_Vencimiento"];
             producto.Lote = (string)dataReader["Lote"];
-            producto.Laboratorio = (string)dataReader["Laboratorio"];
+            producto.Marca = (string)dataReader["Marca"];
             producto.Estado = (string)dataReader["Estado"];
             producto.Tipo = (string)dataReader["Tipo"];
-            producto.Via = (string)dataReader["Via"];
             producto.ValorPorUnidad = (int)dataReader["Valor_Por_Unidad"];
             producto.ValorPorBlister = (int)dataReader["Valor_Por_Blister"];
             producto.ValorPorPaquete = (int)dataReader["Valor_Por_Caja"];
