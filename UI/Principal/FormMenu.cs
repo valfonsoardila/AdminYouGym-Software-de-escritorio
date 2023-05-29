@@ -279,7 +279,7 @@ namespace UI
         private void AbrirSumadorDelSistema()
         {
             labelHeaderRuta.Text = "Inicio";
-            AbrirFormulario<InicioResumen>();
+            AbrirFormulario<FormSumario>();
         }
         //funcion Abrir Formularios
         private void AbrirFormulario<MiForm>() where MiForm : Form, new()

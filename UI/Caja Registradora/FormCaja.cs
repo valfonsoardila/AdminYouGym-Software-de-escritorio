@@ -25,7 +25,7 @@ namespace UI
         List<Caja> cajasRegistradoras;
         Caja cajaRegistradora;
         FacturaService facturaService;
-        //DrogueriaService drogueriaService;
+        GimnasioService gimnasioService;
         string rutasVendidos;
         string rutaTxtCierreDeCaja;
         string nombreDeFactura;
@@ -44,10 +44,10 @@ namespace UI
         string detalleProducto;
         double precioProductos;
         double precioProductosRedondeado;
-        //Variables de drogueria
-        string idDrogueria = "#Drog";
-        string nombreDrogueria;
-        string nitDrogueria;
+        //Variables de gimnasio
+        string idGimnasio = "#Drog";
+        string nombreGimnasio;
+        string nitGimnasio;
         string fraseDistintiva;
         string regimen;
         string pbx;
@@ -67,7 +67,7 @@ namespace UI
         string formaDePago;
         public FormCaja()
         {
-            //drogueriaService = new DrogueriaService(ConfigConnection.ConnectionString);
+            gimnasioService = new GimnasioService(ConfigConnection.ConnectionString);
             productoVendidoTxtService = new ProductoVendidoTxtService();
             facturaService = new FacturaService(ConfigConnection.ConnectionString);
             cajaRegistradoraService = new CajaRegistradoraService(ConfigConnection.ConnectionString);
@@ -75,7 +75,7 @@ namespace UI
             ObtenerRutaDeGuardado();
             ObtenerRutaDeVendido();
             ConsultarYLlenarGridDeCajas();
-            BuscararDrogueria();
+            BuscararGimnasio();
             BuscarPorEstado();
         }
         private void btnVolver_Click(object sender, EventArgs e)
@@ -194,31 +194,6 @@ namespace UI
                 }
             }
         }
-        private void btnAbrirCaja_Click(object sender, EventArgs e)
-        {
-            if (rutasVendidos != null && rutaTxtCierreDeCaja != null)
-            {
-                FormAbrirCaja frm = new FormAbrirCaja();
-                frm.ShowDialog();
-                BuscarPorEstado();
-            }
-            else
-            {
-                if (rutasVendidos == null)
-                {
-                    string mensaje = "Aun no ha dado una ruta de guardado de productos vendidos";
-                    MessageBox.Show(mensaje, "Mensaje de campos", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    if (rutaTxtCierreDeCaja == null)
-                    {
-                        string mensaje = "Aun no ha dado una ruta de guardado de cierres de cajas";
-                        MessageBox.Show(mensaje, "Mensaje de campos", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                    }
-                }
-            }
-        }
         private Caja MapearCaja()
         {
             cajaRegistradora = new Caja();
@@ -231,27 +206,27 @@ namespace UI
             ventaDia = int.Parse(labelCash.Text);
             return cajaRegistradora;
         }
-        private void BuscararDrogueria()
+        private void BuscararGimnasio()
         {
-            //BusquedaDrogueriaRespuesta respuesta = new BusquedaDrogueriaRespuesta();
-            //respuesta = drogueriaService.BuscarPorId(idDrogueria);
-            //if (respuesta.Drogueria != null)
-            //{
-            //    nombreDrogueria = respuesta.Drogueria.NombreDrogueria;
-            //    nitDrogueria = respuesta.Drogueria.NIT;
-            //    fraseDistintiva = respuesta.Drogueria.FraseDistintiva;
-            //    regimen = respuesta.Drogueria.Regimen;
-            //    pbx = respuesta.Drogueria.PBX;
-            //    direccion = respuesta.Drogueria.Direccion;
-            //    telefono = respuesta.Drogueria.Telefono;
-            //}
-            //else
-            //{
-            //    if (respuesta.Drogueria == null)
-            //    {
+            BusquedaGimnasioRespuesta respuesta = new BusquedaGimnasioRespuesta();
+            respuesta = gimnasioService.BuscarPorId(idGimnasio);
+            if (respuesta.Gimnasio != null)
+            {
+                nombreGimnasio = respuesta.Gimnasio.NombreGimnasio;
+                nitGimnasio = respuesta.Gimnasio.NIT;
+                fraseDistintiva = respuesta.Gimnasio.FraseDistintiva;
+                regimen = respuesta.Gimnasio.Regimen;
+                pbx = respuesta.Gimnasio.PBX;
+                direccion = respuesta.Gimnasio.Direccion;
+                telefono = respuesta.Gimnasio.Telefono;
+            }
+            else
+            {
+                if (respuesta.Gimnasio == null)
+                {
 
-            //    }
-            //}
+                }
+            }
         }
         private void ObtenerRutaDeVendido()
         {
@@ -350,6 +325,31 @@ namespace UI
                 {
                     string mensaje = "No hay productos vendidos, no puede cerrar la caja";
                     MessageBox.Show(mensaje, "Mensaje de campos", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                }
+            }
+        }
+        private void btnAbrirCaja_Click(object sender, EventArgs e)
+        {
+            if (rutasVendidos != null && rutaTxtCierreDeCaja != null)
+            {
+                FormAbrirCaja frm = new FormAbrirCaja();
+                frm.ShowDialog();
+                BuscarPorEstado();
+            }
+            else
+            {
+                if (rutasVendidos == null)
+                {
+                    string mensaje = "Aun no ha dado una ruta de guardado de productos vendidos";
+                    MessageBox.Show(mensaje, "Mensaje de campos", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    if (rutaTxtCierreDeCaja == null)
+                    {
+                        string mensaje = "Aun no ha dado una ruta de guardado de cierres de cajas";
+                        MessageBox.Show(mensaje, "Mensaje de campos", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    }
                 }
             }
         }
@@ -501,9 +501,9 @@ namespace UI
             stringFormatRight.Alignment = StringAlignment.Far;
             stringFormatRight.LineAlignment = StringAlignment.Far;
 
-            e.Graphics.DrawString(nombreDrogueria, font, Brushes.Black, new RectangleF(0, y, ancho, 20), stringFormatCenter);
+            e.Graphics.DrawString(nombreGimnasio, font, Brushes.Black, new RectangleF(0, y, ancho, 20), stringFormatCenter);
 
-            e.Graphics.DrawString("NIT: " + nitDrogueria, font, Brushes.Black, new RectangleF(0, y + 40, ancho, 13), stringFormatCenter);
+            e.Graphics.DrawString("NIT: " + nitGimnasio, font, Brushes.Black, new RectangleF(0, y + 40, ancho, 13), stringFormatCenter);
             e.Graphics.DrawString(fraseDistintiva, font, Brushes.Black, new RectangleF(0, y + 53, ancho, 13), stringFormatCenter);
             e.Graphics.DrawString("PBX: " + pbx, font, Brushes.Black, new RectangleF(0, y + 66, ancho, 13), stringFormatCenter);
             //e.Graphics.DrawString("Regimen: " + regimen, font, Brushes.Black, new RectangleF(0, y + 79, ancho, 13), stringFormatCenter);

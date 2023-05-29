@@ -22,10 +22,10 @@ namespace UI
         Email email = new Email();
         RutasTxt rutasTxt = new RutasTxt();
         CadenaConexionXML cadenaConexion = new CadenaConexionXML();
-        //DrogueriaService drogueriaService;
-        //Drogueria drogueria;
-        //List<Drogueria> droguerias;
-        string idDrogueria = "#Drog";
+        GimnasioService gimnasioService;
+        Gimnasio gimnasio;
+        List<Gimnasio> gimnasios;
+        string idGimnasio = "#Drog";
         string Server;
         string newServer;
         string connectionString;
@@ -38,7 +38,7 @@ namespace UI
         string RutaProductosVendidos;
         public FormAjustes()
         {
-            //drogueriaService = new DrogueriaService(ConfigConnection.ConnectionString);
+            gimnasioService = new GimnasioService(ConfigConnection.ConnectionString);
             InitializeComponent();
             BuscarPorId();
             EncontrarCadenaDeConexion();
@@ -51,36 +51,36 @@ namespace UI
         }
         private void BuscarPorId()
         {
-            //BusquedaDrogueriaRespuesta respuesta = new BusquedaDrogueriaRespuesta();
-            //respuesta = drogueriaService.BuscarPorId(idDrogueria);
-            //if (respuesta.Drogueria != null)
-            //{
-            //    var droguerias = new List<Drogueria> { respuesta.Drogueria };
-            //    dataGridInfoDrogueria.DataSource = droguerias;
-            //    textNombreDrogueria.Text = respuesta.Drogueria.NombreDrogueria;
-            //    textNIT.Text= respuesta.Drogueria.NIT;
-            //    textCamaraDeComercio.Text = respuesta.Drogueria.CodigoDeCamara;
-            //    textFraseDistintiva.Text= respuesta.Drogueria.FraseDistintiva;
-            //    comboRegimen.Text= respuesta.Drogueria.Regimen;
-            //    textPBX.Text= respuesta.Drogueria.PBX;
-            //    textDireccion.Text = respuesta.Drogueria.Direccion;
-            //    textTelefono.Text= respuesta.Drogueria.Telefono;
-            //    labelAdvertencia.Visible = false;
-            //    btnRegistrarInfo.Enabled = false;
-            //}
-            //else
-            //{
-            //    if (respuesta.Drogueria == null)
-            //    {
-            //        labelAdvertencia.Visible = true;
-            //        btnRegistrarInfo.Enabled = true;
-            //    }
-            //}
+            BusquedaGimnasioRespuesta respuesta = new BusquedaGimnasioRespuesta();
+            respuesta = gimnasioService.BuscarPorId(idGimnasio);
+            if (respuesta.Gimnasio != null)
+            {
+                var gimnasios = new List<Gimnasio> { respuesta.Gimnasio };
+                dataGridInfoGimnasio.DataSource = gimnasios;
+                textNombreGimnasio.Text = respuesta.Gimnasio.NombreGimnasio;
+                textNIT.Text = respuesta.Gimnasio.NIT;
+                textCamaraDeComercio.Text = respuesta.Gimnasio.CodigoDeCamara;
+                textFraseDistintiva.Text = respuesta.Gimnasio.FraseDistintiva;
+                comboRegimen.Text = respuesta.Gimnasio.Regimen;
+                textPBX.Text = respuesta.Gimnasio.PBX;
+                textDireccion.Text = respuesta.Gimnasio.Direccion;
+                textTelefono.Text = respuesta.Gimnasio.Telefono;
+                labelAdvertencia.Visible = false;
+                btnRegistrarInfo.Enabled = false;
+            }
+            else
+            {
+                if (respuesta.Gimnasio == null)
+                {
+                    labelAdvertencia.Visible = true;
+                    btnRegistrarInfo.Enabled = true;
+                }
+            }
         }
         private void Limpiar()
         {
-            dataGridInfoDrogueria.DataSource = null;
-            textNombreDrogueria.Text = "";
+            dataGridInfoGimnasio.DataSource = null;
+            textNombreGimnasio.Text = "";
             textNIT.Text = "";
             textFraseDistintiva.Text = "";
             comboRegimen.Text = "";
@@ -197,26 +197,26 @@ namespace UI
                 }
             }
         }
-        //private Drogueria MapearDrogueria()
-        //{
-        //    drogueria = new Drogueria();
-        //    drogueria.IdDrogueria = "#Drog";
-        //    drogueria.NombreDrogueria = textNombreDrogueria.Text;
-        //    drogueria.NIT = textNIT.Text;
-        //    drogueria.CodigoDeCamara = textCamaraDeComercio.Text;
-        //    drogueria.FraseDistintiva = textFraseDistintiva.Text;
-        //    drogueria.Regimen = comboRegimen.Text;
-        //    drogueria.PBX = textPBX.Text;
-        //    drogueria.Direccion = textDireccion.Text;
-        //    drogueria.Telefono = textTelefono.Text;
-        //    return drogueria;
-        //}
+        private Gimnasio MapearGimnasio()
+        {
+            gimnasio = new Gimnasio();
+            gimnasio.IdGimnasio = "#Drog";
+            gimnasio.NombreGimnasio = textNombreGimnasio.Text;
+            gimnasio.NIT = textNIT.Text;
+            gimnasio.CodigoDeCamara = textCamaraDeComercio.Text;
+            gimnasio.FraseDistintiva = textFraseDistintiva.Text;
+            gimnasio.Regimen = comboRegimen.Text;
+            gimnasio.PBX = textPBX.Text;
+            gimnasio.Direccion = textDireccion.Text;
+            gimnasio.Telefono = textTelefono.Text;
+            return gimnasio;
+        }
 
         private void btnRegistrarInfo_Click(object sender, EventArgs e)
         {
-            //Drogueria drogueria = MapearDrogueria();
-            //string mensaje = drogueriaService.Guardar(drogueria);
-            //MessageBox.Show(mensaje, "Mensaje de Guardado", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            Gimnasio gimnasio = MapearGimnasio();
+            string mensaje = gimnasioService.Guardar(gimnasio);
+            MessageBox.Show(mensaje, "Mensaje de Guardado", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             BuscarPorId();
             ModificarCadenaConexion();
             EstablecerCarpetasRaiz(rutasTxtService);
@@ -224,8 +224,8 @@ namespace UI
         }
         private void btnEliminarInfo_Click(object sender, EventArgs e)
         {
-            //string mensaje = drogueriaService.Eliminar(idDrogueria);
-            //MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string mensaje = gimnasioService.Eliminar(idGimnasio);
+            MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Limpiar();
         }
         private void btnModificarInfo_Click(object sender, EventArgs e)
@@ -233,9 +233,9 @@ namespace UI
             var respuesta = MessageBox.Show("Está seguro de Modificar la información", "Mensaje de Modificacion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (respuesta == DialogResult.Yes)
             {
-                //Drogueria drogueria = MapearDrogueria();
-                //string mensaje = drogueriaService.Modificar(drogueria);
-                //MessageBox.Show(mensaje, "Mensaje de campos", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                Gimnasio gimnasio = MapearGimnasio();
+                string mensaje = gimnasioService.Modificar(gimnasio);
+                MessageBox.Show(mensaje, "Mensaje de campos", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 BuscarPorId();
                 ModificarCadenaConexion();
                 ModificarCarpetasRaiz(rutasTxtService);

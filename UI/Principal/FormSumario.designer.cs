@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class InicioResumen
+    partial class FormSumario
     {
         /// <summary>
         /// Required designer variable.
@@ -36,7 +36,6 @@
             labelTitleEntrenadores = new Label();
             lblFecha = new Label();
             lblhora = new Label();
-            timer1 = new System.Windows.Forms.Timer(components);
             panel13 = new Panel();
             pictureBox5 = new PictureBox();
             labelEstantes = new FontAwesome.Sharp.IconButton();
@@ -67,6 +66,7 @@
             labelPapelera = new Label();
             panel3 = new Panel();
             panel15 = new Panel();
+            Reloj = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel2.SuspendLayout();
@@ -188,10 +188,6 @@
             lblhora.TabIndex = 28;
             lblhora.Text = "10:59:58";
             lblhora.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // timer1
-            // 
-            timer1.Tick += timer1_Tick;
             // 
             // panel13
             // 
@@ -613,7 +609,11 @@
             panel15.Size = new Size(1009, 195);
             panel15.TabIndex = 37;
             // 
-            // InicioResumen
+            // Reloj
+            // 
+            Reloj.Tick += Reloj_Tick;
+            // 
+            // FormSumario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -626,8 +626,9 @@
             Controls.Add(panel4);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4, 3, 4, 3);
-            Name = "InicioResumen";
-            Text = "InicioResumen";
+            Name = "FormSumario";
+            Text = "FormSumario";
+            Load += FormSumario_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel2.ResumeLayout(false);
@@ -662,7 +663,6 @@
         private Panel panel2;
         private Label lblFecha;
         private Label lblhora;
-        private System.Windows.Forms.Timer timer1;
         private Panel panel13;
         private Label labelTitleAcerca;
         private Panel panel14;
@@ -695,5 +695,6 @@
         private PictureBox pictureBox3;
         private PictureBox pictureBox1;
         private PictureBox pictureBox4;
+        private System.Windows.Forms.Timer Reloj;
     }
 }

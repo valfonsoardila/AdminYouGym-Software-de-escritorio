@@ -31,10 +31,10 @@ namespace UI
         {
             label1 = new Label();
             labelNombreDrogueria = new Label();
-            textNombreDrogueria = new TextBox();
+            textNombreGimnasio = new TextBox();
             textNIT = new TextBox();
             labelNIT = new Label();
-            dataGridInfoDrogueria = new DataGridView();
+            dataGridInfoGimnasio = new DataGridView();
             labelAdvertencia = new Label();
             textCamaraDeComercio = new TextBox();
             labelCamaraComercio = new Label();
@@ -94,7 +94,7 @@ namespace UI
             btnEliminarInfo = new FontAwesome.Sharp.IconButton();
             btnModificarInfo = new FontAwesome.Sharp.IconButton();
             btnRegistrarInfo = new FontAwesome.Sharp.IconButton();
-            ((System.ComponentModel.ISupportInitialize)dataGridInfoDrogueria).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridInfoGimnasio).BeginInit();
             panel1.SuspendLayout();
             panelRegistrarDatos.SuspendLayout();
             panelTituloRegistrarDatos.SuspendLayout();
@@ -130,17 +130,17 @@ namespace UI
             labelNombreDrogueria.Location = new Point(6, 40);
             labelNombreDrogueria.Margin = new Padding(4, 0, 4, 0);
             labelNombreDrogueria.Name = "labelNombreDrogueria";
-            labelNombreDrogueria.Size = new Size(136, 15);
+            labelNombreDrogueria.Size = new Size(125, 15);
             labelNombreDrogueria.TabIndex = 60;
-            labelNombreDrogueria.Text = "Nombre de la drogueria:";
+            labelNombreDrogueria.Text = "Nombre del gimnasio:";
             // 
-            // textNombreDrogueria
+            // textNombreGimnasio
             // 
-            textNombreDrogueria.Location = new Point(146, 36);
-            textNombreDrogueria.Margin = new Padding(4, 3, 4, 3);
-            textNombreDrogueria.Name = "textNombreDrogueria";
-            textNombreDrogueria.Size = new Size(234, 23);
-            textNombreDrogueria.TabIndex = 61;
+            textNombreGimnasio.Location = new Point(146, 36);
+            textNombreGimnasio.Margin = new Padding(4, 3, 4, 3);
+            textNombreGimnasio.Name = "textNombreGimnasio";
+            textNombreGimnasio.Size = new Size(234, 23);
+            textNombreGimnasio.TabIndex = 61;
             // 
             // textNIT
             // 
@@ -160,15 +160,15 @@ namespace UI
             labelNIT.TabIndex = 62;
             labelNIT.Text = "NIT:";
             // 
-            // dataGridInfoDrogueria
+            // dataGridInfoGimnasio
             // 
-            dataGridInfoDrogueria.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridInfoDrogueria.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridInfoDrogueria.Location = new Point(100, 95);
-            dataGridInfoDrogueria.Margin = new Padding(4, 3, 4, 3);
-            dataGridInfoDrogueria.Name = "dataGridInfoDrogueria";
-            dataGridInfoDrogueria.Size = new Size(718, 69);
-            dataGridInfoDrogueria.TabIndex = 78;
+            dataGridInfoGimnasio.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridInfoGimnasio.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridInfoGimnasio.Location = new Point(100, 95);
+            dataGridInfoGimnasio.Margin = new Padding(4, 3, 4, 3);
+            dataGridInfoGimnasio.Name = "dataGridInfoGimnasio";
+            dataGridInfoGimnasio.Size = new Size(684, 69);
+            dataGridInfoGimnasio.TabIndex = 78;
             // 
             // labelAdvertencia
             // 
@@ -210,7 +210,7 @@ namespace UI
             panel1.Location = new Point(0, 21);
             panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(914, 42);
+            panel1.Size = new Size(880, 42);
             panel1.TabIndex = 82;
             // 
             // panel3
@@ -256,7 +256,7 @@ namespace UI
             panelRegistrarDatos.Controls.Add(textFraseDistintiva);
             panelRegistrarDatos.Controls.Add(labelFraseDistintiva);
             panelRegistrarDatos.Controls.Add(panelTituloRegistrarDatos);
-            panelRegistrarDatos.Controls.Add(textNombreDrogueria);
+            panelRegistrarDatos.Controls.Add(textNombreGimnasio);
             panelRegistrarDatos.Controls.Add(labelNombreDrogueria);
             panelRegistrarDatos.Controls.Add(labelNIT);
             panelRegistrarDatos.Controls.Add(textCamaraDeComercio);
@@ -265,7 +265,7 @@ namespace UI
             panelRegistrarDatos.Location = new Point(100, 164);
             panelRegistrarDatos.Margin = new Padding(4, 3, 4, 3);
             panelRegistrarDatos.Name = "panelRegistrarDatos";
-            panelRegistrarDatos.Size = new Size(718, 204);
+            panelRegistrarDatos.Size = new Size(684, 204);
             panelRegistrarDatos.TabIndex = 83;
             // 
             // comboRegimen
@@ -368,7 +368,7 @@ namespace UI
             panelTituloRegistrarDatos.Location = new Point(0, 0);
             panelTituloRegistrarDatos.Margin = new Padding(4, 3, 4, 3);
             panelTituloRegistrarDatos.Name = "panelTituloRegistrarDatos";
-            panelTituloRegistrarDatos.Size = new Size(718, 29);
+            panelTituloRegistrarDatos.Size = new Size(684, 29);
             panelTituloRegistrarDatos.TabIndex = 0;
             // 
             // labelTituloRegistrarDatos
@@ -380,7 +380,7 @@ namespace UI
             labelTituloRegistrarDatos.Name = "labelTituloRegistrarDatos";
             labelTituloRegistrarDatos.Size = new Size(207, 16);
             labelTituloRegistrarDatos.TabIndex = 84;
-            labelTituloRegistrarDatos.Text = "Registrar datos de drogueria";
+            labelTituloRegistrarDatos.Text = "Registrar datos del gimnasio";
             // 
             // panelConfigDeGuardado
             // 
@@ -401,7 +401,7 @@ namespace UI
             panelConfigDeGuardado.Location = new Point(100, 367);
             panelConfigDeGuardado.Margin = new Padding(4, 3, 4, 3);
             panelConfigDeGuardado.Name = "panelConfigDeGuardado";
-            panelConfigDeGuardado.Size = new Size(717, 198);
+            panelConfigDeGuardado.Size = new Size(683, 198);
             panelConfigDeGuardado.TabIndex = 92;
             // 
             // pictureFolderRutaVendido
@@ -504,7 +504,7 @@ namespace UI
             panelTituloConfigDeGuardado.Location = new Point(0, 0);
             panelTituloConfigDeGuardado.Margin = new Padding(4, 3, 4, 3);
             panelTituloConfigDeGuardado.Name = "panelTituloConfigDeGuardado";
-            panelTituloConfigDeGuardado.Size = new Size(717, 29);
+            panelTituloConfigDeGuardado.Size = new Size(683, 29);
             panelTituloConfigDeGuardado.TabIndex = 0;
             // 
             // labelTituloConfigDeGuardado
@@ -566,7 +566,7 @@ namespace UI
             panelAvanzado.Location = new Point(100, 652);
             panelAvanzado.Margin = new Padding(4, 3, 4, 3);
             panelAvanzado.Name = "panelAvanzado";
-            panelAvanzado.Size = new Size(718, 95);
+            panelAvanzado.Size = new Size(684, 95);
             panelAvanzado.TabIndex = 93;
             // 
             // labelConnectionString
@@ -612,7 +612,7 @@ namespace UI
             panelTituloAvanzado.Location = new Point(0, 0);
             panelTituloAvanzado.Margin = new Padding(4, 3, 4, 3);
             panelTituloAvanzado.Name = "panelTituloAvanzado";
-            panelTituloAvanzado.Size = new Size(718, 29);
+            panelTituloAvanzado.Size = new Size(684, 29);
             panelTituloAvanzado.TabIndex = 0;
             // 
             // labelInstruccionAvanzado
@@ -690,7 +690,7 @@ namespace UI
             panel2.Location = new Point(99, 558);
             panel2.Margin = new Padding(4, 3, 4, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(718, 95);
+            panel2.Size = new Size(684, 95);
             panel2.TabIndex = 94;
             // 
             // label7
@@ -750,7 +750,7 @@ namespace UI
             panel4.Location = new Point(0, 0);
             panel4.Margin = new Padding(4, 3, 4, 3);
             panel4.Name = "panel4";
-            panel4.Size = new Size(718, 29);
+            panel4.Size = new Size(684, 29);
             panel4.TabIndex = 0;
             // 
             // label3
@@ -876,7 +876,7 @@ namespace UI
             Controls.Add(panelConfigDeGuardado);
             Controls.Add(panelRegistrarDatos);
             Controls.Add(panel1);
-            Controls.Add(dataGridInfoDrogueria);
+            Controls.Add(dataGridInfoGimnasio);
             Controls.Add(btnEliminarInfo);
             Controls.Add(btnModificarInfo);
             Controls.Add(btnRegistrarInfo);
@@ -884,7 +884,7 @@ namespace UI
             Margin = new Padding(4, 3, 4, 3);
             Name = "FormAjustes";
             Text = "FormAjustes";
-            ((System.ComponentModel.ISupportInitialize)dataGridInfoDrogueria).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridInfoGimnasio).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panelRegistrarDatos.ResumeLayout(false);
@@ -918,13 +918,13 @@ namespace UI
         private Label label1;
         private FontAwesome.Sharp.IconButton btnVolver;
         private Label labelNombreDrogueria;
-        private TextBox textNombreDrogueria;
+        private TextBox textNombreGimnasio;
         private TextBox textNIT;
         private Label labelNIT;
         private FontAwesome.Sharp.IconButton btnRegistrarInfo;
         private FontAwesome.Sharp.IconButton btnModificarInfo;
         private FontAwesome.Sharp.IconButton btnEliminarInfo;
-        private DataGridView dataGridInfoDrogueria;
+        private DataGridView dataGridInfoGimnasio;
         private Label labelAdvertencia;
         private TextBox textCamaraDeComercio;
         private Label labelCamaraComercio;

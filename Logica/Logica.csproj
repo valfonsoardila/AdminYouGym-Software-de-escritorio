@@ -46,6 +46,7 @@
     <Compile Include="CadenaConexionXMLService.cs" />
     <Compile Include="CajaService.cs" />
     <Compile Include="ClienteService.cs" />
+    <Compile Include="GimnasioService.cs" />
     <Compile Include="EmailConsultaResponse.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="EntrenadorService.cs" />

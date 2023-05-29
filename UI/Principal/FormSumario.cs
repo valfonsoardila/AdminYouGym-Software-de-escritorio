@@ -12,10 +12,9 @@ using Entidades;
 
 namespace UI
 {
-    public partial class InicioResumen : Form
+    public partial class FormSumario : Form
     {
-
-        public InicioResumen()
+        public FormSumario()
         {
             InitializeComponent();
         }
@@ -23,14 +22,21 @@ namespace UI
         {
 
         }
-        private void timer1_Tick(object sender, EventArgs e)
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            MostrarDatos();
+        }
+
+        private void Reloj_Tick(object sender, EventArgs e)
         {
             lblhora.Text = DateTime.Now.ToString("hh:mm:ss ");
             lblFecha.Text = DateTime.Now.ToLongDateString();
         }
-        private void btnRefresh_Click(object sender, EventArgs e)
+
+        private void FormSumario_Load(object sender, EventArgs e)
         {
-            MostrarDatos();
+            Reloj.Interval = 1000; // Intervalo de 1 segundo
+            Reloj.Start();
         }
     }
 }

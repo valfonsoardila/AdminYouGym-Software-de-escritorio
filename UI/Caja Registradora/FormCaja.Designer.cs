@@ -508,6 +508,7 @@ namespace UI
             btnHistorial.Text = "Eliminar Cajas Cerradas";
             btnHistorial.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnHistorial.UseVisualStyleBackColor = false;
+            btnHistorial.Click += btnHistorial_Click;
             // 
             // btnCerrarCaja
             // 
@@ -525,6 +526,7 @@ namespace UI
             btnCerrarCaja.Text = "Cerrar Caja";
             btnCerrarCaja.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCerrarCaja.UseVisualStyleBackColor = false;
+            btnCerrarCaja.Click += btnCerrarCaja_Click;
             // 
             // btnAbrirCaja
             // 
@@ -542,6 +544,7 @@ namespace UI
             btnAbrirCaja.Text = "Abrir Caja";
             btnAbrirCaja.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAbrirCaja.UseVisualStyleBackColor = false;
+            btnAbrirCaja.Click += btnAbrirCaja_Click;
             // 
             // panel5
             // 
