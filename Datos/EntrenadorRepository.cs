@@ -21,11 +21,12 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into ENTRENADOR(Id, Tipo_De_Id, Codigo_Entrenador,Nombres, Apellidos, Fecha_De_Nacimiento, Edad, Sexo, Direccion_Domicilio, Telefono, Correo, Salario, Horas_Extras_De_Trabajo, Dias_De_Trabajo, Meses_De_Contrato, Tipo_De_Contrato) " +
-                    "Values (@Id, @Tipo_De_Id, @Codigo_Entrenador, @Nombres, @Apellidos, @Fecha_De_Nacimiento, @Edad, @Sexo, @Direccion_Domicilio, @Telefono, @Correo, @Salario, @Horas_Extras_De_Trabajo, @Dias_De_Trabajo, @Meses_De_Contrato, @Tipo_De_Contrato)";
+                command.CommandText = "Insert Into ENTRENADOR(Id, Tipo_De_Id, Codigo_Entrenador, ImagenPerfil,Nombres, Apellidos, Fecha_De_Nacimiento, Edad, Sexo, Direccion_Domicilio, Telefono, Correo, Salario, Horas_Extras_De_Trabajo, Dias_De_Trabajo, Meses_De_Contrato, Tipo_De_Contrato) " +
+                    "Values (@Id, @Tipo_De_Id, @Codigo_Entrenador, @ImagenPerfil, @Nombres, @Apellidos, @Fecha_De_Nacimiento, @Edad, @Sexo, @Direccion_Domicilio, @Telefono, @Correo, @Salario, @Horas_Extras_De_Trabajo, @Dias_De_Trabajo, @Meses_De_Contrato, @Tipo_De_Contrato)";
                 command.Parameters.AddWithValue("@Id", entrenador.Identificacion);
                 command.Parameters.AddWithValue("@Tipo_De_Id", entrenador.TipoDeIdentificacion);
                 command.Parameters.AddWithValue("@Codigo_Entrenador", entrenador.CodigoEntrenador);
+                command.Parameters.AddWithValue("@ImagenPerfil", entrenador.ImagenPerfil);
                 command.Parameters.AddWithValue("@Nombres", entrenador.Nombres);
                 command.Parameters.AddWithValue("@Apellidos", entrenador.Apellidos);
                 command.Parameters.AddWithValue("@Fecha_De_Nacimiento", entrenador.FechaDeNacimiento);
@@ -47,11 +48,12 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"Insert Into ENTRENADOR (Id, Tipo_De_Id, Codigo_Entrenador, Nombres, Apellidos, Fecha_De_Nacimiento, Edad, Sexo, Direccion_Domicilio, Telefono, Correo, Salario, Horas_Extras_De_Trabajo, Dias_De_Trabajo, Meses_De_Contrato, Tipo_De_Contrato) 
-                                        values (@Id, @Tipo_De_Id, @Codigo_Entrenador, @Nombres, @Apellidos, @Fecha_De_Nacimiento, @Edad, @Sexo, @Direccion_Domicilio, @Telefono, @Correo, @Salario, @Horas_Extras_De_Trabajo, @Dias_De_Trabajo, @Meses_De_Contrato, @Tipo_De_Contrato)";
+                command.CommandText = @"Insert Into ENTRENADOR (Id, Tipo_De_Id, Codigo_Entrenador, ImagenPerfil, Nombres, Apellidos, Fecha_De_Nacimiento, Edad, Sexo, Direccion_Domicilio, Telefono, Correo, Salario, Horas_Extras_De_Trabajo, Dias_De_Trabajo, Meses_De_Contrato, Tipo_De_Contrato) 
+                                        values (@Id, @Tipo_De_Id, @Codigo_Entrenador, @ImagenPerfil, @Nombres, @Apellidos, @Fecha_De_Nacimiento, @Edad, @Sexo, @Direccion_Domicilio, @Telefono, @Correo, @Salario, @Horas_Extras_De_Trabajo, @Dias_De_Trabajo, @Meses_De_Contrato, @Tipo_De_Contrato)";
                 command.Parameters.AddWithValue("@Id", entrenador.Identificacion);
                 command.Parameters.AddWithValue("@Tipo_De_Id", entrenador.TipoDeIdentificacion);
                 command.Parameters.AddWithValue("@Codigo_Entrenador", entrenador.CodigoEntrenador);
+                command.Parameters.AddWithValue("@ImagenPerfil", entrenador.ImagenPerfil);
                 command.Parameters.AddWithValue("@Nombres", entrenador.Nombres);
                 command.Parameters.AddWithValue("@Apellidos", entrenador.Apellidos);
                 command.Parameters.AddWithValue("@Fecha_De_Nacimiento", entrenador.FechaDeNacimiento);
@@ -82,7 +84,7 @@ namespace Datos
             List<Entrenador> entrenadores = new List<Entrenador>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select Id, Tipo_De_Id, Codigo_Entrenador, Nombres, Apellidos, Fecha_De_Nacimiento, Edad, Sexo, Direccion_Domicilio, Telefono, Correo, Salario, Horas_Extras_De_Trabajo, Dias_De_Trabajo, Meses_De_Contrato, Tipo_De_Contrato from ENTRENADOR ";
+                command.CommandText = "Select Id, Tipo_De_Id, Codigo_Entrenador, ImagenPerfil, Nombres, Apellidos, Fecha_De_Nacimiento, Edad, Sexo, Direccion_Domicilio, Telefono, Correo, Salario, Horas_Extras_De_Trabajo, Dias_De_Trabajo, Meses_De_Contrato, Tipo_De_Contrato from ENTRENADOR ";
                 var dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -111,10 +113,11 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"update ENTRENADOR set Tipo_De_Id = @Tipo_De_Id, Nombres = @Nombres, Apellidos = @Apellidos, Fecha_De_Nacimiento = @Fecha_De_Nacimiento, Edad = @Edad, Sexo = @Sexo, Direccion_Domicilio = @Direccion_Domicilio, Telefono = @Telefono, Correo = @Correo
+                command.CommandText = @"update ENTRENADOR set Tipo_De_Id = @Tipo_De_Id, ImagenPerfil=@ImagenPerfil, Nombres = @Nombres, Apellidos = @Apellidos, Fecha_De_Nacimiento = @Fecha_De_Nacimiento, Edad = @Edad, Sexo = @Sexo, Direccion_Domicilio = @Direccion_Domicilio, Telefono = @Telefono, Correo = @Correo
                                         where Id=@Id";
                 command.Parameters.AddWithValue("@Id", entrenador.Identificacion);
                 command.Parameters.AddWithValue("@Tipo_De_Id", entrenador.TipoDeIdentificacion);
+                command.Parameters.AddWithValue("@ImagenPerfil", entrenador.ImagenPerfil);
                 command.Parameters.AddWithValue("@Nombres", entrenador.Nombres);
                 command.Parameters.AddWithValue("@Apellidos", entrenador.Apellidos);
                 command.Parameters.AddWithValue("@Fecha_De_Nacimiento", entrenador.FechaDeNacimiento);
@@ -133,6 +136,7 @@ namespace Datos
             entrenador.Identificacion = (string)dataReader["Id"];
             entrenador.TipoDeIdentificacion = (string)dataReader["Tipo_De_Id"];
             entrenador.CodigoEntrenador = (string)dataReader["Codigo_Entrenador"];
+            entrenador.ImagenPerfil = (byte[])dataReader["ImagenPerfil"];
             entrenador.Nombres = (string)dataReader["Nombres"];
             entrenador.Apellidos = (string)dataReader["Apellidos"];
             entrenador.FechaDeNacimiento = (DateTime)dataReader["Fecha_De_Nacimiento"];

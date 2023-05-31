@@ -70,13 +70,13 @@ namespace Datos
                 var filas = command.ExecuteNonQuery();
             }
         }
-        public Gimnasio BuscarPorId(string nit)
+        public Gimnasio BuscarPorId(string id)
         {
             SqlDataReader dataReader;
             using (var command = _connection.CreateCommand())
             {
                 command.CommandText = "select * from GIMNASIO where Id_Gimnasio=@Id_Gimnasio";
-                command.Parameters.AddWithValue("@Id_Gimnasio", nit);
+                command.Parameters.AddWithValue("@Id_Gimnasio", id);
                 dataReader = command.ExecuteReader();
                 dataReader.Read();
                 return DataReaderMapToGimnasio(dataReader);

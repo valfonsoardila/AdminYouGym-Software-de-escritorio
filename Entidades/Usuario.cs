@@ -9,22 +9,16 @@ namespace Entidades
     public class Usuario
     {
         //Constructor
-        public Usuario(string identificacion, string tipoDeIdentificacion, string nombres, string apellidos, DateTime fechaDeNacimiento, int edad, string direccion, string sexo, string telefono, string rol, string correoElectronico, string nombreUsuario, string contraseña, string codigoUsuario)
+        public Usuario(string codigoUsuario, byte[] imagenPerfil, string nombres, string apellidos, string rol, string correoElectronico, string nombreUsuario, string contraseña)
         {
-            Identificacion = identificacion;
-            TipoDeIdentificacion = tipoDeIdentificacion;
+            CodigoUsuario = codigoUsuario;
+            ImagenPerfil = imagenPerfil;
             Nombres = nombres;
             Apellidos = apellidos;
-            FechaDeNacimiento = fechaDeNacimiento;
-            Edad = edad;
-            Direccion = direccion;
-            Sexo = sexo;
-            Telefono = telefono;
             Rol = rol;
             CorreoElectronico = correoElectronico;
             NombreUsuario = nombreUsuario;
             Contraseña = contraseña;
-            CodigoUsuario = codigoUsuario;
         }
         //Constructor Sobrecargado
         public Usuario()
@@ -32,36 +26,23 @@ namespace Entidades
 
         }
         /*Atributos de la clase*/
-        public string Identificacion { get; set; }
-        public string TipoDeIdentificacion { get; set; }
+        public string CodigoUsuario { get; set; }
+        public byte[] ImagenPerfil { get; set; }
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
-        public DateTime FechaDeNacimiento { get; set; }
-        public int Edad { get; set; }
-        public string Sexo { get; set; }
-        public string Direccion { get; set; }
-        public string Telefono { get; set; }
         public string Rol { get; set; }
         public string CorreoElectronico { get; set; }
         public string NombreUsuario { get; set; }
         public string Contraseña { get; set; }
-        public string CodigoUsuario { get; set; }
-
-        /*Metodos de la clase*/
         public void GenerarCodigoUsuario()
         {
-            string a = "#Em";
+            string a = "#User";
             int b;
             string codigo;
             Random aleatorio = new Random();
-            b = aleatorio.Next(100000, 200000);
+            b = aleatorio.Next(400000, 500000);
             codigo = a + b;
             CodigoUsuario = codigo;
-        }
-        public void CalcularEdad()
-        {
-            int AñoActual = DateTime.Now.Year;
-            Edad = AñoActual - FechaDeNacimiento.Year;
         }
     }
 }

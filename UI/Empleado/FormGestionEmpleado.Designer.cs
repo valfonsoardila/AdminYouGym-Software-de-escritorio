@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class FormGestionAdministrador
+    partial class FormGestionEmpleado
     {
         /// <summary>
         /// Required designer variable.
@@ -37,7 +37,7 @@
             btnVolver = new FontAwesome.Sharp.IconButton();
             tabControlAdmins = new TabControl();
             tabGeneral = new TabPage();
-            panelAdministrador = new Panel();
+            panelEmpleado = new Panel();
             panel1 = new Panel();
             btnProgreso = new FontAwesome.Sharp.IconButton();
             btnAddAdmin = new FontAwesome.Sharp.IconButton();
@@ -91,7 +91,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureAlert).BeginInit();
             tabControlAdmins.SuspendLayout();
             tabGeneral.SuspendLayout();
-            panelAdministrador.SuspendLayout();
+            panelEmpleado.SuspendLayout();
             panel1.SuspendLayout();
             panelContenedorClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridClient).BeginInit();
@@ -135,9 +135,9 @@
             panel3.Controls.Add(labelAlert);
             panel3.Controls.Add(pictureAlert);
             panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(353, 0);
+            panel3.Location = new Point(380, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(474, 57);
+            panel3.Size = new Size(447, 57);
             panel3.TabIndex = 6;
             // 
             // labelAlert
@@ -170,9 +170,9 @@
             label5.ForeColor = Color.White;
             label5.Location = new Point(83, 12);
             label5.Name = "label5";
-            label5.Size = new Size(259, 32);
+            label5.Size = new Size(303, 32);
             label5.TabIndex = 2;
-            label5.Text = "GESTION DE ADMINS";
+            label5.Text = "GESTION DE EMPLEADOS";
             // 
             // btnVolver
             // 
@@ -200,7 +200,7 @@
             // 
             // tabGeneral
             // 
-            tabGeneral.Controls.Add(panelAdministrador);
+            tabGeneral.Controls.Add(panelEmpleado);
             tabGeneral.Location = new Point(4, 24);
             tabGeneral.Name = "tabGeneral";
             tabGeneral.Padding = new Padding(3);
@@ -209,15 +209,15 @@
             tabGeneral.Text = "General";
             tabGeneral.UseVisualStyleBackColor = true;
             // 
-            // panelAdministrador
+            // panelEmpleado
             // 
-            panelAdministrador.Controls.Add(panel1);
-            panelAdministrador.Controls.Add(panelContenedorClient);
-            panelAdministrador.Dock = DockStyle.Fill;
-            panelAdministrador.Location = new Point(3, 3);
-            panelAdministrador.Name = "panelAdministrador";
-            panelAdministrador.Size = new Size(813, 436);
-            panelAdministrador.TabIndex = 1;
+            panelEmpleado.Controls.Add(panel1);
+            panelEmpleado.Controls.Add(panelContenedorClient);
+            panelEmpleado.Dock = DockStyle.Fill;
+            panelEmpleado.Location = new Point(3, 3);
+            panelEmpleado.Name = "panelEmpleado";
+            panelEmpleado.Size = new Size(813, 436);
+            panelEmpleado.TabIndex = 1;
             // 
             // panel1
             // 
@@ -738,7 +738,7 @@
             label7.TabIndex = 0;
             label7.Text = "Registro de administrador";
             // 
-            // FormGestionAdministrador
+            // FormGestionEmpleado
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -746,8 +746,8 @@
             Controls.Add(tabControlAdmins);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "FormGestionAdministrador";
-            Text = "FormGestionAdministrador";
+            Name = "FormGestionEmpleado";
+            Text = "FormGestionEmpleado";
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
@@ -756,7 +756,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureAlert).EndInit();
             tabControlAdmins.ResumeLayout(false);
             tabGeneral.ResumeLayout(false);
-            panelAdministrador.ResumeLayout(false);
+            panelEmpleado.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panelContenedorClient.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridClient).EndInit();
@@ -788,7 +788,7 @@
         private FontAwesome.Sharp.IconButton btnVolver;
         private TabControl tabControlAdmins;
         private TabPage tabGeneral;
-        private Panel panelAdministrador;
+        private Panel panelEmpleado;
         private Panel panel1;
         private FontAwesome.Sharp.IconButton btnProgreso;
         private FontAwesome.Sharp.IconButton btnAddAdmin;

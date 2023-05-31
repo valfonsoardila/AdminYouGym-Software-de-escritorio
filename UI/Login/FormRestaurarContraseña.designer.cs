@@ -138,7 +138,7 @@ namespace UI
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = UI.Properties.Resources.Reset;
+            pictureBox1.Image = Properties.Resources.Reset;
             pictureBox1.Location = new Point(128, 5);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
@@ -250,7 +250,7 @@ namespace UI
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.ForeColor = Color.FromArgb(2, 56, 89);
+            label5.ForeColor = Color.Black;
             label5.Location = new Point(21, 291);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";

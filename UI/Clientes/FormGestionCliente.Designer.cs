@@ -66,8 +66,8 @@
             panel8 = new Panel();
             label10 = new Label();
             panel7 = new Panel();
-            iconButton3 = new FontAwesome.Sharp.IconButton();
-            pictureBox3 = new PictureBox();
+            btnCargarFoto = new FontAwesome.Sharp.IconButton();
+            picturePerfil = new PictureBox();
             comboBox2 = new ComboBox();
             label26 = new Label();
             textBox12 = new TextBox();
@@ -137,7 +137,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panel8.SuspendLayout();
             panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picturePerfil).BeginInit();
             panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnSearch).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnCloseTextSearch).BeginInit();
@@ -573,8 +573,8 @@
             // 
             // panel7
             // 
-            panel7.Controls.Add(iconButton3);
-            panel7.Controls.Add(pictureBox3);
+            panel7.Controls.Add(btnCargarFoto);
+            panel7.Controls.Add(picturePerfil);
             panel7.Controls.Add(comboBox2);
             panel7.Controls.Add(label26);
             panel7.Controls.Add(textBox12);
@@ -599,27 +599,28 @@
             panel7.Size = new Size(813, 189);
             panel7.TabIndex = 2;
             // 
-            // iconButton3
+            // btnCargarFoto
             // 
-            iconButton3.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton3.IconColor = Color.Black;
-            iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton3.Location = new Point(643, 158);
-            iconButton3.Name = "iconButton3";
-            iconButton3.Size = new Size(92, 23);
-            iconButton3.TabIndex = 19;
-            iconButton3.Text = "Cargar Foto";
-            iconButton3.UseVisualStyleBackColor = true;
+            btnCargarFoto.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnCargarFoto.IconColor = Color.Black;
+            btnCargarFoto.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCargarFoto.Location = new Point(643, 158);
+            btnCargarFoto.Name = "btnCargarFoto";
+            btnCargarFoto.Size = new Size(92, 23);
+            btnCargarFoto.TabIndex = 19;
+            btnCargarFoto.Text = "Cargar Foto";
+            btnCargarFoto.UseVisualStyleBackColor = true;
+            btnCargarFoto.Click += btnCargarFoto_Click;
             // 
-            // pictureBox3
+            // picturePerfil
             // 
-            pictureBox3.Image = Properties.Resources.User;
-            pictureBox3.Location = new Point(607, 6);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(158, 146);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 18;
-            pictureBox3.TabStop = false;
+            picturePerfil.Image = Properties.Resources.User;
+            picturePerfil.Location = new Point(607, 6);
+            picturePerfil.Name = "picturePerfil";
+            picturePerfil.Size = new Size(158, 146);
+            picturePerfil.SizeMode = PictureBoxSizeMode.Zoom;
+            picturePerfil.TabIndex = 18;
+            picturePerfil.TabStop = false;
             // 
             // comboBox2
             // 
@@ -1172,7 +1173,7 @@
             panel8.PerformLayout();
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picturePerfil).EndInit();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)btnSearch).EndInit();
@@ -1268,7 +1269,7 @@
         private Label label25;
         private ComboBox comboBox2;
         private Label label26;
-        private PictureBox pictureBox3;
+        private PictureBox picturePerfil;
         private TextBox textBox14;
         private Label label28;
         private TextBox textBox13;
@@ -1279,7 +1280,7 @@
         private FontAwesome.Sharp.IconPictureBox btnCloseTextSearch;
         private TextBox textSearch;
         private FontAwesome.Sharp.IconPictureBox btnSearch;
-        private FontAwesome.Sharp.IconButton iconButton3;
+        private FontAwesome.Sharp.IconButton btnCargarFoto;
         private TextBox textHombres;
         private Label label3;
         private TextBox textTotal;

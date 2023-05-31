@@ -36,7 +36,8 @@ namespace UI
             connectionString = ConfigurationManager.ConnectionStrings["conexion"].ConnectionString;
             labelConnectionString.Text = connectionString;
             XmlDocument xmlDocument = new XmlDocument();
-            //xmlDocument.Load(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
+            string configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None).FilePath;
+            xmlDocument.Load(configFile);
             foreach (XmlElement xmlElement in xmlDocument.DocumentElement)
             {
                 if (xmlElement.Name.Equals("connectionStrings"))

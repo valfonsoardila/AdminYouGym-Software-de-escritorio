@@ -15,12 +15,13 @@ using System.Threading;
 using DocumentFormat.OpenXml.Presentation;
 using DocumentFormat.OpenXml.Drawing;
 using Org.BouncyCastle.Ocsp;
+using System.Drawing.Drawing2D;
 
 namespace UI
 {
     public partial class FormMenu : Form
     {
-        UsuarioService empleadoService;
+        UsuarioService usuarioService;
         IdUsuarioTxtService idUsuarioTxtService = new IdUsuarioTxtService();
         int cantidadFormularios = 4;
         string rutaFacturasVenta;
@@ -32,7 +33,7 @@ namespace UI
         private readonly object sender;
         public FormMenu()
         {
-            //empleadoService = new UsuarioService(ConfigConnection.ConnectionString);
+            usuarioService = new UsuarioService(ConfigConnection.ConnectionString);
             InitializeComponent();
             customizeDesign();
             EliminarIdSesionDeUsuario();
@@ -45,44 +46,81 @@ namespace UI
         public void ValidarUsuario()
         {
             BusquedaUsuarioRespuesta respuesta = new BusquedaUsuarioRespuesta();
-            respuesta = empleadoService.BuscarPorIdentificacion(idUsuario);
+            respuesta = usuarioService.BuscarPorIdentificacion(idUsuario);
             if (respuesta.Usuario != null)
             {
                 rol = respuesta.Usuario.Rol;
                 if (rol == "Programador")
                 {
                     btnGestionCaja.Enabled = true;
-                    btnGestionCaja.Visible = true;
-                    btnGestionUsurio.Enabled = true;
-                    btnGestionUsurio.Visible = true;
+                    btnAdministrador.Enabled = true;
+                    btnEmpleado.Enabled = true;
+                    btnGestionMembresia.Enabled = true;
                     btnGestionPlanesDeEjercicio.Enabled = true;
+                    btnGestionProductos.Enabled = true;
+                    btnAjustes.Enabled = true;
                 }
                 else
                 {
-                    if (rol == "Secretario(a)")
+                    if (rol == "Administrador")
                     {
-                        btnGestionCaja.Visible = true;
                         btnGestionCaja.Enabled = true;
-                        btnGestionUsurio.Enabled = false;
-                        btnGestionUsurio.Visible = false;
-                        btnGestionPlanesDeEjercicio.Enabled = false;
+                        btnAdministrador.Enabled = true;
+                        btnEmpleado.Enabled = true;
+                        btnGestionMembresia.Enabled = true;
+                        btnGestionPlanesDeEjercicio.Enabled = true;
+                        btnGestionProductos.Enabled = true;
+                        btnAjustes.Enabled = false;
                     }
                     else
                     {
-                        if (rol == "Tesorero(a)")
+                        if (rol == "Empleado")
                         {
-                            btnGestionUsurio.Visible = true;
-                            btnGestionUsurio.Enabled = true;
-                            btnGestionCaja.Enabled = false;
-                            btnGestionCaja.Visible = false;
-                            btnGestionPlanesDeEjercicio.Enabled = false;
+                            btnGestionCaja.Enabled = true;
+                            btnAdministrador.Enabled = false;
+                            btnEmpleado.Enabled = false;
+                            btnGestionMembresia.Enabled = true;
+                            btnGestionPlanesDeEjercicio.Enabled = true;
+                            btnGestionProductos.Enabled = true;
+                            btnAjustes.Enabled = false;
                         }
                     }
+                }
+                labelNombrePerfil.Text = respuesta.Usuario.Nombres + " " + respuesta.Usuario.Apellidos;
+                labelRolPerfil.Text = respuesta.Usuario.Rol;
+                using (MemoryStream ms = new MemoryStream(respuesta.Usuario.ImagenPerfil))
+                {
+                    // Carga la imagen desde el MemoryStream
+                    Image imagen = Image.FromStream(ms);
+                    // Asigna la imagen al control PictureBox
+                    picturePerfil.Image = imagen;
+                    SetCircularPictureBox(picturePerfil);
                 }
             }
             GuardarIdUsuarioSesion(idUsuario);
         }
+        private void SetCircularPictureBox(PictureBox pictureBox)
+        {
+            // Crear un objeto de región circular
+            GraphicsPath circularPath = new GraphicsPath();
+            circularPath.AddEllipse(0, 0, pictureBox.Width - 1, pictureBox.Height - 1);
+            Region circularRegion = new Region(circularPath);
 
+            // Establecer la región circular al PictureBox
+            pictureBox.Region = circularRegion;
+
+            // Suscribirse al evento Paint del PictureBox
+            pictureBox.Paint += picturePerfil_Paint;
+        }
+        private void picturePerfil_Paint(object sender, PaintEventArgs e)
+        {
+            // Dibujar el borde circular en el PictureBox
+            PictureBox pictureBox = (PictureBox)sender;
+            using (Pen pen = new Pen(Color.White, 2))
+            {
+                e.Graphics.DrawEllipse(pen, 0, 0, pictureBox.Width - 1, pictureBox.Height - 1);
+            }
+        }
         public void GuardarIdUsuarioSesion(string idUsuario)
         {
             IdUsuarioTxt idUsuarioTxt = new IdUsuarioTxt(idUsuario);
@@ -128,6 +166,8 @@ namespace UI
         {
             subMenuUsuario.Visible = false;
             subMenuUsuario.Visible = false;
+            panelLogoContainer.Width = 217;
+            panelLogoContainer.Height = 107;
             btnCloseSidebar_Click(sender, e);
             AbrirSumadorDelSistema();
             iconThemeMoon.IconColor = Color.LightGray;
@@ -168,8 +208,10 @@ namespace UI
             btnGestionProductos.Text = "";
             btnAjustes.Text = "";
             panelSidebarClose.Visible = true;
+            panelLogoContainer.Width = 46;
+            panelLogoContainer.Height = 107;
+            panelPerfil.Visible = false;
         }
-
         private void btnOpenSidebar_Click(object sender, EventArgs e)
         {
             panelSidebar.Width = 186;
@@ -183,6 +225,9 @@ namespace UI
             btnGestionPlanesDeEjercicio.Text = "Planes de ejercicio";
             btnAjustes.Text = "Ajustes";
             panelSidebarClose.Visible = false;
+            panelLogoContainer.Width = 217;
+            panelLogoContainer.Height = 163;
+            panelPerfil.Visible = true;
         }
         private void btnGestionCaja_Click(object sender, EventArgs e)
         {
@@ -223,6 +268,11 @@ namespace UI
         {
             CerrarFormulariosCiclo();
             AbrirFormulario<FormGestionAdministrador>();
+        }
+        private void btnEmpleado_Click(object sender, EventArgs e)
+        {
+            CerrarFormulariosCiclo();
+            AbrirFormulario<FormGestionEmpleado>();
         }
         private void btnGestionMembresia_Click(object sender, EventArgs e)
         {
@@ -381,7 +431,7 @@ namespace UI
             btnModeDark.Visible = false;
             btnModeLight.Visible = true;
             iconThemeSun.IconColor = Color.LightGray;
-            iconThemeMoon.IconColor = Color.FromArgb(4,140,128);
+            iconThemeMoon.IconColor = Color.FromArgb(4, 140, 128);
         }
 
         private void btnModeLight_Click(object sender, EventArgs e)

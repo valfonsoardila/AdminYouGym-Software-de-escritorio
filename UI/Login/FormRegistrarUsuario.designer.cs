@@ -63,16 +63,16 @@ namespace UI
             iconSeePasword = new FontAwesome.Sharp.IconPictureBox();
             iconNoSeePasword = new FontAwesome.Sharp.IconPictureBox();
             panel2 = new Panel();
-            pictureBox1 = new PictureBox();
+            btnCargarFoto = new FontAwesome.Sharp.IconButton();
+            picturePerfil = new PictureBox();
             btnVolver = new FontAwesome.Sharp.IconButton();
-            iconButton3 = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnCerrar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnMinimizar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconSeePasword).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconNoSeePasword).BeginInit();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picturePerfil).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -452,8 +452,8 @@ namespace UI
             // 
             // panel2
             // 
-            panel2.Controls.Add(iconButton3);
-            panel2.Controls.Add(pictureBox1);
+            panel2.Controls.Add(btnCargarFoto);
+            panel2.Controls.Add(picturePerfil);
             panel2.Location = new Point(0, 67);
             panel2.Margin = new Padding(4, 3, 4, 3);
             panel2.Name = "panel2";
@@ -461,16 +461,30 @@ namespace UI
             panel2.TabIndex = 52;
             panel2.MouseDown += panel2_MouseDown;
             // 
-            // pictureBox1
+            // btnCargarFoto
             // 
-            pictureBox1.Image = Properties.Resources.User;
-            pictureBox1.Location = new Point(190, 0);
-            pictureBox1.Margin = new Padding(4, 3, 4, 3);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(155, 121);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            btnCargarFoto.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnCargarFoto.IconColor = Color.Black;
+            btnCargarFoto.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCargarFoto.Location = new Point(223, 127);
+            btnCargarFoto.Name = "btnCargarFoto";
+            btnCargarFoto.Size = new Size(92, 23);
+            btnCargarFoto.TabIndex = 20;
+            btnCargarFoto.Text = "Cargar Foto";
+            btnCargarFoto.UseVisualStyleBackColor = true;
+            btnCargarFoto.Click += btnCargarFoto_Click;
+            // 
+            // picturePerfil
+            // 
+            picturePerfil.Image = Properties.Resources.User;
+            picturePerfil.Location = new Point(210, 3);
+            picturePerfil.Margin = new Padding(4, 3, 4, 3);
+            picturePerfil.Name = "picturePerfil";
+            picturePerfil.Size = new Size(121, 121);
+            picturePerfil.SizeMode = PictureBoxSizeMode.Zoom;
+            picturePerfil.TabIndex = 0;
+            picturePerfil.TabStop = false;
+            picturePerfil.Paint += picturePerfil_Paint;
             // 
             // btnVolver
             // 
@@ -491,18 +505,6 @@ namespace UI
             btnVolver.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnVolver.UseVisualStyleBackColor = true;
             btnVolver.Click += btnVolver_Click;
-            // 
-            // iconButton3
-            // 
-            iconButton3.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton3.IconColor = Color.Black;
-            iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton3.Location = new Point(223, 127);
-            iconButton3.Name = "iconButton3";
-            iconButton3.Size = new Size(92, 23);
-            iconButton3.TabIndex = 20;
-            iconButton3.Text = "Cargar Foto";
-            iconButton3.UseVisualStyleBackColor = true;
             // 
             // FormRegistrarUsuario
             // 
@@ -554,7 +556,7 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)iconSeePasword).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconNoSeePasword).EndInit();
             panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picturePerfil).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -591,12 +593,12 @@ namespace UI
         private Label label9;
         private Button btnRegistrar;
         private Panel panel2;
-        private PictureBox pictureBox1;
+        private PictureBox picturePerfil;
         private ComboBox comboRol;
         private Label label2;
         private FontAwesome.Sharp.IconPictureBox iconSeePasword;
         private FontAwesome.Sharp.IconPictureBox iconNoSeePasword;
         private Label labelAdvertencia;
-        private FontAwesome.Sharp.IconButton iconButton3;
+        private FontAwesome.Sharp.IconButton btnCargarFoto;
     }
 }

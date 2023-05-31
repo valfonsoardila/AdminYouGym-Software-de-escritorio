@@ -25,7 +25,7 @@ namespace UI
         GimnasioService gimnasioService;
         Gimnasio gimnasio;
         List<Gimnasio> gimnasios;
-        string idGimnasio = "#Drog";
+        string idGimnasio = "#Gym";
         string Server;
         string newServer;
         string connectionString;
@@ -158,9 +158,13 @@ namespace UI
             {
                 if (emailConsultaResponse.Emails.Count == 0)
                 {
-                    email.CorreoElectronicoOrigen = textCorreo.Text;
-                    email.Contraseña = textContraseña.Text;
-                    email.CorreoElectronicoDestino = textCorreo.Text;
+                    if (textCorreo.Text != "" && textContraseña.Text != "")
+                    {
+                        email.CorreoElectronicoOrigen = textCorreo.Text;
+                        email.Contraseña = textContraseña.Text;
+                        email.CorreoElectronicoDestino = textCorreo.Text;
+                        emailService.Guardar(email);
+                    }
                 }
             }
         }
@@ -200,7 +204,7 @@ namespace UI
         private Gimnasio MapearGimnasio()
         {
             gimnasio = new Gimnasio();
-            gimnasio.IdGimnasio = "#Drog";
+            gimnasio.IdGimnasio = "#Gym";
             gimnasio.NombreGimnasio = textNombreGimnasio.Text;
             gimnasio.NIT = textNIT.Text;
             gimnasio.CodigoDeCamara = textCamaraDeComercio.Text;

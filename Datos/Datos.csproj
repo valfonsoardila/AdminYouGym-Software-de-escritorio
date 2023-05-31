@@ -41,11 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministradorRepository.cs" />
     <Compile Include="ArchivoRespaldoRepository.cs" />
     <Compile Include="CadenaConexionXMLRepository.cs" />
     <Compile Include="CajaRepository.cs" />
     <Compile Include="ClienteRepository.cs" />
     <Compile Include="ConnectionManager.cs" />
+    <Compile Include="EmpleadoRepository.cs" />
     <Compile Include="GimnasioRepository.cs" />
     <Compile Include="EmailRepository.cs" />
     <Compile Include="EntrenadorRepository.cs" />

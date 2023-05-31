@@ -56,10 +56,10 @@
             label1 = new Label();
             tabRegistro = new TabPage();
             panel7 = new Panel();
-            iconButton6 = new FontAwesome.Sharp.IconButton();
+            btnCargarFoto = new FontAwesome.Sharp.IconButton();
             iconButton5 = new FontAwesome.Sharp.IconButton();
             iconButton2 = new FontAwesome.Sharp.IconButton();
-            pictureBox3 = new PictureBox();
+            picturePerfil = new PictureBox();
             comboBox2 = new ComboBox();
             label26 = new Label();
             textBox12 = new TextBox();
@@ -136,7 +136,7 @@
             panelTopDataGrid.SuspendLayout();
             tabRegistro.SuspendLayout();
             panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picturePerfil).BeginInit();
             panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox3).BeginInit();
@@ -463,10 +463,10 @@
             // 
             // panel7
             // 
-            panel7.Controls.Add(iconButton6);
+            panel7.Controls.Add(btnCargarFoto);
             panel7.Controls.Add(iconButton5);
             panel7.Controls.Add(iconButton2);
-            panel7.Controls.Add(pictureBox3);
+            panel7.Controls.Add(picturePerfil);
             panel7.Controls.Add(comboBox2);
             panel7.Controls.Add(label26);
             panel7.Controls.Add(textBox12);
@@ -491,17 +491,18 @@
             panel7.Size = new Size(813, 390);
             panel7.TabIndex = 6;
             // 
-            // iconButton6
+            // btnCargarFoto
             // 
-            iconButton6.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton6.IconColor = Color.Black;
-            iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton6.Location = new Point(644, 166);
-            iconButton6.Name = "iconButton6";
-            iconButton6.Size = new Size(92, 23);
-            iconButton6.TabIndex = 24;
-            iconButton6.Text = "Cargar Foto";
-            iconButton6.UseVisualStyleBackColor = true;
+            btnCargarFoto.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnCargarFoto.IconColor = Color.Black;
+            btnCargarFoto.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCargarFoto.Location = new Point(644, 166);
+            btnCargarFoto.Name = "btnCargarFoto";
+            btnCargarFoto.Size = new Size(92, 23);
+            btnCargarFoto.TabIndex = 24;
+            btnCargarFoto.Text = "Cargar Foto";
+            btnCargarFoto.UseVisualStyleBackColor = true;
+            btnCargarFoto.Click += btnCargarFoto_Click;
             // 
             // iconButton5
             // 
@@ -529,15 +530,15 @@
             iconButton2.TabIndex = 22;
             iconButton2.UseVisualStyleBackColor = false;
             // 
-            // pictureBox3
+            // picturePerfil
             // 
-            pictureBox3.Image = Properties.Resources.User;
-            pictureBox3.Location = new Point(607, 14);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(158, 146);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 18;
-            pictureBox3.TabStop = false;
+            picturePerfil.Image = Properties.Resources.User;
+            picturePerfil.Location = new Point(607, 14);
+            picturePerfil.Name = "picturePerfil";
+            picturePerfil.Size = new Size(158, 146);
+            picturePerfil.SizeMode = PictureBoxSizeMode.Zoom;
+            picturePerfil.TabIndex = 18;
+            picturePerfil.TabStop = false;
             // 
             // comboBox2
             // 
@@ -1218,7 +1219,7 @@
             tabRegistro.ResumeLayout(false);
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picturePerfil).EndInit();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox2).EndInit();
@@ -1271,7 +1272,7 @@
         private Label label7;
         private TabPage tabContrato;
         private Panel panel7;
-        private PictureBox pictureBox3;
+        private PictureBox picturePerfil;
         private TextBox textBox12;
         private Label label25;
         private TextBox textBox11;
@@ -1321,7 +1322,7 @@
         private DateTimePicker dateTimePicker2;
         private Label label15;
         private PictureBox pictureBox4;
-        private FontAwesome.Sharp.IconButton iconButton6;
+        private FontAwesome.Sharp.IconButton btnCargarFoto;
         private Label label17;
         private Label label16;
         private ComboBox comboBox4;

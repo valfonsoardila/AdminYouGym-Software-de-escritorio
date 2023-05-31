@@ -11,22 +11,31 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Logica;
 using Entidades;
+using UI.Properties;
+using System.Windows.Interop;
+using System.Drawing.Drawing2D;
 
 namespace UI
 {
     public partial class FormRegistrarUsuario : Form
     {
         UsuarioService usuarioService;
+        EmpleadoService empleadoService;
+        AdministradorService administradorService;
         List<Usuario> usuarios;
         Usuario usuario;
-        string rol = "Administrador";
-        string programador = "Programador";
+        Administrador administrador;
+        Empleado empleado;
+        string nombreDeUsuario;
         bool rolExistenteValidado;
         bool programadorExistenteValido;
         public FormRegistrarUsuario()
         {
             usuarioService = new UsuarioService(ConfigConnection.ConnectionString);
+            administradorService = new AdministradorService(ConfigConnection.ConnectionString);
+            empleadoService = new EmpleadoService(ConfigConnection.ConnectionString);
             InitializeComponent();
+            ImagenCircular();
         }
         //Drag Form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -68,31 +77,73 @@ namespace UI
             login.Show();
             this.Hide();
         }
-        private void BuscarPorProgramador()
+        private void ImagenCircular()
         {
-            BusquedaUsuarioRespuesta respuesta = new BusquedaUsuarioRespuesta();
-            respuesta = usuarioService.BuscarPorNombreDeUsuario(programador);
-            if (respuesta.Usuario != null)
+            SetCircularPictureBox(picturePerfil);
+        }
+        private void SetCircularPictureBox(PictureBox pictureBox)
+        {
+            // Crear un objeto de región circular
+            GraphicsPath circularPath = new GraphicsPath();
+            circularPath.AddEllipse(0, 0, pictureBox.Width - 1, pictureBox.Height - 1);
+            Region circularRegion = new Region(circularPath);
+
+            // Establecer la región circular al PictureBox
+            pictureBox.Region = circularRegion;
+
+            // Suscribirse al evento Paint del PictureBox
+            pictureBox.Paint += picturePerfil_Paint;
+        }
+        private void BuscarPorRol()
+        {
+            //BusquedaUsuarioRespuesta respuesta = new BusquedaUsuarioRespuesta();
+            //respuesta = usuarioService.BuscarPorNombreDeUsuario(programador);
+            //if (respuesta.Usuario != null)
+            //{
+            //    var usuario = new List<Usuario> { respuesta.Usuario };
+            //    rolExistenteValidado = true;
+            //    programadorExistenteValido = true;
+            //    labelAdvertencia.Text = "No puede registrarse como programador";
+            //    labelAdvertencia.Visible = true;
+            //}
+            //else
+            //{
+            //    if (respuesta.Usuario == null)
+            //    {
+            //        rolExistenteValidado = false;
+            //        labelAdvertencia.Visible = false;
+            //    }
+            //}
+            string rol = comboRol.Text;
+            ConsultaUsuarioRespuesta respuesta = new ConsultaUsuarioRespuesta();
+            respuesta = usuarioService.BuscarPorRol(rol);
+            usuarios = respuesta.Usuarios.ToList();
+            if (respuesta.Usuarios != null && respuesta.Usuarios.Count != 0)
             {
-                var usuario = new List<Usuario> { respuesta.Usuario };
-                rolExistenteValidado = true;
-                programadorExistenteValido = true;
-                labelAdvertencia.Text = "No puede registrarse como programador";
-                labelAdvertencia.Visible = true;
+                int rolProgramador = usuarioService.Totalizar().Cuenta;
+                if (rol == "Programador" && rolProgramador > 1)
+                {
+                    rolExistenteValidado = true;
+                    programadorExistenteValido = true;
+                    labelAdvertencia.Text = "No puede registrarse como programador";
+                    labelAdvertencia.Visible = true;
+                }
             }
             else
             {
-                if (respuesta.Usuario == null)
+                if (respuesta.Usuarios == null || respuesta.Usuarios.Count == 0)
                 {
+                    programadorExistenteValido = false;
                     rolExistenteValidado = false;
                     labelAdvertencia.Visible = false;
                 }
             }
         }
-        private void BuscarPorRol()
+        private void BuscarPorNombreDeUsuario()
         {
+            nombreDeUsuario = textUsuario.Text;
             BusquedaUsuarioRespuesta respuesta = new BusquedaUsuarioRespuesta();
-            respuesta = usuarioService.BuscarPorNombreDeUsuario(rol);
+            respuesta = usuarioService.BuscarPorNombreDeUsuario(nombreDeUsuario);
             if (respuesta.Usuario != null)
             {
                 var usuario = new List<Usuario> { respuesta.Usuario };
@@ -115,17 +166,56 @@ namespace UI
             usuario = new Usuario();
             usuario.Nombres = textNombre.Text;
             usuario.Apellidos = textApellido.Text;
-            usuario.Identificacion = textIdentificacion.Text;
-            usuario.TipoDeIdentificacion = comboTipoDeId.Text;
-            usuario.FechaDeNacimiento = DateTime.Parse(dateTimeFechaDeNacimiento.Text);
-            usuario.Sexo = comboSexo.Text;
-            usuario.Direccion = textDireccion.Text;
-            usuario.Telefono = textTelefono.Text;
             usuario.Rol = comboRol.Text;
             usuario.CorreoElectronico = textCorreo.Text;
             usuario.NombreUsuario = textUsuario.Text;
             usuario.Contraseña = textContraseña.Text;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                picturePerfil.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                usuario.ImagenPerfil = ms.ToArray();
+            }
             return usuario;
+        }
+        private Empleado MapearEmpleado()
+        {
+            empleado = new Empleado();
+            empleado.Nombres = textNombre.Text;
+            empleado.Apellidos = textApellido.Text;
+            empleado.Identificacion = textIdentificacion.Text;
+            empleado.TipoDeIdentificacion = comboTipoDeId.Text;
+            empleado.FechaDeNacimiento = DateTime.Parse(dateTimeFechaDeNacimiento.Text);
+            empleado.Sexo = comboSexo.Text;
+            empleado.Direccion = textDireccion.Text;
+            empleado.Telefono = textTelefono.Text;
+            empleado.Rol = comboRol.Text;
+            empleado.CorreoElectronico = textCorreo.Text;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                picturePerfil.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                empleado.ImagenPerfil = ms.ToArray();
+            }
+            return empleado;
+        }
+        private Administrador MapearAdministrador()
+        {
+            administrador = new Administrador();
+            administrador.Nombres = textNombre.Text;
+            administrador.Apellidos = textApellido.Text;
+            administrador.Identificacion = textIdentificacion.Text;
+            administrador.TipoDeIdentificacion = comboTipoDeId.Text;
+            administrador.FechaDeNacimiento = DateTime.Parse(dateTimeFechaDeNacimiento.Text);
+            administrador.Sexo = comboSexo.Text;
+            administrador.Direccion = textDireccion.Text;
+            administrador.Telefono = textTelefono.Text;
+            administrador.Rol = comboRol.Text;
+            administrador.CorreoElectronico = textCorreo.Text;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                picturePerfil.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                administrador.ImagenPerfil = ms.ToArray();
+            }
+            return administrador;
         }
         private void Limpiar()
         {
@@ -141,22 +231,46 @@ namespace UI
             comboSexo.Text = "M";
             textDireccion.Text = "";
             textTelefono.Text = "";
+            picturePerfil.Image = Resources.User;
         }
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            BuscarPorProgramador();
+            var mesg = "";
             BuscarPorRol();
-            if (comboRol.Text == "Usuario" || comboRol.Text == "Administrador" || comboRol.Text == "Programador")
+            BuscarPorNombreDeUsuario();
+            if (programadorExistenteValido != true)
             {
-                if (programadorExistenteValido != true)
+                if (rolExistenteValidado != true)
                 {
-                    if (rolExistenteValidado != true)
+                    if (comboRol.Text == "Administrador")
                     {
-                        Usuario usuario = MapearUsuario();
-                        var msg = usuarioService.Guardar(usuario);
-                        MessageBox.Show(msg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Administrador administrador = MapearAdministrador();
+                        mesg = administradorService.Guardar(administrador);
+                        MessageBox.Show(mesg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CrearSesionUsuario();
                         Limpiar();
                     }
+                    else
+                    {
+                        if (comboRol.Text == "Empleado")
+                        {
+                            Empleado empleado = MapearEmpleado();
+                            mesg = empleadoService.Guardar(empleado);
+                            MessageBox.Show(mesg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            CrearSesionUsuario();
+                            Limpiar();
+                        }
+                        else
+                        {
+                            CrearSesionUsuario();
+                            Limpiar();
+                        }
+                    }
+                }
+                else
+                {
+                    string msg = "Formato del combo de roles incorrecto";
+                    MessageBox.Show(msg, "Combo Roles", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
@@ -165,7 +279,13 @@ namespace UI
                 MessageBox.Show(msg, "Combo Roles", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
+        private void CrearSesionUsuario()
+        {
+            Usuario usuario = MapearUsuario();
+            usuarioService.Guardar(usuario);
+            //MessageBox.Show(mesg, "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Limpiar();
+        }
         private void textContraseña_Enter(object sender, EventArgs e)
         {
             if (textContraseña.Text == "Mayor a 6 caracteres")
@@ -233,6 +353,27 @@ namespace UI
             {
                 textCorreo.Text = "@gmail.com";
                 textCorreo.ForeColor = Color.Gray;
+            }
+        }
+
+        private void btnCargarFoto_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ventanaCargar = new OpenFileDialog();
+            DialogResult dr = ventanaCargar.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                picturePerfil.Image = Image.FromFile(ventanaCargar.FileName);
+                ImagenCircular();
+            }
+        }
+
+        private void picturePerfil_Paint(object sender, PaintEventArgs e)
+        {
+            // Dibujar el borde circular en el PictureBox
+            PictureBox pictureBox = (PictureBox)sender;
+            using (Pen pen = new Pen(Color.White, 2))
+            {
+                e.Graphics.DrawEllipse(pen, 0, 0, pictureBox.Width - 1, pictureBox.Height - 1);
             }
         }
     }

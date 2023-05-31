@@ -42,10 +42,39 @@ Monto_Inicial int,
 Monto_Final int,
 Venta_Del_Dia int
 );
+create table ADMINISTRADOR(
+Id varchar(12) primary key not null,
+Tipo_De_Id char(2)not null,
+ImagenPerfil image,
+Nombres varchar(30) not null,
+Apellidos varchar(30) not null,
+Fecha_De_Nacimiento datetime not null,
+Edad int,
+Sexo varchar(5),
+Direccion_Domicilio text,
+Telefono varchar(15),
+Correo varchar(100),
+Rol varchar(14),
+);
+create table EMPLEADO(
+Id varchar(12) primary key not null,
+Tipo_De_Id char(2)not null,
+ImagenPerfil image,
+Nombres varchar(30) not null,
+Apellidos varchar(30) not null,
+Fecha_De_Nacimiento datetime not null,
+Edad int,
+Sexo varchar(5),
+Direccion_Domicilio text,
+Telefono varchar(15),
+Correo varchar(100),
+Rol varchar(14),
+);
 create table CLIENTE(
 Id varchar(12) primary key not null,
 Codigo_Cliente nvarchar(10) not null,
 Tipo_De_Id char(2)not null,
+ImagenPerfil image,
 Nombres varchar(30) not null,
 Apellidos varchar(30) not null,
 Fecha_De_Nacimiento datetime not null,
@@ -79,6 +108,7 @@ create table ENTRENADOR(
 Id varchar(12) primary key not null,
 Tipo_De_Id char(2)not null,
 Codigo_Entrenador nvarchar(10) not null,
+ImagenPerfil image,
 Nombres varchar(30) not null,
 Apellidos varchar(30) not null,
 Fecha_De_Nacimiento datetime not null,
@@ -122,4 +152,14 @@ Precio_De_Negocio int,
 Precio_De_Venta int,
 Ganancia_Por_Producto int,
 Ubicacion varchar(12)not null
+);
+create table USUARIO(
+CodigoUsuario nvarchar(20) primary key not null,
+ImagenPerfil image,
+Nombres varchar(30) not null,
+Apellidos varchar(30) not null,
+Correo varchar(100) not null,
+Rol varchar(14) not null,
+NombreUsuario varchar(15) not null,
+Contraseña varchar(30) not null,
 );

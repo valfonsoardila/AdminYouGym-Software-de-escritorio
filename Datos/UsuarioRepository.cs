@@ -16,36 +16,30 @@ namespace Datos
         {
             _connection = connection._conexion;
         }
-        public void Guardar(Usuario Usuario)
+        public void Guardar(Usuario usuario)
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"Insert Into USUARIO (Codigo_Usuario, Id, Tipo_De_Id, Nombres, Apellidos, Fecha_De_Nacimiento, Edad, Sexo, Direccion_Domicilio, Telefono, Rol, Correo, NombreUsuario, Contraseña) 
-                                        values (@Codigo_Usuario, @Id, @Tipo_De_Id, @Nombres, @Apellidos, @Fecha_De_Nacimiento, @Edad, @Sexo, @Direccion_Domicilio, @Telefono, @Rol, @Correo, @NombreUsuario, @Contraseña)";
-                command.Parameters.AddWithValue("@Codigo_Usuario", Usuario.CodigoUsuario);
-                command.Parameters.AddWithValue("@Id", Usuario.Identificacion);
-                command.Parameters.AddWithValue("@Tipo_De_Id", Usuario.TipoDeIdentificacion);
-                command.Parameters.AddWithValue("@Nombres", Usuario.Nombres);
-                command.Parameters.AddWithValue("@Apellidos", Usuario.Apellidos);
-                command.Parameters.AddWithValue("@Fecha_De_Nacimiento", Usuario.FechaDeNacimiento);
-                command.Parameters.AddWithValue("@Edad", Usuario.Edad);
-                command.Parameters.AddWithValue("@Sexo", Usuario.Sexo);
-                command.Parameters.AddWithValue("@Direccion_Domicilio", Usuario.Direccion);
-                command.Parameters.AddWithValue("@Telefono", Usuario.Telefono);
-                command.Parameters.AddWithValue("@Rol", Usuario.Rol);
-                command.Parameters.AddWithValue("@Correo", Usuario.CorreoElectronico);
-                command.Parameters.AddWithValue("@NombreUsuario", Usuario.NombreUsuario);
-                command.Parameters.AddWithValue("@Contraseña", Usuario.Contraseña);
+                command.CommandText = @"Insert Into USUARIO (CodigoUsuario, ImagenPerfil, Nombres, Apellidos, Rol, Correo, NombreUsuario, Contraseña) 
+                                        values (@CodigoUsuario, @ImagenPerfil, @Nombres, @Apellidos, @Rol, @Correo, @NombreUsuario, @Contraseña)";
+                command.Parameters.AddWithValue("@CodigoUsuario", usuario.CodigoUsuario);
+                command.Parameters.AddWithValue("@ImagenPerfil", usuario.ImagenPerfil);
+                command.Parameters.AddWithValue("@Nombres", usuario.Nombres);
+                command.Parameters.AddWithValue("@Apellidos", usuario.Apellidos);
+                command.Parameters.AddWithValue("@Correo", usuario.CorreoElectronico);
+                command.Parameters.AddWithValue("@Rol", usuario.Rol);
+                command.Parameters.AddWithValue("@NombreUsuario", usuario.NombreUsuario);
+                command.Parameters.AddWithValue("@Contraseña", usuario.Contraseña);
                 var filas = command.ExecuteNonQuery();
             }
         }
-        public List<Usuario> BuscarPorSexo(string sexo)
+        public List<Usuario> BuscarPorRol(string rol)
         {
             List<Usuario> Usuarios = new List<Usuario>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "select * from USUARIO where Sexo=@Sexo";
-                command.Parameters.AddWithValue("@Sexo", sexo);
+                command.CommandText = "select * from USUARIO where Rol=@Rol";
+                command.Parameters.AddWithValue("@Rol", rol);
                 var dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -63,20 +57,8 @@ namespace Datos
             SqlDataReader dataReader;
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "select * from USUARIO where Id=@Id";
-                command.Parameters.AddWithValue("@Id", identificacion);
-                dataReader = command.ExecuteReader();
-                dataReader.Read();
-                return DataReaderMapToUsuario(dataReader);
-            }
-        }
-        public Usuario BuscarPorRol(string rol)
-        {
-            SqlDataReader dataReader;
-            using (var command = _connection.CreateCommand())
-            {
-                command.CommandText = "select * from USUARIO where Rol=@Rol";
-                command.Parameters.AddWithValue("@Rol", rol);
+                command.CommandText = "select * from USUARIO where CodigoUsuario=@CodigoUsuario";
+                command.Parameters.AddWithValue("@CodigoUsuario", identificacion);
                 dataReader = command.ExecuteReader();
                 dataReader.Read();
                 return DataReaderMapToUsuario(dataReader);
@@ -98,18 +80,12 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"update USUARIO set Codigo_Usuario=@Codigo_Usuario, Tipo_De_Id=@Tipo_De_Id, Nombres=@Nombres, Apellidos=@Apellidos, Fecha_De_Nacimiento=@Fecha_De_Nacimiento, Edad=@Edad, Sexo=@Sexo, Direccion_Domicilio=@Direccion_Domicilio, Telefono=@Telefono, Rol=@Rol, Correo=@Correo, NombreUsuario=@NombreUsuario, Contraseña=@Contraseña
-                                        where Id=@Id";
-                command.Parameters.AddWithValue("@Codigo_Usuario", Usuario.CodigoUsuario);
-                command.Parameters.AddWithValue("@Id", Usuario.Identificacion);
-                command.Parameters.AddWithValue("@Tipo_De_Id", Usuario.TipoDeIdentificacion);
+                command.CommandText = @"update USUARIO set ImagenPerfil=@ImagenPerfil, Nombres=@Nombres, Apellidos=@Apellidos, Rol=@Rol, Correo=@Correo, NombreUsuario=@NombreUsuario, Contraseña=@Contraseña
+                                        where CodigoUsuario=@CodigoUsuario";
+                command.Parameters.AddWithValue("@CodigoUsuario", Usuario.CodigoUsuario);
+                command.Parameters.AddWithValue("@ImagenPerfil", Usuario.ImagenPerfil);
                 command.Parameters.AddWithValue("@Nombres", Usuario.Nombres);
                 command.Parameters.AddWithValue("@Apellidos", Usuario.Apellidos);
-                command.Parameters.AddWithValue("@Fecha_De_Nacimiento", Usuario.FechaDeNacimiento);
-                command.Parameters.AddWithValue("@Edad", Usuario.Edad);
-                command.Parameters.AddWithValue("@Sexo", Usuario.Sexo);
-                command.Parameters.AddWithValue("@Direccion_Domicilio", Usuario.Direccion);
-                command.Parameters.AddWithValue("@Telefono", Usuario.Telefono);
                 command.Parameters.AddWithValue("@Rol", Usuario.Rol);
                 command.Parameters.AddWithValue("@Correo", Usuario.CorreoElectronico);
                 command.Parameters.AddWithValue("@NombreUsuario", Usuario.NombreUsuario);
@@ -122,7 +98,7 @@ namespace Datos
             List<Usuario> Usuarios = new List<Usuario>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select Codigo_Usuario, Id, Tipo_De_Id, Nombres, Apellidos, Fecha_De_Nacimiento, Edad, Sexo, Direccion_Domicilio, Telefono, Rol, Correo, NombreUsuario, Contraseña from USUARIO";
+                command.CommandText = "Select CodigoUsuario, ImagenPerfil, Nombres, Apellidos, Rol, Correo, NombreUsuario, Contraseña from USUARIO";
                 var dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -139,8 +115,8 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Delete from USUARIO where Id=@Id";
-                command.Parameters.AddWithValue("@Id", Usuario.Identificacion);
+                command.CommandText = "Delete from USUARIO where CodigoUsuario=@CodigoUsuario";
+                command.Parameters.AddWithValue("@CodigoUsuario", Usuario.CodigoUsuario);
                 command.ExecuteNonQuery();
             }
         }
@@ -148,16 +124,10 @@ namespace Datos
         {
             if (!dataReader.HasRows) return null;
             Usuario Usuario = new Usuario();
-            Usuario.CodigoUsuario = (string)dataReader["Codigo_Usuario"];
-            Usuario.Identificacion = (string)dataReader["Id"];
-            Usuario.TipoDeIdentificacion = (string)dataReader["Tipo_De_Id"];
+            Usuario.CodigoUsuario = (string)dataReader["CodigoUsuario"];
+            Usuario.ImagenPerfil = (byte[])dataReader["ImagenPerfil"];
             Usuario.Nombres = (string)dataReader["Nombres"];
             Usuario.Apellidos = (string)dataReader["Apellidos"];
-            Usuario.FechaDeNacimiento = (DateTime)dataReader["Fecha_De_Nacimiento"];
-            Usuario.Edad = (int)dataReader["Edad"];
-            Usuario.Sexo = (string)dataReader["Sexo"];
-            Usuario.Direccion = (string)dataReader["Direccion_Domicilio"];
-            Usuario.Telefono = (string)dataReader["Telefono"];
             Usuario.Rol = (string)dataReader["Rol"];
             Usuario.CorreoElectronico = (string)dataReader["Correo"];
             Usuario.NombreUsuario = (string)dataReader["NombreUsuario"];
@@ -174,7 +144,7 @@ namespace Datos
         }
         public int TotalizarTipo(string tipo)
         {
-            return ConsultarTodos().Where(p => p.Sexo.Equals(tipo)).Count();
+            return ConsultarTodos().Where(p => p.Rol.Equals(tipo)).Count();
         }
     }
 }

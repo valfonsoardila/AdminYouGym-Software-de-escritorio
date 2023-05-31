@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Administrador
+    public class Empleado
     {
         //Constructor
-        public Administrador(string identificacion, string tipoDeIdentificacion, byte[] imagenPerfil, string nombres, string apellidos, DateTime fechaDeNacimiento, string direccion, string sexo, string telefono, string rol, string correoElectronico)
+        public Empleado(string identificacion, string tipoDeIdentificacion, byte[] imagenPerfil, string nombres, string apellidos, DateTime fechaDeNacimiento, int edad, string direccion, string sexo, string telefono, string rol, string correoElectronico)
         {
             Identificacion = identificacion;
             TipoDeIdentificacion = tipoDeIdentificacion;
@@ -17,6 +17,7 @@ namespace Entidades
             Nombres = nombres;
             Apellidos = apellidos;
             FechaDeNacimiento = fechaDeNacimiento;
+            Edad = edad;
             Direccion = direccion;
             Sexo = sexo;
             Telefono = telefono;
@@ -24,10 +25,11 @@ namespace Entidades
             CorreoElectronico = correoElectronico;
         }
         //Constructor Sobrecargado
-        public Administrador()
+        public Empleado()
         {
 
         }
+        /*Atributos de la clase*/
         public string Identificacion { get; set; }
         public string TipoDeIdentificacion { get; set; }
         public byte[] ImagenPerfil { get; set; }

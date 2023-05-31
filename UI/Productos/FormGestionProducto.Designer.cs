@@ -65,7 +65,8 @@
             btnPaginaAnterior = new FontAwesome.Sharp.IconPictureBox();
             btnSiguientePagina = new FontAwesome.Sharp.IconPictureBox();
             panelTopDataGrid = new Panel();
-            iconButton4 = new FontAwesome.Sharp.IconButton();
+            comboFiltroTipo = new ComboBox();
+            btnSearchConsulta = new FontAwesome.Sharp.IconButton();
             btnCloseSearchConsulta = new FontAwesome.Sharp.IconButton();
             textSearchConsulta = new TextBox();
             btnRefresh = new FontAwesome.Sharp.IconButton();
@@ -95,7 +96,7 @@
             panel11 = new Panel();
             label10 = new Label();
             panel9 = new Panel();
-            comboLaboratorio = new ComboBox();
+            comboMarca = new ComboBox();
             labelLaboratorio = new Label();
             comboTipo = new ComboBox();
             labelTipo = new Label();
@@ -194,11 +195,10 @@
             labelCash = new Label();
             labelTextFondo = new Label();
             iconCash = new FontAwesome.Sharp.IconPictureBox();
-            labelAlerta = new Label();
             pictureAlerta = new PictureBox();
+            labelAlerta = new Label();
             label5 = new Label();
             btnVolver = new FontAwesome.Sharp.IconButton();
-            comboFiltroTipo = new ComboBox();
             tabControlProducto.SuspendLayout();
             tabGeneral.SuspendLayout();
             panelProducto.SuspendLayout();
@@ -416,6 +416,7 @@
             btnVender.Text = "Vender";
             btnVender.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnVender.UseVisualStyleBackColor = false;
+            btnVender.Click += btnVender_Click;
             // 
             // btnAddProducto
             // 
@@ -464,6 +465,10 @@
             dataGridProductos.RowHeadersVisible = false;
             dataGridProductos.Size = new Size(833, 309);
             dataGridProductos.TabIndex = 78;
+            dataGridProductos.CellClick += dataGridProductos_CellClick;
+            dataGridProductos.CellEndEdit += dataGridProductos_CellEndEdit;
+            dataGridProductos.CellFormatting += dataGridProductos_CellFormatting;
+            dataGridProductos.CellMouseClick += dataGridProductos_CellMouseClick;
             // 
             // Column1
             // 
@@ -644,6 +649,7 @@
             btnRespaldarInventario.TabIndex = 69;
             btnRespaldarInventario.UseVisualStyleBackColor = true;
             btnRespaldarInventario.Visible = false;
+            btnRespaldarInventario.Click += btnRespaldarInventario_Click;
             // 
             // textNumeroPagina
             // 
@@ -658,6 +664,9 @@
             textNumeroPagina.TabIndex = 68;
             textNumeroPagina.Text = "0";
             textNumeroPagina.TextAlign = HorizontalAlignment.Center;
+            textNumeroPagina.TextChanged += textNumeroPagina_TextChanged;
+            textNumeroPagina.Enter += textNumeroPagina_Enter;
+            textNumeroPagina.Leave += textNumeroPagina_Leave;
             // 
             // labelTitlePagina
             // 
@@ -687,6 +696,7 @@
             btnPaginaAnterior.Size = new Size(23, 23);
             btnPaginaAnterior.TabIndex = 66;
             btnPaginaAnterior.TabStop = false;
+            btnPaginaAnterior.Click += btnPaginaAnterior_Click;
             // 
             // btnSiguientePagina
             // 
@@ -704,12 +714,13 @@
             btnSiguientePagina.Size = new Size(23, 23);
             btnSiguientePagina.TabIndex = 65;
             btnSiguientePagina.TabStop = false;
+            btnSiguientePagina.Click += btnSiguientePagina_Click;
             // 
             // panelTopDataGrid
             // 
             panelTopDataGrid.BackColor = Color.Gainsboro;
             panelTopDataGrid.Controls.Add(comboFiltroTipo);
-            panelTopDataGrid.Controls.Add(iconButton4);
+            panelTopDataGrid.Controls.Add(btnSearchConsulta);
             panelTopDataGrid.Controls.Add(btnCloseSearchConsulta);
             panelTopDataGrid.Controls.Add(textSearchConsulta);
             panelTopDataGrid.Controls.Add(btnRefresh);
@@ -722,26 +733,40 @@
             panelTopDataGrid.Size = new Size(833, 29);
             panelTopDataGrid.TabIndex = 0;
             // 
-            // iconButton4
+            // comboFiltroTipo
             // 
-            iconButton4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            iconButton4.Cursor = Cursors.Hand;
-            iconButton4.FlatAppearance.BorderColor = Color.FromArgb(170, 170, 173);
-            iconButton4.FlatAppearance.BorderSize = 0;
-            iconButton4.FlatAppearance.MouseDownBackColor = Color.WhiteSmoke;
-            iconButton4.FlatAppearance.MouseOverBackColor = Color.DimGray;
-            iconButton4.FlatStyle = FlatStyle.Flat;
-            iconButton4.ForeColor = SystemColors.ControlDark;
-            iconButton4.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            iconButton4.IconColor = Color.Black;
-            iconButton4.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            iconButton4.IconSize = 20;
-            iconButton4.Location = new Point(807, 3);
-            iconButton4.Margin = new Padding(4, 3, 4, 3);
-            iconButton4.Name = "iconButton4";
-            iconButton4.Size = new Size(24, 24);
-            iconButton4.TabIndex = 81;
-            iconButton4.UseVisualStyleBackColor = true;
+            comboFiltroTipo.BackColor = SystemColors.Window;
+            comboFiltroTipo.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            comboFiltroTipo.FormattingEnabled = true;
+            comboFiltroTipo.Items.AddRange(new object[] { "Todos", "Suplemento", "Elemento", "Bebidas" });
+            comboFiltroTipo.Location = new Point(448, 1);
+            comboFiltroTipo.Name = "comboFiltroTipo";
+            comboFiltroTipo.Size = new Size(129, 28);
+            comboFiltroTipo.TabIndex = 82;
+            comboFiltroTipo.Text = "Filtro tipo";
+            comboFiltroTipo.SelectedIndexChanged += comboFiltroTipo_SelectedIndexChanged;
+            // 
+            // btnSearchConsulta
+            // 
+            btnSearchConsulta.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSearchConsulta.Cursor = Cursors.Hand;
+            btnSearchConsulta.FlatAppearance.BorderColor = Color.FromArgb(170, 170, 173);
+            btnSearchConsulta.FlatAppearance.BorderSize = 0;
+            btnSearchConsulta.FlatAppearance.MouseDownBackColor = Color.WhiteSmoke;
+            btnSearchConsulta.FlatAppearance.MouseOverBackColor = Color.DimGray;
+            btnSearchConsulta.FlatStyle = FlatStyle.Flat;
+            btnSearchConsulta.ForeColor = SystemColors.ControlDark;
+            btnSearchConsulta.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            btnSearchConsulta.IconColor = Color.Black;
+            btnSearchConsulta.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnSearchConsulta.IconSize = 20;
+            btnSearchConsulta.Location = new Point(807, 3);
+            btnSearchConsulta.Margin = new Padding(4, 3, 4, 3);
+            btnSearchConsulta.Name = "btnSearchConsulta";
+            btnSearchConsulta.Size = new Size(24, 24);
+            btnSearchConsulta.TabIndex = 81;
+            btnSearchConsulta.UseVisualStyleBackColor = true;
+            btnSearchConsulta.Click += btnSearchConsulta_Click;
             // 
             // btnCloseSearchConsulta
             // 
@@ -763,6 +788,7 @@
             btnCloseSearchConsulta.Size = new Size(24, 24);
             btnCloseSearchConsulta.TabIndex = 80;
             btnCloseSearchConsulta.UseVisualStyleBackColor = true;
+            btnCloseSearchConsulta.Click += btnCloseSearchConsulta_Click;
             // 
             // textSearchConsulta
             // 
@@ -773,6 +799,9 @@
             textSearchConsulta.TabIndex = 79;
             textSearchConsulta.Text = "Buscar en existencia";
             textSearchConsulta.Visible = false;
+            textSearchConsulta.TextChanged += textSearchConsulta_TextChanged;
+            textSearchConsulta.Enter += textSearchConsulta_Enter;
+            textSearchConsulta.KeyPress += textSearchConsulta_KeyPress;
             // 
             // btnRefresh
             // 
@@ -794,30 +823,33 @@
             btnRefresh.Size = new Size(24, 24);
             btnRefresh.TabIndex = 63;
             btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // comboFiltroEstado
             // 
             comboFiltroEstado.BackColor = SystemColors.Window;
             comboFiltroEstado.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboFiltroEstado.FormattingEnabled = true;
-            comboFiltroEstado.Items.AddRange(new object[] { "Vigente", "Cuarentena", "Vencido" });
+            comboFiltroEstado.Items.AddRange(new object[] { "Todos", "Vigente", "Cuarentena", "Vencido" });
             comboFiltroEstado.Location = new Point(322, 1);
             comboFiltroEstado.Name = "comboFiltroEstado";
             comboFiltroEstado.Size = new Size(121, 28);
             comboFiltroEstado.TabIndex = 3;
             comboFiltroEstado.Text = "Filtro estado";
+            comboFiltroEstado.SelectedIndexChanged += comboFiltroEstado_SelectedIndexChanged;
             // 
             // comboFiltroUbicacion
             // 
             comboFiltroUbicacion.BackColor = SystemColors.Window;
             comboFiltroUbicacion.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             comboFiltroUbicacion.FormattingEnabled = true;
-            comboFiltroUbicacion.Items.AddRange(new object[] { "M", "F", "Otro" });
+            comboFiltroUbicacion.Items.AddRange(new object[] { "Todos", "M", "F", "Otro" });
             comboFiltroUbicacion.Location = new Point(189, 1);
             comboFiltroUbicacion.Name = "comboFiltroUbicacion";
             comboFiltroUbicacion.Size = new Size(129, 28);
             comboFiltroUbicacion.TabIndex = 2;
             comboFiltroUbicacion.Text = "Filtro ubicacion";
+            comboFiltroUbicacion.SelectedIndexChanged += comboFiltroUbicacion_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -872,6 +904,7 @@
             btnRegistrar.Size = new Size(75, 35);
             btnRegistrar.TabIndex = 83;
             btnRegistrar.UseVisualStyleBackColor = false;
+            btnRegistrar.Click += btnRegistrar_Click;
             // 
             // panelValores
             // 
@@ -1085,7 +1118,7 @@
             // 
             // panel9
             // 
-            panel9.Controls.Add(comboLaboratorio);
+            panel9.Controls.Add(comboMarca);
             panel9.Controls.Add(labelLaboratorio);
             panel9.Controls.Add(comboTipo);
             panel9.Controls.Add(labelTipo);
@@ -1112,17 +1145,17 @@
             panel9.Size = new Size(839, 234);
             panel9.TabIndex = 3;
             // 
-            // comboLaboratorio
+            // comboMarca
             // 
-            comboLaboratorio.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            comboLaboratorio.AutoCompleteSource = AutoCompleteSource.ListItems;
-            comboLaboratorio.FormattingEnabled = true;
-            comboLaboratorio.Location = new Point(455, 102);
-            comboLaboratorio.Margin = new Padding(4, 3, 4, 3);
-            comboLaboratorio.Name = "comboLaboratorio";
-            comboLaboratorio.Size = new Size(104, 23);
-            comboLaboratorio.TabIndex = 87;
-            comboLaboratorio.Text = "Sin definir";
+            comboMarca.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboMarca.AutoCompleteSource = AutoCompleteSource.ListItems;
+            comboMarca.FormattingEnabled = true;
+            comboMarca.Location = new Point(428, 102);
+            comboMarca.Margin = new Padding(4, 3, 4, 3);
+            comboMarca.Name = "comboMarca";
+            comboMarca.Size = new Size(131, 23);
+            comboMarca.TabIndex = 87;
+            comboMarca.Text = "Sin definir";
             // 
             // labelLaboratorio
             // 
@@ -1130,9 +1163,9 @@
             labelLaboratorio.Location = new Point(384, 106);
             labelLaboratorio.Margin = new Padding(4, 0, 4, 0);
             labelLaboratorio.Name = "labelLaboratorio";
-            labelLaboratorio.Size = new Size(71, 15);
+            labelLaboratorio.Size = new Size(43, 15);
             labelLaboratorio.TabIndex = 86;
-            labelLaboratorio.Text = "Laboratorio:";
+            labelLaboratorio.Text = "Marca:";
             // 
             // comboTipo
             // 
@@ -2037,12 +2070,12 @@
             panel3.Controls.Add(labelCash);
             panel3.Controls.Add(labelTextFondo);
             panel3.Controls.Add(iconCash);
-            panel3.Controls.Add(labelAlerta);
             panel3.Controls.Add(pictureAlerta);
+            panel3.Controls.Add(labelAlerta);
             panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(382, 0);
+            panel3.Location = new Point(387, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(468, 57);
+            panel3.Size = new Size(463, 57);
             panel3.TabIndex = 6;
             // 
             // label29
@@ -2051,7 +2084,7 @@
             label29.AutoSize = true;
             label29.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label29.ForeColor = Color.White;
-            label29.Location = new Point(397, 27);
+            label29.Location = new Point(392, 27);
             label29.Margin = new Padding(4, 0, 4, 0);
             label29.Name = "label29";
             label29.Size = new Size(15, 16);
@@ -2064,7 +2097,7 @@
             labelBase.AutoSize = true;
             labelBase.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point);
             labelBase.ForeColor = Color.White;
-            labelBase.Location = new Point(299, 28);
+            labelBase.Location = new Point(294, 28);
             labelBase.Margin = new Padding(4, 0, 4, 0);
             labelBase.Name = "labelBase";
             labelBase.Size = new Size(13, 15);
@@ -2077,7 +2110,7 @@
             label30.AutoSize = true;
             label30.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label30.ForeColor = Color.White;
-            label30.Location = new Point(278, 25);
+            label30.Location = new Point(273, 25);
             label30.Margin = new Padding(4, 0, 4, 0);
             label30.Name = "label30";
             label30.Size = new Size(15, 16);
@@ -2090,7 +2123,7 @@
             label31.AutoSize = true;
             label31.Font = new Font("Microsoft Sans Serif", 6.75F, FontStyle.Bold, GraphicsUnit.Point);
             label31.ForeColor = Color.White;
-            label31.Location = new Point(279, 9);
+            label31.Location = new Point(274, 9);
             label31.Margin = new Padding(4, 0, 4, 0);
             label31.Name = "label31";
             label31.Size = new Size(38, 12);
@@ -2106,7 +2139,7 @@
             iconBase.IconColor = Color.FromArgb(192, 64, 0);
             iconBase.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBase.IconSize = 37;
-            iconBase.Location = new Point(237, 10);
+            iconBase.Location = new Point(232, 10);
             iconBase.Margin = new Padding(4, 3, 4, 3);
             iconBase.Name = "iconBase";
             iconBase.Size = new Size(37, 37);
@@ -2119,7 +2152,7 @@
             labelCash.AutoSize = true;
             labelCash.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             labelCash.ForeColor = Color.White;
-            labelCash.Location = new Point(417, 28);
+            labelCash.Location = new Point(412, 28);
             labelCash.Margin = new Padding(4, 0, 4, 0);
             labelCash.Name = "labelCash";
             labelCash.Size = new Size(13, 16);
@@ -2132,7 +2165,7 @@
             labelTextFondo.AutoSize = true;
             labelTextFondo.Font = new Font("Microsoft Sans Serif", 6.75F, FontStyle.Bold, GraphicsUnit.Point);
             labelTextFondo.ForeColor = Color.White;
-            labelTextFondo.Location = new Point(396, 13);
+            labelTextFondo.Location = new Point(391, 13);
             labelTextFondo.Margin = new Padding(4, 0, 4, 0);
             labelTextFondo.Name = "labelTextFondo";
             labelTextFondo.Size = new Size(42, 12);
@@ -2148,35 +2181,35 @@
             iconCash.IconColor = Color.Gold;
             iconCash.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconCash.IconSize = 37;
-            iconCash.Location = new Point(356, 10);
+            iconCash.Location = new Point(351, 10);
             iconCash.Margin = new Padding(4, 3, 4, 3);
             iconCash.Name = "iconCash";
             iconCash.Size = new Size(37, 37);
             iconCash.TabIndex = 81;
             iconCash.TabStop = false;
             // 
-            // labelAlerta
-            // 
-            labelAlerta.AutoSize = true;
-            labelAlerta.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            labelAlerta.ForeColor = Color.Orange;
-            labelAlerta.Location = new Point(58, 16);
-            labelAlerta.Name = "labelAlerta";
-            labelAlerta.Size = new Size(168, 25);
-            labelAlerta.TabIndex = 9;
-            labelAlerta.Text = "Mensaje de alerta";
-            labelAlerta.Visible = false;
-            // 
             // pictureAlerta
             // 
             pictureAlerta.Image = Properties.Resources.Alert;
-            pictureAlerta.Location = new Point(14, 8);
+            pictureAlerta.Location = new Point(6, 15);
             pictureAlerta.Name = "pictureAlerta";
-            pictureAlerta.Size = new Size(42, 41);
+            pictureAlerta.Size = new Size(30, 30);
             pictureAlerta.SizeMode = PictureBoxSizeMode.Zoom;
             pictureAlerta.TabIndex = 0;
             pictureAlerta.TabStop = false;
             pictureAlerta.Visible = false;
+            // 
+            // labelAlerta
+            // 
+            labelAlerta.AutoSize = true;
+            labelAlerta.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelAlerta.ForeColor = Color.Orange;
+            labelAlerta.Location = new Point(33, 20);
+            labelAlerta.Name = "labelAlerta";
+            labelAlerta.Size = new Size(117, 20);
+            labelAlerta.TabIndex = 9;
+            labelAlerta.Text = "Mensaje de alerta";
+            labelAlerta.Visible = false;
             // 
             // label5
             // 
@@ -2202,18 +2235,6 @@
             btnVolver.TabIndex = 5;
             btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click;
-            // 
-            // comboFiltroTipo
-            // 
-            comboFiltroTipo.BackColor = SystemColors.Window;
-            comboFiltroTipo.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            comboFiltroTipo.FormattingEnabled = true;
-            comboFiltroTipo.Items.AddRange(new object[] { "Suplemento", "Elemento", "Bebidas" });
-            comboFiltroTipo.Location = new Point(448, 1);
-            comboFiltroTipo.Name = "comboFiltroTipo";
-            comboFiltroTipo.Size = new Size(129, 28);
-            comboFiltroTipo.TabIndex = 82;
-            comboFiltroTipo.Text = "Filtro tipo";
             // 
             // FormGestionProducto
             // 
@@ -2355,7 +2376,7 @@
         private Label label2;
         private FontAwesome.Sharp.IconButton btnVerVencidos;
         private TextBox textSearchConsulta;
-        private FontAwesome.Sharp.IconButton iconButton4;
+        private FontAwesome.Sharp.IconButton btnSearchConsulta;
         private FontAwesome.Sharp.IconButton btnCloseSearchConsulta;
         private Panel panel7;
         private Label label7;
@@ -2387,7 +2408,7 @@
         private TextBox textPrecioUnidad;
         private TextBox textPrecioBlister;
         private Label labelPorcentajeDeVenta;
-        private ComboBox comboLaboratorio;
+        private ComboBox comboMarca;
         private Label labelLaboratorio;
         private ComboBox comboTipo;
         private Label labelTipo;

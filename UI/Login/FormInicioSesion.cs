@@ -31,8 +31,8 @@ namespace UI
         EventArgs e;
         public FormInicioSesion()
         {
-            //softwareService = new SoftwareService(ConfigConnection.ConnectionString);
-            //usuarioService = new UsuarioService(ConfigConnection.ConnectionString);
+            softwareService = new SoftwareService(ConfigConnection.ConnectionString);
+            usuarioService = new UsuarioService(ConfigConnection.ConnectionString);
             InitializeComponent();
             UbicacionesPorDefault();
         }
@@ -158,7 +158,7 @@ namespace UI
             {
                 var usuario = new List<Usuario> { respuesta.Usuario };
                 contraseña = respuesta.Usuario.Contraseña;
-                Id_Usuario = respuesta.Usuario.Identificacion;
+                Id_Usuario = respuesta.Usuario.CodigoUsuario;
                 linkLabelRestaurarContraseña.ForeColor = Color.FromArgb(0, 0, 255);
                 linkLabelRegistrarUsuario.ForeColor = Color.FromArgb(0, 0, 255);
                 ValidarContraseña();
@@ -178,12 +178,11 @@ namespace UI
         }
         private void UbicacionesPorAdvertencia()
         {
-            linkLabelRegistrarUsuario.Location = new Point(116, 296);
-            linkLabelRestaurarContraseña.Location = new Point(147, 279);
+            linkLabelRestaurarContraseña.Location = new Point(147, 309);
+            linkLabelRegistrarUsuario.Location = new Point(116, 326);
         }
         private void UbicacionesPorDefault()
         {
-
             linkLabelRegistrarUsuario.Location = linkLabelRestaurarContraseña.Location;
             linkLabelRestaurarContraseña.Location = iconAdvertencia.Location;
         }
@@ -231,8 +230,8 @@ namespace UI
             {
                 iconAdvertencia.Visible = false;
                 labelAdvertencia.Visible = false;
-                linkLabelRegistrarUsuario.Location = new Point(147, 279);
-                linkLabelRestaurarContraseña.Location = new Point(150, 257);
+                linkLabelRegistrarUsuario.Location = new Point(147, 309);
+                linkLabelRestaurarContraseña.Location = new Point(150, 290);
             }
         }
         private void textBoxPasword_TextChanged(object sender, EventArgs e)
@@ -242,17 +241,16 @@ namespace UI
                 btnAjustarServidor.Visible = true;
             }
         }
-        private void linkLabelRestaurarContraseña_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            FormRestaurarContraseña formRestaurarContraseña = new FormRestaurarContraseña();
-            formRestaurarContraseña.Show();
-            this.Hide();
-        }
-
         private void linkLabelRegistrarUsuario_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             FormRegistrarUsuario formRegistrarUsuario = new FormRegistrarUsuario();
             formRegistrarUsuario.Show();
+            this.Hide();
+        }
+        private void linkLabelRestaurarContraseña_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FormRestaurarContraseña formRestaurarContraseña = new FormRestaurarContraseña();
+            formRestaurarContraseña.Show();
             this.Hide();
         }
 

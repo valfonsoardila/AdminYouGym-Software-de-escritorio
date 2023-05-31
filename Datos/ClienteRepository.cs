@@ -20,12 +20,13 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into CLIENTE(Id, Tipo_De_Id, Codigo_Cliente, Nombres, Apellidos, Fecha_De_Nacimiento, Edad, Sexo, Peso, Altura, Direccion_Domicilio, Telefono, Correo, ClasificacionPorPeso, IndMC, IndGC, IndMM, IndMO, IndMR) " +
-                    "Values (@Id, @Tipo_De_Id, @Codigo_Cliente, @Nombres, @Apellidos, @Fecha_De_Nacimiento, @Edad, @Sexo, @Peso, @Altura, @Direccion_Domicilio, @Telefono, @Correo, @Clasificacion_Por_Peso, @IndMC, @IndGC, @IndMM, @IndMO, @IndMR)";
+                command.CommandText = "Insert Into CLIENTE(Id, Tipo_De_Id, Codigo_Cliente, ImagenPerfil, Nombres, Apellidos, Fecha_De_Nacimiento, Edad, Sexo, Peso, Altura, Direccion_Domicilio, Telefono, Correo, ClasificacionPorPeso, IndMC, IndGC, IndMM, IndMO, IndMR) " +
+                    "Values (@Id, @Tipo_De_Id, @Codigo_Cliente, @ImagenPerfil, @Nombres, @Apellidos, @Fecha_De_Nacimiento, @Edad, @Sexo, @Peso, @Altura, @Direccion_Domicilio, @Telefono, @Correo, @Clasificacion_Por_Peso, @IndMC, @IndGC, @IndMM, @IndMO, @IndMR)";
                 //command.Parameters.Add("@Id", SqlDbType.VarChar).Value = persona.Identificacion;
                 command.Parameters.AddWithValue("@Id", cliente.Identificacion);
                 command.Parameters.AddWithValue("@Tipo_De_Id", cliente.TipoDeIdentificacion);
                 command.Parameters.AddWithValue("@Codigo_Cliente", cliente.CodigoCliente);
+                command.Parameters.AddWithValue("@ImagenPerfil", cliente.ImagenPerfil);
                 command.Parameters.AddWithValue("@Nombres", cliente.Nombres);
                 command.Parameters.AddWithValue("@Apellidos", cliente.Apellidos);
                 command.Parameters.AddWithValue("@Fecha_De_Nacimiento", cliente.FechaDeNacimiento);
@@ -50,11 +51,12 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"Insert Into CLIENTE (Id, Tipo_De_Id, Codigo_Cliente, Nombres, Apellidos, Fecha_De_Nacimiento, Edad, Sexo, Peso, Altura, Direccion_Domicilio, Telefono, Correo, Clasificacion_Por_Peso, IndMC, IndGC, IndMM, IndMO, IndMR) 
-                                        values (@Id, @Tipo_De_Id, @Codigo_Cliente, @Nombres, @Apellidos, @Fecha_De_Nacimiento, @Edad, @Sexo, @Peso, @Altura, @Direccion_Domicilio, @Telefono, @Correo, @Clasificacion_Por_Peso, @IndMC, @IndGC, @IndMM, @IndMO, @IndMR)";
+                command.CommandText = @"Insert Into CLIENTE (Id, Tipo_De_Id, Codigo_Cliente, ImagenPerfil, Nombres, Apellidos, Fecha_De_Nacimiento, Edad, Sexo, Peso, Altura, Direccion_Domicilio, Telefono, Correo, Clasificacion_Por_Peso, IndMC, IndGC, IndMM, IndMO, IndMR) 
+                                        values (@Id, @Tipo_De_Id, @Codigo_Cliente, @ImagenPerfil, @Nombres, @Apellidos, @Fecha_De_Nacimiento, @Edad, @Sexo, @Peso, @Altura, @Direccion_Domicilio, @Telefono, @Correo, @Clasificacion_Por_Peso, @IndMC, @IndGC, @IndMM, @IndMO, @IndMR)";
                 command.Parameters.AddWithValue("@Id", cliente.Identificacion);
                 command.Parameters.AddWithValue("@Tipo_De_Id", cliente.TipoDeIdentificacion);
                 command.Parameters.AddWithValue("@Codigo_Cliente", cliente.CodigoCliente);
+                command.Parameters.AddWithValue("@ImagenPerfil", cliente.ImagenPerfil);
                 command.Parameters.AddWithValue("@Nombres", cliente.Nombres);
                 command.Parameters.AddWithValue("@Apellidos", cliente.Apellidos);
                 command.Parameters.AddWithValue("@Fecha_De_Nacimiento", cliente.FechaDeNacimiento);
@@ -88,7 +90,7 @@ namespace Datos
             List<Cliente> clientes = new List<Cliente>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select Id, Tipo_De_Id, Codigo_Cliente, Nombres, Apellidos, Fecha_De_Nacimiento, Edad, Sexo, Peso, Altura, Direccion_Domicilio, Telefono, Correo, Clasificacion_Por_Peso, IndMC, IndGC, IndMM, IndMO, IndMR from CLIENTE ";
+                command.CommandText = "Select Id, Tipo_De_Id, Codigo_Cliente, ImagenPerfil, Nombres, Apellidos, Fecha_De_Nacimiento, Edad, Sexo, Peso, Altura, Direccion_Domicilio, Telefono, Correo, Clasificacion_Por_Peso, IndMC, IndGC, IndMM, IndMO, IndMR from CLIENTE ";
                 var dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -117,10 +119,11 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"update CLIENTE set Tipo_De_Id=@Tipo_De_Id, Nombres=@Nombres, Apellidos=@Apellidos, Fecha_De_Nacimiento=@Fecha_De_Nacimiento, Edad=@Edad, Sexo=@Sexo, Peso=@Peso, Altura=@Altura, Direccion_Domicilio=@Direccion_Domicilio, Telefono=@Telefono, Correo=@Correo, Clasificacion_Por_Peso = @Clasificacion_Por_Peso, IndMC=@IndMC, IndGC=@IndGC, IndMM=@IndMM, IndMO=@IndMO, IndMR=@IndMR
+                command.CommandText = @"update CLIENTE set Tipo_De_Id=@Tipo_De_Id, ImagenPerfil=@ImagenPerfil, Nombres=@Nombres, Apellidos=@Apellidos, Fecha_De_Nacimiento=@Fecha_De_Nacimiento, Edad=@Edad, Sexo=@Sexo, Peso=@Peso, Altura=@Altura, Direccion_Domicilio=@Direccion_Domicilio, Telefono=@Telefono, Correo=@Correo, Clasificacion_Por_Peso = @Clasificacion_Por_Peso, IndMC=@IndMC, IndGC=@IndGC, IndMM=@IndMM, IndMO=@IndMO, IndMR=@IndMR
                                         where Id=@Id";
                 command.Parameters.AddWithValue("@Id", cliente.Identificacion);
                 command.Parameters.AddWithValue("@Tipo_De_Id", cliente.TipoDeIdentificacion);
+                command.Parameters.AddWithValue("@ImagenPerfil", cliente.ImagenPerfil);
                 command.Parameters.AddWithValue("@Nombres", cliente.Nombres);
                 command.Parameters.AddWithValue("@Apellidos", cliente.Apellidos);
                 command.Parameters.AddWithValue("@Fecha_De_Nacimiento", cliente.FechaDeNacimiento);
@@ -144,13 +147,10 @@ namespace Datos
         {
             if (!dataReader.HasRows) return null;
             Cliente cliente = new Cliente();
-
             cliente.Identificacion = (string)dataReader["Id"];
-
             cliente.TipoDeIdentificacion = (string)dataReader["Tipo_De_Id"];
-
             cliente.CodigoCliente = (string)dataReader["Codigo_Cliente"];
-
+            cliente.ImagenPerfil = (byte[])dataReader["ImagenPerfil"];
             cliente.Nombres = (string)dataReader["Nombres"];
             cliente.Apellidos = (string)dataReader["Apellidos"];
             cliente.FechaDeNacimiento = (DateTime)dataReader["Fecha_De_Nacimiento"];

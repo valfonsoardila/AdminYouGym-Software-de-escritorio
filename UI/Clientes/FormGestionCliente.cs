@@ -36,5 +36,15 @@ namespace UI
         {
             tabControlCliente.SelectedIndex = 2;
         }
+
+        private void btnCargarFoto_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ventanaCargar = new OpenFileDialog();
+            DialogResult dr = ventanaCargar.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                picturePerfil.Image = Image.FromFile(ventanaCargar.FileName);
+            }
+        }
     }
 }

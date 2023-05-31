@@ -88,14 +88,8 @@ namespace UI
         private Usuario MapearDatosDeUsuario()
         {
             usuario = new Usuario();
-            usuario.Identificacion = identificacion;
-            usuario.TipoDeIdentificacion = tipoId;
             usuario.Nombres = nombres;
             usuario.Apellidos = apellidos;
-            usuario.FechaDeNacimiento = fechaDeNacimiento;
-            usuario.Direccion = direccion;
-            usuario.Sexo = sexo;
-            usuario.Telefono = telefono;
             usuario.Rol = rol;
             usuario.CorreoElectronico = correo;
             usuario.NombreUsuario = nombreUsuario;
@@ -133,14 +127,8 @@ namespace UI
                 var usuarios = new List<Usuario> { respuesta.Usuario };
                 identificacionValida = true;
                 labelAdvertencia.Visible = false;
-                identificacion = respuesta.Usuario.Identificacion;
-                tipoId = respuesta.Usuario.TipoDeIdentificacion;
                 nombres = respuesta.Usuario.Nombres;
                 apellidos = respuesta.Usuario.Apellidos;
-                fechaDeNacimiento = respuesta.Usuario.FechaDeNacimiento;
-                direccion = respuesta.Usuario.Direccion;
-                sexo = respuesta.Usuario.Sexo;
-                telefono = respuesta.Usuario.Telefono;
                 rol = respuesta.Usuario.Rol;
                 correo = respuesta.Usuario.CorreoElectronico;
                 nombreUsuario = respuesta.Usuario.NombreUsuario;

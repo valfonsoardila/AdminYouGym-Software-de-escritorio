@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class FormGestionEntrenador : Form
+    public partial class FormGestionEmpleado : Form
     {
-        public FormGestionEntrenador()
+        public FormGestionEmpleado()
         {
             InitializeComponent();
         }
@@ -22,19 +22,14 @@ namespace UI
             this.Close();
         }
 
-        private void btnAddEntrenador_Click(object sender, EventArgs e)
+        private void btnAddAdmin_Click(object sender, EventArgs e)
         {
-            tabControlEntrenador.SelectedIndex = 1;
+            tabControlAdmins.SelectedIndex = 1;
         }
 
-        private void btnUpdateEntrenador_Click(object sender, EventArgs e)
+        private void btnUpdateAdmin_Click(object sender, EventArgs e)
         {
-            tabControlEntrenador.SelectedIndex = 1;
-        }
-
-        private void btnContrato_Click(object sender, EventArgs e)
-        {
-            tabControlEntrenador.SelectedIndex = 2;
+            tabControlAdmins.SelectedIndex = 1;
         }
 
         private void btnCargarFoto_Click(object sender, EventArgs e)

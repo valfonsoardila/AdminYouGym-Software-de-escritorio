@@ -8,27 +8,27 @@ using Datos;
 
 namespace Logica
 {
-    public class UsuarioService
+    public class EmpleadoService
     {
         private readonly ConnectionManager conexion;
-        private readonly UsuarioRepository repositorio;
-        public UsuarioService(string connectionString)
+        private readonly EmpleadoRepository repositorio;
+        public EmpleadoService(string connectionString)
         {
             conexion = new ConnectionManager(connectionString);
-            repositorio = new UsuarioRepository(conexion);
+            repositorio = new EmpleadoRepository(conexion);
         }
-        public string Guardar(Usuario usuario)
+        public string Guardar(Empleado empleado)
         {
             try
             {
-                usuario.GenerarCodigoUsuario();
+                empleado.CalcularEdad();
                 conexion.Open();
-                if (repositorio.BuscarPorIdentificacion(usuario.CodigoUsuario) == null)
+                if (repositorio.BuscarPorIdentificacion(empleado.Identificacion) == null)
                 {
-                    repositorio.Guardar(usuario);
-                    return $"Usuario registrado correctamente";
+                    repositorio.Guardar(empleado);
+                    return $"Empleado registrado correctamente";
                 }
-                return $"Esta id de usuario ya existe";
+                return $"Esta id de empleado ya existe";
             }
             catch (Exception e)
             {
@@ -36,17 +36,17 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
-        public ConsultaUsuarioRespuesta ConsultarTodos()
+        public ConsultaEmpleadoRespuesta ConsultarTodos()
         {
-            ConsultaUsuarioRespuesta respuesta = new ConsultaUsuarioRespuesta();
+            ConsultaEmpleadoRespuesta respuesta = new ConsultaEmpleadoRespuesta();
             try
             {
 
                 conexion.Open();
-                respuesta.Usuarios = repositorio.ConsultarTodos();
+                respuesta.Empleados = repositorio.ConsultarTodos();
                 conexion.Close();
                 respuesta.Error = false;
-                respuesta.Mensaje = (respuesta.Usuarios.Count > 0) ? "Se consultan los Datos" : "No hay datos para consultar";
+                respuesta.Mensaje = (respuesta.Empleados.Count > 0) ? "Se consultan los Datos" : "No hay datos para consultar";
                 return respuesta;
             }
             catch (Exception e)
@@ -58,16 +58,17 @@ namespace Logica
             finally { conexion.Close(); }
 
         }
-        public ConsultaUsuarioRespuesta BuscarPorRol(string rol)
+
+        public ConsultaEmpleadoRespuesta BuscarPorSexo(string sexo)
         {
-            ConsultaUsuarioRespuesta respuesta = new ConsultaUsuarioRespuesta();
+            ConsultaEmpleadoRespuesta respuesta = new ConsultaEmpleadoRespuesta();
             try
             {
 
                 conexion.Open();
-                respuesta.Usuarios = repositorio.BuscarPorRol(rol);
+                respuesta.Empleados = repositorio.BuscarPorSexo(sexo);
                 conexion.Close();
-                respuesta.Mensaje = (respuesta.Usuarios != null) ? "Se consulto el rol buscado" : "el rol consultado no existe";
+                respuesta.Mensaje = (respuesta.Empleados != null) ? "Se consulto el sexo buscado" : "el sexo consultado no existe";
                 respuesta.Error = false;
                 return respuesta;
             }
@@ -79,16 +80,16 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
-        public BusquedaUsuarioRespuesta BuscarPorIdentificacion(string identificacion)
+        public BusquedaEmpleadoRespuesta BuscarPorIdentificacion(string identificacion)
         {
-            BusquedaUsuarioRespuesta respuesta = new BusquedaUsuarioRespuesta();
+            BusquedaEmpleadoRespuesta respuesta = new BusquedaEmpleadoRespuesta();
             try
             {
 
                 conexion.Open();
-                respuesta.Usuario = repositorio.BuscarPorIdentificacion(identificacion);
+                respuesta.Empleado = repositorio.BuscarPorIdentificacion(identificacion);
                 conexion.Close();
-                respuesta.Mensaje = (respuesta.Usuario != null) ? "Se encontró la id de usuario buscado" : "la id de usuario buscada no existe";
+                respuesta.Mensaje = (respuesta.Empleado != null) ? "Se encontró la id de empleado buscado" : "la id de empleado buscada no existe";
                 respuesta.Error = false;
                 return respuesta;
             }
@@ -100,15 +101,37 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
-        public BusquedaUsuarioRespuesta BuscarPorNombreDeUsuario(string nombreDeUsuario)
+        public BusquedaEmpleadoRespuesta BuscarPorRol(string rol)
         {
-            BusquedaUsuarioRespuesta respuesta = new BusquedaUsuarioRespuesta();
+            BusquedaEmpleadoRespuesta respuesta = new BusquedaEmpleadoRespuesta();
             try
             {
+
                 conexion.Open();
-                respuesta.Usuario = repositorio.BuscarPorNombreDeUsuario(nombreDeUsuario);
+                respuesta.Empleado = repositorio.BuscarPorRol(rol);
                 conexion.Close();
-                respuesta.Mensaje = (respuesta.Usuario != null) ? "Se encontró la id de usuario buscado" : "la id de usuario buscada no existe";
+                respuesta.Mensaje = (respuesta.Empleado != null) ? "Se encontró la id de empleado buscado" : "la id de empleado buscada no existe";
+                respuesta.Error = false;
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { conexion.Close(); }
+        }
+        public BusquedaEmpleadoRespuesta BuscarPorNombreDeUsuario(string nombreDeUsuario)
+        {
+            BusquedaEmpleadoRespuesta respuesta = new BusquedaEmpleadoRespuesta();
+            try
+            {
+
+                conexion.Open();
+                respuesta.Empleado = repositorio.BuscarPorNombreDeUsuario(nombreDeUsuario);
+                conexion.Close();
+                respuesta.Mensaje = (respuesta.Empleado != null) ? "Se encontró la id de empleado buscado" : "la id de empleado buscada no existe";
                 respuesta.Error = false;
                 return respuesta;
             }
@@ -125,12 +148,12 @@ namespace Logica
             try
             {
                 conexion.Open();
-                var usuario = repositorio.BuscarPorIdentificacion(identificacion);
-                if (usuario != null)
+                var empleado = repositorio.BuscarPorIdentificacion(identificacion);
+                if (empleado != null)
                 {
-                    repositorio.Eliminar(usuario);
+                    repositorio.Eliminar(empleado);
                     conexion.Close();
-                    return ($"El registro {usuario.CodigoUsuario} se ha eliminado satisfactoriamente.");
+                    return ($"El registro {empleado.Identificacion} se ha eliminado satisfactoriamente.");
                 }
                 return ($"Lo sentimos, {identificacion} no se encuentra registrada.");
             }
@@ -142,21 +165,21 @@ namespace Logica
             finally { conexion.Close(); }
 
         }
-        public string Modificar(Usuario usuarioNuevo)
+        public string Modificar(Empleado empleadoNuevo)
         {
             try
             {
-                usuarioNuevo.GenerarCodigoUsuario();
+                empleadoNuevo.CalcularEdad();
                 conexion.Open();
-                var cajaRegistradora = repositorio.BuscarPorIdentificacion(usuarioNuevo.CodigoUsuario);
+                var cajaRegistradora = repositorio.BuscarPorIdentificacion(empleadoNuevo.Identificacion);
                 if (cajaRegistradora != null)
                 {
-                    repositorio.Modificar(usuarioNuevo);
-                    return ($"El registro de {usuarioNuevo.CodigoUsuario} se ha modificado satisfactoriamente.");
+                    repositorio.Modificar(empleadoNuevo);
+                    return ($"El registro de {empleadoNuevo.Identificacion} se ha modificado satisfactoriamente.");
                 }
                 else
                 {
-                    return ($"Lo sentimos, el usuario con Id {usuarioNuevo.CodigoUsuario} no se encuentra registrada.");
+                    return ($"Lo sentimos, el empleado con Id {empleadoNuevo.Identificacion} no se encuentra registrada.");
                 }
             }
             catch (Exception e)
@@ -166,9 +189,9 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
-        public ConteoUsuarioRespuesta Totalizar()
+        public ConteoEmpleadoRespuesta Totalizar()
         {
-            ConteoUsuarioRespuesta respuesta = new ConteoUsuarioRespuesta();
+            ConteoEmpleadoRespuesta respuesta = new ConteoEmpleadoRespuesta();
             try
             {
 
@@ -188,9 +211,9 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
-        public ConteoUsuarioRespuesta TotalizarTipoRol(string tipo)
+        public ConteoEmpleadoRespuesta TotalizarTipoRol(string tipo)
         {
-            ConteoUsuarioRespuesta respuesta = new ConteoUsuarioRespuesta();
+            ConteoEmpleadoRespuesta respuesta = new ConteoEmpleadoRespuesta();
             try
             {
 
@@ -210,9 +233,9 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
-        public ConteoUsuarioRespuesta TotalizarTipo(string tipo)
+        public ConteoEmpleadoRespuesta TotalizarTipo(string tipo)
         {
-            ConteoUsuarioRespuesta respuesta = new ConteoUsuarioRespuesta();
+            ConteoEmpleadoRespuesta respuesta = new ConteoEmpleadoRespuesta();
             try
             {
 
@@ -233,19 +256,19 @@ namespace Logica
             finally { conexion.Close(); }
         }
     }
-    public class ConsultaUsuarioRespuesta
+    public class ConsultaEmpleadoRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public IList<Usuario> Usuarios { get; set; }
+        public IList<Empleado> Empleados { get; set; }
     }
-    public class BusquedaUsuarioRespuesta
+    public class BusquedaEmpleadoRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public Usuario Usuario { get; set; }
+        public Empleado Empleado { get; set; }
     }
-    public class ConteoUsuarioRespuesta
+    public class ConteoEmpleadoRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }

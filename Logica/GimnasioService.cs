@@ -17,18 +17,18 @@ namespace Logica
             conexion = new ConnectionManager(connectionString);
             repositorio = new GimnasioRepository(conexion);
         }
-        public string Guardar(Gimnasio drogueria)
+        public string Guardar(Gimnasio gimnasio)
         {
             try
             {
-                drogueria.GenerarIdGimnasio();
+                gimnasio.GenerarIdGimnasio();
                 conexion.Open();
-                if (repositorio.BuscarPorId(drogueria.NIT) == null)
+                if (repositorio.BuscarPorId(gimnasio.NIT) == null)
                 {
-                    repositorio.Guardar(drogueria);
+                    repositorio.Guardar(gimnasio);
                     return $"Gimnasio registrada correctamente";
                 }
-                return $"Esta id de drogueria ya existe";
+                return $"Esta id de gimnasio ya existe";
             }
             catch (Exception e)
             {
@@ -58,20 +58,20 @@ namespace Logica
             finally { conexion.Close(); }
 
         }
-        public string Modificar(Gimnasio drogueriaNueva)
+        public string Modificar(Gimnasio gimnasioNueva)
         {
             try
             {
                 conexion.Open();
-                var drogueriaAntigua = repositorio.BuscarPorId(drogueriaNueva.IdGimnasio);
-                if (drogueriaAntigua != null)
+                var gimnasioAntigua = repositorio.BuscarPorId(gimnasioNueva.IdGimnasio);
+                if (gimnasioAntigua != null)
                 {
-                    repositorio.Modificar(drogueriaNueva);
-                    return ($"El registro de {drogueriaNueva.NIT} se ha modificado satisfactoriamente.");
+                    repositorio.Modificar(gimnasioNueva);
+                    return ($"El registro de {gimnasioNueva.NIT} se ha modificado satisfactoriamente.");
                 }
                 else
                 {
-                    return ($"Lo sentimos, la drogueria con Id {drogueriaNueva.NIT} no se encuentra registrada.");
+                    return ($"Lo sentimos, la gimnasio con Id {gimnasioNueva.NIT} no se encuentra registrada.");
                 }
             }
             catch (Exception e)
@@ -81,16 +81,16 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
-        public BusquedaGimnasioRespuesta BuscarPorId(string nit)
+        public BusquedaGimnasioRespuesta BuscarPorId(string id)
         {
             BusquedaGimnasioRespuesta respuesta = new BusquedaGimnasioRespuesta();
             try
             {
 
                 conexion.Open();
-                respuesta.Gimnasio = repositorio.BuscarPorId(nit);
+                respuesta.Gimnasio = repositorio.BuscarPorId(id);
                 conexion.Close();
-                respuesta.Mensaje = (respuesta.Gimnasio != null) ? "Se encontró la id de drogueria buscada" : "la id de drogueria buscada no existe";
+                respuesta.Mensaje = (respuesta.Gimnasio != null) ? "Se encontró la id de gimnasio buscada" : "la id de gimnasio buscada no existe";
                 respuesta.Error = false;
                 return respuesta;
             }
@@ -107,12 +107,12 @@ namespace Logica
             try
             {
                 conexion.Open();
-                var drogueria = repositorio.BuscarPorId(id);
-                if (drogueria != null)
+                var gimnasio = repositorio.BuscarPorId(id);
+                if (gimnasio != null)
                 {
-                    repositorio.Eliminar(drogueria);
+                    repositorio.Eliminar(gimnasio);
                     conexion.Close();
-                    return ($"El registro {drogueria.IdGimnasio} se ha eliminado satisfactoriamente.");
+                    return ($"El registro {gimnasio.IdGimnasio} se ha eliminado satisfactoriamente.");
                 }
                 return ($"Lo sentimos, {id} no se encuentra registrada.");
             }

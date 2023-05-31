@@ -1,34 +1,34 @@
-﻿using System;
+﻿using Datos;
+using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Entidades;
-using Datos;
 
 namespace Logica
 {
-    public class UsuarioService
+    public class AdministradorService
     {
         private readonly ConnectionManager conexion;
-        private readonly UsuarioRepository repositorio;
-        public UsuarioService(string connectionString)
+        private readonly AdministradorRepository repositorio;
+        public AdministradorService(string connectionString)
         {
             conexion = new ConnectionManager(connectionString);
-            repositorio = new UsuarioRepository(conexion);
+            repositorio = new AdministradorRepository(conexion);
         }
-        public string Guardar(Usuario usuario)
+        public string Guardar(Administrador administrador)
         {
             try
             {
-                usuario.GenerarCodigoUsuario();
+                administrador.CalcularEdad();
                 conexion.Open();
-                if (repositorio.BuscarPorIdentificacion(usuario.CodigoUsuario) == null)
+                if (repositorio.BuscarPorIdentificacion(administrador.Identificacion) == null)
                 {
-                    repositorio.Guardar(usuario);
-                    return $"Usuario registrado correctamente";
+                    repositorio.Guardar(administrador);
+                    return $"Administrador registrado correctamente";
                 }
-                return $"Esta id de usuario ya existe";
+                return $"Esta id de administrador ya existe";
             }
             catch (Exception e)
             {
@@ -36,17 +36,17 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
-        public ConsultaUsuarioRespuesta ConsultarTodos()
+        public ConsultaAdministradorRespuesta ConsultarTodos()
         {
-            ConsultaUsuarioRespuesta respuesta = new ConsultaUsuarioRespuesta();
+            ConsultaAdministradorRespuesta respuesta = new ConsultaAdministradorRespuesta();
             try
             {
 
                 conexion.Open();
-                respuesta.Usuarios = repositorio.ConsultarTodos();
+                respuesta.Administradors = repositorio.ConsultarTodos();
                 conexion.Close();
                 respuesta.Error = false;
-                respuesta.Mensaje = (respuesta.Usuarios.Count > 0) ? "Se consultan los Datos" : "No hay datos para consultar";
+                respuesta.Mensaje = (respuesta.Administradors.Count > 0) ? "Se consultan los Datos" : "No hay datos para consultar";
                 return respuesta;
             }
             catch (Exception e)
@@ -58,16 +58,16 @@ namespace Logica
             finally { conexion.Close(); }
 
         }
-        public ConsultaUsuarioRespuesta BuscarPorRol(string rol)
+        public BusquedaAdministradorRespuesta BuscarPorIdentificacion(string identificacion)
         {
-            ConsultaUsuarioRespuesta respuesta = new ConsultaUsuarioRespuesta();
+            BusquedaAdministradorRespuesta respuesta = new BusquedaAdministradorRespuesta();
             try
             {
 
                 conexion.Open();
-                respuesta.Usuarios = repositorio.BuscarPorRol(rol);
+                respuesta.Administrador = repositorio.BuscarPorIdentificacion(identificacion);
                 conexion.Close();
-                respuesta.Mensaje = (respuesta.Usuarios != null) ? "Se consulto el rol buscado" : "el rol consultado no existe";
+                respuesta.Mensaje = (respuesta.Administrador != null) ? "Se encontró la id de administrador buscado" : "la id de administrador buscada no existe";
                 respuesta.Error = false;
                 return respuesta;
             }
@@ -79,16 +79,16 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
-        public BusquedaUsuarioRespuesta BuscarPorIdentificacion(string identificacion)
+        public BusquedaAdministradorRespuesta BuscarPorRol(string rol)
         {
-            BusquedaUsuarioRespuesta respuesta = new BusquedaUsuarioRespuesta();
+            BusquedaAdministradorRespuesta respuesta = new BusquedaAdministradorRespuesta();
             try
             {
 
                 conexion.Open();
-                respuesta.Usuario = repositorio.BuscarPorIdentificacion(identificacion);
+                respuesta.Administrador = repositorio.BuscarPorRol(rol);
                 conexion.Close();
-                respuesta.Mensaje = (respuesta.Usuario != null) ? "Se encontró la id de usuario buscado" : "la id de usuario buscada no existe";
+                respuesta.Mensaje = (respuesta.Administrador != null) ? "Se encontró la id de administrador buscado" : "la id de administrador buscada no existe";
                 respuesta.Error = false;
                 return respuesta;
             }
@@ -100,15 +100,16 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
-        public BusquedaUsuarioRespuesta BuscarPorNombreDeUsuario(string nombreDeUsuario)
+        public BusquedaAdministradorRespuesta BuscarPorNombreDeUsuario(string nombreDeUsuario)
         {
-            BusquedaUsuarioRespuesta respuesta = new BusquedaUsuarioRespuesta();
+            BusquedaAdministradorRespuesta respuesta = new BusquedaAdministradorRespuesta();
             try
             {
+
                 conexion.Open();
-                respuesta.Usuario = repositorio.BuscarPorNombreDeUsuario(nombreDeUsuario);
+                respuesta.Administrador = repositorio.BuscarPorNombreDeUsuario(nombreDeUsuario);
                 conexion.Close();
-                respuesta.Mensaje = (respuesta.Usuario != null) ? "Se encontró la id de usuario buscado" : "la id de usuario buscada no existe";
+                respuesta.Mensaje = (respuesta.Administrador != null) ? "Se encontró la id de administrador buscado" : "la id de administrador buscada no existe";
                 respuesta.Error = false;
                 return respuesta;
             }
@@ -125,12 +126,12 @@ namespace Logica
             try
             {
                 conexion.Open();
-                var usuario = repositorio.BuscarPorIdentificacion(identificacion);
-                if (usuario != null)
+                var administrador = repositorio.BuscarPorIdentificacion(identificacion);
+                if (administrador != null)
                 {
-                    repositorio.Eliminar(usuario);
+                    repositorio.Eliminar(administrador);
                     conexion.Close();
-                    return ($"El registro {usuario.CodigoUsuario} se ha eliminado satisfactoriamente.");
+                    return ($"El registro {administrador.Identificacion} se ha eliminado satisfactoriamente.");
                 }
                 return ($"Lo sentimos, {identificacion} no se encuentra registrada.");
             }
@@ -142,21 +143,21 @@ namespace Logica
             finally { conexion.Close(); }
 
         }
-        public string Modificar(Usuario usuarioNuevo)
+        public string Modificar(Administrador administradorNuevo)
         {
             try
             {
-                usuarioNuevo.GenerarCodigoUsuario();
+                administradorNuevo.CalcularEdad();
                 conexion.Open();
-                var cajaRegistradora = repositorio.BuscarPorIdentificacion(usuarioNuevo.CodigoUsuario);
+                var cajaRegistradora = repositorio.BuscarPorIdentificacion(administradorNuevo.Identificacion);
                 if (cajaRegistradora != null)
                 {
-                    repositorio.Modificar(usuarioNuevo);
-                    return ($"El registro de {usuarioNuevo.CodigoUsuario} se ha modificado satisfactoriamente.");
+                    repositorio.Modificar(administradorNuevo);
+                    return ($"El registro de {administradorNuevo.Identificacion} se ha modificado satisfactoriamente.");
                 }
                 else
                 {
-                    return ($"Lo sentimos, el usuario con Id {usuarioNuevo.CodigoUsuario} no se encuentra registrada.");
+                    return ($"Lo sentimos, el administrador con Id {administradorNuevo.Identificacion} no se encuentra registrada.");
                 }
             }
             catch (Exception e)
@@ -166,9 +167,9 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
-        public ConteoUsuarioRespuesta Totalizar()
+        public ConteoAdministradorRespuesta Totalizar()
         {
-            ConteoUsuarioRespuesta respuesta = new ConteoUsuarioRespuesta();
+            ConteoAdministradorRespuesta respuesta = new ConteoAdministradorRespuesta();
             try
             {
 
@@ -188,9 +189,9 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
-        public ConteoUsuarioRespuesta TotalizarTipoRol(string tipo)
+        public ConteoAdministradorRespuesta TotalizarTipoRol(string tipo)
         {
-            ConteoUsuarioRespuesta respuesta = new ConteoUsuarioRespuesta();
+            ConteoAdministradorRespuesta respuesta = new ConteoAdministradorRespuesta();
             try
             {
 
@@ -210,9 +211,9 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
-        public ConteoUsuarioRespuesta TotalizarTipo(string tipo)
+        public ConteoAdministradorRespuesta TotalizarTipo(string tipo)
         {
-            ConteoUsuarioRespuesta respuesta = new ConteoUsuarioRespuesta();
+            ConteoAdministradorRespuesta respuesta = new ConteoAdministradorRespuesta();
             try
             {
 
@@ -233,19 +234,19 @@ namespace Logica
             finally { conexion.Close(); }
         }
     }
-    public class ConsultaUsuarioRespuesta
+    public class ConsultaAdministradorRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public IList<Usuario> Usuarios { get; set; }
+        public IList<Administrador> Administradors { get; set; }
     }
-    public class BusquedaUsuarioRespuesta
+    public class BusquedaAdministradorRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public Usuario Usuario { get; set; }
+        public Administrador Administrador { get; set; }
     }
-    public class ConteoUsuarioRespuesta
+    public class ConteoAdministradorRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }

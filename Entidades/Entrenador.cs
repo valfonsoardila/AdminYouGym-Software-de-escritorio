@@ -10,10 +10,11 @@ namespace Entidades
     {
 
         //Constructor
-        public Entrenador(string identificacion, string tipoDeIdentificacion, string nombres, string apellidos, DateTime fechaDeNacimiento, int edad,string direccion, string sexo,string telefono,string correoElectronico)
+        public Entrenador(string identificacion, string tipoDeIdentificacion, byte[] imagenPerfil, string nombres, string apellidos, DateTime fechaDeNacimiento, int edad,string direccion, string sexo,string telefono,string correoElectronico)
         {
             Identificacion = identificacion;
             TipoDeIdentificacion = tipoDeIdentificacion;
+            ImagenPerfil = imagenPerfil;
             Nombres = nombres;
             Apellidos = apellidos;
             FechaDeNacimiento = fechaDeNacimiento;
@@ -32,6 +33,7 @@ namespace Entidades
         /*Atributos de la clase*/
         public string Identificacion { get; set; }
         public string TipoDeIdentificacion { get; set; }
+        public byte[] ImagenPerfil { get; set; }
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public DateTime FechaDeNacimiento { get; set; }

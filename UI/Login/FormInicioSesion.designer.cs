@@ -29,6 +29,7 @@ namespace UI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInicioSesion));
             panel1 = new Panel();
             btnCerrar = new FontAwesome.Sharp.IconPictureBox();
             btnMinimizar = new FontAwesome.Sharp.IconPictureBox();
@@ -41,8 +42,6 @@ namespace UI
             textBoxUser = new TextBox();
             textBoxPasword = new TextBox();
             btnIngresar = new Button();
-            linkLabelRestaurarContraseña = new LinkLabel();
-            linkLabelRegistrarUsuario = new LinkLabel();
             labelAdvertencia = new Label();
             iconAdvertencia = new FontAwesome.Sharp.IconPictureBox();
             iconSeePasword = new FontAwesome.Sharp.IconPictureBox();
@@ -50,6 +49,8 @@ namespace UI
             iconPassword = new FontAwesome.Sharp.IconPictureBox();
             iconUser = new FontAwesome.Sharp.IconPictureBox();
             btnAjustarServidor = new FontAwesome.Sharp.IconButton();
+            linkLabelRegistrarUsuario = new LinkLabel();
+            linkLabelRestaurarContraseña = new LinkLabel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnCerrar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnMinimizar).BeginInit();
@@ -163,7 +164,7 @@ namespace UI
             // 
             labelUser.AutoSize = true;
             labelUser.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            labelUser.Location = new Point(68, 241);
+            labelUser.Location = new Point(68, 227);
             labelUser.Margin = new Padding(4, 0, 4, 0);
             labelUser.Name = "labelUser";
             labelUser.Size = new Size(65, 16);
@@ -174,7 +175,7 @@ namespace UI
             // 
             labelPasword.AutoSize = true;
             labelPasword.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            labelPasword.Location = new Point(68, 273);
+            labelPasword.Location = new Point(68, 259);
             labelPasword.Margin = new Padding(4, 0, 4, 0);
             labelPasword.Name = "labelPasword";
             labelPasword.Size = new Size(90, 16);
@@ -184,7 +185,7 @@ namespace UI
             // textBoxUser
             // 
             textBoxUser.ForeColor = SystemColors.WindowFrame;
-            textBoxUser.Location = new Point(175, 235);
+            textBoxUser.Location = new Point(175, 221);
             textBoxUser.Margin = new Padding(4, 3, 4, 3);
             textBoxUser.Name = "textBoxUser";
             textBoxUser.Size = new Size(186, 23);
@@ -197,7 +198,7 @@ namespace UI
             // textBoxPasword
             // 
             textBoxPasword.ForeColor = SystemColors.WindowFrame;
-            textBoxPasword.Location = new Point(175, 273);
+            textBoxPasword.Location = new Point(175, 259);
             textBoxPasword.Margin = new Padding(4, 3, 4, 3);
             textBoxPasword.Name = "textBoxPasword";
             textBoxPasword.Size = new Size(186, 23);
@@ -216,7 +217,7 @@ namespace UI
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnIngresar.ForeColor = Color.White;
-            btnIngresar.Location = new Point(153, 368);
+            btnIngresar.Location = new Point(153, 361);
             btnIngresar.Margin = new Padding(4, 3, 4, 3);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(128, 32);
@@ -225,37 +226,11 @@ namespace UI
             btnIngresar.UseVisualStyleBackColor = false;
             btnIngresar.Click += btnIngresar_Click;
             // 
-            // linkLabelRestaurarContraseña
-            // 
-            linkLabelRestaurarContraseña.AutoSize = true;
-            linkLabelRestaurarContraseña.Cursor = Cursors.Hand;
-            linkLabelRestaurarContraseña.Location = new Point(172, 322);
-            linkLabelRestaurarContraseña.Margin = new Padding(4, 0, 4, 0);
-            linkLabelRestaurarContraseña.Name = "linkLabelRestaurarContraseña";
-            linkLabelRestaurarContraseña.Size = new Size(141, 15);
-            linkLabelRestaurarContraseña.TabIndex = 11;
-            linkLabelRestaurarContraseña.TabStop = true;
-            linkLabelRestaurarContraseña.Text = "¿Olvidaste tu contraseña?";
-            linkLabelRestaurarContraseña.LinkClicked += linkLabelRestaurarContraseña_LinkClicked;
-            // 
-            // linkLabelRegistrarUsuario
-            // 
-            linkLabelRegistrarUsuario.AutoSize = true;
-            linkLabelRegistrarUsuario.Cursor = Cursors.Hand;
-            linkLabelRegistrarUsuario.Location = new Point(135, 342);
-            linkLabelRegistrarUsuario.Margin = new Padding(4, 0, 4, 0);
-            linkLabelRegistrarUsuario.Name = "linkLabelRegistrarUsuario";
-            linkLabelRegistrarUsuario.Size = new Size(161, 15);
-            linkLabelRegistrarUsuario.TabIndex = 12;
-            linkLabelRegistrarUsuario.TabStop = true;
-            linkLabelRegistrarUsuario.Text = "¿No tienes cuenta? Registrate";
-            linkLabelRegistrarUsuario.LinkClicked += linkLabelRegistrarUsuario_LinkClicked;
-            // 
             // labelAdvertencia
             // 
             labelAdvertencia.AutoSize = true;
             labelAdvertencia.ForeColor = Color.Maroon;
-            labelAdvertencia.Location = new Point(202, 301);
+            labelAdvertencia.Location = new Point(202, 290);
             labelAdvertencia.Margin = new Padding(4, 0, 4, 0);
             labelAdvertencia.Name = "labelAdvertencia";
             labelAdvertencia.Size = new Size(70, 15);
@@ -271,7 +246,7 @@ namespace UI
             iconAdvertencia.IconColor = Color.Maroon;
             iconAdvertencia.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconAdvertencia.IconSize = 23;
-            iconAdvertencia.Location = new Point(175, 297);
+            iconAdvertencia.Location = new Point(175, 286);
             iconAdvertencia.Margin = new Padding(4, 3, 4, 3);
             iconAdvertencia.Name = "iconAdvertencia";
             iconAdvertencia.Size = new Size(23, 23);
@@ -288,7 +263,7 @@ namespace UI
             iconSeePasword.IconColor = SystemColors.ControlText;
             iconSeePasword.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconSeePasword.IconSize = 24;
-            iconSeePasword.Location = new Point(369, 271);
+            iconSeePasword.Location = new Point(369, 257);
             iconSeePasword.Margin = new Padding(4, 3, 4, 3);
             iconSeePasword.Name = "iconSeePasword";
             iconSeePasword.Size = new Size(24, 25);
@@ -305,7 +280,7 @@ namespace UI
             iconNoSeePasword.IconColor = SystemColors.ControlText;
             iconNoSeePasword.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconNoSeePasword.IconSize = 24;
-            iconNoSeePasword.Location = new Point(369, 271);
+            iconNoSeePasword.Location = new Point(369, 257);
             iconNoSeePasword.Margin = new Padding(4, 3, 4, 3);
             iconNoSeePasword.Name = "iconNoSeePasword";
             iconNoSeePasword.Size = new Size(24, 25);
@@ -321,7 +296,7 @@ namespace UI
             iconPassword.IconColor = SystemColors.ControlText;
             iconPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconPassword.IconSize = 24;
-            iconPassword.Location = new Point(42, 271);
+            iconPassword.Location = new Point(42, 257);
             iconPassword.Margin = new Padding(4, 3, 4, 3);
             iconPassword.Name = "iconPassword";
             iconPassword.Size = new Size(24, 25);
@@ -336,7 +311,7 @@ namespace UI
             iconUser.IconColor = SystemColors.ControlText;
             iconUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconUser.IconSize = 24;
-            iconUser.Location = new Point(42, 239);
+            iconUser.Location = new Point(42, 225);
             iconUser.Margin = new Padding(4, 3, 4, 3);
             iconUser.Name = "iconUser";
             iconUser.Size = new Size(24, 25);
@@ -358,16 +333,42 @@ namespace UI
             btnAjustarServidor.Visible = false;
             btnAjustarServidor.Click += btnAjustarServidor_Click;
             // 
+            // linkLabelRegistrarUsuario
+            // 
+            linkLabelRegistrarUsuario.AutoSize = true;
+            linkLabelRegistrarUsuario.Cursor = Cursors.Hand;
+            linkLabelRegistrarUsuario.Location = new Point(139, 337);
+            linkLabelRegistrarUsuario.Margin = new Padding(4, 0, 4, 0);
+            linkLabelRegistrarUsuario.Name = "linkLabelRegistrarUsuario";
+            linkLabelRegistrarUsuario.Size = new Size(161, 15);
+            linkLabelRegistrarUsuario.TabIndex = 17;
+            linkLabelRegistrarUsuario.TabStop = true;
+            linkLabelRegistrarUsuario.Text = "¿No tienes cuenta? Registrate";
+            linkLabelRegistrarUsuario.LinkClicked += linkLabelRegistrarUsuario_LinkClicked;
+            // 
+            // linkLabelRestaurarContraseña
+            // 
+            linkLabelRestaurarContraseña.AutoSize = true;
+            linkLabelRestaurarContraseña.Cursor = Cursors.Hand;
+            linkLabelRestaurarContraseña.Location = new Point(176, 317);
+            linkLabelRestaurarContraseña.Margin = new Padding(4, 0, 4, 0);
+            linkLabelRestaurarContraseña.Name = "linkLabelRestaurarContraseña";
+            linkLabelRestaurarContraseña.Size = new Size(141, 15);
+            linkLabelRestaurarContraseña.TabIndex = 16;
+            linkLabelRestaurarContraseña.TabStop = true;
+            linkLabelRestaurarContraseña.Text = "¿Olvidaste tu contraseña?";
+            linkLabelRestaurarContraseña.LinkClicked += linkLabelRestaurarContraseña_LinkClicked_1;
+            // 
             // FormInicioSesion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(438, 433);
+            Controls.Add(linkLabelRegistrarUsuario);
+            Controls.Add(linkLabelRestaurarContraseña);
             Controls.Add(btnAjustarServidor);
             Controls.Add(labelAdvertencia);
             Controls.Add(iconAdvertencia);
-            Controls.Add(linkLabelRegistrarUsuario);
-            Controls.Add(linkLabelRestaurarContraseña);
             Controls.Add(iconSeePasword);
             Controls.Add(iconNoSeePasword);
             Controls.Add(iconPassword);
@@ -380,6 +381,7 @@ namespace UI
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 3, 4, 3);
             Name = "FormInicioSesion";
             Opacity = 0.88D;
@@ -419,11 +421,11 @@ namespace UI
         private FontAwesome.Sharp.IconPictureBox iconPassword;
         private FontAwesome.Sharp.IconPictureBox iconNoSeePasword;
         private FontAwesome.Sharp.IconPictureBox iconSeePasword;
-        private LinkLabel linkLabelRestaurarContraseña;
         private PictureBox pictureBox1;
-        private LinkLabel linkLabelRegistrarUsuario;
         private FontAwesome.Sharp.IconPictureBox iconAdvertencia;
         private Label labelAdvertencia;
         private FontAwesome.Sharp.IconButton btnAjustarServidor;
+        private LinkLabel linkLabelRegistrarUsuario;
+        private LinkLabel linkLabelRestaurarContraseña;
     }
 }

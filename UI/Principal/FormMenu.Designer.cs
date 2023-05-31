@@ -47,12 +47,14 @@ namespace UI
             panelSelectionUsuario = new Panel();
             panelSelectionCaja = new Panel();
             subMenuUsuario = new Panel();
+            btnEmpleado = new FontAwesome.Sharp.IconButton();
             btnAdministrador = new FontAwesome.Sharp.IconButton();
             btnEntrenador = new FontAwesome.Sharp.IconButton();
             btnClientes = new FontAwesome.Sharp.IconButton();
             btnGestionUsurio = new FontAwesome.Sharp.IconButton();
             btnGestionCaja = new FontAwesome.Sharp.IconButton();
             panelLogoContainer = new Panel();
+            panel2 = new Panel();
             panelSidebarClose = new Panel();
             labelMenu = new Label();
             pictureBox1 = new PictureBox();
@@ -60,6 +62,11 @@ namespace UI
             btnCloseSidebar = new FontAwesome.Sharp.IconPictureBox();
             labelLogoName = new Label();
             pictureLogo = new PictureBox();
+            panelPerfil = new GroupBox();
+            labelRolPerfil = new Label();
+            pictureBox3 = new PictureBox();
+            picturePerfil = new PictureBox();
+            labelNombrePerfil = new Label();
             panelContenedorInterno = new Panel();
             btnModeLight = new FontAwesome.Sharp.IconPictureBox();
             panelHeader = new Panel();
@@ -81,11 +88,15 @@ namespace UI
             panelSidebar.SuspendLayout();
             subMenuUsuario.SuspendLayout();
             panelLogoContainer.SuspendLayout();
+            panel2.SuspendLayout();
             panelSidebarClose.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnOpenSidebar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnCloseSidebar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureLogo).BeginInit();
+            panelPerfil.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picturePerfil).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnModeLight).BeginInit();
             panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnModeDark).BeginInit();
@@ -204,7 +215,7 @@ namespace UI
             // panelSelectionMembresia
             // 
             panelSelectionMembresia.BackColor = SystemColors.ControlLightLight;
-            panelSelectionMembresia.Location = new Point(0, 334);
+            panelSelectionMembresia.Location = new Point(0, 440);
             panelSelectionMembresia.Margin = new Padding(4, 3, 4, 3);
             panelSelectionMembresia.Name = "panelSelectionMembresia";
             panelSelectionMembresia.Size = new Size(7, 43);
@@ -214,7 +225,7 @@ namespace UI
             // panelSelectionAjustes
             // 
             panelSelectionAjustes.BackColor = SystemColors.ControlLightLight;
-            panelSelectionAjustes.Location = new Point(0, 464);
+            panelSelectionAjustes.Location = new Point(0, 572);
             panelSelectionAjustes.Margin = new Padding(4, 3, 4, 3);
             panelSelectionAjustes.Name = "panelSelectionAjustes";
             panelSelectionAjustes.Size = new Size(7, 43);
@@ -236,7 +247,7 @@ namespace UI
             btnAjustes.IconColor = Color.White;
             btnAjustes.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAjustes.IconSize = 22;
-            btnAjustes.Location = new Point(0, 463);
+            btnAjustes.Location = new Point(0, 572);
             btnAjustes.Margin = new Padding(4, 3, 4, 3);
             btnAjustes.Name = "btnAjustes";
             btnAjustes.Size = new Size(217, 43);
@@ -249,7 +260,7 @@ namespace UI
             // panelSelectionProductos
             // 
             panelSelectionProductos.BackColor = SystemColors.ControlLightLight;
-            panelSelectionProductos.Location = new Point(0, 421);
+            panelSelectionProductos.Location = new Point(0, 529);
             panelSelectionProductos.Margin = new Padding(4, 3, 4, 3);
             panelSelectionProductos.Name = "panelSelectionProductos";
             panelSelectionProductos.Size = new Size(7, 43);
@@ -259,7 +270,7 @@ namespace UI
             // panelSelectionPlanes
             // 
             panelSelectionPlanes.BackColor = SystemColors.ControlLightLight;
-            panelSelectionPlanes.Location = new Point(0, 377);
+            panelSelectionPlanes.Location = new Point(0, 485);
             panelSelectionPlanes.Margin = new Padding(4, 3, 4, 3);
             panelSelectionPlanes.Name = "panelSelectionPlanes";
             panelSelectionPlanes.Size = new Size(7, 43);
@@ -281,7 +292,7 @@ namespace UI
             btnGestionProductos.IconColor = Color.White;
             btnGestionProductos.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGestionProductos.IconSize = 22;
-            btnGestionProductos.Location = new Point(0, 420);
+            btnGestionProductos.Location = new Point(0, 529);
             btnGestionProductos.Margin = new Padding(4, 3, 4, 3);
             btnGestionProductos.Name = "btnGestionProductos";
             btnGestionProductos.Size = new Size(217, 43);
@@ -306,7 +317,7 @@ namespace UI
             btnGestionPlanesDeEjercicio.IconColor = Color.White;
             btnGestionPlanesDeEjercicio.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGestionPlanesDeEjercicio.IconSize = 22;
-            btnGestionPlanesDeEjercicio.Location = new Point(0, 377);
+            btnGestionPlanesDeEjercicio.Location = new Point(0, 486);
             btnGestionPlanesDeEjercicio.Margin = new Padding(4, 3, 4, 3);
             btnGestionPlanesDeEjercicio.Name = "btnGestionPlanesDeEjercicio";
             btnGestionPlanesDeEjercicio.Size = new Size(217, 43);
@@ -331,7 +342,7 @@ namespace UI
             btnGestionMembresia.IconColor = Color.White;
             btnGestionMembresia.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGestionMembresia.IconSize = 22;
-            btnGestionMembresia.Location = new Point(0, 334);
+            btnGestionMembresia.Location = new Point(0, 443);
             btnGestionMembresia.Margin = new Padding(4, 3, 4, 3);
             btnGestionMembresia.Name = "btnGestionMembresia";
             btnGestionMembresia.Size = new Size(217, 43);
@@ -344,7 +355,7 @@ namespace UI
             // panelSelectionUsuario
             // 
             panelSelectionUsuario.BackColor = SystemColors.ControlLightLight;
-            panelSelectionUsuario.Location = new Point(0, 157);
+            panelSelectionUsuario.Location = new Point(0, 224);
             panelSelectionUsuario.Margin = new Padding(4, 3, 4, 3);
             panelSelectionUsuario.Name = "panelSelectionUsuario";
             panelSelectionUsuario.Size = new Size(7, 43);
@@ -354,7 +365,7 @@ namespace UI
             // panelSelectionCaja
             // 
             panelSelectionCaja.BackColor = SystemColors.ControlLightLight;
-            panelSelectionCaja.Location = new Point(0, 115);
+            panelSelectionCaja.Location = new Point(0, 182);
             panelSelectionCaja.Margin = new Padding(4, 3, 4, 3);
             panelSelectionCaja.Name = "panelSelectionCaja";
             panelSelectionCaja.Size = new Size(7, 43);
@@ -364,15 +375,40 @@ namespace UI
             // subMenuUsuario
             // 
             subMenuUsuario.BackColor = SystemColors.ControlLight;
+            subMenuUsuario.Controls.Add(btnEmpleado);
             subMenuUsuario.Controls.Add(btnAdministrador);
             subMenuUsuario.Controls.Add(btnEntrenador);
             subMenuUsuario.Controls.Add(btnClientes);
             subMenuUsuario.Dock = DockStyle.Top;
-            subMenuUsuario.Location = new Point(0, 201);
+            subMenuUsuario.Location = new Point(0, 267);
             subMenuUsuario.Margin = new Padding(4, 3, 4, 3);
             subMenuUsuario.Name = "subMenuUsuario";
-            subMenuUsuario.Size = new Size(217, 133);
+            subMenuUsuario.Size = new Size(217, 176);
             subMenuUsuario.TabIndex = 10;
+            // 
+            // btnEmpleado
+            // 
+            btnEmpleado.BackColor = Color.FromArgb(64, 1, 1);
+            btnEmpleado.Dock = DockStyle.Top;
+            btnEmpleado.FlatAppearance.BorderSize = 0;
+            btnEmpleado.FlatAppearance.MouseDownBackColor = Color.Black;
+            btnEmpleado.FlatAppearance.MouseOverBackColor = Color.FromArgb(62, 178, 191);
+            btnEmpleado.FlatStyle = FlatStyle.Flat;
+            btnEmpleado.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEmpleado.ForeColor = SystemColors.ButtonHighlight;
+            btnEmpleado.IconChar = FontAwesome.Sharp.IconChar.AngleRight;
+            btnEmpleado.IconColor = Color.White;
+            btnEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnEmpleado.IconSize = 10;
+            btnEmpleado.Location = new Point(0, 133);
+            btnEmpleado.Margin = new Padding(4, 3, 4, 3);
+            btnEmpleado.Name = "btnEmpleado";
+            btnEmpleado.Size = new Size(217, 43);
+            btnEmpleado.TabIndex = 14;
+            btnEmpleado.Text = "Empleado";
+            btnEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnEmpleado.UseVisualStyleBackColor = false;
+            btnEmpleado.Click += btnEmpleado_Click;
             // 
             // btnAdministrador
             // 
@@ -461,7 +497,7 @@ namespace UI
             btnGestionUsurio.IconColor = Color.White;
             btnGestionUsurio.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGestionUsurio.IconSize = 22;
-            btnGestionUsurio.Location = new Point(0, 158);
+            btnGestionUsurio.Location = new Point(0, 224);
             btnGestionUsurio.Margin = new Padding(4, 3, 4, 3);
             btnGestionUsurio.Name = "btnGestionUsurio";
             btnGestionUsurio.Size = new Size(217, 43);
@@ -485,7 +521,7 @@ namespace UI
             btnGestionCaja.IconColor = Color.White;
             btnGestionCaja.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGestionCaja.IconSize = 22;
-            btnGestionCaja.Location = new Point(0, 115);
+            btnGestionCaja.Location = new Point(0, 181);
             btnGestionCaja.Margin = new Padding(4, 3, 4, 3);
             btnGestionCaja.Name = "btnGestionCaja";
             btnGestionCaja.Size = new Size(217, 43);
@@ -497,28 +533,38 @@ namespace UI
             // 
             // panelLogoContainer
             // 
-            panelLogoContainer.Controls.Add(panelSidebarClose);
-            panelLogoContainer.Controls.Add(btnOpenSidebar);
-            panelLogoContainer.Controls.Add(btnCloseSidebar);
-            panelLogoContainer.Controls.Add(labelLogoName);
-            panelLogoContainer.Controls.Add(pictureLogo);
+            panelLogoContainer.Controls.Add(panel2);
+            panelLogoContainer.Controls.Add(panelPerfil);
             panelLogoContainer.Dock = DockStyle.Top;
             panelLogoContainer.Location = new Point(0, 0);
             panelLogoContainer.Margin = new Padding(4, 3, 4, 3);
             panelLogoContainer.Name = "panelLogoContainer";
-            panelLogoContainer.Size = new Size(217, 115);
+            panelLogoContainer.Size = new Size(217, 181);
             panelLogoContainer.TabIndex = 0;
             panelLogoContainer.MouseDown += panelLogoContainer_MouseDown;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(panelSidebarClose);
+            panel2.Controls.Add(btnOpenSidebar);
+            panel2.Controls.Add(btnCloseSidebar);
+            panel2.Controls.Add(labelLogoName);
+            panel2.Controls.Add(pictureLogo);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(217, 120);
+            panel2.TabIndex = 8;
             // 
             // panelSidebarClose
             // 
             panelSidebarClose.Controls.Add(labelMenu);
             panelSidebarClose.Controls.Add(pictureBox1);
-            panelSidebarClose.Location = new Point(0, 36);
+            panelSidebarClose.Location = new Point(-5, 35);
             panelSidebarClose.Margin = new Padding(4, 3, 4, 3);
             panelSidebarClose.Name = "panelSidebarClose";
             panelSidebarClose.Size = new Size(61, 80);
-            panelSidebarClose.TabIndex = 6;
+            panelSidebarClose.TabIndex = 11;
             // 
             // labelMenu
             // 
@@ -551,11 +597,11 @@ namespace UI
             btnOpenSidebar.IconColor = Color.FromArgb(89, 2, 2);
             btnOpenSidebar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnOpenSidebar.IconSize = 35;
-            btnOpenSidebar.Location = new Point(190, 3);
+            btnOpenSidebar.Location = new Point(181, 2);
             btnOpenSidebar.Margin = new Padding(4, 3, 4, 3);
             btnOpenSidebar.Name = "btnOpenSidebar";
             btnOpenSidebar.Size = new Size(36, 35);
-            btnOpenSidebar.TabIndex = 5;
+            btnOpenSidebar.TabIndex = 10;
             btnOpenSidebar.TabStop = false;
             btnOpenSidebar.Click += btnOpenSidebar_Click;
             // 
@@ -568,11 +614,11 @@ namespace UI
             btnCloseSidebar.IconColor = Color.FromArgb(89, 2, 2);
             btnCloseSidebar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCloseSidebar.IconSize = 35;
-            btnCloseSidebar.Location = new Point(190, 3);
+            btnCloseSidebar.Location = new Point(185, 2);
             btnCloseSidebar.Margin = new Padding(4, 3, 4, 3);
             btnCloseSidebar.Name = "btnCloseSidebar";
             btnCloseSidebar.Size = new Size(36, 35);
-            btnCloseSidebar.TabIndex = 4;
+            btnCloseSidebar.TabIndex = 9;
             btnCloseSidebar.TabStop = false;
             btnCloseSidebar.Click += btnCloseSidebar_Click;
             // 
@@ -580,23 +626,82 @@ namespace UI
             // 
             labelLogoName.AutoSize = true;
             labelLogoName.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            labelLogoName.Location = new Point(36, 90);
+            labelLogoName.Location = new Point(31, 89);
             labelLogoName.Margin = new Padding(4, 0, 4, 0);
             labelLogoName.Name = "labelLogoName";
             labelLogoName.Size = new Size(112, 16);
-            labelLogoName.TabIndex = 1;
+            labelLogoName.TabIndex = 8;
             labelLogoName.Text = "Admin YouGym";
             // 
             // pictureLogo
             // 
             pictureLogo.Image = Properties.Resources.Logo;
-            pictureLogo.Location = new Point(38, 7);
+            pictureLogo.Location = new Point(33, 6);
             pictureLogo.Margin = new Padding(4, 3, 4, 3);
             pictureLogo.Name = "pictureLogo";
             pictureLogo.Size = new Size(111, 80);
             pictureLogo.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureLogo.TabIndex = 0;
+            pictureLogo.TabIndex = 7;
             pictureLogo.TabStop = false;
+            // 
+            // panelPerfil
+            // 
+            panelPerfil.Controls.Add(labelRolPerfil);
+            panelPerfil.Controls.Add(pictureBox3);
+            panelPerfil.Controls.Add(picturePerfil);
+            panelPerfil.Controls.Add(labelNombrePerfil);
+            panelPerfil.Dock = DockStyle.Bottom;
+            panelPerfil.FlatStyle = FlatStyle.System;
+            panelPerfil.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            panelPerfil.Location = new Point(0, 120);
+            panelPerfil.Name = "panelPerfil";
+            panelPerfil.Size = new Size(217, 61);
+            panelPerfil.TabIndex = 0;
+            panelPerfil.TabStop = false;
+            panelPerfil.Text = "Perfil de usuario";
+            // 
+            // labelRolPerfil
+            // 
+            labelRolPerfil.AutoSize = true;
+            labelRolPerfil.Font = new Font("Arial Narrow", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            labelRolPerfil.Location = new Point(53, 36);
+            labelRolPerfil.Margin = new Padding(4, 0, 4, 0);
+            labelRolPerfil.Name = "labelRolPerfil";
+            labelRolPerfil.Size = new Size(100, 20);
+            labelRolPerfil.TabIndex = 4;
+            labelRolPerfil.Text = "Rol de usuario";
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = Properties.Resources.Green_dot_svg;
+            pictureBox3.Location = new Point(38, 46);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(10, 10);
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox3.TabIndex = 3;
+            pictureBox3.TabStop = false;
+            // 
+            // picturePerfil
+            // 
+            picturePerfil.Image = Properties.Resources.User;
+            picturePerfil.Location = new Point(8, 19);
+            picturePerfil.Name = "picturePerfil";
+            picturePerfil.Size = new Size(38, 38);
+            picturePerfil.SizeMode = PictureBoxSizeMode.Zoom;
+            picturePerfil.TabIndex = 0;
+            picturePerfil.TabStop = false;
+            picturePerfil.Paint += picturePerfil_Paint;
+            // 
+            // labelNombrePerfil
+            // 
+            labelNombrePerfil.AutoSize = true;
+            labelNombrePerfil.Font = new Font("Arial Narrow", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            labelNombrePerfil.Location = new Point(53, 17);
+            labelNombrePerfil.Margin = new Padding(4, 0, 4, 0);
+            labelNombrePerfil.Name = "labelNombrePerfil";
+            labelNombrePerfil.Size = new Size(128, 20);
+            labelNombrePerfil.TabIndex = 2;
+            labelNombrePerfil.Text = "Nombre de usuario";
             // 
             // panelContenedorInterno
             // 
@@ -804,13 +909,18 @@ namespace UI
             panelSidebar.ResumeLayout(false);
             subMenuUsuario.ResumeLayout(false);
             panelLogoContainer.ResumeLayout(false);
-            panelLogoContainer.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             panelSidebarClose.ResumeLayout(false);
             panelSidebarClose.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnOpenSidebar).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnCloseSidebar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureLogo).EndInit();
+            panelPerfil.ResumeLayout(false);
+            panelPerfil.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picturePerfil).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnModeLight).EndInit();
             panelHeader.ResumeLayout(false);
             panelHeader.PerformLayout();
@@ -841,13 +951,6 @@ namespace UI
         private FontAwesome.Sharp.IconButton btnGestionUsurio;
         private FontAwesome.Sharp.IconButton btnGestionCaja;
         private Panel panelLogoContainer;
-        private Panel panelSidebarClose;
-        private Label labelMenu;
-        private PictureBox pictureBox1;
-        private FontAwesome.Sharp.IconPictureBox btnOpenSidebar;
-        private FontAwesome.Sharp.IconPictureBox btnCloseSidebar;
-        private Label labelLogoName;
-        private PictureBox pictureLogo;
         private Panel panelContenedorInterno;
         private Panel panelHeader;
         private TextBox textTiempoLicencia;
@@ -867,6 +970,20 @@ namespace UI
         private Panel panelSelectionMembresia;
         private PictureBox pictureAlert;
         private FontAwesome.Sharp.IconPictureBox iconClock;
+        private FontAwesome.Sharp.IconButton btnEmpleado;
+        private PictureBox picturePerfil;
+        private Label labelNombrePerfil;
+        private PictureBox pictureBox3;
+        private Panel panel2;
+        private Panel panelSidebarClose;
+        private Label labelMenu;
+        private PictureBox pictureBox1;
+        private FontAwesome.Sharp.IconPictureBox btnOpenSidebar;
+        private FontAwesome.Sharp.IconPictureBox btnCloseSidebar;
+        private Label labelLogoName;
+        private PictureBox pictureLogo;
+        private GroupBox panelPerfil;
+        private Label labelRolPerfil;
     }
 }
 
