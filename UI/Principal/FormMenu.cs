@@ -86,7 +86,7 @@ namespace UI
                         }
                     }
                 }
-                labelNombrePerfil.Text = respuesta.Usuario.Nombres + " " + respuesta.Usuario.Apellidos;
+                labelNombrePerfil.Text = respuesta.Usuario.Nombres /*+ " " + respuesta.Usuario.Apellidos*/;
                 labelRolPerfil.Text = respuesta.Usuario.Rol;
                 using (MemoryStream ms = new MemoryStream(respuesta.Usuario.ImagenPerfil))
                 {

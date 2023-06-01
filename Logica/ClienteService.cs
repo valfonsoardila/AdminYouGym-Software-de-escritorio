@@ -283,6 +283,27 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
+        public BusquedaClienteRespuesta BuscarPorSexo(string sexo)
+        {
+            BusquedaClienteRespuesta respuesta = new BusquedaClienteRespuesta();
+            try
+            {
+                conexion.Open();
+                respuesta.Cliente = repositorio.BuscarPorSexo(sexo);
+                conexion.Close();
+                respuesta.Mensaje = (respuesta.Cliente != null) ? "Se encontró el cliente buscado" : "el cliente buscada no existe";
+                respuesta.Error = false;
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { conexion.Close(); }
+        }
         public ConteoClienteRespuesta Totalizar()
         {
             ConteoClienteRespuesta respuesta = new ConteoClienteRespuesta();

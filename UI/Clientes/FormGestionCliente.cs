@@ -7,16 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Logica;
+using Entidades;
+using System.Windows;
+using System.Windows.Interop;
+using MessageBox = System.Windows.Forms.MessageBox;
+using UI.Properties;
 
 namespace UI
 {
     public partial class FormGestionCliente : Form
     {
+        ClienteService clienteService;
+        Cliente cliente;
+        bool busquedaCliente = false;
         public FormGestionCliente()
         {
+            clienteService = new ClienteService(ConfigConnection.ConnectionString);
             InitializeComponent();
+            CargarListaClientes();
         }
-
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -45,6 +55,497 @@ namespace UI
             {
                 picturePerfil.Image = Image.FromFile(ventanaCargar.FileName);
             }
+        }
+        //Consultar cliente
+        private void CargarListaClientes()
+        {
+            ConsultaClienteRespuesta respuesta = new ConsultaClienteRespuesta();
+            respuesta = clienteService.ConsultarTodos();
+            var clientes = respuesta.Clientes.ToList();
+            if (clientes.Count != 0 || clientes != null)
+            {
+                dataGridClient.DataSource = clientes;
+                textTotal.Text = clienteService.Totalizar().Cuenta.ToString();
+                textHombres.Text = clienteService.TotalizarTipo("M").Cuenta.ToString();
+                textMujeres.Text = clienteService.TotalizarTipo("F").Cuenta.ToString();
+            }
+        }
+        private void BuscarPorSexo(string sexo)
+        {
+            BusquedaClienteRespuesta respuesta = new BusquedaClienteRespuesta();
+            respuesta = clienteService.BuscarPorSexo(sexo);
+            var registro = respuesta.Cliente;
+            if (registro != null)
+            {
+                dataGridClient.DataSource = null;
+                var clientes = new List<Cliente> { registro };
+                dataGridClient.DataSource = clientes;
+            }
+        }
+        private void comboFiltroSexo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sexo = comboFiltroSexo.Text;
+            BuscarPorSexo(sexo);
+        }
+        //Registrar cliente
+        private Cliente MapearDatosCliente()
+        {
+            cliente = new Cliente();
+            cliente.Identificacion = textID.Text;
+            cliente.TipoDeIdentificacion = comboTipoID.Text;
+            cliente.Nombres = textNombres.Text;
+            cliente.Apellidos = textApellidos.Text;
+            cliente.FechaDeNacimiento = dateTimeFechaDeNacimiento.Value;
+            cliente.Sexo = comboSexoRegistro.Text;
+            cliente.Telefono = textTelefono.Text;
+            cliente.CorreoElectronico = textCorreo.Text;
+            cliente.Peso = Convert.ToInt32(textPesoCorporal.Text);
+            cliente.Altura = Convert.ToInt32(textEstaturaCorporal.Text);
+            return cliente;
+        }
+        private void btnRegistrarCliente_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = MapearDatosCliente();
+            string mensaje = clienteService.Guardar(cliente);
+            MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+        }
+
+        private void btnModificarCliente_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = MapearDatosCliente();
+            string mensaje = clienteService.Modificar(cliente);
+            MessageBox.Show(mensaje, "Mensaje de modificacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+        }
+        private void BuscarPorId(string busqueda)
+        {
+            BusquedaClienteRespuesta respuesta = new BusquedaClienteRespuesta();
+            respuesta = clienteService.BuscarPorIdentificacion(busqueda);
+            var buscado = respuesta.Cliente;
+            if (buscado != null)
+            {
+                textID.Text = buscado.Identificacion;
+                comboTipoID.Text = buscado.TipoDeIdentificacion;
+                textNombres.Text = buscado.Nombres;
+                textApellidos.Text = buscado.Apellidos;
+                dateTimeFechaDeNacimiento.Value = buscado.FechaDeNacimiento;
+                comboSexoRegistro.Text = buscado.Sexo;
+                textTelefono.Text = buscado.Telefono;
+                textCorreo.Text = buscado.CorreoElectronico;
+                textPesoCorporal.Text = buscado.Peso.ToString();
+                textEstaturaCorporal.Text = buscado.Altura.ToString();
+                busquedaCliente = true;
+            }
+        }
+        private void BuscarPorNombre(string busqueda)
+        {
+            BusquedaClienteRespuesta respuesta = new BusquedaClienteRespuesta();
+            respuesta = clienteService.BuscarPorIdentificacion(busqueda);
+            var buscado = respuesta.Cliente;
+            if (buscado != null)
+            {
+                textID.Text = buscado.Identificacion;
+                comboTipoID.Text = buscado.TipoDeIdentificacion;
+                textNombres.Text = buscado.Nombres;
+                textApellidos.Text = buscado.Apellidos;
+                dateTimeFechaDeNacimiento.Value = buscado.FechaDeNacimiento;
+                comboSexoRegistro.Text = buscado.Sexo;
+                textTelefono.Text = buscado.Telefono;
+                textCorreo.Text = buscado.CorreoElectronico;
+                textPesoCorporal.Text = buscado.Peso.ToString();
+                textEstaturaCorporal.Text = buscado.Altura.ToString();
+                busquedaCliente = true;
+            }
+        }
+        private void textSearch_TextChanged(object sender, EventArgs e)
+        {
+            string busqueda = textSearch.Text;
+            if (textSearch.Text != "" && textSearch.Text != "Buscar")
+            {
+                BuscarPorId(busqueda);
+                BuscarPorNombre(busqueda);
+                if (busquedaCliente == false)
+                {
+                    labelAlerta.Text = "No se encontraron los datos buscados";
+                    labelAlerta.Visible = true;
+                }
+                else
+                {
+                    if (busquedaCliente == true)
+                    {
+                        labelAlerta.Visible = false;
+                    }
+                }
+            }
+        }
+
+        private void textSearch_Enter(object sender, EventArgs e)
+        {
+            if (textSearch.Text == "Buscar")
+            {
+                textSearch.Text = "";
+            }
+        }
+
+        private void textSearch_Leave(object sender, EventArgs e)
+        {
+            if (textSearch.Text == "")
+            {
+                textSearch.Text = "Buscar";
+                labelAlerta.Visible = false;
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            btnSearch.Visible = false;
+            btnCloseTextSearch.Visible = true;
+            textSearch.Visible = true;
+            string busqueda = textSearch.Text;
+            if (textSearch.Text != "" && textSearch.Text != "Buscar")
+            {
+                BuscarPorId(busqueda);
+                BuscarPorNombre(busqueda);
+                if (busquedaCliente == false)
+                {
+                    labelAlerta.Text = "No se encontraron los datos buscados";
+                    labelAlerta.Visible = true;
+                }
+                else
+                {
+                    if (busquedaCliente == true)
+                    {
+                        labelAlerta.Visible = false;
+                    }
+                }
+            }
+        }
+
+        private void btnCloseTextSearch_Click(object sender, EventArgs e)
+        {
+            btnSearch.Visible = true;
+            btnCloseTextSearch.Visible = false;
+            textSearch.Visible = false;
+        }
+        //Progreso cliente
+        private void BuscarPorIdProgreso(string busqueda)
+        {
+            BusquedaClienteRespuesta respuesta = new BusquedaClienteRespuesta();
+            respuesta = clienteService.BuscarPorIdentificacion(busqueda);
+            var buscado = respuesta.Cliente;
+            if (buscado != null)
+            {
+                if (buscado.ClasificacionPorPeso == "Delgadez muy Severa")
+                {
+                    if (buscado.Sexo == "F")
+                    {
+                        pictureEstado.Image = Resources.DelgadaF;
+                    }
+                    else
+                    {
+                        pictureEstado.Image = Resources.DelgadoM;
+                    }
+                }
+                else
+                {
+                    if (buscado.ClasificacionPorPeso == "Delgadez Severa")
+                    {
+                        if (buscado.Sexo == "F")
+                        {
+                            pictureEstado.Image = Resources.DelgadaF;
+                        }
+                        else
+                        {
+                            pictureEstado.Image = Resources.DelgadoM;
+                        }
+                    }
+                    else
+                    {
+                        if (buscado.ClasificacionPorPeso == "Delgadez")
+                        {
+                            if (buscado.Sexo == "F")
+                            {
+                                pictureEstado.Image = Resources.DelgadaF;
+                            }
+                            else
+                            {
+                                pictureEstado.Image = Resources.DelgadoM;
+                            }
+                        }
+                        else
+                        {
+                            if (buscado.ClasificacionPorPeso == "Peso Saludable")
+                            {
+                                if (buscado.Sexo == "F")
+                                {
+                                    pictureEstado.Image = Resources.SaludableF;
+                                }
+                                else
+                                {
+                                    pictureEstado.Image = Resources.SaludableM;
+                                }
+                            }
+                            else
+                            {
+                                if (buscado.ClasificacionPorPeso == "Sobrepeso")
+                                {
+                                    if (buscado.Sexo == "F")
+                                    {
+                                        pictureEstado.Image = Resources.SobrePesoF;
+                                    }
+                                    else
+                                    {
+                                        pictureEstado.Image = Resources.SobrePesoM;
+                                    }
+                                }
+                                else
+                                {
+                                    if (buscado.ClasificacionPorPeso == "Obesidad Moderada")
+                                    {
+                                        if (buscado.Sexo == "F")
+                                        {
+                                            pictureEstado.Image = Resources.SobrePesoF;
+                                        }
+                                        else
+                                        {
+                                            pictureEstado.Image = Resources.SobrePesoM;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (buscado.ClasificacionPorPeso == "Obesidad Severa")
+                                        {
+                                            if (buscado.Sexo == "F")
+                                            {
+                                                pictureEstado.Image = Resources.SobrePesoF;
+                                            }
+                                            else
+                                            {
+                                                pictureEstado.Image = Resources.SobrePesoM;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (buscado.ClasificacionPorPeso == "Obesidad muy Severa")
+                                            {
+                                                if (buscado.Sexo == "F")
+                                                {
+                                                    pictureEstado.Image = Resources.SobrePesoF;
+                                                }
+                                                else
+                                                {
+                                                    pictureEstado.Image = Resources.SobrePesoM;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                labelEstadoCliente.Text = buscado.ClasificacionPorPeso;
+                textIndiceMasaCorporal.Text = buscado.IndiceDeMasaCorporal.ToString();
+                textIndiceGrasaCorporal.Text = buscado.IndiceDeGrasaCorporal.ToString();
+                textIndiceMasaMuscular.Text = buscado.IndiceDeMasaMuscular.ToString();
+                textIndiceMasaResidual.Text = buscado.IndiceDeMasaResidual.ToString();
+                textIndiceMasaOsea.Text = buscado.IndiceDeMasaOsea.ToString();
+                busquedaCliente = true;
+            }
+        }
+        private void BuscarPorNombreProgreso(string busqueda)
+        {
+            BusquedaClienteRespuesta respuesta = new BusquedaClienteRespuesta();
+            respuesta = clienteService.BuscarPorIdentificacion(busqueda);
+            var buscado = respuesta.Cliente;
+            if (buscado != null)
+            {
+                if (buscado.ClasificacionPorPeso == "Delgadez muy Severa")
+                {
+                    if (buscado.Sexo == "F")
+                    {
+                        pictureEstado.Image = Resources.DelgadaF;
+                    }
+                    else
+                    {
+                        pictureEstado.Image = Resources.DelgadoM;
+                    }
+                }
+                else
+                {
+                    if (buscado.ClasificacionPorPeso == "Delgadez Severa")
+                    {
+                        if (buscado.Sexo == "F")
+                        {
+                            pictureEstado.Image = Resources.DelgadaF;
+                        }
+                        else
+                        {
+                            pictureEstado.Image = Resources.DelgadoM;
+                        }
+                    }
+                    else
+                    {
+                        if (buscado.ClasificacionPorPeso == "Delgadez")
+                        {
+                            if (buscado.Sexo == "F")
+                            {
+                                pictureEstado.Image = Resources.DelgadaF;
+                            }
+                            else
+                            {
+                                pictureEstado.Image = Resources.DelgadoM;
+                            }
+                        }
+                        else
+                        {
+                            if (buscado.ClasificacionPorPeso == "Peso Saludable")
+                            {
+                                if (buscado.Sexo == "F")
+                                {
+                                    pictureEstado.Image = Resources.SaludableF;
+                                }
+                                else
+                                {
+                                    pictureEstado.Image = Resources.SaludableM;
+                                }
+                            }
+                            else
+                            {
+                                if (buscado.ClasificacionPorPeso == "Sobrepeso")
+                                {
+                                    if (buscado.Sexo == "F")
+                                    {
+                                        pictureEstado.Image = Resources.SobrePesoF;
+                                    }
+                                    else
+                                    {
+                                        pictureEstado.Image = Resources.SobrePesoM;
+                                    }
+                                }
+                                else
+                                {
+                                    if (buscado.ClasificacionPorPeso == "Obesidad Moderada")
+                                    {
+                                        if (buscado.Sexo == "F")
+                                        {
+                                            pictureEstado.Image = Resources.SobrePesoF;
+                                        }
+                                        else
+                                        {
+                                            pictureEstado.Image = Resources.SobrePesoM;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (buscado.ClasificacionPorPeso == "Obesidad Severa")
+                                        {
+                                            if (buscado.Sexo == "F")
+                                            {
+                                                pictureEstado.Image = Resources.SobrePesoF;
+                                            }
+                                            else
+                                            {
+                                                pictureEstado.Image = Resources.SobrePesoM;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (buscado.ClasificacionPorPeso == "Obesidad muy Severa")
+                                            {
+                                                if (buscado.Sexo == "F")
+                                                {
+                                                    pictureEstado.Image = Resources.SobrePesoF;
+                                                }
+                                                else
+                                                {
+                                                    pictureEstado.Image = Resources.SobrePesoM;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                labelEstadoCliente.Text = buscado.ClasificacionPorPeso;
+                textIndiceMasaCorporal.Text = buscado.IndiceDeMasaCorporal.ToString();
+                textIndiceGrasaCorporal.Text = buscado.IndiceDeGrasaCorporal.ToString();
+                textIndiceMasaMuscular.Text = buscado.IndiceDeMasaMuscular.ToString();
+                textIndiceMasaResidual.Text = buscado.IndiceDeMasaResidual.ToString();
+                textIndiceMasaOsea.Text = buscado.IndiceDeMasaOsea.ToString();
+                busquedaCliente = true;
+            }
+        }
+        private void textSearchProgreso_TextChanged(object sender, EventArgs e)
+        {
+            string busqueda = textSearchProgreso.Text;
+            if (textSearchProgreso.Text != "" && textSearchProgreso.Text != "Buscar")
+            {
+                BuscarPorIdProgreso(busqueda);
+                BuscarPorNombreProgreso(busqueda);
+                if (busquedaCliente == false)
+                {
+                    labelAlerta.Text = "No se encontraron los datos buscados";
+                    labelAlerta.Visible = true;
+                }
+                else
+                {
+                    if (busquedaCliente == true)
+                    {
+                        labelAlerta.Visible = false;
+                    }
+                }
+            }
+        }
+
+        private void textSearchProgreso_Enter(object sender, EventArgs e)
+        {
+            if (textSearchProgreso.Text == "Buscar")
+            {
+                textSearchProgreso.Text = "";
+            }
+        }
+
+        private void textSearchProgreso_Leave(object sender, EventArgs e)
+        {
+            if (textSearch.Text == "")
+            {
+                textSearch.Text = "Buscar";
+                labelAlerta.Visible = false;
+            }
+        }
+
+        private void btnSearchProgreso_Click(object sender, EventArgs e)
+        {
+            btnSearchProgreso.Visible = false;
+            btnCloseSearchProgreso.Visible = true;
+            textSearchProgreso.Visible = true;
+            string busqueda = textSearchProgreso.Text;
+            if (textSearchProgreso.Text != "" && textSearchProgreso.Text != "Buscar")
+            {
+                BuscarPorIdProgreso(busqueda);
+                BuscarPorNombreProgreso(busqueda);
+                if (busquedaCliente == false)
+                {
+                    labelAlerta.Text = "No se encontraron los datos buscados";
+                    labelAlerta.Visible = true;
+                }
+                else
+                {
+                    if (busquedaCliente == true)
+                    {
+                        labelAlerta.Visible = false;
+                    }
+                }
+            }
+        }
+
+        private void btnCloseSearchProgreso_Click(object sender, EventArgs e)
+        {
+            btnSearchProgreso.Visible = true;
+            btnCloseSearchProgreso.Visible = false;
+            textSearchProgreso.Visible = false;
         }
     }
 }

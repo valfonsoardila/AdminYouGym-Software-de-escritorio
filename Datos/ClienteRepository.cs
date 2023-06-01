@@ -20,8 +20,8 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into CLIENTE(Id, Tipo_De_Id, Codigo_Cliente, ImagenPerfil, Nombres, Apellidos, Fecha_De_Nacimiento, Edad, Sexo, Peso, Altura, Direccion_Domicilio, Telefono, Correo, ClasificacionPorPeso, IndMC, IndGC, IndMM, IndMO, IndMR) " +
-                    "Values (@Id, @Tipo_De_Id, @Codigo_Cliente, @ImagenPerfil, @Nombres, @Apellidos, @Fecha_De_Nacimiento, @Edad, @Sexo, @Peso, @Altura, @Direccion_Domicilio, @Telefono, @Correo, @Clasificacion_Por_Peso, @IndMC, @IndGC, @IndMM, @IndMO, @IndMR)";
+                command.CommandText = "Insert Into CLIENTE(Id, Tipo_De_Id, Codigo_Cliente, ImagenPerfil, Nombres, Apellidos, Fecha_De_Nacimiento, Edad, Sexo, Peso, Altura, Direccion_Domicilio, Telefono, Correo, ClasificacionPorPeso, Indice_Masa_Corporal, Indice_Grasa_Corporal, Indice_Masa_Muscular, Indice_Masa_Osea, Indice_Masa_Residual) " +
+                    "Values (@Id, @Tipo_De_Id, @Codigo_Cliente, @ImagenPerfil, @Nombres, @Apellidos, @Fecha_De_Nacimiento, @Edad, @Sexo, @Peso, @Altura, @Direccion_Domicilio, @Telefono, @Correo, @Clasificacion_Por_Peso, @Indice_Masa_Corporal, @Indice_Grasa_Corporal, @Indice_Masa_Muscular, @Indice_Masa_Osea, @Indice_Masa_Residual)";
                 //command.Parameters.Add("@Id", SqlDbType.VarChar).Value = persona.Identificacion;
                 command.Parameters.AddWithValue("@Id", cliente.Identificacion);
                 command.Parameters.AddWithValue("@Tipo_De_Id", cliente.TipoDeIdentificacion);
@@ -38,11 +38,11 @@ namespace Datos
                 command.Parameters.AddWithValue("@Telefono", cliente.Telefono);
                 command.Parameters.AddWithValue("@Correo", cliente.CorreoElectronico);
                 command.Parameters.AddWithValue("@Clasificacion_Por_Peso", cliente.ClasificacionPorPeso);
-                command.Parameters.AddWithValue("@IndMC", cliente.IndiceDeMasaCorporal);
-                command.Parameters.AddWithValue("@IndGC", cliente.IndiceDeGrasaCorporal);
-                command.Parameters.AddWithValue("@IndMM", cliente.IndiceDeMasaMuscular);
-                command.Parameters.AddWithValue("@IndMO", cliente.IndiceDeMasaOsea);
-                command.Parameters.AddWithValue("@IndMR", cliente.IndiceDeMasaResidual);
+                command.Parameters.AddWithValue("@Indice_Masa_Corporal", cliente.IndiceDeMasaCorporal);
+                command.Parameters.AddWithValue("@Ind_Grasa_Corporal", cliente.IndiceDeGrasaCorporal);
+                command.Parameters.AddWithValue("@Indice_Masa_Muscular", cliente.IndiceDeMasaMuscular);
+                command.Parameters.AddWithValue("@Indice_Masa_Osea", cliente.IndiceDeMasaOsea);
+                command.Parameters.AddWithValue("@Indice_Masa_Residual", cliente.IndiceDeMasaResidual);
                 command.ExecuteNonQuery();
 
             }
@@ -51,8 +51,8 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"Insert Into CLIENTE (Id, Tipo_De_Id, Codigo_Cliente, ImagenPerfil, Nombres, Apellidos, Fecha_De_Nacimiento, Edad, Sexo, Peso, Altura, Direccion_Domicilio, Telefono, Correo, Clasificacion_Por_Peso, IndMC, IndGC, IndMM, IndMO, IndMR) 
-                                        values (@Id, @Tipo_De_Id, @Codigo_Cliente, @ImagenPerfil, @Nombres, @Apellidos, @Fecha_De_Nacimiento, @Edad, @Sexo, @Peso, @Altura, @Direccion_Domicilio, @Telefono, @Correo, @Clasificacion_Por_Peso, @IndMC, @IndGC, @IndMM, @IndMO, @IndMR)";
+                command.CommandText = @"Insert Into CLIENTE (Id, Tipo_De_Id, Codigo_Cliente, ImagenPerfil, Nombres, Apellidos, Fecha_De_Nacimiento, Edad, Sexo, Peso, Altura, Direccion_Domicilio, Telefono, Correo, Clasificacion_Por_Peso, Indice_Masa_Corporal, Indice_Grasa_Corporal, Indice_Masa_Muscular, Indice_Masa_Osea, Indice_Masa_Residual) 
+                                        values (@Id, @Tipo_De_Id, @Codigo_Cliente, @ImagenPerfil, @Nombres, @Apellidos, @Fecha_De_Nacimiento, @Edad, @Sexo, @Peso, @Altura, @Direccion_Domicilio, @Telefono, @Correo, @Clasificacion_Por_Peso, @Indice_Masa_Corporal, @Indice_Grasa_Corporal, @Indice_Masa_Muscular, @Indice_Masa_Osea, @Indice_Masa_Residual)";
                 command.Parameters.AddWithValue("@Id", cliente.Identificacion);
                 command.Parameters.AddWithValue("@Tipo_De_Id", cliente.TipoDeIdentificacion);
                 command.Parameters.AddWithValue("@Codigo_Cliente", cliente.CodigoCliente);
@@ -68,11 +68,11 @@ namespace Datos
                 command.Parameters.AddWithValue("@Telefono", cliente.Telefono);
                 command.Parameters.AddWithValue("@Correo", cliente.CorreoElectronico);
                 command.Parameters.AddWithValue("@Clasificacion_Por_Peso", cliente.ClasificacionPorPeso);
-                command.Parameters.AddWithValue("@IndMC", cliente.IndiceDeMasaCorporal);
-                command.Parameters.AddWithValue("@IndGC", cliente.IndiceDeGrasaCorporal);
-                command.Parameters.AddWithValue("@IndMM", cliente.IndiceDeMasaMuscular);
-                command.Parameters.AddWithValue("@IndMO", cliente.IndiceDeMasaOsea);
-                command.Parameters.AddWithValue("@IndMR", cliente.IndiceDeMasaResidual);
+                command.Parameters.AddWithValue("@Indice_Masa_Corporal", cliente.IndiceDeMasaCorporal);
+                command.Parameters.AddWithValue("@Indice_Grasa_Corporal", cliente.IndiceDeGrasaCorporal);
+                command.Parameters.AddWithValue("@Indice_Masa_Muscular", cliente.IndiceDeMasaMuscular);
+                command.Parameters.AddWithValue("@Indice_Masa_Osea", cliente.IndiceDeMasaOsea);
+                command.Parameters.AddWithValue("@Indice_Masa_Residual", cliente.IndiceDeMasaResidual);
                 var filas = command.ExecuteNonQuery();
             }
         }
@@ -90,7 +90,7 @@ namespace Datos
             List<Cliente> clientes = new List<Cliente>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select Id, Tipo_De_Id, Codigo_Cliente, ImagenPerfil, Nombres, Apellidos, Fecha_De_Nacimiento, Edad, Sexo, Peso, Altura, Direccion_Domicilio, Telefono, Correo, Clasificacion_Por_Peso, IndMC, IndGC, IndMM, IndMO, IndMR from CLIENTE ";
+                command.CommandText = "Select Id, Tipo_De_Id, Codigo_Cliente, ImagenPerfil, Nombres, Apellidos, Fecha_De_Nacimiento, Edad, Sexo, Peso, Altura, Direccion_Domicilio, Telefono, Correo, Clasificacion_Por_Peso, Indice_Masa_Corporal, Indice_Grasa_Corporal, Indice_Masa_Muscular, Indice_Masa_Osea, Indice_Masa_Residual from CLIENTE ";
                 var dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -115,11 +115,23 @@ namespace Datos
                 return DataReaderMapToCliente(dataReader);
             }
         }
+        public Cliente BuscarPorSexo(string sexo)
+        {
+            SqlDataReader dataReader;
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "select * from CLIENTE where Sexo=@Sexo";
+                command.Parameters.AddWithValue("@Sexo", sexo);
+                dataReader = command.ExecuteReader();
+                dataReader.Read();
+                return DataReaderMapToCliente(dataReader);
+            }
+        }
         public void Modificar(Cliente cliente)
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"update CLIENTE set Tipo_De_Id=@Tipo_De_Id, ImagenPerfil=@ImagenPerfil, Nombres=@Nombres, Apellidos=@Apellidos, Fecha_De_Nacimiento=@Fecha_De_Nacimiento, Edad=@Edad, Sexo=@Sexo, Peso=@Peso, Altura=@Altura, Direccion_Domicilio=@Direccion_Domicilio, Telefono=@Telefono, Correo=@Correo, Clasificacion_Por_Peso = @Clasificacion_Por_Peso, IndMC=@IndMC, IndGC=@IndGC, IndMM=@IndMM, IndMO=@IndMO, IndMR=@IndMR
+                command.CommandText = @"update CLIENTE set Tipo_De_Id=@Tipo_De_Id, ImagenPerfil=@ImagenPerfil, Nombres=@Nombres, Apellidos=@Apellidos, Fecha_De_Nacimiento=@Fecha_De_Nacimiento, Edad=@Edad, Sexo=@Sexo, Peso=@Peso, Altura=@Altura, Direccion_Domicilio=@Direccion_Domicilio, Telefono=@Telefono, Correo=@Correo, Clasificacion_Por_Peso = @Clasificacion_Por_Peso, Indice_Masa_Corporal=@Indice_Masa_Corporal, Indice_Grasa_Corporal=@Indice_Grasa_Corporal, Indice_Masa_Muscular=@Indice_Masa_Muscular, Indice_Masa_Osea=@Indice_Masa_Osea, Indice_Masa_Residual=@Indice_Masa_Residual
                                         where Id=@Id";
                 command.Parameters.AddWithValue("@Id", cliente.Identificacion);
                 command.Parameters.AddWithValue("@Tipo_De_Id", cliente.TipoDeIdentificacion);
@@ -135,11 +147,11 @@ namespace Datos
                 command.Parameters.AddWithValue("@Telefono", cliente.Telefono);
                 command.Parameters.AddWithValue("@Correo", cliente.CorreoElectronico);
                 command.Parameters.AddWithValue("@Clasificacion_Por_Peso", cliente.ClasificacionPorPeso);
-                command.Parameters.AddWithValue("@IndMC", cliente.IndiceDeMasaCorporal);
-                command.Parameters.AddWithValue("@IndGC", cliente.IndiceDeGrasaCorporal);
-                command.Parameters.AddWithValue("@IndMM", cliente.IndiceDeMasaMuscular);
-                command.Parameters.AddWithValue("@IndMO", cliente.IndiceDeMasaOsea);
-                command.Parameters.AddWithValue("@IndMR", cliente.IndiceDeMasaResidual);
+                command.Parameters.AddWithValue("@Indice_Masa_Corporal", cliente.IndiceDeMasaCorporal);
+                command.Parameters.AddWithValue("@Indice_Grasa_Corporal", cliente.IndiceDeGrasaCorporal);
+                command.Parameters.AddWithValue("@Indice_Masa_Muscular", cliente.IndiceDeMasaMuscular);
+                command.Parameters.AddWithValue("@Indice_Masa_Osea", cliente.IndiceDeMasaOsea);
+                command.Parameters.AddWithValue("@Indice_Masa_Residual", cliente.IndiceDeMasaResidual);
                 var filas = command.ExecuteNonQuery();
             }
         }
@@ -162,11 +174,11 @@ namespace Datos
             cliente.Telefono = (string)dataReader["Telefono"];
             cliente.CorreoElectronico = (string)dataReader["Correo"];
             cliente.ClasificacionPorPeso = (string)dataReader["Clasificacion_Por_Peso"];
-            cliente.IndiceDeMasaCorporal = (double)dataReader["IndMC"];
-            cliente.IndiceDeGrasaCorporal = (double)dataReader["IndGC"];
-            cliente.IndiceDeMasaMuscular = (double)dataReader["IndMM"];
-            cliente.IndiceDeMasaOsea = (double)dataReader["IndMO"];
-            cliente.IndiceDeMasaResidual = (double)dataReader["IndMR"];
+            cliente.IndiceDeMasaCorporal = (double)dataReader["Indice_Masa_Corporal"];
+            cliente.IndiceDeGrasaCorporal = (double)dataReader["Indice_Grasa_Corporal"];
+            cliente.IndiceDeMasaMuscular = (double)dataReader["Indice_Masa_Muscular"];
+            cliente.IndiceDeMasaOsea = (double)dataReader["Indice_Masa_Osea"];
+            cliente.IndiceDeMasaResidual = (double)dataReader["Indice_Masa_Residual"];
             return cliente;
         }
         public int Totalizar()

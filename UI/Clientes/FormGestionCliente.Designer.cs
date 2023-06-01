@@ -31,8 +31,8 @@
             panel2 = new Panel();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             panel3 = new Panel();
-            label6 = new Label();
-            pictureBox1 = new PictureBox();
+            pictureAlerta = new PictureBox();
+            labelAlerta = new Label();
             label5 = new Label();
             btnVolver = new FontAwesome.Sharp.IconButton();
             tabControlCliente = new TabControl();
@@ -56,35 +56,36 @@
             label1 = new Label();
             tabRegistro = new TabPage();
             panel9 = new Panel();
-            iconButton2 = new FontAwesome.Sharp.IconButton();
+            btnModificarCliente = new FontAwesome.Sharp.IconButton();
+            btnRegistrarCliente = new FontAwesome.Sharp.IconButton();
             pictureBox5 = new PictureBox();
             pictureBox4 = new PictureBox();
-            textBox14 = new TextBox();
+            textEstaturaCorporal = new TextBox();
             label28 = new Label();
-            textBox13 = new TextBox();
+            textPesoCorporal = new TextBox();
             label27 = new Label();
             panel8 = new Panel();
             label10 = new Label();
             panel7 = new Panel();
             btnCargarFoto = new FontAwesome.Sharp.IconButton();
             picturePerfil = new PictureBox();
-            comboBox2 = new ComboBox();
+            comboSexoRegistro = new ComboBox();
             label26 = new Label();
-            textBox12 = new TextBox();
+            textCorreo = new TextBox();
             label25 = new Label();
-            textBox11 = new TextBox();
+            textTelefono = new TextBox();
             label24 = new Label();
-            textBox10 = new TextBox();
+            textDireccion = new TextBox();
             label23 = new Label();
-            dateTimePicker1 = new DateTimePicker();
+            dateTimeFechaDeNacimiento = new DateTimePicker();
             label22 = new Label();
-            comboBox1 = new ComboBox();
+            comboTipoID = new ComboBox();
             label21 = new Label();
-            textBox9 = new TextBox();
+            textApellidos = new TextBox();
             label20 = new Label();
-            textBox8 = new TextBox();
+            textNombres = new TextBox();
             label19 = new Label();
-            textBox7 = new TextBox();
+            textID = new TextBox();
             label18 = new Label();
             panel6 = new Panel();
             btnSearch = new FontAwesome.Sharp.IconPictureBox();
@@ -94,35 +95,36 @@
             panel4 = new Panel();
             label7 = new Label();
             tabProgreso = new TabPage();
-            textBox5 = new TextBox();
+            textIndiceMasaOsea = new TextBox();
             panel17 = new Panel();
             panel16 = new Panel();
-            textBox3 = new TextBox();
+            textIndiceMasaMuscular = new TextBox();
             panel15 = new Panel();
             panel14 = new Panel();
-            textBox1 = new TextBox();
+            textIndiceMasaCorporal = new TextBox();
             panel13 = new Panel();
             panel12 = new Panel();
             label17 = new Label();
-            iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
-            textBox6 = new TextBox();
+            btnSearchProgreso = new FontAwesome.Sharp.IconPictureBox();
+            textSearchProgreso = new TextBox();
+            btnCloseSearchProgreso = new FontAwesome.Sharp.IconPictureBox();
             label16 = new Label();
             label15 = new Label();
             label14 = new Label();
             label13 = new Label();
             label12 = new Label();
-            textBox4 = new TextBox();
-            textBox2 = new TextBox();
+            textIndiceMasaResidual = new TextBox();
+            textIndiceGrasaCorporal = new TextBox();
             panel10 = new Panel();
             panel11 = new Panel();
-            label11 = new Label();
-            pictureBox2 = new PictureBox();
+            labelEstadoCliente = new Label();
+            pictureEstado = new PictureBox();
             panel5 = new Panel();
             label8 = new Label();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureAlerta).BeginInit();
             tabControlCliente.SuspendLayout();
             tabGeneral.SuspendLayout();
             panelClient.SuspendLayout();
@@ -144,10 +146,11 @@
             panel4.SuspendLayout();
             tabProgreso.SuspendLayout();
             panel12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnSearchProgreso).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnCloseSearchProgreso).BeginInit();
             panel10.SuspendLayout();
             panel11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureEstado).BeginInit();
             panel5.SuspendLayout();
             SuspendLayout();
             // 
@@ -177,36 +180,36 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(label6);
-            panel3.Controls.Add(pictureBox1);
+            panel3.Controls.Add(pictureAlerta);
+            panel3.Controls.Add(labelAlerta);
             panel3.Dock = DockStyle.Right;
             panel3.Location = new Point(353, 0);
             panel3.Name = "panel3";
             panel3.Size = new Size(474, 57);
             panel3.TabIndex = 6;
             // 
-            // label6
+            // pictureAlerta
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.ForeColor = Color.Orange;
-            label6.Location = new Point(76, 16);
-            label6.Name = "label6";
-            label6.Size = new Size(168, 25);
-            label6.TabIndex = 9;
-            label6.Text = "Mensaje de alerta";
-            label6.Visible = false;
+            pictureAlerta.Image = Properties.Resources.Alert;
+            pictureAlerta.Location = new Point(9, 12);
+            pictureAlerta.Name = "pictureAlerta";
+            pictureAlerta.Size = new Size(30, 30);
+            pictureAlerta.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureAlerta.TabIndex = 10;
+            pictureAlerta.TabStop = false;
+            pictureAlerta.Visible = false;
             // 
-            // pictureBox1
+            // labelAlerta
             // 
-            pictureBox1.Image = Properties.Resources.Alert;
-            pictureBox1.Location = new Point(28, 8);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(42, 41);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            pictureBox1.Visible = false;
+            labelAlerta.AutoSize = true;
+            labelAlerta.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelAlerta.ForeColor = Color.Orange;
+            labelAlerta.Location = new Point(36, 17);
+            labelAlerta.Name = "labelAlerta";
+            labelAlerta.Size = new Size(117, 20);
+            labelAlerta.TabIndex = 11;
+            labelAlerta.Text = "Mensaje de alerta";
+            labelAlerta.Visible = false;
             // 
             // label5
             // 
@@ -435,6 +438,7 @@
             comboFiltroSexo.Size = new Size(121, 23);
             comboFiltroSexo.TabIndex = 1;
             comboFiltroSexo.Text = "Filtro sexo";
+            comboFiltroSexo.SelectedIndexChanged += comboFiltroSexo_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -463,12 +467,13 @@
             // 
             // panel9
             // 
-            panel9.Controls.Add(iconButton2);
+            panel9.Controls.Add(btnModificarCliente);
+            panel9.Controls.Add(btnRegistrarCliente);
             panel9.Controls.Add(pictureBox5);
             panel9.Controls.Add(pictureBox4);
-            panel9.Controls.Add(textBox14);
+            panel9.Controls.Add(textEstaturaCorporal);
             panel9.Controls.Add(label28);
-            panel9.Controls.Add(textBox13);
+            panel9.Controls.Add(textPesoCorporal);
             panel9.Controls.Add(label27);
             panel9.Dock = DockStyle.Top;
             panel9.Location = new Point(3, 265);
@@ -476,18 +481,34 @@
             panel9.Size = new Size(813, 182);
             panel9.TabIndex = 4;
             // 
-            // iconButton2
+            // btnModificarCliente
             // 
-            iconButton2.BackColor = Color.Black;
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
-            iconButton2.IconColor = Color.White;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            iconButton2.IconSize = 28;
-            iconButton2.Location = new Point(350, 140);
-            iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(107, 33);
-            iconButton2.TabIndex = 21;
-            iconButton2.UseVisualStyleBackColor = false;
+            btnModificarCliente.BackColor = Color.Black;
+            btnModificarCliente.Enabled = false;
+            btnModificarCliente.IconChar = FontAwesome.Sharp.IconChar.Pen;
+            btnModificarCliente.IconColor = Color.White;
+            btnModificarCliente.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnModificarCliente.IconSize = 28;
+            btnModificarCliente.Location = new Point(407, 140);
+            btnModificarCliente.Name = "btnModificarCliente";
+            btnModificarCliente.Size = new Size(107, 33);
+            btnModificarCliente.TabIndex = 22;
+            btnModificarCliente.UseVisualStyleBackColor = false;
+            btnModificarCliente.Click += btnModificarCliente_Click;
+            // 
+            // btnRegistrarCliente
+            // 
+            btnRegistrarCliente.BackColor = Color.Black;
+            btnRegistrarCliente.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
+            btnRegistrarCliente.IconColor = Color.White;
+            btnRegistrarCliente.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnRegistrarCliente.IconSize = 28;
+            btnRegistrarCliente.Location = new Point(297, 140);
+            btnRegistrarCliente.Name = "btnRegistrarCliente";
+            btnRegistrarCliente.Size = new Size(107, 33);
+            btnRegistrarCliente.TabIndex = 21;
+            btnRegistrarCliente.UseVisualStyleBackColor = false;
+            btnRegistrarCliente.Click += btnRegistrarCliente_Click;
             // 
             // pictureBox5
             // 
@@ -509,16 +530,16 @@
             pictureBox4.TabIndex = 19;
             pictureBox4.TabStop = false;
             // 
-            // textBox14
+            // textEstaturaCorporal
             // 
-            textBox14.BorderStyle = BorderStyle.FixedSingle;
-            textBox14.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            textBox14.Location = new Point(613, 60);
-            textBox14.Name = "textBox14";
-            textBox14.Size = new Size(133, 25);
-            textBox14.TabIndex = 5;
-            textBox14.Text = "0";
-            textBox14.TextAlign = HorizontalAlignment.Center;
+            textEstaturaCorporal.BorderStyle = BorderStyle.FixedSingle;
+            textEstaturaCorporal.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            textEstaturaCorporal.Location = new Point(613, 60);
+            textEstaturaCorporal.Name = "textEstaturaCorporal";
+            textEstaturaCorporal.Size = new Size(133, 25);
+            textEstaturaCorporal.TabIndex = 5;
+            textEstaturaCorporal.Text = "0";
+            textEstaturaCorporal.TextAlign = HorizontalAlignment.Center;
             // 
             // label28
             // 
@@ -530,16 +551,16 @@
             label28.TabIndex = 4;
             label28.Text = "Su estatura corporal:";
             // 
-            // textBox13
+            // textPesoCorporal
             // 
-            textBox13.BorderStyle = BorderStyle.FixedSingle;
-            textBox13.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            textBox13.Location = new Point(170, 60);
-            textBox13.Name = "textBox13";
-            textBox13.Size = new Size(133, 23);
-            textBox13.TabIndex = 3;
-            textBox13.Text = "0";
-            textBox13.TextAlign = HorizontalAlignment.Center;
+            textPesoCorporal.BorderStyle = BorderStyle.FixedSingle;
+            textPesoCorporal.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            textPesoCorporal.Location = new Point(170, 60);
+            textPesoCorporal.Name = "textPesoCorporal";
+            textPesoCorporal.Size = new Size(133, 23);
+            textPesoCorporal.TabIndex = 3;
+            textPesoCorporal.Text = "0";
+            textPesoCorporal.TextAlign = HorizontalAlignment.Center;
             // 
             // label27
             // 
@@ -575,23 +596,23 @@
             // 
             panel7.Controls.Add(btnCargarFoto);
             panel7.Controls.Add(picturePerfil);
-            panel7.Controls.Add(comboBox2);
+            panel7.Controls.Add(comboSexoRegistro);
             panel7.Controls.Add(label26);
-            panel7.Controls.Add(textBox12);
+            panel7.Controls.Add(textCorreo);
             panel7.Controls.Add(label25);
-            panel7.Controls.Add(textBox11);
+            panel7.Controls.Add(textTelefono);
             panel7.Controls.Add(label24);
-            panel7.Controls.Add(textBox10);
+            panel7.Controls.Add(textDireccion);
             panel7.Controls.Add(label23);
-            panel7.Controls.Add(dateTimePicker1);
+            panel7.Controls.Add(dateTimeFechaDeNacimiento);
             panel7.Controls.Add(label22);
-            panel7.Controls.Add(comboBox1);
+            panel7.Controls.Add(comboTipoID);
             panel7.Controls.Add(label21);
-            panel7.Controls.Add(textBox9);
+            panel7.Controls.Add(textApellidos);
             panel7.Controls.Add(label20);
-            panel7.Controls.Add(textBox8);
+            panel7.Controls.Add(textNombres);
             panel7.Controls.Add(label19);
-            panel7.Controls.Add(textBox7);
+            panel7.Controls.Add(textID);
             panel7.Controls.Add(label18);
             panel7.Dock = DockStyle.Top;
             panel7.Location = new Point(3, 53);
@@ -622,15 +643,15 @@
             picturePerfil.TabIndex = 18;
             picturePerfil.TabStop = false;
             // 
-            // comboBox2
+            // comboSexoRegistro
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "M", "F", "Otro" });
-            comboBox2.Location = new Point(414, 78);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(59, 23);
-            comboBox2.TabIndex = 17;
-            comboBox2.Text = "M";
+            comboSexoRegistro.FormattingEnabled = true;
+            comboSexoRegistro.Items.AddRange(new object[] { "M", "F", "Otro" });
+            comboSexoRegistro.Location = new Point(414, 78);
+            comboSexoRegistro.Name = "comboSexoRegistro";
+            comboSexoRegistro.Size = new Size(59, 23);
+            comboSexoRegistro.TabIndex = 17;
+            comboSexoRegistro.Text = "M";
             // 
             // label26
             // 
@@ -642,13 +663,13 @@
             label26.TabIndex = 16;
             label26.Text = "Sexo:";
             // 
-            // textBox12
+            // textCorreo
             // 
-            textBox12.BorderStyle = BorderStyle.FixedSingle;
-            textBox12.Location = new Point(66, 139);
-            textBox12.Name = "textBox12";
-            textBox12.Size = new Size(133, 23);
-            textBox12.TabIndex = 15;
+            textCorreo.BorderStyle = BorderStyle.FixedSingle;
+            textCorreo.Location = new Point(66, 139);
+            textCorreo.Name = "textCorreo";
+            textCorreo.Size = new Size(133, 23);
+            textCorreo.TabIndex = 15;
             // 
             // label25
             // 
@@ -660,13 +681,13 @@
             label25.TabIndex = 14;
             label25.Text = "Correo:";
             // 
-            // textBox11
+            // textTelefono
             // 
-            textBox11.BorderStyle = BorderStyle.FixedSingle;
-            textBox11.Location = new Point(312, 110);
-            textBox11.Name = "textBox11";
-            textBox11.Size = new Size(151, 23);
-            textBox11.TabIndex = 13;
+            textTelefono.BorderStyle = BorderStyle.FixedSingle;
+            textTelefono.Location = new Point(312, 110);
+            textTelefono.Name = "textTelefono";
+            textTelefono.Size = new Size(151, 23);
+            textTelefono.TabIndex = 13;
             // 
             // label24
             // 
@@ -678,13 +699,13 @@
             label24.TabIndex = 12;
             label24.Text = "Telefono:";
             // 
-            // textBox10
+            // textDireccion
             // 
-            textBox10.BorderStyle = BorderStyle.FixedSingle;
-            textBox10.Location = new Point(84, 109);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(151, 23);
-            textBox10.TabIndex = 11;
+            textDireccion.BorderStyle = BorderStyle.FixedSingle;
+            textDireccion.Location = new Point(84, 109);
+            textDireccion.Name = "textDireccion";
+            textDireccion.Size = new Size(151, 23);
+            textDireccion.TabIndex = 11;
             // 
             // label23
             // 
@@ -696,12 +717,12 @@
             label23.TabIndex = 10;
             label23.Text = "Direccion:";
             // 
-            // dateTimePicker1
+            // dateTimeFechaDeNacimiento
             // 
-            dateTimePicker1.Location = new Point(161, 77);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
-            dateTimePicker1.TabIndex = 9;
+            dateTimeFechaDeNacimiento.Location = new Point(161, 77);
+            dateTimeFechaDeNacimiento.Name = "dateTimeFechaDeNacimiento";
+            dateTimeFechaDeNacimiento.Size = new Size(200, 23);
+            dateTimeFechaDeNacimiento.TabIndex = 9;
             // 
             // label22
             // 
@@ -713,15 +734,15 @@
             label22.TabIndex = 8;
             label22.Text = "Fecha de nacimiento:";
             // 
-            // comboBox1
+            // comboTipoID
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "CC", "TI", "Otro" });
-            comboBox1.Location = new Point(407, 15);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(59, 23);
-            comboBox1.TabIndex = 7;
-            comboBox1.Text = "CC";
+            comboTipoID.FormattingEnabled = true;
+            comboTipoID.Items.AddRange(new object[] { "CC", "TI", "Otro" });
+            comboTipoID.Location = new Point(407, 15);
+            comboTipoID.Name = "comboTipoID";
+            comboTipoID.Size = new Size(59, 23);
+            comboTipoID.TabIndex = 7;
+            comboTipoID.Text = "CC";
             // 
             // label21
             // 
@@ -733,13 +754,13 @@
             label21.TabIndex = 6;
             label21.Text = "Tipo de identificacion:";
             // 
-            // textBox9
+            // textApellidos
             // 
-            textBox9.BorderStyle = BorderStyle.FixedSingle;
-            textBox9.Location = new Point(306, 43);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(151, 23);
-            textBox9.TabIndex = 5;
+            textApellidos.BorderStyle = BorderStyle.FixedSingle;
+            textApellidos.Location = new Point(306, 43);
+            textApellidos.Name = "textApellidos";
+            textApellidos.Size = new Size(151, 23);
+            textApellidos.TabIndex = 5;
             // 
             // label20
             // 
@@ -751,13 +772,13 @@
             label20.TabIndex = 4;
             label20.Text = "Apellidos:";
             // 
-            // textBox8
+            // textNombres
             // 
-            textBox8.BorderStyle = BorderStyle.FixedSingle;
-            textBox8.Location = new Point(75, 43);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(151, 23);
-            textBox8.TabIndex = 3;
+            textNombres.BorderStyle = BorderStyle.FixedSingle;
+            textNombres.Location = new Point(79, 43);
+            textNombres.Name = "textNombres";
+            textNombres.Size = new Size(151, 23);
+            textNombres.TabIndex = 3;
             // 
             // label19
             // 
@@ -765,17 +786,17 @@
             label19.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             label19.Location = new Point(7, 44);
             label19.Name = "label19";
-            label19.Size = new Size(67, 20);
+            label19.Size = new Size(73, 20);
             label19.TabIndex = 2;
-            label19.Text = "Nombre:";
+            label19.Text = "Nombres:";
             // 
-            // textBox7
+            // textID
             // 
-            textBox7.BorderStyle = BorderStyle.FixedSingle;
-            textBox7.Location = new Point(108, 13);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(133, 23);
-            textBox7.TabIndex = 1;
+            textID.BorderStyle = BorderStyle.FixedSingle;
+            textID.Location = new Point(108, 13);
+            textID.Name = "textID";
+            textID.Size = new Size(133, 23);
+            textID.TabIndex = 1;
             // 
             // label18
             // 
@@ -812,6 +833,7 @@
             btnSearch.Size = new Size(24, 24);
             btnSearch.TabIndex = 12;
             btnSearch.TabStop = false;
+            btnSearch.Click += btnSearch_Click;
             // 
             // textSearch
             // 
@@ -822,6 +844,10 @@
             textSearch.Size = new Size(146, 25);
             textSearch.TabIndex = 11;
             textSearch.Text = "Buscar";
+            textSearch.Visible = false;
+            textSearch.TextChanged += textSearch_TextChanged;
+            textSearch.Enter += textSearch_Enter;
+            textSearch.Leave += textSearch_Leave;
             // 
             // btnCloseTextSearch
             // 
@@ -836,6 +862,7 @@
             btnCloseTextSearch.Size = new Size(24, 24);
             btnCloseTextSearch.TabIndex = 10;
             btnCloseTextSearch.TabStop = false;
+            btnCloseTextSearch.Click += btnCloseTextSearch_Click;
             // 
             // label9
             // 
@@ -871,13 +898,13 @@
             // 
             // tabProgreso
             // 
-            tabProgreso.Controls.Add(textBox5);
+            tabProgreso.Controls.Add(textIndiceMasaOsea);
             tabProgreso.Controls.Add(panel17);
             tabProgreso.Controls.Add(panel16);
-            tabProgreso.Controls.Add(textBox3);
+            tabProgreso.Controls.Add(textIndiceMasaMuscular);
             tabProgreso.Controls.Add(panel15);
             tabProgreso.Controls.Add(panel14);
-            tabProgreso.Controls.Add(textBox1);
+            tabProgreso.Controls.Add(textIndiceMasaCorporal);
             tabProgreso.Controls.Add(panel13);
             tabProgreso.Controls.Add(panel12);
             tabProgreso.Controls.Add(label16);
@@ -885,8 +912,8 @@
             tabProgreso.Controls.Add(label14);
             tabProgreso.Controls.Add(label13);
             tabProgreso.Controls.Add(label12);
-            tabProgreso.Controls.Add(textBox4);
-            tabProgreso.Controls.Add(textBox2);
+            tabProgreso.Controls.Add(textIndiceMasaResidual);
+            tabProgreso.Controls.Add(textIndiceGrasaCorporal);
             tabProgreso.Controls.Add(panel10);
             tabProgreso.Controls.Add(panel5);
             tabProgreso.Location = new Point(4, 24);
@@ -896,14 +923,14 @@
             tabProgreso.Text = "Progreso";
             tabProgreso.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // textIndiceMasaOsea
             // 
-            textBox5.BorderStyle = BorderStyle.FixedSingle;
-            textBox5.Location = new Point(386, 332);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(100, 23);
-            textBox5.TabIndex = 8;
-            textBox5.Text = "0.0";
+            textIndiceMasaOsea.BorderStyle = BorderStyle.FixedSingle;
+            textIndiceMasaOsea.Location = new Point(386, 332);
+            textIndiceMasaOsea.Name = "textIndiceMasaOsea";
+            textIndiceMasaOsea.Size = new Size(100, 23);
+            textIndiceMasaOsea.TabIndex = 8;
+            textIndiceMasaOsea.Text = "0.0";
             // 
             // panel17
             // 
@@ -921,14 +948,14 @@
             panel16.Size = new Size(230, 1);
             panel16.TabIndex = 18;
             // 
-            // textBox3
+            // textIndiceMasaMuscular
             // 
-            textBox3.BorderStyle = BorderStyle.FixedSingle;
-            textBox3.Location = new Point(386, 211);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 6;
-            textBox3.Text = "0.0";
+            textIndiceMasaMuscular.BorderStyle = BorderStyle.FixedSingle;
+            textIndiceMasaMuscular.Location = new Point(386, 211);
+            textIndiceMasaMuscular.Name = "textIndiceMasaMuscular";
+            textIndiceMasaMuscular.Size = new Size(100, 23);
+            textIndiceMasaMuscular.TabIndex = 6;
+            textIndiceMasaMuscular.Text = "0.0";
             // 
             // panel15
             // 
@@ -946,14 +973,14 @@
             panel14.Size = new Size(230, 1);
             panel14.TabIndex = 16;
             // 
-            // textBox1
+            // textIndiceMasaCorporal
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(386, 97);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 4;
-            textBox1.Text = "0.0";
+            textIndiceMasaCorporal.BorderStyle = BorderStyle.FixedSingle;
+            textIndiceMasaCorporal.Location = new Point(386, 97);
+            textIndiceMasaCorporal.Name = "textIndiceMasaCorporal";
+            textIndiceMasaCorporal.Size = new Size(100, 23);
+            textIndiceMasaCorporal.TabIndex = 4;
+            textIndiceMasaCorporal.Text = "0.0";
             // 
             // panel13
             // 
@@ -966,8 +993,9 @@
             // panel12
             // 
             panel12.Controls.Add(label17);
-            panel12.Controls.Add(iconPictureBox2);
-            panel12.Controls.Add(textBox6);
+            panel12.Controls.Add(btnSearchProgreso);
+            panel12.Controls.Add(textSearchProgreso);
+            panel12.Controls.Add(btnCloseSearchProgreso);
             panel12.Dock = DockStyle.Top;
             panel12.Location = new Point(217, 26);
             panel12.Name = "panel12";
@@ -985,28 +1013,48 @@
             label17.TabIndex = 2;
             label17.Text = "Buscar Id de cliente:";
             // 
-            // iconPictureBox2
+            // btnSearchProgreso
             // 
-            iconPictureBox2.BackColor = Color.Transparent;
-            iconPictureBox2.ForeColor = Color.Black;
-            iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Sistrix;
-            iconPictureBox2.IconColor = Color.Black;
-            iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox2.IconSize = 24;
-            iconPictureBox2.Location = new Point(445, 1);
-            iconPictureBox2.Name = "iconPictureBox2";
-            iconPictureBox2.Size = new Size(24, 24);
-            iconPictureBox2.TabIndex = 9;
-            iconPictureBox2.TabStop = false;
+            btnSearchProgreso.BackColor = Color.Transparent;
+            btnSearchProgreso.ForeColor = Color.Black;
+            btnSearchProgreso.IconChar = FontAwesome.Sharp.IconChar.Sistrix;
+            btnSearchProgreso.IconColor = Color.Black;
+            btnSearchProgreso.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSearchProgreso.IconSize = 24;
+            btnSearchProgreso.Location = new Point(445, 1);
+            btnSearchProgreso.Name = "btnSearchProgreso";
+            btnSearchProgreso.Size = new Size(24, 24);
+            btnSearchProgreso.TabIndex = 9;
+            btnSearchProgreso.TabStop = false;
+            btnSearchProgreso.Click += btnSearchProgreso_Click;
             // 
-            // textBox6
+            // textSearchProgreso
             // 
-            textBox6.BorderStyle = BorderStyle.FixedSingle;
-            textBox6.Location = new Point(185, 2);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(258, 23);
-            textBox6.TabIndex = 0;
-            textBox6.Text = "Busqueda";
+            textSearchProgreso.BorderStyle = BorderStyle.FixedSingle;
+            textSearchProgreso.Location = new Point(185, 2);
+            textSearchProgreso.Name = "textSearchProgreso";
+            textSearchProgreso.Size = new Size(258, 23);
+            textSearchProgreso.TabIndex = 0;
+            textSearchProgreso.Text = "Buscar";
+            textSearchProgreso.Visible = false;
+            textSearchProgreso.TextChanged += textSearchProgreso_TextChanged;
+            textSearchProgreso.Enter += textSearchProgreso_Enter;
+            textSearchProgreso.Leave += textSearchProgreso_Leave;
+            // 
+            // btnCloseSearchProgreso
+            // 
+            btnCloseSearchProgreso.BackColor = Color.Transparent;
+            btnCloseSearchProgreso.ForeColor = Color.Red;
+            btnCloseSearchProgreso.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            btnCloseSearchProgreso.IconColor = Color.Red;
+            btnCloseSearchProgreso.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCloseSearchProgreso.IconSize = 24;
+            btnCloseSearchProgreso.Location = new Point(445, 1);
+            btnCloseSearchProgreso.Name = "btnCloseSearchProgreso";
+            btnCloseSearchProgreso.Size = new Size(24, 24);
+            btnCloseSearchProgreso.TabIndex = 11;
+            btnCloseSearchProgreso.TabStop = false;
+            btnCloseSearchProgreso.Click += btnCloseSearchProgreso_Click;
             // 
             // label16
             // 
@@ -1058,28 +1106,28 @@
             label12.TabIndex = 9;
             label12.Text = "Indice de masa corporal";
             // 
-            // textBox4
+            // textIndiceMasaResidual
             // 
-            textBox4.BorderStyle = BorderStyle.FixedSingle;
-            textBox4.Location = new Point(452, 272);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(100, 23);
-            textBox4.TabIndex = 7;
-            textBox4.Text = "0.0";
+            textIndiceMasaResidual.BorderStyle = BorderStyle.FixedSingle;
+            textIndiceMasaResidual.Location = new Point(452, 272);
+            textIndiceMasaResidual.Name = "textIndiceMasaResidual";
+            textIndiceMasaResidual.Size = new Size(100, 23);
+            textIndiceMasaResidual.TabIndex = 7;
+            textIndiceMasaResidual.Text = "0.0";
             // 
-            // textBox2
+            // textIndiceGrasaCorporal
             // 
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Location = new Point(452, 151);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 5;
-            textBox2.Text = "0.0";
+            textIndiceGrasaCorporal.BorderStyle = BorderStyle.FixedSingle;
+            textIndiceGrasaCorporal.Location = new Point(452, 151);
+            textIndiceGrasaCorporal.Name = "textIndiceGrasaCorporal";
+            textIndiceGrasaCorporal.Size = new Size(100, 23);
+            textIndiceGrasaCorporal.TabIndex = 5;
+            textIndiceGrasaCorporal.Text = "0.0";
             // 
             // panel10
             // 
             panel10.Controls.Add(panel11);
-            panel10.Controls.Add(pictureBox2);
+            panel10.Controls.Add(pictureEstado);
             panel10.Dock = DockStyle.Left;
             panel10.Location = new Point(0, 26);
             panel10.Name = "panel10";
@@ -1088,34 +1136,34 @@
             // 
             // panel11
             // 
-            panel11.Controls.Add(label11);
+            panel11.Controls.Add(labelEstadoCliente);
             panel11.Dock = DockStyle.Top;
             panel11.Location = new Point(0, 0);
             panel11.Name = "panel11";
             panel11.Size = new Size(217, 27);
             panel11.TabIndex = 4;
             // 
-            // label11
+            // labelEstadoCliente
             // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label11.ForeColor = Color.Black;
-            label11.Location = new Point(77, 2);
-            label11.Name = "label11";
-            label11.Size = new Size(61, 21);
-            label11.TabIndex = 1;
-            label11.Text = "Estado";
+            labelEstadoCliente.AutoSize = true;
+            labelEstadoCliente.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelEstadoCliente.ForeColor = Color.Black;
+            labelEstadoCliente.Location = new Point(77, 2);
+            labelEstadoCliente.Name = "labelEstadoCliente";
+            labelEstadoCliente.Size = new Size(61, 21);
+            labelEstadoCliente.TabIndex = 1;
+            labelEstadoCliente.Text = "Estado";
             // 
-            // pictureBox2
+            // pictureEstado
             // 
-            pictureBox2.Dock = DockStyle.Fill;
-            pictureBox2.Image = Properties.Resources.SaludableM;
-            pictureBox2.Location = new Point(0, 0);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(217, 420);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 2;
-            pictureBox2.TabStop = false;
+            pictureEstado.Dock = DockStyle.Fill;
+            pictureEstado.Image = Properties.Resources.SaludableM;
+            pictureEstado.Location = new Point(0, 0);
+            pictureEstado.Name = "pictureEstado";
+            pictureEstado.Size = new Size(217, 420);
+            pictureEstado.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureEstado.TabIndex = 2;
+            pictureEstado.TabStop = false;
             // 
             // panel5
             // 
@@ -1153,7 +1201,7 @@
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureAlerta).EndInit();
             tabControlCliente.ResumeLayout(false);
             tabGeneral.ResumeLayout(false);
             panelClient.ResumeLayout(false);
@@ -1184,11 +1232,12 @@
             tabProgreso.PerformLayout();
             panel12.ResumeLayout(false);
             panel12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnSearchProgreso).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnCloseSearchProgreso).EndInit();
             panel10.ResumeLayout(false);
             panel11.ResumeLayout(false);
             panel11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureEstado).EndInit();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             ResumeLayout(false);
@@ -1200,8 +1249,6 @@
         private Panel panel3;
         private Label label5;
         private FontAwesome.Sharp.IconButton btnVolver;
-        private PictureBox pictureBox1;
-        private Label label6;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private TabControl tabControlCliente;
         private TabPage tabGeneral;
@@ -1230,13 +1277,13 @@
         private Label label9;
         private Panel panel10;
         private Panel panel11;
-        private Label label11;
-        private PictureBox pictureBox2;
-        private TextBox textBox5;
-        private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private Label labelEstadoCliente;
+        private PictureBox pictureEstado;
+        private TextBox textIndiceMasaOsea;
+        private TextBox textIndiceMasaResidual;
+        private TextBox textIndiceMasaMuscular;
+        private TextBox textIndiceGrasaCorporal;
+        private TextBox textIndiceMasaCorporal;
         private Label label12;
         private Label label14;
         private Label label13;
@@ -1244,39 +1291,39 @@
         private Label label15;
         private Panel panel12;
         private Label label17;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
-        private TextBox textBox6;
+        private FontAwesome.Sharp.IconPictureBox btnSearchProgreso;
+        private TextBox textSearchProgreso;
         private Panel panel13;
         private Panel panel17;
         private Panel panel16;
         private Panel panel15;
         private Panel panel14;
-        private TextBox textBox7;
+        private TextBox textID;
         private Label label18;
-        private TextBox textBox8;
+        private TextBox textNombres;
         private Label label19;
-        private TextBox textBox9;
+        private TextBox textApellidos;
         private Label label20;
-        private ComboBox comboBox1;
+        private ComboBox comboTipoID;
         private Label label21;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTimeFechaDeNacimiento;
         private Label label22;
-        private TextBox textBox10;
+        private TextBox textDireccion;
         private Label label23;
-        private TextBox textBox11;
+        private TextBox textTelefono;
         private Label label24;
-        private TextBox textBox12;
+        private TextBox textCorreo;
         private Label label25;
-        private ComboBox comboBox2;
+        private ComboBox comboSexoRegistro;
         private Label label26;
         private PictureBox picturePerfil;
-        private TextBox textBox14;
+        private TextBox textEstaturaCorporal;
         private Label label28;
-        private TextBox textBox13;
+        private TextBox textPesoCorporal;
         private Label label27;
         private PictureBox pictureBox5;
         private PictureBox pictureBox4;
-        private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton btnRegistrarCliente;
         private FontAwesome.Sharp.IconPictureBox btnCloseTextSearch;
         private TextBox textSearch;
         private FontAwesome.Sharp.IconPictureBox btnSearch;
@@ -1287,5 +1334,9 @@
         private TextBox textMujeres;
         private Label label4;
         private Label label2;
+        private FontAwesome.Sharp.IconButton btnModificarCliente;
+        private PictureBox pictureAlerta;
+        private Label labelAlerta;
+        private FontAwesome.Sharp.IconPictureBox btnCloseSearchProgreso;
     }
 }
