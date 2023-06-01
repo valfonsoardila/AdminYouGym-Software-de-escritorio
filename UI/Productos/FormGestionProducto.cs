@@ -78,10 +78,18 @@ namespace UI
             cajaRegistradoraService = new CajaRegistradoraService(ConfigConnection.ConnectionString);
             productoService = new ProductoService(ConfigConnection.ConnectionString);
             gimnasioService = new GimnasioService(ConfigConnection.ConnectionString);
+            cargarArchivoVencido(productoVencidoTxtService);
             InitializeComponent();
             IniciarOperaciones();
             ConsultarGimnasio();
+            ConsultarMarcas();
+            ObtenerRutaDeVendido();
+            cargarArchivoVendido(productoVendidoTxtService, rutasVendidos);
+            CuadreDeventas();
+            LlenarComboFecha(productoVendidoTxtService);
+            Inicializar();
         }
+        //Consulta y gestion de productos registrados
         private void IniciarOperaciones()
         {
             var idEmpleado = idEmpleadoTxtService.Consultar();
@@ -684,14 +692,65 @@ namespace UI
                 }
             }
         }
-
+        private Producto MapearProducto()
+        {
+            producto = new Producto();
+            cantidadASumar = int.Parse(textCantidad.Text);
+            cantidadSumatoriaTotal = cantidadAlmacenada + cantidadASumar;
+            producto.Cantidad = cantidadSumatoriaTotal;
+            producto.Referencia = textReferencia.Text;
+            producto.Nombre = textNombreFarmaceutico.Text;
+            producto.FechaDeRegistro = dateTimeFechaRegistro.Value;
+            producto.FechaDeVencimiento = dateTimeFechaVencimiento.Value;
+            producto.Lote = textLote.Text;
+            producto.Marca = comboMarca.Text;
+            producto.Detalle = textDetalle.Text;
+            producto.PrecioDeNegocio = int.Parse(textPrecioNegocio.Text);
+            producto.ValorPorUnidad = int.Parse(textPrecioUnidad.Text);
+            producto.ValorPorBlister = int.Parse(textPrecioBlister.Text);
+            producto.ValorPorPaquete = int.Parse(textPrecioCaja.Text);
+            producto.Tipo = comboTipo.Text;
+            producto.Ubicacion = comboUbicacion.Text;
+            return producto;
+        }
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             cantidadDeRegistros = 20;
             paginaSeleccionada = 0;
             ConsultarYLlenarGridDeProductos(paginaSeleccionada);
+            string referencia = textReferencia.Text;
+            BuscarReferencia(referencia);
         }
 
+        private void BuscarReferencia(string referencia)
+        {
+            BusquedaProductoRespuesta respuesta = new BusquedaProductoRespuesta();
+            respuesta = productoService.BuscarPorReferencia(referencia);
+            if (respuesta.Producto != null)
+            {
+                for (int i = 2; i < 1000; i++)
+                {
+                    string newReferencia = respuesta.Producto.Referencia + "-" + i;
+                    respuesta = productoService.BuscarPorReferencia(newReferencia);
+                    if (respuesta.Producto == null)
+                    {
+                        textReferencia.Text = newReferencia;
+                        Producto producto = MapearProducto();
+                        producto.Referencia = newReferencia;
+                        productoService.Guardar(producto);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                if (respuesta.Producto == null)
+                {
+                    Producto producto = MapearProducto();
+                    productoService.Guardar(producto);
+                }
+            }
+        }
         private void textNumeroPagina_Enter(object sender, EventArgs e)
         {
             if (textNumeroPagina.Text != "")
@@ -1035,6 +1094,751 @@ namespace UI
             if (e.KeyChar == (char)Keys.Enter)
             {
                 BuscarPorReferencia();
+            }
+        }
+        //Registro de productos
+        string cantidadDelContenedor;
+        int cantidadSumatoriaTotal;
+        int cantidadAlmacenada;
+        int cantidadASumar;
+        int cantidadEstantes;
+        string ubicacion;
+        string codigo;
+        string numeroEstante;
+        int cantidadProductoPorEstante;
+        private void ConsultarMarcas()
+        {
+            ConsultaProductoRespuesta respuesta = new ConsultaProductoRespuesta();
+            string estado = "Vigente";
+            respuesta = productoService.BuscarPorEstado(estado);
+            int cantidadLaboratorio = respuesta.Productos.Count;
+            if (respuesta.Productos != null && respuesta.Productos.Count != 0)
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    for (int j = 0; j < 100; j++)
+                    {
+                        if (respuesta.Productos[j].Marca != "Sin definir")
+                        {
+                            if (respuesta.Productos[i] != respuesta.Productos[j])
+                            {
+                                Producto producto = respuesta.Productos[j];
+                                comboMarca.AutoCompleteCustomSource.Add(producto.Marca);
+                                comboMarca.Items.Add(producto.Marca);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void btnSearchRegistro_Click(object sender, EventArgs e)
+        {
+
+            textSearchRegistro.Visible = true;
+            btnCloseSearchRegistro.Visible = true;
+            labelTitle.Text = "Modificar Producto";
+            if (textSearchRegistro.Text != "" && textSearchRegistro.Text != "Buscar referencia")
+            {
+                BusquedaProductoRespuesta respuesta = new BusquedaProductoRespuesta();
+                string referencia = textSearchRegistro.Text;
+                respuesta = productoService.BuscarPorReferencia(referencia);
+                if (respuesta.Producto != null)
+                {
+                    btnModificar.Enabled = true;
+                    btnRegistrar.Enabled = false;
+                    labelAlerta.Visible = false;
+                    var productos = new List<Producto> { respuesta.Producto };
+                    textReferencia.Text = respuesta.Producto.Referencia;
+                    referencia = respuesta.Producto.Referencia;
+                    textNombreFarmaceutico.Text = respuesta.Producto.Nombre;
+                    textDetalle.Text = respuesta.Producto.Detalle;
+                    dateTimeFechaRegistro.Text = respuesta.Producto.FechaDeRegistro.ToString();
+                    dateTimeFechaVencimiento.Text = respuesta.Producto.FechaDeVencimiento.ToString();
+                    textLote.Text = respuesta.Producto.Lote;
+                    comboMarca.Text = respuesta.Producto.Marca;
+                    comboTipo.Text = respuesta.Producto.Tipo;
+                    textPrecioNegocio.Text = respuesta.Producto.PrecioDeNegocio.ToString();
+                    textPrecioUnidad.Text = respuesta.Producto.ValorPorUnidad.ToString();
+                    textPrecioBlister.Text = respuesta.Producto.ValorPorBlister.ToString();
+                    textPrecioCaja.Text = respuesta.Producto.ValorPorPaquete.ToString();
+                    textCantidad.Text = respuesta.Producto.Cantidad.ToString();
+                    comboUbicacion.Text = respuesta.Producto.Ubicacion;
+                    numeroEstante = comboUbicacion.Text;
+
+                }
+                else
+                {
+                    if (respuesta.Producto == null)
+                    {
+                        labelAlerta.Visible = true;
+                        labelAlerta.Text = "No existe producto con esta referencia";
+                    }
+                }
+            }
+        }
+
+        private void textSearchRegistro_Enter(object sender, EventArgs e)
+        {
+            if (textSearchRegistro.Text == "Buscar existencia")
+            {
+                textSearchRegistro.Text = "";
+            }
+        }
+
+        private void btnCloseSearchRegistro_Click(object sender, EventArgs e)
+        {
+            textSearchRegistro.Visible = false;
+            textSearchRegistro.Text = "Buscar existencia";
+            btnRegistrar.Enabled = true;
+            btnCloseSearchRegistro.Visible = false;
+            labelTitle.Text = "Registrar Producto";
+            labelAlerta.Visible = false;
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            BusquedaProductoRespuesta respuesta = new BusquedaProductoRespuesta();
+            if (cantidadEstantes > 0)
+            {
+                var opc = MessageBox.Show("Está seguro de Modificar el producto", "Mensaje de Modificacion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (opc == DialogResult.Yes)
+                {
+                    string referencia = textReferencia.Text;
+                    respuesta = productoService.BuscarPorReferencia(referencia);
+                    if (respuesta.Producto != null)
+                    {
+                        Producto producto = new Producto();
+                        producto.Referencia = respuesta.Producto.Referencia;
+                        producto.Cantidad = int.Parse(textCantidad.Text);
+                        producto.Nombre = textNombreFarmaceutico.Text;
+                        producto.Detalle = textDetalle.Text;
+                        producto.FechaDeRegistro = respuesta.Producto.FechaDeRegistro;
+                        producto.FechaDeVencimiento = dateTimeFechaVencimiento.Value;
+                        producto.Lote = respuesta.Producto.Lote;
+                        producto.Marca = comboMarca.Text;
+                        producto.Estado = respuesta.Producto.Estado;
+                        producto.Tipo = respuesta.Producto.Tipo;
+                        producto.ValorPorUnidad = int.Parse(textPrecioUnidad.Text);
+                        producto.ValorPorBlister = int.Parse(textPrecioBlister.Text);
+                        producto.ValorPorPaquete = int.Parse(textPrecioCaja.Text);
+                        producto.PorcentajeDeVenta = respuesta.Producto.PorcentajeDeVenta;
+                        producto.PrecioDeNegocio = respuesta.Producto.PrecioDeNegocio;
+                        producto.PrecioDeVenta = respuesta.Producto.GananciaPorProducto;
+                        producto.Ubicacion = comboUbicacion.Text;
+                        string mensaje = productoService.Modificar(producto);
+                        MessageBox.Show(mensaje, "Mensaje de campos", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                        this.Close();
+                    }
+                    {
+                        if (respuesta.Producto == null)
+                        {
+                            Producto producto = MapearProducto();
+                            string mensaje = productoService.Modificar(producto);
+                            MessageBox.Show(mensaje, "Mensaje de campos", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                            this.Close();
+                        }
+                    }
+                }
+            }
+        }
+        private void BuscarReferenciaEscaneada()
+        {
+            string referencia = textReferencia.Text;
+            var respuesta = productoService.BuscarPorReferencia(referencia);
+            if (respuesta.Producto != null)
+            {
+                labelAlerta.Text = "Producto existente se sumará a: " + respuesta.Producto.Nombre;
+                cantidadAlmacenada = respuesta.Producto.Cantidad;
+                textReferencia.ForeColor = Color.Maroon;
+
+                textNombreFarmaceutico.Text = respuesta.Producto.Nombre;
+                textDetalle.Text = respuesta.Producto.Detalle;
+                dateTimeFechaRegistro.Value = respuesta.Producto.FechaDeRegistro;
+                textLote.Text = respuesta.Producto.Lote;
+                dateTimeFechaVencimiento.Value = respuesta.Producto.FechaDeVencimiento;
+                comboMarca.Text = respuesta.Producto.Marca;
+                comboTipo.Text = respuesta.Producto.Tipo;
+                textPrecioNegocio.Text = respuesta.Producto.PrecioDeNegocio.ToString();
+                textPrecioUnidad.Text = respuesta.Producto.ValorPorUnidad.ToString();
+                textPrecioBlister.Text = respuesta.Producto.ValorPorBlister.ToString();
+                textPrecioCaja.Text = respuesta.Producto.ValorPorPaquete.ToString();
+                comboUbicacion.Text = respuesta.Producto.Ubicacion.ToString();
+            }
+            else
+            {
+                if (respuesta.Producto == null)
+                {
+
+                }
+            }
+        }
+
+        private void textReferencia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                BuscarReferenciaEscaneada();
+            }
+        }
+
+        private void textSearchRegistro_Leave(object sender, EventArgs e)
+        {
+            if (textSearchRegistro.Text == "")
+            {
+                textSearchRegistro.Text = "Buscar existencia";
+            }
+        }
+
+        private void textCantidad_Enter(object sender, EventArgs e)
+        {
+            if (textCantidad.Text == "0")
+            {
+                textCantidad.Text = "";
+            }
+        }
+
+        private void textCantidad_Leave(object sender, EventArgs e)
+        {
+            if (textCantidad.Text == "")
+            {
+                textCantidad.Text = "0";
+            }
+        }
+
+        private void textPrecioNegocio_Enter(object sender, EventArgs e)
+        {
+            if (textPrecioNegocio.Text == "0")
+            {
+                textPrecioNegocio.Text = "";
+            }
+        }
+
+        private void textPrecioNegocio_Leave(object sender, EventArgs e)
+        {
+            if (textPrecioNegocio.Text == "")
+            {
+                textPrecioNegocio.Text = "0";
+            }
+        }
+
+        private void textPrecioUnidad_Enter(object sender, EventArgs e)
+        {
+            if (textPrecioUnidad.Text == "0")
+            {
+                textPrecioUnidad.Text = "";
+            }
+        }
+
+        private void textPrecioUnidad_Leave(object sender, EventArgs e)
+        {
+            if (textPrecioUnidad.Text == "")
+            {
+                textPrecioUnidad.Text = "0";
+            }
+        }
+
+        private void textPrecioBlister_Enter(object sender, EventArgs e)
+        {
+            if (textPrecioBlister.Text == "0")
+            {
+                textPrecioBlister.Text = "";
+            }
+        }
+
+        private void textPrecioBlister_Leave(object sender, EventArgs e)
+        {
+            if (textPrecioBlister.Text == "")
+            {
+                textPrecioBlister.Text = "0";
+            }
+        }
+
+        private void textPrecioCaja_Enter(object sender, EventArgs e)
+        {
+            if (textPrecioCaja.Text == "0")
+            {
+                textPrecioCaja.Text = "";
+            }
+        }
+
+        private void textPrecioCaja_Leave(object sender, EventArgs e)
+        {
+            if (textPrecioCaja.Text == "")
+            {
+                textPrecioCaja.Text = "0";
+            }
+        }
+
+        private void checkedEstante_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            checkedVitrina.Focus();
+            if (checkedEstante.CheckedItems.Count != 0)
+            {
+                checkedVitrina.Enabled = false;
+                checkedNevera.Enabled = false;
+                string s = "";
+                for (int x = 0; x < checkedEstante.CheckedItems.Count; x++)
+                {
+                    s = s + "Checked Item " + (x + 1).ToString() + " = " + checkedEstante.CheckedItems[x].ToString() + "\n";
+                }
+                comboUbicacion.Text = "";
+                //LlenarComboEstante(cantidadEstantes);
+            }
+            else
+            {
+                if (checkedEstante.CheckedItems.Count == 0)
+                {
+                    comboUbicacion.Items.Clear();
+                    checkedNevera.Enabled = true;
+                    checkedVitrina.Enabled = true;
+                }
+            }
+
+        }
+
+        private void checkedVitrina_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            checkedVitrina.Focus();
+            if (checkedVitrina.CheckedItems.Count != 0)
+            {
+                checkedEstante.Enabled = false;
+                checkedNevera.Enabled = false;
+                string s = "";
+                for (int x = 0; x < checkedEstante.CheckedItems.Count; x++)
+                {
+                    s = s + "Checked Item " + (x + 1).ToString() + " = " + checkedEstante.CheckedItems[x].ToString() + "\n";
+                }
+                comboUbicacion.Text = "";
+                //LlenarComboVitrina(cantidadVitrinas);
+            }
+            else
+            {
+                if (checkedVitrina.CheckedItems.Count == 0)
+                {
+                    comboUbicacion.Items.Clear();
+                    checkedNevera.Enabled = true;
+                    checkedEstante.Enabled = true;
+                }
+            }
+        }
+
+        private void checkedNevera_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            checkedVitrina.Focus();
+            if (checkedNevera.CheckedItems.Count != 0)
+            {
+                checkedEstante.Enabled = false;
+                checkedVitrina.Enabled = false;
+                string s = "";
+                for (int x = 0; x < checkedEstante.CheckedItems.Count; x++)
+                {
+                    s = s + "Checked Item " + (x + 1).ToString() + " = " + checkedEstante.CheckedItems[x].ToString() + "\n";
+                }
+                comboUbicacion.Text = "";
+                //LlenarComboNevera(cantidadNeveras);
+            }
+            else
+            {
+                if (checkedNevera.CheckedItems.Count == 0)
+                {
+                    comboUbicacion.Items.Clear();
+                    checkedVitrina.Enabled = true;
+                    checkedEstante.Enabled = true;
+                }
+            }
+        }
+        //Consulta de producto vencidos
+        ProductoVencidoTxt productoTxt = new ProductoVencidoTxt();
+        int cantidadProductoBD;
+        public void cargarArchivoVencido(ProductoVencidoTxtService productoVencidoTxtService)
+        {
+            ProductoVencidoTxtConsultaResponse productoVencidoTxtConsultaResponse = productoVencidoTxtService.Consultar();
+            if (productoVencidoTxtConsultaResponse.ProductoTxts.Count > 0)
+            {
+                foreach (var item in productoVencidoTxtConsultaResponse.ProductoTxts)
+                {
+                    //Deshacer.Image = Properties.Resources.Regresar;
+                    int Cantidad = item.Cantidad;
+                    string Referencia = item.Referencia;
+                    string Nombre = item.Nombre;
+                    string Detalle = item.Detalle;
+                    DateTime FechaDeRegistro = item.FechaDeRegistro;
+                    DateTime FechaDeVencimiento = item.FechaDeVencimiento;
+                    string Lote = item.Lote;
+                    string Laboratorio = item.Laboratorio;
+                    string Estado = item.Estado;
+                    string Tipo = item.Tipo;
+                    string Via = item.Via;
+                    double PrecioDeNegocio = item.PrecioDeNegocio;
+                    double PrecioDeVenta = item.PrecioDeVenta;
+                    double GananciaPorProducto = item.GananciaPorProducto;
+                    dataGridProductosVencidos.Rows.Add(/*Deshacer.Image,*/ Cantidad, Referencia, Nombre, Detalle, FechaDeRegistro,
+                        FechaDeVencimiento, Lote, Laboratorio, Estado, Tipo, Via, PrecioDeNegocio, PrecioDeVenta, GananciaPorProducto);
+                }
+                textTotal.Text = productoVencidoTxtService.Totalizar();
+                textVigentes.Text = productoVencidoTxtService.TotalizarTipo("Vigente");
+                textCuarentena.Text = productoVencidoTxtService.TotalizarTipo("Cuaretena");
+            }
+            else
+            {
+                if (productoVencidoTxtConsultaResponse.ProductoTxts.Count == 0)
+                {
+                    dataGridProductosVencidos.DataSource = null;
+                    labelAlerta.Visible = true;
+                }
+            }
+        }
+        private void ConsultarHistorialVencido()
+        {
+            ProductoVencidoTxtConsultaResponse productoTxtConsultaResponse = productoVencidoTxtService.Consultar();
+            if (productoTxtConsultaResponse.Encontrado == true)
+            {
+                foreach (var item in productoTxtConsultaResponse.ProductoTxts)
+                {
+                    //Deshacer.Image = Properties.Resources.Regresar;
+                    int Cantidad = item.Cantidad;
+                    string Referencia = item.Referencia;
+                    string Nombre = item.Nombre;
+                    string Detalle = item.Detalle;
+                    DateTime FechaDeRegistro = item.FechaDeRegistro;
+                    DateTime FechaDeVencimiento = item.FechaDeVencimiento;
+                    string Lote = item.Lote;
+                    string Laboratorio = item.Laboratorio;
+                    string Estado = item.Estado;
+                    string Tipo = item.Tipo;
+                    string Via = item.Via;
+                    double PrecioDeNegocio = item.PrecioDeNegocio;
+                    double PrecioDeVenta = item.PrecioDeVenta;
+                    double GananciaPorProducto = item.GananciaPorProducto;
+                    dataGridProductosVencidos.Rows.Add(/*Deshacer.Image,*/ Cantidad, Referencia, Nombre, Detalle, FechaDeRegistro,
+                        FechaDeVencimiento, Lote, Laboratorio, Estado, Tipo, Via, PrecioDeNegocio, PrecioDeVenta, GananciaPorProducto);
+                }
+            }
+            else
+            {
+                string mensaje = productoTxtConsultaResponse.Mensaje;
+                MessageBox.Show(mensaje.ToString());
+            }
+        }
+
+        private void btnLimpiarHistorialVencidos_Click(object sender, EventArgs e)
+        {
+            var respuesta = MessageBox.Show("¿Está seguro de eliminar el historial de productos vencidos?", "Mensaje de Eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (respuesta == DialogResult.Yes)
+            {
+                ProductoFacturaTxt productoTxt = new ProductoFacturaTxt();
+                string mensaje = productoVencidoTxtService.EliminarHistorial();
+                dataGridProductosVencidos.DataSource = null;
+                dataGridProductosVencidos.Rows.Clear();
+                ConsultarHistorialVencido();
+            }
+        }
+        private void DevolverAlInventarioVencido(string referencia, int cantidad)
+        {
+            BusquedaProductoRespuesta respuesta = new BusquedaProductoRespuesta();
+            respuesta = productoService.BuscarPorReferencia(referencia);
+            var productoTxt = productoVencidoTxtService.ConsultarPorReferencias(referencia);
+            if (respuesta.Producto != null)
+            {
+                string msg = "Este producto no se puede regresar al inventario puesto que ya no existe en el inventario";
+                MessageBox.Show(msg, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (respuesta.Producto == null)
+                {
+                    foreach (var item in productoTxt.ProductoTxts)
+                    {
+
+                    }
+                }
+            }
+        }
+
+        private void dataGridProductosVencidos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string referencia;
+            string nombre;
+            int cantidad;
+            if (dataGridProductosVencidos.Rows != null)
+            {
+                if (dataGridProductosVencidos.Columns[e.ColumnIndex].Name == "Deshacer")
+                {
+                    referencia = Convert.ToString(dataGridProductosVencidos.CurrentRow.Cells["Referencia"].Value.ToString());
+                    cantidad = Convert.ToInt32(dataGridProductosVencidos.CurrentRow.Cells["Cantidad"].Value.ToString());
+                    nombre = Convert.ToString(dataGridProductosVencidos.CurrentRow.Cells["Nombre"].Value.ToString());
+                    string msg = "Desea deshacer la venta de este producto " + nombre + "?";
+                    var respuesta = MessageBox.Show(msg, "Devolver al inventario", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (respuesta == DialogResult.Yes)
+                    {
+                        DevolverAlInventarioVencido(referencia, cantidad);
+                        ConsultarHistorialVendido();
+                    }
+                }
+            }
+            else
+            {
+                if (dataGridProductosVencidos.Rows == null)
+                {
+                    string msg = "No hay registros disponibles";
+                    MessageBox.Show(msg, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+        //Consultar productos vendidos
+        ProductoVendidoTxtService productoVendidoTxtService = new ProductoVendidoTxtService();
+        ProductoVendidoTxt productoVendidoTxt = new ProductoVendidoTxt();
+        string fechaVenta;
+        double precio;
+        double totalProducto;
+        double MontoActualizado;
+        double VentaDeDiaActualizado;
+        double montoBase;
+        double montoActual;
+        private void Inicializar()
+        {
+            DateTime fechaActual = DateTime.Now;
+            //labelFechaActual.Text = "Hoy " + fechaActual.ToString("dd/MM/yyyy");
+        }
+        private void ObtenerRutaDeVendido()
+        {
+            RutasTxtConsultaResponse rutasTxtConsultaResponse = rutasTxtService.Consultar();
+            if (rutasTxtConsultaResponse.RutasTxts.Count > 0)
+            {
+                foreach (var item in rutasTxtConsultaResponse.RutasTxts)
+                {
+                    rutasVendidos = item.RutaProductosVendidos;
+                }
+            }
+        }
+        private void LlenarComboFecha(ProductoVendidoTxtService productoVendidoTxtService)
+        {
+            ProductoVendidoTxtConsultaResponse productoVendidoTxtConsultaResponse = productoVendidoTxtService.Consultar(rutasVendidos);
+            if (productoVendidoTxtConsultaResponse.ProductoTxts.Count > 0)
+            {
+                foreach (var item in productoVendidoTxtConsultaResponse.ProductoTxts)
+                {
+                    fechaVenta = item.FechaDeVenta;
+                    for (int i = 0; i < productoVendidoTxtConsultaResponse.ProductoTxts.Count; i++)
+                    {
+                        if (comboFecha.Items.Contains(fechaVenta) == false)
+                        {
+                            comboFecha.Items.Add(fechaVenta);
+                            comboFecha.AutoCompleteCustomSource.Add(fechaVenta);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (productoVendidoTxtConsultaResponse.ProductoTxts.Count == 0)
+                {
+                    comboFecha.Items.Clear();
+                }
+            }
+        }
+        private void CuadreDeventas()
+        {
+            BusquedaCajaRegistradoraRespuesta respuesta = new BusquedaCajaRegistradoraRespuesta();
+            string estado = "Abierta";
+            respuesta = cajaRegistradoraService.BuscarPorEstado(estado);
+            if (respuesta.CajaRegistradora != null)
+            {
+                montoActual = respuesta.CajaRegistradora.MontoFinal;
+                montoBase = respuesta.CajaRegistradora.MontoInicial;
+                //labelVentaDia.Text = (montoActual - montoBase).ToString();
+            }
+            else
+            {
+                if (respuesta.CajaRegistradora == null)
+                {
+                    //labelVentaDia.Text = "Sin definir";
+                }
+            }
+        }
+        private void ModificarCajaVendido(string referencia, int cantidad)
+        {
+            BusquedaCajaRegistradoraRespuesta respuesta = new BusquedaCajaRegistradoraRespuesta();
+            string estado = "Abierta";
+            double MontoDeCajaFinal;
+            double VentaDelDia;
+            respuesta = cajaRegistradoraService.BuscarPorEstado(estado);
+            if (respuesta.CajaRegistradora != null)
+            {
+                //Monto final
+                MontoDeCajaFinal = respuesta.CajaRegistradora.MontoFinal;
+                MontoDeCajaFinal = MontoDeCajaFinal - totalProducto;
+                MontoActualizado = MontoDeCajaFinal;
+                //Monto venta del dia
+                VentaDelDia = respuesta.CajaRegistradora.VentaDelDia;
+                VentaDelDia = VentaDelDia - totalProducto;
+                VentaDeDiaActualizado = VentaDelDia;
+                Caja caja = respuesta.CajaRegistradora;
+                caja.MontoFinal = MontoActualizado;
+                caja.VentaDelDia = VentaDeDiaActualizado;
+                cajaRegistradoraService.ModificarCash(caja);
+                DevolverAlInventarioVendido(referencia, cantidad);
+            }
+            else
+            {
+                if (respuesta.CajaRegistradora == null)
+                {
+                    labelAlerta.Text = "No hay cajas abiertas, no se puede deshacer venta";
+                    labelAlerta.Visible = true;
+                }
+            }
+        }
+        public void cargarArchivoVendido(ProductoVendidoTxtService productoVendidoTxtService, string rutaDeVendido)
+        {
+            ProductoVendidoTxtConsultaResponse productoVendidoTxtConsultaResponse = productoVendidoTxtService.Consultar(rutaDeVendido);
+            if (productoVendidoTxtConsultaResponse.ProductoTxts.Count > 0)
+            {
+                dataGridProductosVendidos.Rows.Clear();
+                foreach (var item in productoVendidoTxtConsultaResponse.ProductoTxts)
+                {
+                    Deshacer.Image = Properties.Resources.Regresar;
+                    fechaVenta = item.FechaDeVenta;
+                    cantidadProducto = item.Cantidad;
+                    referenciaProducto = item.Referencia;
+                    nombreProducto = item.Nombre;
+                    detalleProducto = item.Detalle;
+                    precioProducto = item.Precio;
+                    totalProducto = item.Total;
+                    dataGridProductosVendidos.Rows.Add(Deshacer.Image, fechaVenta, cantidadProducto, referenciaProducto, nombreProducto, detalleProducto, precioProducto, totalProducto);
+                }
+                textTotal.Text = productoVendidoTxtService.Totalizar(rutasVendidos);
+            }
+            else
+            {
+                if (productoVendidoTxtConsultaResponse.ProductoTxts.Count == 0)
+                {
+                    dataGridProductosVendidos.DataSource = null;
+                    labelAlerta.Visible = true;
+                }
+            }
+        }
+        private void ConsultarHistorialVendido()
+        {
+            ProductoVendidoTxtConsultaResponse productoTxtConsultaResponse = productoVendidoTxtService.Consultar(rutasVendidos);
+            if (productoTxtConsultaResponse.Encontrado == true)
+            {
+                foreach (var item in productoTxtConsultaResponse.ProductoTxts)
+                {
+                    Deshacer.Image = Properties.Resources.Regresar;
+                    string fecha = item.FechaDeVenta;
+                    string referencia = item.Referencia;
+                    int cantidad = item.Cantidad;
+                    string nombre = item.Nombre;
+                    string detalle = item.Detalle;
+                    double precio = item.Precio;
+                    double total = item.Total;
+                    dataGridProductosVendidos.Rows.Add(Deshacer.Image, fecha, cantidad, referencia, nombre, detalle, precio, total);
+                }
+            }
+            else
+            {
+                dataGridProductosVendidos.DataSource = null;
+                string mensaje = productoTxtConsultaResponse.Mensaje;
+                MessageBox.Show(mensaje.ToString());
+            }
+        }
+
+        private void btnLimpiarHistorialVendidos_Click(object sender, EventArgs e)
+        {
+            var respuesta = MessageBox.Show("¿Está seguro de eliminar el historial de productos vendidos?", "Mensaje de Eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (respuesta == DialogResult.Yes)
+            {
+                ProductoFacturaTxt productoTxt = new ProductoFacturaTxt();
+                string mensaje = productoVendidoTxtService.EliminarHistorial(rutasVendidos);
+                dataGridProductosVendidos.Rows.Clear();
+                ConsultarHistorialVendido();
+            }
+        }
+        private void DevolverAlInventarioVendido(string referencia, int cantidad)
+        {
+            BusquedaProductoRespuesta respuesta = new BusquedaProductoRespuesta();
+            respuesta = productoService.BuscarPorReferencia(referencia);
+            if (respuesta.Producto != null)
+            {
+                cantidadProductoBD = respuesta.Producto.Cantidad;
+                respuesta.Producto.Cantidad = cantidadProductoBD + cantidad;
+                var producto = respuesta.Producto;
+                productoService.ModificarCantidad(producto);
+                productoVendidoTxtService.Eliminar(referencia, rutasVendidos);
+                dataGridProductosVendidos.Rows.Clear();
+            }
+        }
+
+        private void dataGridProductosVendidos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string referencia;
+            string nombre;
+            int cantidad;
+            if (dataGridProductosVendidos.Rows != null)
+            {
+                if (dataGridProductosVendidos.Columns[e.ColumnIndex].Name == "Deshacer")
+                {
+                    referencia = Convert.ToString(dataGridProductosVendidos.CurrentRow.Cells["Referencia"].Value.ToString());
+                    cantidad = Convert.ToInt32(dataGridProductosVendidos.CurrentRow.Cells["Cantidad"].Value.ToString());
+                    nombre = Convert.ToString(dataGridProductosVendidos.CurrentRow.Cells["Nombre"].Value.ToString());
+                    precio = Convert.ToInt32(dataGridProductosVendidos.CurrentRow.Cells["Unidad"].Value.ToString());
+                    string msg = "¿Desea deshacer esta venta?";
+                    var respuesta = MessageBox.Show(msg, "Devolver al inventario", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (respuesta == DialogResult.Yes)
+                    {
+                        CuadreDeventas();
+                        ModificarCajaVendido(referencia, cantidad);
+                        ConsultarHistorialVendido();
+                    }
+                }
+            }
+            else
+            {
+                if (dataGridProductosVendidos.Rows == null)
+                {
+                    string msg = "No hay registros disponibles";
+                    MessageBox.Show(msg, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void comboFecha_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboFecha.Text == "Todos")
+            {
+                cargarArchivoVendido(productoVendidoTxtService, rutasVendidos);
+            }
+            else
+            {
+                if (comboFecha.Text != "Todos")
+                {
+                    string fecha = comboFecha.Text;
+                    ProductoVendidoTxtConsultaResponse productoVendidoTxtConsultaResponse = productoVendidoTxtService.ConsultarPorFechas(fecha, rutasVendidos);
+                    if (productoVendidoTxtConsultaResponse.ProductoTxts.Count > 0)
+                    {
+                        dataGridProductosVendidos.Rows.Clear();
+                        foreach (var item in productoVendidoTxtConsultaResponse.ProductoTxts)
+                        {
+                            Deshacer.Image = Properties.Resources.Regresar;
+                            fechaVenta = item.FechaDeVenta;
+                            cantidadProducto = item.Cantidad;
+                            referenciaProducto = item.Referencia;
+                            nombreProducto = item.Nombre;
+                            detalleProducto = item.Detalle;
+                            precioProducto = item.Precio;
+                            totalProducto = item.Total;
+                            dataGridProductosVendidos.Rows.Add(Deshacer.Image, fechaVenta, cantidadProducto, referenciaProducto, nombreProducto, detalleProducto, precioProducto, totalProducto);
+                        }
+                    }
+                    else
+                    {
+                        if (productoVendidoTxtConsultaResponse.ProductoTxts.Count == 0)
+                        {
+                            dataGridProductosVendidos.Rows.Clear();
+                        }
+                    }
+                }
             }
         }
     }

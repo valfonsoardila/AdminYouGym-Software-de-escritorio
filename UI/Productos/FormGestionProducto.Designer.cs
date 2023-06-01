@@ -120,12 +120,12 @@
             pictureBox3 = new PictureBox();
             pictureBox2 = new PictureBox();
             panel8 = new Panel();
-            btnSearch = new FontAwesome.Sharp.IconPictureBox();
+            btnSearchRegistro = new FontAwesome.Sharp.IconPictureBox();
             textSearchRegistro = new TextBox();
             btnCloseSearchRegistro = new FontAwesome.Sharp.IconPictureBox();
             label9 = new Label();
             panel7 = new Panel();
-            label7 = new Label();
+            labelTitle = new Label();
             tabVencido = new TabPage();
             panel14 = new Panel();
             dataGridProductosVencidos = new DataGridView();
@@ -222,7 +222,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)btnSearch).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnSearchRegistro).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnCloseSearchRegistro).BeginInit();
             panel7.SuspendLayout();
             tabVencido.SuspendLayout();
@@ -891,6 +891,7 @@
             btnModificar.Size = new Size(75, 35);
             btnModificar.TabIndex = 84;
             btnModificar.UseVisualStyleBackColor = false;
+            btnModificar.Click += btnModificar_Click;
             // 
             // btnRegistrar
             // 
@@ -953,6 +954,8 @@
             textPrecioCaja.Size = new Size(102, 23);
             textPrecioCaja.TabIndex = 70;
             textPrecioCaja.Text = "0";
+            textPrecioCaja.Enter += textPrecioCaja_Enter;
+            textPrecioCaja.Leave += textPrecioCaja_Leave;
             // 
             // textPrecioUnidad
             // 
@@ -962,6 +965,8 @@
             textPrecioUnidad.Size = new Size(103, 23);
             textPrecioUnidad.TabIndex = 45;
             textPrecioUnidad.Text = "0";
+            textPrecioUnidad.Enter += textPrecioUnidad_Enter;
+            textPrecioUnidad.Leave += textPrecioUnidad_Leave;
             // 
             // textPrecioBlister
             // 
@@ -971,6 +976,8 @@
             textPrecioBlister.Size = new Size(102, 23);
             textPrecioBlister.TabIndex = 46;
             textPrecioBlister.Text = "0";
+            textPrecioBlister.Enter += textPrecioBlister_Enter;
+            textPrecioBlister.Leave += textPrecioBlister_Leave;
             // 
             // labelPorcentajeDeVenta
             // 
@@ -1009,6 +1016,7 @@
             checkedNevera.Name = "checkedNevera";
             checkedNevera.Size = new Size(112, 22);
             checkedNevera.TabIndex = 81;
+            checkedNevera.SelectedIndexChanged += checkedNevera_SelectedIndexChanged;
             // 
             // checkedVitrina
             // 
@@ -1019,6 +1027,7 @@
             checkedVitrina.Name = "checkedVitrina";
             checkedVitrina.Size = new Size(110, 22);
             checkedVitrina.TabIndex = 80;
+            checkedVitrina.SelectedIndexChanged += checkedVitrina_SelectedIndexChanged;
             // 
             // checkedEstante
             // 
@@ -1029,6 +1038,7 @@
             checkedEstante.Name = "checkedEstante";
             checkedEstante.Size = new Size(104, 22);
             checkedEstante.TabIndex = 79;
+            checkedEstante.SelectedIndexChanged += checkedEstante_SelectedIndexChanged;
             // 
             // label8
             // 
@@ -1044,7 +1054,7 @@
             // comboUbicacion
             // 
             comboUbicacion.FormattingEnabled = true;
-            comboUbicacion.Items.AddRange(new object[] { "0" });
+            comboUbicacion.Items.AddRange(new object[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" });
             comboUbicacion.Location = new Point(583, 5);
             comboUbicacion.Margin = new Padding(4, 3, 4, 3);
             comboUbicacion.Name = "comboUbicacion";
@@ -1083,6 +1093,8 @@
             textPrecioNegocio.Size = new Size(103, 23);
             textPrecioNegocio.TabIndex = 74;
             textPrecioNegocio.Text = "0";
+            textPrecioNegocio.Enter += textPrecioNegocio_Enter;
+            textPrecioNegocio.Leave += textPrecioNegocio_Leave;
             // 
             // label4
             // 
@@ -1207,6 +1219,8 @@
             textCantidad.Size = new Size(167, 23);
             textCantidad.TabIndex = 82;
             textCantidad.Text = "0";
+            textCantidad.Enter += textCantidad_Enter;
+            textCantidad.Leave += textCantidad_Leave;
             // 
             // textDetalle
             // 
@@ -1246,6 +1260,7 @@
             textReferencia.Name = "textReferencia";
             textReferencia.Size = new Size(167, 23);
             textReferencia.TabIndex = 69;
+            textReferencia.KeyPress += textReferencia_KeyPress;
             // 
             // labelReferencia
             // 
@@ -1372,7 +1387,7 @@
             // 
             // panel8
             // 
-            panel8.Controls.Add(btnSearch);
+            panel8.Controls.Add(btnSearchRegistro);
             panel8.Controls.Add(textSearchRegistro);
             panel8.Controls.Add(btnCloseSearchRegistro);
             panel8.Controls.Add(label9);
@@ -1382,19 +1397,20 @@
             panel8.Size = new Size(839, 24);
             panel8.TabIndex = 2;
             // 
-            // btnSearch
+            // btnSearchRegistro
             // 
-            btnSearch.BackColor = Color.Transparent;
-            btnSearch.ForeColor = Color.Black;
-            btnSearch.IconChar = FontAwesome.Sharp.IconChar.Sistrix;
-            btnSearch.IconColor = Color.Black;
-            btnSearch.IconFont = FontAwesome.Sharp.IconFont.Brands;
-            btnSearch.IconSize = 24;
-            btnSearch.Location = new Point(813, 0);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(24, 24);
-            btnSearch.TabIndex = 12;
-            btnSearch.TabStop = false;
+            btnSearchRegistro.BackColor = Color.Transparent;
+            btnSearchRegistro.ForeColor = Color.Black;
+            btnSearchRegistro.IconChar = FontAwesome.Sharp.IconChar.Sistrix;
+            btnSearchRegistro.IconColor = Color.Black;
+            btnSearchRegistro.IconFont = FontAwesome.Sharp.IconFont.Brands;
+            btnSearchRegistro.IconSize = 24;
+            btnSearchRegistro.Location = new Point(814, 0);
+            btnSearchRegistro.Name = "btnSearchRegistro";
+            btnSearchRegistro.Size = new Size(24, 24);
+            btnSearchRegistro.TabIndex = 12;
+            btnSearchRegistro.TabStop = false;
+            btnSearchRegistro.Click += btnSearchRegistro_Click;
             // 
             // textSearchRegistro
             // 
@@ -1406,6 +1422,8 @@
             textSearchRegistro.TabIndex = 11;
             textSearchRegistro.Text = "Buscar existencia";
             textSearchRegistro.Visible = false;
+            textSearchRegistro.Enter += textSearchRegistro_Enter;
+            textSearchRegistro.Leave += textSearchRegistro_Leave;
             // 
             // btnCloseSearchRegistro
             // 
@@ -1421,6 +1439,7 @@
             btnCloseSearchRegistro.TabIndex = 10;
             btnCloseSearchRegistro.TabStop = false;
             btnCloseSearchRegistro.Visible = false;
+            btnCloseSearchRegistro.Click += btnCloseSearchRegistro_Click;
             // 
             // label9
             // 
@@ -1436,23 +1455,23 @@
             // panel7
             // 
             panel7.BackColor = Color.Black;
-            panel7.Controls.Add(label7);
+            panel7.Controls.Add(labelTitle);
             panel7.Dock = DockStyle.Top;
             panel7.Location = new Point(0, 0);
             panel7.Name = "panel7";
             panel7.Size = new Size(839, 26);
             panel7.TabIndex = 1;
             // 
-            // label7
+            // labelTitle
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.ForeColor = SystemColors.ControlLightLight;
-            label7.Location = new Point(4, 2);
-            label7.Name = "label7";
-            label7.Size = new Size(177, 21);
-            label7.TabIndex = 0;
-            label7.Text = "Registro de productos";
+            labelTitle.AutoSize = true;
+            labelTitle.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelTitle.ForeColor = SystemColors.ControlLightLight;
+            labelTitle.Location = new Point(4, 2);
+            labelTitle.Name = "labelTitle";
+            labelTitle.Size = new Size(177, 21);
+            labelTitle.TabIndex = 0;
+            labelTitle.Text = "Registro de productos";
             // 
             // tabVencido
             // 
@@ -1488,6 +1507,7 @@
             dataGridProductosVencidos.RowHeadersVisible = false;
             dataGridProductosVencidos.Size = new Size(839, 332);
             dataGridProductosVencidos.TabIndex = 51;
+            dataGridProductosVencidos.CellClick += dataGridProductosVencidos_CellClick;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1708,6 +1728,7 @@
             btnLimpiarHistorialVencidos.Size = new Size(90, 38);
             btnLimpiarHistorialVencidos.TabIndex = 1;
             btnLimpiarHistorialVencidos.UseVisualStyleBackColor = false;
+            btnLimpiarHistorialVencidos.Click += btnLimpiarHistorialVencidos_Click;
             // 
             // panel12
             // 
@@ -1764,6 +1785,7 @@
             dataGridProductosVendidos.RowHeadersVisible = false;
             dataGridProductosVendidos.Size = new Size(839, 338);
             dataGridProductosVendidos.TabIndex = 52;
+            dataGridProductosVendidos.CellClick += dataGridProductosVendidos_CellClick;
             // 
             // Deshacer
             // 
@@ -1858,6 +1880,7 @@
             comboFecha.Size = new Size(140, 23);
             comboFecha.TabIndex = 80;
             comboFecha.Text = "Todos";
+            comboFecha.SelectedIndexChanged += comboFecha_SelectedIndexChanged;
             // 
             // textDineroVendido
             // 
@@ -2014,6 +2037,7 @@
             btnLimpiarHistorialVendidos.Size = new Size(90, 38);
             btnLimpiarHistorialVendidos.TabIndex = 0;
             btnLimpiarHistorialVendidos.UseVisualStyleBackColor = false;
+            btnLimpiarHistorialVendidos.Click += btnLimpiarHistorialVendidos_Click;
             // 
             // panel15
             // 
@@ -2279,7 +2303,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel8.ResumeLayout(false);
             panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)btnSearch).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnSearchRegistro).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnCloseSearchRegistro).EndInit();
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
@@ -2379,9 +2403,9 @@
         private FontAwesome.Sharp.IconButton btnSearchConsulta;
         private FontAwesome.Sharp.IconButton btnCloseSearchConsulta;
         private Panel panel7;
-        private Label label7;
+        private Label labelTitle;
         private Panel panel8;
-        private FontAwesome.Sharp.IconPictureBox btnSearch;
+        private FontAwesome.Sharp.IconPictureBox btnSearchRegistro;
         private TextBox textSearchRegistro;
         private FontAwesome.Sharp.IconPictureBox btnCloseSearchRegistro;
         private Label label9;

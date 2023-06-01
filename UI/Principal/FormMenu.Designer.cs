@@ -215,7 +215,7 @@ namespace UI
             // panelSelectionMembresia
             // 
             panelSelectionMembresia.BackColor = SystemColors.ControlLightLight;
-            panelSelectionMembresia.Location = new Point(0, 440);
+            panelSelectionMembresia.Location = new Point(0, 441);
             panelSelectionMembresia.Margin = new Padding(4, 3, 4, 3);
             panelSelectionMembresia.Name = "panelSelectionMembresia";
             panelSelectionMembresia.Size = new Size(7, 43);
@@ -270,7 +270,7 @@ namespace UI
             // panelSelectionPlanes
             // 
             panelSelectionPlanes.BackColor = SystemColors.ControlLightLight;
-            panelSelectionPlanes.Location = new Point(0, 485);
+            panelSelectionPlanes.Location = new Point(0, 486);
             panelSelectionPlanes.Margin = new Padding(4, 3, 4, 3);
             panelSelectionPlanes.Name = "panelSelectionPlanes";
             panelSelectionPlanes.Size = new Size(7, 43);
