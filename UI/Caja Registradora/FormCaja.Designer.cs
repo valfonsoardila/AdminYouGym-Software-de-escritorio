@@ -46,6 +46,17 @@ namespace UI
             panel2 = new Panel();
             panelContainerCaja = new Panel();
             panel3 = new Panel();
+            panel7 = new Panel();
+            dataGridFarmacos = new DataGridView();
+            Eliminar = new DataGridViewImageColumn();
+            panel6 = new Panel();
+            panelSubDataGridFarmacos = new Panel();
+            textTotalCajasCerradas = new TextBox();
+            labelTotalCajasCerradas = new Label();
+            textTotalCajasAbiertas = new TextBox();
+            labelTotalCajasAbiertas = new Label();
+            textTotalCajas = new TextBox();
+            labelTotalCajas = new Label();
             panelTituloDataGridFarmacos = new Panel();
             labelAdvertencia = new Label();
             comboFiltroEstado = new ComboBox();
@@ -58,30 +69,19 @@ namespace UI
             btnCerrarCaja = new FontAwesome.Sharp.IconButton();
             btnAbrirCaja = new FontAwesome.Sharp.IconButton();
             panel5 = new Panel();
-            panel6 = new Panel();
-            panel7 = new Panel();
-            panelSubDataGridFarmacos = new Panel();
-            textTotalCajasCerradas = new TextBox();
-            labelTotalCajasCerradas = new Label();
-            textTotalCajasAbiertas = new TextBox();
-            labelTotalCajasAbiertas = new Label();
-            textTotalCajas = new TextBox();
-            labelTotalCajas = new Label();
-            dataGridFarmacos = new DataGridView();
-            Eliminar = new DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)iconCash).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconBase).BeginInit();
             panel2.SuspendLayout();
             panelContainerCaja.SuspendLayout();
             panel3.SuspendLayout();
+            panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridFarmacos).BeginInit();
+            panel6.SuspendLayout();
+            panelSubDataGridFarmacos.SuspendLayout();
             panelTituloDataGridFarmacos.SuspendLayout();
             panelContenedorSubMenu.SuspendLayout();
             panelSubMenu.SuspendLayout();
-            panel6.SuspendLayout();
-            panel7.SuspendLayout();
-            panelSubDataGridFarmacos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridFarmacos).BeginInit();
             SuspendLayout();
             // 
             // panelBarraVolver
@@ -297,6 +297,130 @@ namespace UI
             panel3.Size = new Size(763, 430);
             panel3.TabIndex = 1;
             // 
+            // panel7
+            // 
+            panel7.Controls.Add(dataGridFarmacos);
+            panel7.Dock = DockStyle.Fill;
+            panel7.Location = new Point(15, 28);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(748, 373);
+            panel7.TabIndex = 57;
+            // 
+            // dataGridFarmacos
+            // 
+            dataGridFarmacos.AllowUserToAddRows = false;
+            dataGridFarmacos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridFarmacos.Columns.AddRange(new DataGridViewColumn[] { Eliminar });
+            dataGridFarmacos.Dock = DockStyle.Fill;
+            dataGridFarmacos.Location = new Point(0, 0);
+            dataGridFarmacos.Margin = new Padding(4, 3, 4, 3);
+            dataGridFarmacos.Name = "dataGridFarmacos";
+            dataGridFarmacos.ReadOnly = true;
+            dataGridFarmacos.RowHeadersVisible = false;
+            dataGridFarmacos.Size = new Size(748, 373);
+            dataGridFarmacos.TabIndex = 58;
+            dataGridFarmacos.CellClick += dataGridFarmacos_CellClick;
+            // 
+            // Eliminar
+            // 
+            Eliminar.HeaderText = "Eliminar";
+            Eliminar.Image = Properties.Resources.deleRojBlack;
+            Eliminar.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Eliminar.Name = "Eliminar";
+            Eliminar.ReadOnly = true;
+            Eliminar.Width = 50;
+            // 
+            // panel6
+            // 
+            panel6.Controls.Add(panelSubDataGridFarmacos);
+            panel6.Dock = DockStyle.Bottom;
+            panel6.Location = new Point(15, 401);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(748, 29);
+            panel6.TabIndex = 56;
+            // 
+            // panelSubDataGridFarmacos
+            // 
+            panelSubDataGridFarmacos.BackColor = Color.Gainsboro;
+            panelSubDataGridFarmacos.Controls.Add(textTotalCajasCerradas);
+            panelSubDataGridFarmacos.Controls.Add(labelTotalCajasCerradas);
+            panelSubDataGridFarmacos.Controls.Add(textTotalCajasAbiertas);
+            panelSubDataGridFarmacos.Controls.Add(labelTotalCajasAbiertas);
+            panelSubDataGridFarmacos.Controls.Add(textTotalCajas);
+            panelSubDataGridFarmacos.Controls.Add(labelTotalCajas);
+            panelSubDataGridFarmacos.Dock = DockStyle.Fill;
+            panelSubDataGridFarmacos.Location = new Point(0, 0);
+            panelSubDataGridFarmacos.Margin = new Padding(4, 3, 4, 3);
+            panelSubDataGridFarmacos.Name = "panelSubDataGridFarmacos";
+            panelSubDataGridFarmacos.Size = new Size(748, 29);
+            panelSubDataGridFarmacos.TabIndex = 59;
+            // 
+            // textTotalCajasCerradas
+            // 
+            textTotalCajasCerradas.Location = new Point(550, 2);
+            textTotalCajasCerradas.Margin = new Padding(4, 3, 4, 3);
+            textTotalCajasCerradas.Name = "textTotalCajasCerradas";
+            textTotalCajasCerradas.Size = new Size(54, 23);
+            textTotalCajasCerradas.TabIndex = 53;
+            textTotalCajasCerradas.Text = "0";
+            textTotalCajasCerradas.TextAlign = HorizontalAlignment.Center;
+            // 
+            // labelTotalCajasCerradas
+            // 
+            labelTotalCajasCerradas.AutoSize = true;
+            labelTotalCajasCerradas.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelTotalCajasCerradas.ForeColor = SystemColors.ActiveCaptionText;
+            labelTotalCajasCerradas.Location = new Point(399, 6);
+            labelTotalCajasCerradas.Margin = new Padding(4, 0, 4, 0);
+            labelTotalCajasCerradas.Name = "labelTotalCajasCerradas";
+            labelTotalCajasCerradas.Size = new Size(129, 13);
+            labelTotalCajasCerradas.TabIndex = 52;
+            labelTotalCajasCerradas.Text = "Total Cajas Cerradas:";
+            // 
+            // textTotalCajasAbiertas
+            // 
+            textTotalCajasAbiertas.Location = new Point(335, 1);
+            textTotalCajasAbiertas.Margin = new Padding(4, 3, 4, 3);
+            textTotalCajasAbiertas.Name = "textTotalCajasAbiertas";
+            textTotalCajasAbiertas.Size = new Size(54, 23);
+            textTotalCajasAbiertas.TabIndex = 51;
+            textTotalCajasAbiertas.Text = "0";
+            textTotalCajasAbiertas.TextAlign = HorizontalAlignment.Center;
+            // 
+            // labelTotalCajasAbiertas
+            // 
+            labelTotalCajasAbiertas.AutoSize = true;
+            labelTotalCajasAbiertas.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelTotalCajasAbiertas.ForeColor = SystemColors.ActiveCaptionText;
+            labelTotalCajasAbiertas.Location = new Point(170, 6);
+            labelTotalCajasAbiertas.Margin = new Padding(4, 0, 4, 0);
+            labelTotalCajasAbiertas.Name = "labelTotalCajasAbiertas";
+            labelTotalCajasAbiertas.Size = new Size(141, 13);
+            labelTotalCajasAbiertas.TabIndex = 50;
+            labelTotalCajasAbiertas.Text = "Total de cajas abiertas:";
+            // 
+            // textTotalCajas
+            // 
+            textTotalCajas.Location = new Point(111, 1);
+            textTotalCajas.Margin = new Padding(4, 3, 4, 3);
+            textTotalCajas.Name = "textTotalCajas";
+            textTotalCajas.Size = new Size(54, 23);
+            textTotalCajas.TabIndex = 49;
+            textTotalCajas.Text = "0";
+            textTotalCajas.TextAlign = HorizontalAlignment.Center;
+            // 
+            // labelTotalCajas
+            // 
+            labelTotalCajas.AutoSize = true;
+            labelTotalCajas.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelTotalCajas.ForeColor = SystemColors.ActiveCaptionText;
+            labelTotalCajas.Location = new Point(5, 6);
+            labelTotalCajas.Margin = new Padding(4, 0, 4, 0);
+            labelTotalCajas.Name = "labelTotalCajas";
+            labelTotalCajas.Size = new Size(92, 13);
+            labelTotalCajas.TabIndex = 49;
+            labelTotalCajas.Text = "Total de cajas:";
+            // 
             // panelTituloDataGridFarmacos
             // 
             panelTituloDataGridFarmacos.BackColor = Color.Gainsboro;
@@ -453,129 +577,6 @@ namespace UI
             panel5.Size = new Size(15, 430);
             panel5.TabIndex = 0;
             // 
-            // panel6
-            // 
-            panel6.Controls.Add(panelSubDataGridFarmacos);
-            panel6.Dock = DockStyle.Bottom;
-            panel6.Location = new Point(15, 401);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(748, 29);
-            panel6.TabIndex = 56;
-            // 
-            // panel7
-            // 
-            panel7.Controls.Add(dataGridFarmacos);
-            panel7.Dock = DockStyle.Fill;
-            panel7.Location = new Point(15, 28);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(748, 373);
-            panel7.TabIndex = 57;
-            // 
-            // panelSubDataGridFarmacos
-            // 
-            panelSubDataGridFarmacos.BackColor = Color.Gainsboro;
-            panelSubDataGridFarmacos.Controls.Add(textTotalCajasCerradas);
-            panelSubDataGridFarmacos.Controls.Add(labelTotalCajasCerradas);
-            panelSubDataGridFarmacos.Controls.Add(textTotalCajasAbiertas);
-            panelSubDataGridFarmacos.Controls.Add(labelTotalCajasAbiertas);
-            panelSubDataGridFarmacos.Controls.Add(textTotalCajas);
-            panelSubDataGridFarmacos.Controls.Add(labelTotalCajas);
-            panelSubDataGridFarmacos.Dock = DockStyle.Fill;
-            panelSubDataGridFarmacos.Location = new Point(0, 0);
-            panelSubDataGridFarmacos.Margin = new Padding(4, 3, 4, 3);
-            panelSubDataGridFarmacos.Name = "panelSubDataGridFarmacos";
-            panelSubDataGridFarmacos.Size = new Size(748, 29);
-            panelSubDataGridFarmacos.TabIndex = 59;
-            // 
-            // textTotalCajasCerradas
-            // 
-            textTotalCajasCerradas.Location = new Point(550, 2);
-            textTotalCajasCerradas.Margin = new Padding(4, 3, 4, 3);
-            textTotalCajasCerradas.Name = "textTotalCajasCerradas";
-            textTotalCajasCerradas.Size = new Size(54, 23);
-            textTotalCajasCerradas.TabIndex = 53;
-            textTotalCajasCerradas.Text = "0";
-            textTotalCajasCerradas.TextAlign = HorizontalAlignment.Center;
-            // 
-            // labelTotalCajasCerradas
-            // 
-            labelTotalCajasCerradas.AutoSize = true;
-            labelTotalCajasCerradas.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            labelTotalCajasCerradas.ForeColor = SystemColors.ActiveCaptionText;
-            labelTotalCajasCerradas.Location = new Point(399, 6);
-            labelTotalCajasCerradas.Margin = new Padding(4, 0, 4, 0);
-            labelTotalCajasCerradas.Name = "labelTotalCajasCerradas";
-            labelTotalCajasCerradas.Size = new Size(129, 13);
-            labelTotalCajasCerradas.TabIndex = 52;
-            labelTotalCajasCerradas.Text = "Total Cajas Cerradas:";
-            // 
-            // textTotalCajasAbiertas
-            // 
-            textTotalCajasAbiertas.Location = new Point(335, 1);
-            textTotalCajasAbiertas.Margin = new Padding(4, 3, 4, 3);
-            textTotalCajasAbiertas.Name = "textTotalCajasAbiertas";
-            textTotalCajasAbiertas.Size = new Size(54, 23);
-            textTotalCajasAbiertas.TabIndex = 51;
-            textTotalCajasAbiertas.Text = "0";
-            textTotalCajasAbiertas.TextAlign = HorizontalAlignment.Center;
-            // 
-            // labelTotalCajasAbiertas
-            // 
-            labelTotalCajasAbiertas.AutoSize = true;
-            labelTotalCajasAbiertas.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            labelTotalCajasAbiertas.ForeColor = SystemColors.ActiveCaptionText;
-            labelTotalCajasAbiertas.Location = new Point(170, 6);
-            labelTotalCajasAbiertas.Margin = new Padding(4, 0, 4, 0);
-            labelTotalCajasAbiertas.Name = "labelTotalCajasAbiertas";
-            labelTotalCajasAbiertas.Size = new Size(141, 13);
-            labelTotalCajasAbiertas.TabIndex = 50;
-            labelTotalCajasAbiertas.Text = "Total de cajas abiertas:";
-            // 
-            // textTotalCajas
-            // 
-            textTotalCajas.Location = new Point(111, 1);
-            textTotalCajas.Margin = new Padding(4, 3, 4, 3);
-            textTotalCajas.Name = "textTotalCajas";
-            textTotalCajas.Size = new Size(54, 23);
-            textTotalCajas.TabIndex = 49;
-            textTotalCajas.Text = "0";
-            textTotalCajas.TextAlign = HorizontalAlignment.Center;
-            // 
-            // labelTotalCajas
-            // 
-            labelTotalCajas.AutoSize = true;
-            labelTotalCajas.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            labelTotalCajas.ForeColor = SystemColors.ActiveCaptionText;
-            labelTotalCajas.Location = new Point(5, 6);
-            labelTotalCajas.Margin = new Padding(4, 0, 4, 0);
-            labelTotalCajas.Name = "labelTotalCajas";
-            labelTotalCajas.Size = new Size(92, 13);
-            labelTotalCajas.TabIndex = 49;
-            labelTotalCajas.Text = "Total de cajas:";
-            // 
-            // dataGridFarmacos
-            // 
-            dataGridFarmacos.AllowUserToAddRows = false;
-            dataGridFarmacos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridFarmacos.Columns.AddRange(new DataGridViewColumn[] { Eliminar });
-            dataGridFarmacos.Dock = DockStyle.Fill;
-            dataGridFarmacos.Location = new Point(0, 0);
-            dataGridFarmacos.Margin = new Padding(4, 3, 4, 3);
-            dataGridFarmacos.Name = "dataGridFarmacos";
-            dataGridFarmacos.ReadOnly = true;
-            dataGridFarmacos.RowHeadersVisible = false;
-            dataGridFarmacos.Size = new Size(748, 373);
-            dataGridFarmacos.TabIndex = 58;
-            // 
-            // Eliminar
-            // 
-            Eliminar.HeaderText = "Eliminar";
-            Eliminar.Image = Properties.Resources.deleRojBlack;
-            Eliminar.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Eliminar.Name = "Eliminar";
-            Eliminar.ReadOnly = true;
-            Eliminar.Width = 50;
-            // 
             // FormCaja
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -595,15 +596,15 @@ namespace UI
             panel2.ResumeLayout(false);
             panelContainerCaja.ResumeLayout(false);
             panel3.ResumeLayout(false);
+            panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridFarmacos).EndInit();
+            panel6.ResumeLayout(false);
+            panelSubDataGridFarmacos.ResumeLayout(false);
+            panelSubDataGridFarmacos.PerformLayout();
             panelTituloDataGridFarmacos.ResumeLayout(false);
             panelTituloDataGridFarmacos.PerformLayout();
             panelContenedorSubMenu.ResumeLayout(false);
             panelSubMenu.ResumeLayout(false);
-            panel6.ResumeLayout(false);
-            panel7.ResumeLayout(false);
-            panelSubDataGridFarmacos.ResumeLayout(false);
-            panelSubDataGridFarmacos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridFarmacos).EndInit();
             ResumeLayout(false);
         }
 

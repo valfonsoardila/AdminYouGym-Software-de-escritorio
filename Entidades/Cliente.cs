@@ -71,7 +71,7 @@ namespace Entidades
         public void ObtenerIndiceMasaCorporal()
         {
             double indiceDeMasaCorporal;
-            indiceDeMasaCorporal = (Peso / (Altura*Altura));
+            indiceDeMasaCorporal = (Peso / (Altura*Altura))*10000;
             IndiceDeMasaCorporal = indiceDeMasaCorporal;
             if (IndiceDeMasaCorporal <= 15){ClasificacionPorPeso = "Delgadez muy Severa";}
             else{ if (IndiceDeMasaCorporal >= 15 && IndiceDeMasaCorporal <= 15.9) { ClasificacionPorPeso = "Delgadez Severa"; }

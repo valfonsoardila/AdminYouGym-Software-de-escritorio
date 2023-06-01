@@ -396,49 +396,13 @@ namespace UI
             ConsultarYLlenarGridDeCajas();
             Limpiar();
         }
-        private void EliminarCaja(string Id)
+        private void EliminarCaja(string id)
         {
-            string mensaje = cajaRegistradoraService.Eliminar(Id);
+            string mensaje = cajaRegistradoraService.Eliminar(id);
             MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Eliminar.Visible = false;
             btnAbrirCaja.Enabled = true;
             btnCerrarCaja.Enabled = false;
-        }
-        private void dataGridFarmacos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            string Id;
-            if (dataGridFarmacos.DataSource != null)
-            {
-                if (btnCerrarCaja.Enabled == false)
-                {
-                    if (dataGridFarmacos.Columns[e.ColumnIndex].Name == "Eliminar")
-                    {
-                        Id = Convert.ToString(dataGridFarmacos.CurrentRow.Cells["IdCaja"].Value.ToString());
-                        string msg = "Desea eliminar este registro " + Id + "?";
-                        var respuesta = MessageBox.Show(msg, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        if (respuesta == DialogResult.OK)
-                        {
-                            EliminarCaja(Id);
-                            ConsultarYLlenarGridDeCajas();
-                        }
-                    }
-                }
-                else
-                {
-                    if (btnCerrarCaja.Enabled == false)
-                    {
-                        Eliminar.Visible = false;
-                    }
-                }
-            }
-            else
-            {
-                if (dataGridFarmacos.DataSource == null)
-                {
-                    string msg = "No hay registros disponibles";
-                    MessageBox.Show(msg, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
         }
         private void ImprimirDatoDeVenta()
         {
@@ -530,6 +494,43 @@ namespace UI
 
             e.Graphics.DrawString("!Gracias por su compra! ", font, Brushes.Black, new RectangleF(-20, r + 56, ancho, 14), stringFormatCenter);
             e.Graphics.DrawString("     Vuelva pronto     ", font, Brushes.Black, new RectangleF(-20, r + 70, ancho, 14), stringFormatCenter);
+        }
+
+        private void dataGridFarmacos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string id;
+            if (dataGridFarmacos.DataSource != null)
+            {
+                if (btnCerrarCaja.Enabled == false)
+                {
+                    if (dataGridFarmacos.Columns[e.ColumnIndex].Name == "Eliminar")
+                    {
+                        id = Convert.ToString(dataGridFarmacos.CurrentRow.Cells["IdCaja"].Value.ToString());
+                        string msg = "Desea eliminar este registro " + id + "?";
+                        var respuesta = MessageBox.Show(msg, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (respuesta == DialogResult.OK)
+                        {
+                            EliminarCaja(id);
+                            ConsultarYLlenarGridDeCajas();
+                        }
+                    }
+                }
+                else
+                {
+                    if (btnCerrarCaja.Enabled == false)
+                    {
+                        Eliminar.Visible = false;
+                    }
+                }
+            }
+            else
+            {
+                if (dataGridFarmacos.DataSource == null)
+                {
+                    string msg = "No hay registros disponibles";
+                    MessageBox.Show(msg, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }
 }

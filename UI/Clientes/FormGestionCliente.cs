@@ -13,6 +13,7 @@ using System.Windows;
 using System.Windows.Interop;
 using MessageBox = System.Windows.Forms.MessageBox;
 using UI.Properties;
+using DocumentFormat.OpenXml.Office2010.Excel;
 
 namespace UI
 {
@@ -70,6 +71,11 @@ namespace UI
                 textMujeres.Text = clienteService.TotalizarTipo("F").Cuenta.ToString();
             }
         }
+        private void EliminarRegistro(string id)
+        {
+            string mensaje = clienteService.Eliminar(id);
+            MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void BuscarPorSexo(string sexo)
         {
             BusquedaClienteRespuesta respuesta = new BusquedaClienteRespuesta();
@@ -81,11 +87,27 @@ namespace UI
                 var clientes = new List<Cliente> { registro };
                 dataGridClient.DataSource = clientes;
             }
+            else
+            {
+                dataGridClient.DataSource = null;
+                labelAlerta.Text = "No hay registros con este filtro";
+                labelAlerta.Visible = true;
+                pictureAlerta.Visible = true;
+            }
         }
         private void comboFiltroSexo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string sexo = comboFiltroSexo.Text;
-            BuscarPorSexo(sexo);
+            if (comboFiltroSexo.Text != "" && comboFiltroSexo.Text != "Filtro Sexo" && comboFiltroSexo.Text != "Todos")
+            {
+                string sexo = comboFiltroSexo.Text;
+                BuscarPorSexo(sexo);
+            }
+            else
+            {
+                CargarListaClientes();
+                labelAlerta.Visible = false;
+                pictureAlerta.Visible = false;
+            }
         }
         //Registrar cliente
         private Cliente MapearDatosCliente()
@@ -96,11 +118,17 @@ namespace UI
             cliente.Nombres = textNombres.Text;
             cliente.Apellidos = textApellidos.Text;
             cliente.FechaDeNacimiento = dateTimeFechaDeNacimiento.Value;
+            cliente.Direccion = textDireccion.Text;
             cliente.Sexo = comboSexoRegistro.Text;
             cliente.Telefono = textTelefono.Text;
             cliente.CorreoElectronico = textCorreo.Text;
             cliente.Peso = Convert.ToInt32(textPesoCorporal.Text);
-            cliente.Altura = Convert.ToInt32(textEstaturaCorporal.Text);
+            cliente.Altura = Convert.ToDouble(textEstaturaCorporal.Text);
+            using (MemoryStream ms = new MemoryStream())
+            {
+                picturePerfil.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                cliente.ImagenPerfil = ms.ToArray();
+            }
             return cliente;
         }
         private void btnRegistrarCliente_Click(object sender, EventArgs e)
@@ -129,11 +157,19 @@ namespace UI
                 textApellidos.Text = buscado.Apellidos;
                 dateTimeFechaDeNacimiento.Value = buscado.FechaDeNacimiento;
                 comboSexoRegistro.Text = buscado.Sexo;
+                textDireccion.Text = buscado.Direccion;
                 textTelefono.Text = buscado.Telefono;
                 textCorreo.Text = buscado.CorreoElectronico;
                 textPesoCorporal.Text = buscado.Peso.ToString();
                 textEstaturaCorporal.Text = buscado.Altura.ToString();
                 busquedaCliente = true;
+                using (MemoryStream ms = new MemoryStream(buscado.ImagenPerfil))
+                {
+                    // Carga la imagen desde el MemoryStream
+                    Image imagen = Image.FromStream(ms);
+                    // Asigna la imagen al control PictureBox
+                    picturePerfil.Image = imagen;
+                }
             }
         }
         private void BuscarPorNombre(string busqueda)
@@ -149,11 +185,19 @@ namespace UI
                 textApellidos.Text = buscado.Apellidos;
                 dateTimeFechaDeNacimiento.Value = buscado.FechaDeNacimiento;
                 comboSexoRegistro.Text = buscado.Sexo;
+                textDireccion.Text = buscado.Direccion;
                 textTelefono.Text = buscado.Telefono;
                 textCorreo.Text = buscado.CorreoElectronico;
                 textPesoCorporal.Text = buscado.Peso.ToString();
                 textEstaturaCorporal.Text = buscado.Altura.ToString();
                 busquedaCliente = true;
+                using (MemoryStream ms = new MemoryStream(buscado.ImagenPerfil))
+                {
+                    // Carga la imagen desde el MemoryStream
+                    Image imagen = Image.FromStream(ms);
+                    // Asigna la imagen al control PictureBox
+                    picturePerfil.Image = imagen;
+                }
             }
         }
         private void textSearch_TextChanged(object sender, EventArgs e)
@@ -167,12 +211,14 @@ namespace UI
                 {
                     labelAlerta.Text = "No se encontraron los datos buscados";
                     labelAlerta.Visible = true;
+                    pictureAlerta.Visible = true;
                 }
                 else
                 {
                     if (busquedaCliente == true)
                     {
                         labelAlerta.Visible = false;
+                        pictureAlerta.Visible = false;
                     }
                 }
             }
@@ -192,6 +238,7 @@ namespace UI
             {
                 textSearch.Text = "Buscar";
                 labelAlerta.Visible = false;
+                pictureAlerta.Visible = false;
             }
         }
 
@@ -209,12 +256,14 @@ namespace UI
                 {
                     labelAlerta.Text = "No se encontraron los datos buscados";
                     labelAlerta.Visible = true;
+                    pictureAlerta.Visible = true;
                 }
                 else
                 {
                     if (busquedaCliente == true)
                     {
                         labelAlerta.Visible = false;
+                        pictureAlerta.Visible = false;
                     }
                 }
             }
@@ -225,6 +274,9 @@ namespace UI
             btnSearch.Visible = true;
             btnCloseTextSearch.Visible = false;
             textSearch.Visible = false;
+            textSearch.Text = "Buscar";
+            labelAlerta.Visible = false;
+            pictureAlerta.Visible = false;
         }
         //Progreso cliente
         private void BuscarPorIdProgreso(string busqueda)
@@ -488,12 +540,14 @@ namespace UI
                 {
                     labelAlerta.Text = "No se encontraron los datos buscados";
                     labelAlerta.Visible = true;
+                    pictureAlerta.Visible = true;
                 }
                 else
                 {
                     if (busquedaCliente == true)
                     {
                         labelAlerta.Visible = false;
+                        pictureAlerta.Visible = false;
                     }
                 }
             }
@@ -509,10 +563,11 @@ namespace UI
 
         private void textSearchProgreso_Leave(object sender, EventArgs e)
         {
-            if (textSearch.Text == "")
+            if (textSearchProgreso.Text == "")
             {
-                textSearch.Text = "Buscar";
+                textSearchProgreso.Text = "Buscar";
                 labelAlerta.Visible = false;
+                pictureAlerta.Visible = false;
             }
         }
 
@@ -530,12 +585,14 @@ namespace UI
                 {
                     labelAlerta.Text = "No se encontraron los datos buscados";
                     labelAlerta.Visible = true;
+                    pictureAlerta.Visible = true;
                 }
                 else
                 {
                     if (busquedaCliente == true)
                     {
                         labelAlerta.Visible = false;
+                        pictureAlerta.Visible = false;
                     }
                 }
             }
@@ -546,6 +603,36 @@ namespace UI
             btnSearchProgreso.Visible = true;
             btnCloseSearchProgreso.Visible = false;
             textSearchProgreso.Visible = false;
+            textSearchProgreso.Text = "Buscar";
+            labelAlerta.Visible = false;
+            pictureAlerta.Visible = false;
+        }
+
+        private void dataGridClient_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string id;
+            if (dataGridClient.DataSource != null)
+            {
+                if (dataGridClient.Columns[e.ColumnIndex].Name == "Eliminar")
+                {
+                    id = Convert.ToString(dataGridClient.CurrentRow.Cells["Identificacion"].Value.ToString());
+                    string msg = "Desea eliminar este registro " + id + "?";
+                    var respuesta = MessageBox.Show(msg, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (respuesta == DialogResult.OK)
+                    {
+                        EliminarRegistro(id);
+                        CargarListaClientes();
+                    }
+                }
+            }
+            else
+            {
+                if (dataGridClient.DataSource == null)
+                {
+                    string msg = "No hay registros disponibles";
+                    MessageBox.Show(msg, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }
 }

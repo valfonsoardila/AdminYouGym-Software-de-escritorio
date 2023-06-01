@@ -44,6 +44,7 @@
             btnUpdateClient = new FontAwesome.Sharp.IconButton();
             panelContenedorClient = new Panel();
             dataGridClient = new DataGridView();
+            Eliminar = new DataGridViewImageColumn();
             panelDownDataGrid = new Panel();
             textHombres = new TextBox();
             label3 = new Label();
@@ -335,12 +336,20 @@
             // dataGridClient
             // 
             dataGridClient.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridClient.Columns.AddRange(new DataGridViewColumn[] { Eliminar });
             dataGridClient.Dock = DockStyle.Fill;
             dataGridClient.Location = new Point(0, 26);
             dataGridClient.Name = "dataGridClient";
             dataGridClient.RowTemplate.Height = 25;
             dataGridClient.Size = new Size(813, 312);
             dataGridClient.TabIndex = 2;
+            dataGridClient.CellClick += dataGridClient_CellClick;
+            // 
+            // Eliminar
+            // 
+            Eliminar.HeaderText = "Eliminar";
+            Eliminar.Image = Properties.Resources.deleRojBlack;
+            Eliminar.Name = "Eliminar";
             // 
             // panelDownDataGrid
             // 
@@ -432,7 +441,7 @@
             // 
             comboFiltroSexo.BackColor = SystemColors.Window;
             comboFiltroSexo.FormattingEnabled = true;
-            comboFiltroSexo.Items.AddRange(new object[] { "M", "F", "Otro" });
+            comboFiltroSexo.Items.AddRange(new object[] { "Todos", "M", "F", "Otro" });
             comboFiltroSexo.Location = new Point(295, 2);
             comboFiltroSexo.Name = "comboFiltroSexo";
             comboFiltroSexo.Size = new Size(121, 23);
@@ -1338,5 +1347,6 @@
         private PictureBox pictureAlerta;
         private Label labelAlerta;
         private FontAwesome.Sharp.IconPictureBox btnCloseSearchProgreso;
+        private DataGridViewImageColumn Eliminar;
     }
 }
