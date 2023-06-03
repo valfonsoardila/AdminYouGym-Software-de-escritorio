@@ -37,7 +37,6 @@
             btnUpdateMembership = new FontAwesome.Sharp.IconButton();
             panelContenedorClient = new Panel();
             dataGridMiembro = new DataGridView();
-            Eliminar = new DataGridViewImageColumn();
             panelDownDataGrid = new Panel();
             textHombres = new TextBox();
             label3 = new Label();
@@ -108,6 +107,8 @@
             iconCash = new FontAwesome.Sharp.IconPictureBox();
             label5 = new Label();
             btnVolver = new FontAwesome.Sharp.IconButton();
+            Eliminar = new DataGridViewImageColumn();
+            Deshacer = new DataGridViewImageColumn();
             tabControlMembership.SuspendLayout();
             tabGeneral.SuspendLayout();
             panelMembresia.SuspendLayout();
@@ -234,21 +235,20 @@
             // 
             // dataGridMiembro
             // 
+            dataGridMiembro.AllowUserToAddRows = false;
+            dataGridMiembro.CellBorderStyle = DataGridViewCellBorderStyle.RaisedVertical;
             dataGridMiembro.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridMiembro.Columns.AddRange(new DataGridViewColumn[] { Eliminar });
+            dataGridMiembro.Columns.AddRange(new DataGridViewColumn[] { Eliminar, Deshacer });
+            dataGridMiembro.Cursor = Cursors.Hand;
             dataGridMiembro.Dock = DockStyle.Fill;
             dataGridMiembro.Location = new Point(0, 26);
             dataGridMiembro.Name = "dataGridMiembro";
+            dataGridMiembro.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
+            dataGridMiembro.RowHeadersVisible = false;
             dataGridMiembro.RowTemplate.Height = 25;
             dataGridMiembro.Size = new Size(813, 312);
             dataGridMiembro.TabIndex = 2;
             dataGridMiembro.CellClick += dataGridMiembro_CellClick;
-            // 
-            // Eliminar
-            // 
-            Eliminar.HeaderText = "Eliminar";
-            Eliminar.Image = Properties.Resources.deleRojBlack;
-            Eliminar.Name = "Eliminar";
             // 
             // panelDownDataGrid
             // 
@@ -1088,6 +1088,20 @@
             btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click;
             // 
+            // Eliminar
+            // 
+            Eliminar.HeaderText = "Eliminar";
+            Eliminar.Image = Properties.Resources.deleRojBlack;
+            Eliminar.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Eliminar.Name = "Eliminar";
+            Eliminar.Resizable = DataGridViewTriState.False;
+            // 
+            // Deshacer
+            // 
+            Deshacer.HeaderText = "Deshacer";
+            Deshacer.Image = Properties.Resources.Regresar;
+            Deshacer.Name = "Deshacer";
+            // 
             // FormMembresia
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1214,11 +1228,12 @@
         private Label label14;
         private PictureBox pictureAlerta;
         private Label labelAlerta;
-        private DataGridViewImageColumn Eliminar;
         private FontAwesome.Sharp.IconButton btnModificarCliente;
         private Label labelCantidadCreditos;
         private Label label29;
         private ComboBox comboEstado;
         private FontAwesome.Sharp.IconButton btnEnviarReporte;
+        private DataGridViewImageColumn Eliminar;
+        private DataGridViewImageColumn Deshacer;
     }
 }

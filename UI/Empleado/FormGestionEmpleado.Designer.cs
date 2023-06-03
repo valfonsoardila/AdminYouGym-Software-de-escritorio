@@ -44,6 +44,7 @@
             btnUpdateAdmin = new FontAwesome.Sharp.IconButton();
             panelContenedorClient = new Panel();
             dataGridEmpleados = new DataGridView();
+            Eliminar = new DataGridViewImageColumn();
             panelDownDataGrid = new Panel();
             textHombres = new TextBox();
             label3 = new Label();
@@ -85,7 +86,6 @@
             label9 = new Label();
             panel4 = new Panel();
             label7 = new Label();
-            Eliminar = new DataGridViewImageColumn();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             panel3.SuspendLayout();
@@ -286,15 +286,23 @@
             // 
             // dataGridEmpleados
             // 
+            dataGridEmpleados.AllowUserToAddRows = false;
             dataGridEmpleados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridEmpleados.Columns.AddRange(new DataGridViewColumn[] { Eliminar });
             dataGridEmpleados.Dock = DockStyle.Fill;
             dataGridEmpleados.Location = new Point(0, 26);
             dataGridEmpleados.Name = "dataGridEmpleados";
+            dataGridEmpleados.RowHeadersVisible = false;
             dataGridEmpleados.RowTemplate.Height = 25;
             dataGridEmpleados.Size = new Size(813, 312);
             dataGridEmpleados.TabIndex = 2;
             dataGridEmpleados.CellClick += dataGridEmpleados_CellClick;
+            // 
+            // Eliminar
+            // 
+            Eliminar.HeaderText = "Eliminar";
+            Eliminar.Image = Properties.Resources.deleRojBlack;
+            Eliminar.Name = "Eliminar";
             // 
             // panelDownDataGrid
             // 
@@ -748,12 +756,6 @@
             label7.Size = new Size(208, 21);
             label7.TabIndex = 0;
             label7.Text = "Registro de administrador";
-            // 
-            // Eliminar
-            // 
-            Eliminar.HeaderText = "Eliminar";
-            Eliminar.Image = Properties.Resources.deleRojBlack;
-            Eliminar.Name = "Eliminar";
             // 
             // FormGestionEmpleado
             // 

@@ -44,6 +44,7 @@
             btnUpdateEntrenador = new FontAwesome.Sharp.IconButton();
             panelContenedorClient = new Panel();
             dataGridEntrenadores = new DataGridView();
+            Eliminar = new DataGridViewImageColumn();
             panelDownDataGrid = new Panel();
             textHombres = new TextBox();
             label3 = new Label();
@@ -122,7 +123,6 @@
             label10 = new Label();
             panel5 = new Panel();
             label8 = new Label();
-            Eliminar = new DataGridViewImageColumn();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             panel3.SuspendLayout();
@@ -335,15 +335,23 @@
             // 
             // dataGridEntrenadores
             // 
+            dataGridEntrenadores.AllowUserToAddRows = false;
             dataGridEntrenadores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridEntrenadores.Columns.AddRange(new DataGridViewColumn[] { Eliminar });
             dataGridEntrenadores.Dock = DockStyle.Fill;
             dataGridEntrenadores.Location = new Point(0, 26);
             dataGridEntrenadores.Name = "dataGridEntrenadores";
+            dataGridEntrenadores.RowHeadersVisible = false;
             dataGridEntrenadores.RowTemplate.Height = 25;
             dataGridEntrenadores.Size = new Size(813, 312);
             dataGridEntrenadores.TabIndex = 2;
             dataGridEntrenadores.CellClick += dataGridEntrenadores_CellClick;
+            // 
+            // Eliminar
+            // 
+            Eliminar.HeaderText = "Eliminar";
+            Eliminar.Image = Properties.Resources.deleRojBlack;
+            Eliminar.Name = "Eliminar";
             // 
             // panelDownDataGrid
             // 
@@ -1210,12 +1218,6 @@
             label8.Size = new Size(145, 21);
             label8.TabIndex = 0;
             label8.Text = "Firma de contrato";
-            // 
-            // Eliminar
-            // 
-            Eliminar.HeaderText = "Eliminar";
-            Eliminar.Image = Properties.Resources.deleRojBlack;
-            Eliminar.Name = "Eliminar";
             // 
             // FormGestionEntrenador
             // 

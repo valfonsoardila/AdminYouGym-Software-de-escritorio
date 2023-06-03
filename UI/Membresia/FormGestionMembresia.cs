@@ -33,7 +33,7 @@ namespace UI
             clienteService = new ClienteService(ConfigConnection.ConnectionString);
             membresiaService = new MembresiaService(ConfigConnection.ConnectionString);
             planDeEjercicioService = new PlanDeEjercicioService(ConfigConnection.ConnectionString);
-            cajaRegistradoraService=new CajaRegistradoraService(ConfigConnection.ConnectionString);
+            cajaRegistradoraService = new CajaRegistradoraService(ConfigConnection.ConnectionString);
             InitializeComponent();
             CargarListaMiembros();
             ConsultarCajaAbierta();
@@ -135,18 +135,61 @@ namespace UI
 
         private void dataGridMiembro_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string id;
+            int abono;
+            string idMiembro;
+            string nombre;
+            int saldo;
             if (dataGridMiembro.DataSource != null)
             {
                 if (dataGridMiembro.Columns[e.ColumnIndex].Name == "Eliminar")
                 {
-                    id = Convert.ToString(dataGridMiembro.CurrentRow.Cells["CodigoMiembro"].Value.ToString());
-                    string msg = "Desea eliminar este registro " + id + "?";
+                    idMiembro = Convert.ToString(dataGridMiembro.CurrentRow.Cells["CodigoMiembro"].Value.ToString());
+                    string msg = "Desea eliminar este registro " + idMiembro + "?";
                     var respuesta = MessageBox.Show(msg, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     if (respuesta == DialogResult.OK)
                     {
-                        EliminarRegistro(id);
+                        EliminarRegistro(idMiembro);
                         CargarListaMiembros();
+                    }
+                }
+                else
+                {
+                    if (dataGridMiembro.Columns[e.ColumnIndex].Name == "Deshacer")
+                    {
+                        idMiembro = Convert.ToString(dataGridMiembro.CurrentRow.Cells["CodigoMiembro"].Value);
+                        nombre = Convert.ToString(dataGridMiembro.CurrentRow.Cells["Nombres"].Value);
+                        if (idMiembro != null)
+                        {
+                            if (Convert.ToInt32(dataGridMiembro.CurrentRow.Cells["Abono"].Value) > 0)
+                            {
+                                abono = Convert.ToInt32(dataGridMiembro.CurrentRow.Cells["Abono"].Value);
+                                string msg = "Desea eliminar al cliente " + nombre + " de las membresias?";
+                                var respuesta = MessageBox.Show(msg, "Deshacer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                if (respuesta == DialogResult.OK)
+                                {
+                                    RestarACaja(abono);
+                                    EliminarRegistro(idMiembro);
+                                    CargarListaMiembros();
+                                    ConsultarCajaAbierta();
+                                }
+                            }
+                            else
+                            {
+                                if (Convert.ToInt32(dataGridMiembro.CurrentRow.Cells["Saldo"].Value) > 0)
+                                {
+                                    saldo = Convert.ToInt32(dataGridMiembro.CurrentRow.Cells["Saldo"].Value);
+                                    string msg = "Desea eliminar al cliente " + nombre + " de las membresias?";
+                                    var respuesta = MessageBox.Show(msg, "Deshacer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    if (respuesta == DialogResult.OK)
+                                    {
+                                        RestarACaja(saldo);
+                                        EliminarRegistro(idMiembro);
+                                        CargarListaMiembros();
+                                        ConsultarCajaAbierta();
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -157,6 +200,26 @@ namespace UI
                     string msg = "No hay registros disponibles";
                     MessageBox.Show(msg, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+            }
+        }
+        private void RestarACaja(int valor)
+        {
+            BusquedaCajaRegistradoraRespuesta respuesta = new BusquedaCajaRegistradoraRespuesta();
+            respuesta = cajaRegistradoraService.BuscarPorEstado("Abierta");
+            var cajaRegistradoraBuscada = respuesta.CajaRegistradora;
+            if (cajaRegistradoraBuscada != null)
+            {
+                double ventaDelDia = cajaRegistradoraBuscada.VentaDelDia;
+                double cuadre = ventaDelDia - valor;
+                cajaRegistradoraBuscada.VentaDelDia = cuadre;
+                double montoFinal = cajaRegistradoraBuscada.MontoFinal;
+                cajaRegistradoraBuscada.MontoFinal = montoFinal - valor;
+                Caja NuevacajaRegistradora = cajaRegistradoraBuscada;
+                cajaRegistradoraService.ModificarCash(NuevacajaRegistradora);
+            }
+            else
+            {
+
             }
         }
         private void BuscarPorId(string busqueda)

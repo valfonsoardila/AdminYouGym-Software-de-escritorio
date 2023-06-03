@@ -124,18 +124,20 @@ Dias_De_Trabajo int,
 Meses_De_Contrato int,
 Tipo_De_Contrato varchar(20)
 );
+
 create table PLAN_EJERCICIO(
 Id_Plan_De_Ejercicio varchar(12) primary key not null,
 Tipo_De_Tiempo varchar(10)not null,
 Numero_DiasMeses int,
 Fecha_De_Entreno datetime not null,
-Sesion char(1) not null,
+Jornada varchar(30) not null,
 Objetivo varchar(40)not null,
 Descripcion_Plan_Ejercicio varchar(100) not null,
 Estado char(10),
 Ciclo char(1),
 Precio int
 );
+
 create table PRODUCTO(
 Cantidad int not null,
 Referencia nvarchar(100) primary key not null,

@@ -286,11 +286,13 @@
             // 
             // dataGridAdministrador
             // 
+            dataGridAdministrador.AllowUserToAddRows = false;
             dataGridAdministrador.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridAdministrador.Columns.AddRange(new DataGridViewColumn[] { Eliminar });
             dataGridAdministrador.Dock = DockStyle.Fill;
             dataGridAdministrador.Location = new Point(0, 26);
             dataGridAdministrador.Name = "dataGridAdministrador";
+            dataGridAdministrador.RowHeadersVisible = false;
             dataGridAdministrador.RowTemplate.Height = 25;
             dataGridAdministrador.Size = new Size(813, 312);
             dataGridAdministrador.TabIndex = 2;

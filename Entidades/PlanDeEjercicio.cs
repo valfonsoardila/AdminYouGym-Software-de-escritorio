@@ -8,8 +8,9 @@ namespace Entidades
 {
     public class PlanDeEjercicio
     {
-        public PlanDeEjercicio(string tipoDeTiempo, int numeroDiasMeses, DateTime fechaDeEntreno,string jornada, string objetivo, string descripcionPlanEjercicio, string estado, string ciclo)
+        public PlanDeEjercicio(string idPlanDeEjercicio, string tipoDeTiempo, int numeroDiasMeses, DateTime fechaDeEntreno,string jornada, string objetivo, string descripcionPlanEjercicio, string estado, string ciclo)
         {
+            IdPlanDeEjercicio = idPlanDeEjercicio;
             TipoDeTiempo = tipoDeTiempo;
             NumeroDiasMeses = numeroDiasMeses;
             FechaDeEntreno = fechaDeEntreno;

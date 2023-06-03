@@ -335,11 +335,13 @@
             // 
             // dataGridClient
             // 
+            dataGridClient.AllowUserToAddRows = false;
             dataGridClient.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridClient.Columns.AddRange(new DataGridViewColumn[] { Eliminar });
             dataGridClient.Dock = DockStyle.Fill;
             dataGridClient.Location = new Point(0, 26);
             dataGridClient.Name = "dataGridClient";
+            dataGridClient.RowHeadersVisible = false;
             dataGridClient.RowTemplate.Height = 25;
             dataGridClient.Size = new Size(813, 312);
             dataGridClient.TabIndex = 2;

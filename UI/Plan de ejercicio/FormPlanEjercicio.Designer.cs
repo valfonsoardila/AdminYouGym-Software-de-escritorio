@@ -28,54 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tabControlMembership = new TabControl();
+            tabControlPlanes = new TabControl();
             tabGeneral = new TabPage();
             panelPlanEjercicio = new Panel();
             panel1 = new Panel();
             btnProgreso = new FontAwesome.Sharp.IconButton();
-            btnAddMembership = new FontAwesome.Sharp.IconButton();
-            btnUpdateMembership = new FontAwesome.Sharp.IconButton();
+            btnAddPlan = new FontAwesome.Sharp.IconButton();
+            btnUpdatePlan = new FontAwesome.Sharp.IconButton();
             panelContenedorClient = new Panel();
-            dataGridClient = new DataGridView();
+            dataGridPlanEjercicio = new DataGridView();
+            Eliminar = new DataGridViewImageColumn();
             panelDownDataGrid = new Panel();
-            textHombres = new TextBox();
+            textNocturna = new TextBox();
+            label8 = new Label();
+            textVespertina = new TextBox();
             label3 = new Label();
             textTotal = new TextBox();
-            textMujeres = new TextBox();
+            textMatutina = new TextBox();
             label4 = new Label();
             label2 = new Label();
             panelTopDataGrid = new Panel();
-            comboFiltroSexo = new ComboBox();
+            comboFiltroJornada = new ComboBox();
             label1 = new Label();
             tabRegistro = new TabPage();
             panel7 = new Panel();
-            panel20 = new Panel();
-            textBox10 = new TextBox();
+            panelDetallesPlanes = new Panel();
+            textPrecio = new TextBox();
             label26 = new Label();
-            comboBox4 = new ComboBox();
+            comboCiclo = new ComboBox();
             label27 = new Label();
-            comboBox3 = new ComboBox();
+            comboEstado = new ComboBox();
             label25 = new Label();
-            textBox9 = new TextBox();
+            textDescripcion = new TextBox();
             label24 = new Label();
             label23 = new Label();
-            textBox8 = new TextBox();
+            textObjetivo = new TextBox();
             panel19 = new Panel();
             label22 = new Label();
-            panel18 = new Panel();
-            comboBox2 = new ComboBox();
-            dateTimePicker1 = new DateTimePicker();
+            panelDatosBasicosPlan = new Panel();
+            comboDiasMeses = new ComboBox();
+            dateTimeFechaInicio = new DateTimePicker();
             label21 = new Label();
-            textBox7 = new TextBox();
+            textCatidadDiasMeses = new TextBox();
             label20 = new Label();
-            comboBox1 = new ComboBox();
+            comboJornada = new ComboBox();
             label19 = new Label();
             panel9 = new Panel();
             label18 = new Label();
-            label10 = new Label();
+            labelCodigoPlan = new Label();
             pictureBox3 = new PictureBox();
             panel8 = new Panel();
-            iconButton2 = new FontAwesome.Sharp.IconButton();
+            btnModificar = new FontAwesome.Sharp.IconButton();
+            btnRegistrar = new FontAwesome.Sharp.IconButton();
             panel6 = new Panel();
             btnSearch = new FontAwesome.Sharp.IconPictureBox();
             textSearch = new TextBox();
@@ -86,23 +90,23 @@
             panel2 = new Panel();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             panel3 = new Panel();
-            label6 = new Label();
-            pictureBox1 = new PictureBox();
+            pictureAlerta = new PictureBox();
+            labelAlerta = new Label();
             label5 = new Label();
             btnVolver = new FontAwesome.Sharp.IconButton();
-            tabControlMembership.SuspendLayout();
+            tabControlPlanes.SuspendLayout();
             tabGeneral.SuspendLayout();
             panelPlanEjercicio.SuspendLayout();
             panel1.SuspendLayout();
             panelContenedorClient.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridClient).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridPlanEjercicio).BeginInit();
             panelDownDataGrid.SuspendLayout();
             panelTopDataGrid.SuspendLayout();
             tabRegistro.SuspendLayout();
             panel7.SuspendLayout();
-            panel20.SuspendLayout();
+            panelDetallesPlanes.SuspendLayout();
             panel19.SuspendLayout();
-            panel18.SuspendLayout();
+            panelDatosBasicosPlan.SuspendLayout();
             panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             panel8.SuspendLayout();
@@ -113,18 +117,18 @@
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureAlerta).BeginInit();
             SuspendLayout();
             // 
-            // tabControlMembership
+            // tabControlPlanes
             // 
-            tabControlMembership.Controls.Add(tabGeneral);
-            tabControlMembership.Controls.Add(tabRegistro);
-            tabControlMembership.Location = new Point(0, 66);
-            tabControlMembership.Name = "tabControlMembership";
-            tabControlMembership.SelectedIndex = 0;
-            tabControlMembership.Size = new Size(827, 474);
-            tabControlMembership.TabIndex = 6;
+            tabControlPlanes.Controls.Add(tabGeneral);
+            tabControlPlanes.Controls.Add(tabRegistro);
+            tabControlPlanes.Location = new Point(0, 66);
+            tabControlPlanes.Name = "tabControlPlanes";
+            tabControlPlanes.SelectedIndex = 0;
+            tabControlPlanes.Size = new Size(827, 474);
+            tabControlPlanes.TabIndex = 6;
             // 
             // tabGeneral
             // 
@@ -150,8 +154,8 @@
             // panel1
             // 
             panel1.Controls.Add(btnProgreso);
-            panel1.Controls.Add(btnAddMembership);
-            panel1.Controls.Add(btnUpdateMembership);
+            panel1.Controls.Add(btnAddPlan);
+            panel1.Controls.Add(btnUpdatePlan);
             panel1.Dock = DockStyle.Bottom;
             panel1.Location = new Point(0, 402);
             panel1.Name = "panel1";
@@ -172,35 +176,37 @@
             btnProgreso.TabIndex = 4;
             btnProgreso.UseVisualStyleBackColor = false;
             // 
-            // btnAddMembership
+            // btnAddPlan
             // 
-            btnAddMembership.BackColor = Color.LimeGreen;
-            btnAddMembership.IconChar = FontAwesome.Sharp.IconChar.UserPlus;
-            btnAddMembership.IconColor = Color.Black;
-            btnAddMembership.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            btnAddMembership.IconSize = 32;
-            btnAddMembership.Location = new Point(236, 3);
-            btnAddMembership.Name = "btnAddMembership";
-            btnAddMembership.Size = new Size(69, 33);
-            btnAddMembership.TabIndex = 1;
-            btnAddMembership.UseVisualStyleBackColor = false;
+            btnAddPlan.BackColor = Color.LimeGreen;
+            btnAddPlan.IconChar = FontAwesome.Sharp.IconChar.FileCirclePlus;
+            btnAddPlan.IconColor = Color.Black;
+            btnAddPlan.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnAddPlan.IconSize = 32;
+            btnAddPlan.Location = new Point(236, 3);
+            btnAddPlan.Name = "btnAddPlan";
+            btnAddPlan.Size = new Size(69, 33);
+            btnAddPlan.TabIndex = 1;
+            btnAddPlan.UseVisualStyleBackColor = false;
+            btnAddPlan.Click += btnAddPlan_Click;
             // 
-            // btnUpdateMembership
+            // btnUpdatePlan
             // 
-            btnUpdateMembership.BackColor = Color.Gold;
-            btnUpdateMembership.IconChar = FontAwesome.Sharp.IconChar.UserEdit;
-            btnUpdateMembership.IconColor = Color.Black;
-            btnUpdateMembership.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            btnUpdateMembership.IconSize = 32;
-            btnUpdateMembership.Location = new Point(311, 3);
-            btnUpdateMembership.Name = "btnUpdateMembership";
-            btnUpdateMembership.Size = new Size(69, 33);
-            btnUpdateMembership.TabIndex = 2;
-            btnUpdateMembership.UseVisualStyleBackColor = false;
+            btnUpdatePlan.BackColor = Color.Gold;
+            btnUpdatePlan.IconChar = FontAwesome.Sharp.IconChar.FileCircleCheck;
+            btnUpdatePlan.IconColor = Color.Black;
+            btnUpdatePlan.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnUpdatePlan.IconSize = 32;
+            btnUpdatePlan.Location = new Point(311, 3);
+            btnUpdatePlan.Name = "btnUpdatePlan";
+            btnUpdatePlan.Size = new Size(69, 33);
+            btnUpdatePlan.TabIndex = 2;
+            btnUpdatePlan.UseVisualStyleBackColor = false;
+            btnUpdatePlan.Click += btnUpdatePlan_Click;
             // 
             // panelContenedorClient
             // 
-            panelContenedorClient.Controls.Add(dataGridClient);
+            panelContenedorClient.Controls.Add(dataGridPlanEjercicio);
             panelContenedorClient.Controls.Add(panelDownDataGrid);
             panelContenedorClient.Controls.Add(panelTopDataGrid);
             panelContenedorClient.Dock = DockStyle.Top;
@@ -209,23 +215,34 @@
             panelContenedorClient.Size = new Size(813, 368);
             panelContenedorClient.TabIndex = 0;
             // 
-            // dataGridClient
+            // dataGridPlanEjercicio
             // 
-            dataGridClient.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridClient.Dock = DockStyle.Fill;
-            dataGridClient.Location = new Point(0, 26);
-            dataGridClient.Name = "dataGridClient";
-            dataGridClient.RowTemplate.Height = 25;
-            dataGridClient.Size = new Size(813, 312);
-            dataGridClient.TabIndex = 2;
+            dataGridPlanEjercicio.AllowUserToAddRows = false;
+            dataGridPlanEjercicio.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridPlanEjercicio.Columns.AddRange(new DataGridViewColumn[] { Eliminar });
+            dataGridPlanEjercicio.Dock = DockStyle.Fill;
+            dataGridPlanEjercicio.Location = new Point(0, 26);
+            dataGridPlanEjercicio.Name = "dataGridPlanEjercicio";
+            dataGridPlanEjercicio.RowHeadersVisible = false;
+            dataGridPlanEjercicio.RowTemplate.Height = 25;
+            dataGridPlanEjercicio.Size = new Size(813, 312);
+            dataGridPlanEjercicio.TabIndex = 2;
+            // 
+            // Eliminar
+            // 
+            Eliminar.HeaderText = "Eliminar";
+            Eliminar.Image = Properties.Resources.deleRojBlack;
+            Eliminar.Name = "Eliminar";
             // 
             // panelDownDataGrid
             // 
             panelDownDataGrid.BackColor = Color.Gainsboro;
-            panelDownDataGrid.Controls.Add(textHombres);
+            panelDownDataGrid.Controls.Add(textNocturna);
+            panelDownDataGrid.Controls.Add(label8);
+            panelDownDataGrid.Controls.Add(textVespertina);
             panelDownDataGrid.Controls.Add(label3);
             panelDownDataGrid.Controls.Add(textTotal);
-            panelDownDataGrid.Controls.Add(textMujeres);
+            panelDownDataGrid.Controls.Add(textMatutina);
             panelDownDataGrid.Controls.Add(label4);
             panelDownDataGrid.Controls.Add(label2);
             panelDownDataGrid.Dock = DockStyle.Bottom;
@@ -234,61 +251,81 @@
             panelDownDataGrid.Size = new Size(813, 30);
             panelDownDataGrid.TabIndex = 1;
             // 
-            // textHombres
+            // textNocturna
             // 
-            textHombres.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            textHombres.Location = new Point(666, 4);
-            textHombres.Name = "textHombres";
-            textHombres.Size = new Size(52, 23);
-            textHombres.TabIndex = 13;
-            textHombres.Text = "0";
-            textHombres.TextAlign = HorizontalAlignment.Center;
+            textNocturna.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            textNocturna.Location = new Point(742, 3);
+            textNocturna.Name = "textNocturna";
+            textNocturna.Size = new Size(52, 23);
+            textNocturna.TabIndex = 16;
+            textNocturna.Text = "0";
+            textNocturna.TextAlign = HorizontalAlignment.Center;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.Location = new Point(678, 6);
+            label8.Name = "label8";
+            label8.Size = new Size(69, 17);
+            label8.TabIndex = 15;
+            label8.Text = "Nocturna:";
+            // 
+            // textVespertina
+            // 
+            textVespertina.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            textVespertina.Location = new Point(620, 4);
+            textVespertina.Name = "textVespertina";
+            textVespertina.Size = new Size(52, 23);
+            textVespertina.TabIndex = 13;
+            textVespertina.Text = "0";
+            textVespertina.TextAlign = HorizontalAlignment.Center;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(490, 7);
+            label3.Location = new Point(429, 7);
             label3.Name = "label3";
-            label3.Size = new Size(61, 17);
+            label3.Size = new Size(68, 17);
             label3.TabIndex = 11;
-            label3.Text = "Mujeres:";
+            label3.Text = "Matutina:";
             // 
             // textTotal
             // 
             textTotal.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            textTotal.Location = new Point(433, 4);
+            textTotal.Location = new Point(372, 4);
             textTotal.Name = "textTotal";
             textTotal.Size = new Size(52, 23);
             textTotal.TabIndex = 10;
             textTotal.Text = "0";
             textTotal.TextAlign = HorizontalAlignment.Center;
             // 
-            // textMujeres
+            // textMatutina
             // 
-            textMujeres.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            textMujeres.Location = new Point(548, 4);
-            textMujeres.Name = "textMujeres";
-            textMujeres.Size = new Size(52, 23);
-            textMujeres.TabIndex = 14;
-            textMujeres.Text = "0";
-            textMujeres.TextAlign = HorizontalAlignment.Center;
+            textMatutina.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            textMatutina.Location = new Point(487, 4);
+            textMatutina.Name = "textMatutina";
+            textMatutina.Size = new Size(52, 23);
+            textMatutina.TabIndex = 14;
+            textMatutina.Text = "0";
+            textMatutina.TextAlign = HorizontalAlignment.Center;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(602, 7);
+            label4.Location = new Point(543, 7);
             label4.Name = "label4";
-            label4.Size = new Size(68, 17);
+            label4.Size = new Size(77, 17);
             label4.TabIndex = 12;
-            label4.Text = "Hombres:";
+            label4.Text = "Vespertina:";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(351, 8);
+            label2.Location = new Point(290, 8);
             label2.Name = "label2";
             label2.Size = new Size(84, 17);
             label2.TabIndex = 9;
@@ -297,7 +334,7 @@
             // panelTopDataGrid
             // 
             panelTopDataGrid.BackColor = Color.Gainsboro;
-            panelTopDataGrid.Controls.Add(comboFiltroSexo);
+            panelTopDataGrid.Controls.Add(comboFiltroJornada);
             panelTopDataGrid.Controls.Add(label1);
             panelTopDataGrid.Dock = DockStyle.Top;
             panelTopDataGrid.Location = new Point(0, 0);
@@ -305,16 +342,17 @@
             panelTopDataGrid.Size = new Size(813, 26);
             panelTopDataGrid.TabIndex = 0;
             // 
-            // comboFiltroSexo
+            // comboFiltroJornada
             // 
-            comboFiltroSexo.BackColor = SystemColors.Window;
-            comboFiltroSexo.FormattingEnabled = true;
-            comboFiltroSexo.Items.AddRange(new object[] { "M", "F", "Otro" });
-            comboFiltroSexo.Location = new Point(295, 2);
-            comboFiltroSexo.Name = "comboFiltroSexo";
-            comboFiltroSexo.Size = new Size(121, 23);
-            comboFiltroSexo.TabIndex = 1;
-            comboFiltroSexo.Text = "Filtro jornada";
+            comboFiltroJornada.BackColor = SystemColors.Window;
+            comboFiltroJornada.FormattingEnabled = true;
+            comboFiltroJornada.Items.AddRange(new object[] { "Todos", "Matutina", "Vespertina", "Nocturna" });
+            comboFiltroJornada.Location = new Point(295, 2);
+            comboFiltroJornada.Name = "comboFiltroJornada";
+            comboFiltroJornada.Size = new Size(121, 23);
+            comboFiltroJornada.TabIndex = 1;
+            comboFiltroJornada.Text = "Filtro jornada";
+            comboFiltroJornada.SelectedIndexChanged += comboFiltroJornada_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -341,9 +379,9 @@
             // 
             // panel7
             // 
-            panel7.Controls.Add(panel20);
+            panel7.Controls.Add(panelDetallesPlanes);
             panel7.Controls.Add(panel19);
-            panel7.Controls.Add(panel18);
+            panel7.Controls.Add(panelDatosBasicosPlan);
             panel7.Controls.Add(panel9);
             panel7.Controls.Add(panel8);
             panel7.Dock = DockStyle.Top;
@@ -352,34 +390,33 @@
             panel7.Size = new Size(813, 393);
             panel7.TabIndex = 2;
             // 
-            // panel20
+            // panelDetallesPlanes
             // 
-            panel20.Controls.Add(textBox10);
-            panel20.Controls.Add(label26);
-            panel20.Controls.Add(comboBox4);
-            panel20.Controls.Add(label27);
-            panel20.Controls.Add(comboBox3);
-            panel20.Controls.Add(label25);
-            panel20.Controls.Add(textBox9);
-            panel20.Controls.Add(label24);
-            panel20.Controls.Add(label23);
-            panel20.Controls.Add(textBox8);
-            panel20.Dock = DockStyle.Fill;
-            panel20.Enabled = false;
-            panel20.Location = new Point(0, 132);
-            panel20.Name = "panel20";
-            panel20.Size = new Size(523, 217);
-            panel20.TabIndex = 35;
+            panelDetallesPlanes.Controls.Add(textPrecio);
+            panelDetallesPlanes.Controls.Add(label26);
+            panelDetallesPlanes.Controls.Add(comboCiclo);
+            panelDetallesPlanes.Controls.Add(label27);
+            panelDetallesPlanes.Controls.Add(comboEstado);
+            panelDetallesPlanes.Controls.Add(label25);
+            panelDetallesPlanes.Controls.Add(textDescripcion);
+            panelDetallesPlanes.Controls.Add(label24);
+            panelDetallesPlanes.Controls.Add(label23);
+            panelDetallesPlanes.Controls.Add(textObjetivo);
+            panelDetallesPlanes.Dock = DockStyle.Fill;
+            panelDetallesPlanes.Location = new Point(0, 132);
+            panelDetallesPlanes.Name = "panelDetallesPlanes";
+            panelDetallesPlanes.Size = new Size(523, 217);
+            panelDetallesPlanes.TabIndex = 35;
             // 
-            // textBox10
+            // textPrecio
             // 
-            textBox10.BorderStyle = BorderStyle.FixedSingle;
-            textBox10.Location = new Point(73, 184);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(85, 23);
-            textBox10.TabIndex = 47;
-            textBox10.Text = "0";
-            textBox10.TextAlign = HorizontalAlignment.Center;
+            textPrecio.BorderStyle = BorderStyle.FixedSingle;
+            textPrecio.Location = new Point(73, 184);
+            textPrecio.Name = "textPrecio";
+            textPrecio.Size = new Size(85, 23);
+            textPrecio.TabIndex = 47;
+            textPrecio.Text = "0";
+            textPrecio.TextAlign = HorizontalAlignment.Center;
             // 
             // label26
             // 
@@ -391,15 +428,15 @@
             label26.TabIndex = 46;
             label26.Text = "Precio:";
             // 
-            // comboBox4
+            // comboCiclo
             // 
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Items.AddRange(new object[] { "Fase inicial", "Fase avanzada", "Fase final" });
-            comboBox4.Location = new Point(65, 154);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(136, 23);
-            comboBox4.TabIndex = 45;
-            comboBox4.Text = "Seleccione un ciclo";
+            comboCiclo.FormattingEnabled = true;
+            comboCiclo.Items.AddRange(new object[] { "Fase inicial", "Fase avanzada", "Fase final" });
+            comboCiclo.Location = new Point(65, 154);
+            comboCiclo.Name = "comboCiclo";
+            comboCiclo.Size = new Size(136, 23);
+            comboCiclo.TabIndex = 45;
+            comboCiclo.Text = "Seleccione un ciclo";
             // 
             // label27
             // 
@@ -411,15 +448,15 @@
             label27.TabIndex = 44;
             label27.Text = "Ciclo:";
             // 
-            // comboBox3
+            // comboEstado
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "Activo", "Inactivo" });
-            comboBox3.Location = new Point(71, 119);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(136, 23);
-            comboBox3.TabIndex = 42;
-            comboBox3.Text = "Seleccione un estado";
+            comboEstado.FormattingEnabled = true;
+            comboEstado.Items.AddRange(new object[] { "Activo", "Inactivo" });
+            comboEstado.Location = new Point(71, 119);
+            comboEstado.Name = "comboEstado";
+            comboEstado.Size = new Size(136, 23);
+            comboEstado.TabIndex = 42;
+            comboEstado.Text = "Seleccione un estado";
             // 
             // label25
             // 
@@ -431,14 +468,14 @@
             label25.TabIndex = 41;
             label25.Text = "Estado:";
             // 
-            // textBox9
+            // textDescripcion
             // 
-            textBox9.BorderStyle = BorderStyle.FixedSingle;
-            textBox9.Location = new Point(168, 54);
-            textBox9.Multiline = true;
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(275, 56);
-            textBox9.TabIndex = 40;
+            textDescripcion.BorderStyle = BorderStyle.FixedSingle;
+            textDescripcion.Location = new Point(168, 54);
+            textDescripcion.Multiline = true;
+            textDescripcion.Name = "textDescripcion";
+            textDescripcion.Size = new Size(275, 56);
+            textDescripcion.TabIndex = 40;
             // 
             // label24
             // 
@@ -460,14 +497,14 @@
             label23.TabIndex = 38;
             label23.Text = "Objetivo:";
             // 
-            // textBox8
+            // textObjetivo
             // 
-            textBox8.BorderStyle = BorderStyle.FixedSingle;
-            textBox8.Location = new Point(89, 6);
-            textBox8.Multiline = true;
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(275, 42);
-            textBox8.TabIndex = 0;
+            textObjetivo.BorderStyle = BorderStyle.FixedSingle;
+            textObjetivo.Location = new Point(89, 6);
+            textObjetivo.Multiline = true;
+            textObjetivo.Name = "textObjetivo";
+            textObjetivo.Size = new Size(275, 42);
+            textObjetivo.TabIndex = 0;
             // 
             // panel19
             // 
@@ -489,37 +526,37 @@
             label22.TabIndex = 2;
             label22.Text = "Detalles del plan";
             // 
-            // panel18
+            // panelDatosBasicosPlan
             // 
-            panel18.Controls.Add(comboBox2);
-            panel18.Controls.Add(dateTimePicker1);
-            panel18.Controls.Add(label21);
-            panel18.Controls.Add(textBox7);
-            panel18.Controls.Add(label20);
-            panel18.Controls.Add(comboBox1);
-            panel18.Controls.Add(label19);
-            panel18.Dock = DockStyle.Top;
-            panel18.Location = new Point(0, 0);
-            panel18.Name = "panel18";
-            panel18.Size = new Size(523, 108);
-            panel18.TabIndex = 33;
+            panelDatosBasicosPlan.Controls.Add(comboDiasMeses);
+            panelDatosBasicosPlan.Controls.Add(dateTimeFechaInicio);
+            panelDatosBasicosPlan.Controls.Add(label21);
+            panelDatosBasicosPlan.Controls.Add(textCatidadDiasMeses);
+            panelDatosBasicosPlan.Controls.Add(label20);
+            panelDatosBasicosPlan.Controls.Add(comboJornada);
+            panelDatosBasicosPlan.Controls.Add(label19);
+            panelDatosBasicosPlan.Dock = DockStyle.Top;
+            panelDatosBasicosPlan.Location = new Point(0, 0);
+            panelDatosBasicosPlan.Name = "panelDatosBasicosPlan";
+            panelDatosBasicosPlan.Size = new Size(523, 108);
+            panelDatosBasicosPlan.TabIndex = 33;
             // 
-            // comboBox2
+            // comboDiasMeses
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "Mes/Meses", "Dia/Dias" });
-            comboBox2.Location = new Point(278, 41);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(69, 23);
-            comboBox2.TabIndex = 37;
-            comboBox2.Text = "Dia/Dias";
+            comboDiasMeses.FormattingEnabled = true;
+            comboDiasMeses.Items.AddRange(new object[] { "Mes/Meses", "Dia/Dias" });
+            comboDiasMeses.Location = new Point(278, 41);
+            comboDiasMeses.Name = "comboDiasMeses";
+            comboDiasMeses.Size = new Size(69, 23);
+            comboDiasMeses.TabIndex = 37;
+            comboDiasMeses.Text = "Dia/Dias";
             // 
-            // dateTimePicker1
+            // dateTimeFechaInicio
             // 
-            dateTimePicker1.Location = new Point(130, 72);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(217, 23);
-            dateTimePicker1.TabIndex = 36;
+            dateTimeFechaInicio.Location = new Point(130, 72);
+            dateTimeFechaInicio.Name = "dateTimeFechaInicio";
+            dateTimeFechaInicio.Size = new Size(217, 23);
+            dateTimeFechaInicio.TabIndex = 36;
             // 
             // label21
             // 
@@ -531,15 +568,15 @@
             label21.TabIndex = 35;
             label21.Text = "Fecha de inicio:";
             // 
-            // textBox7
+            // textCatidadDiasMeses
             // 
-            textBox7.BorderStyle = BorderStyle.FixedSingle;
-            textBox7.Location = new Point(188, 41);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(85, 23);
-            textBox7.TabIndex = 34;
-            textBox7.Text = "0";
-            textBox7.TextAlign = HorizontalAlignment.Center;
+            textCatidadDiasMeses.BorderStyle = BorderStyle.FixedSingle;
+            textCatidadDiasMeses.Location = new Point(188, 41);
+            textCatidadDiasMeses.Name = "textCatidadDiasMeses";
+            textCatidadDiasMeses.Size = new Size(85, 23);
+            textCatidadDiasMeses.TabIndex = 34;
+            textCatidadDiasMeses.Text = "0";
+            textCatidadDiasMeses.TextAlign = HorizontalAlignment.Center;
             // 
             // label20
             // 
@@ -551,15 +588,15 @@
             label20.TabIndex = 33;
             label20.Text = "Cantidad de Dias/Meses:";
             // 
-            // comboBox1
+            // comboJornada
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Matutina", "Vespertina", "Nocturna" });
-            comboBox1.Location = new Point(83, 8);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(146, 23);
-            comboBox1.TabIndex = 32;
-            comboBox1.Text = "Seleccione una jornada";
+            comboJornada.FormattingEnabled = true;
+            comboJornada.Items.AddRange(new object[] { "Matutina", "Vespertina", "Nocturna" });
+            comboJornada.Location = new Point(83, 8);
+            comboJornada.Name = "comboJornada";
+            comboJornada.Size = new Size(146, 23);
+            comboJornada.TabIndex = 32;
+            comboJornada.Text = "Seleccione una jornada";
             // 
             // label19
             // 
@@ -574,7 +611,7 @@
             // panel9
             // 
             panel9.Controls.Add(label18);
-            panel9.Controls.Add(label10);
+            panel9.Controls.Add(labelCodigoPlan);
             panel9.Controls.Add(pictureBox3);
             panel9.Dock = DockStyle.Right;
             panel9.Location = new Point(523, 0);
@@ -593,16 +630,16 @@
             label18.TabIndex = 26;
             label18.Text = "Codigo de plan:";
             // 
-            // label10
+            // labelCodigoPlan
             // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.ForeColor = Color.Black;
-            label10.Location = new Point(184, 10);
-            label10.Name = "label10";
-            label10.Size = new Size(113, 21);
-            label10.TabIndex = 24;
-            label10.Text = "*                        ";
+            labelCodigoPlan.AutoSize = true;
+            labelCodigoPlan.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelCodigoPlan.ForeColor = Color.Black;
+            labelCodigoPlan.Location = new Point(184, 10);
+            labelCodigoPlan.Name = "labelCodigoPlan";
+            labelCodigoPlan.Size = new Size(113, 21);
+            labelCodigoPlan.TabIndex = 24;
+            labelCodigoPlan.Text = "*                        ";
             // 
             // pictureBox3
             // 
@@ -616,25 +653,41 @@
             // 
             // panel8
             // 
-            panel8.Controls.Add(iconButton2);
+            panel8.Controls.Add(btnModificar);
+            panel8.Controls.Add(btnRegistrar);
             panel8.Dock = DockStyle.Bottom;
             panel8.Location = new Point(0, 349);
             panel8.Name = "panel8";
             panel8.Size = new Size(813, 44);
             panel8.TabIndex = 31;
             // 
-            // iconButton2
+            // btnModificar
             // 
-            iconButton2.BackColor = Color.Black;
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
-            iconButton2.IconColor = Color.White;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            iconButton2.IconSize = 28;
-            iconButton2.Location = new Point(365, 6);
-            iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(107, 33);
-            iconButton2.TabIndex = 21;
-            iconButton2.UseVisualStyleBackColor = false;
+            btnModificar.BackColor = Color.Black;
+            btnModificar.IconChar = FontAwesome.Sharp.IconChar.Pen;
+            btnModificar.IconColor = Color.White;
+            btnModificar.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnModificar.IconSize = 28;
+            btnModificar.Location = new Point(416, 8);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(107, 33);
+            btnModificar.TabIndex = 22;
+            btnModificar.UseVisualStyleBackColor = false;
+            btnModificar.Click += btnModificar_Click;
+            // 
+            // btnRegistrar
+            // 
+            btnRegistrar.BackColor = Color.Black;
+            btnRegistrar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
+            btnRegistrar.IconColor = Color.White;
+            btnRegistrar.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnRegistrar.IconSize = 28;
+            btnRegistrar.Location = new Point(303, 8);
+            btnRegistrar.Name = "btnRegistrar";
+            btnRegistrar.Size = new Size(107, 33);
+            btnRegistrar.TabIndex = 21;
+            btnRegistrar.UseVisualStyleBackColor = false;
+            btnRegistrar.Click += btnRegistrar_Click;
             // 
             // panel6
             // 
@@ -661,6 +714,7 @@
             btnSearch.Size = new Size(24, 24);
             btnSearch.TabIndex = 12;
             btnSearch.TabStop = false;
+            btnSearch.Click += btnSearch_Click;
             // 
             // textSearch
             // 
@@ -671,6 +725,10 @@
             textSearch.Size = new Size(146, 25);
             textSearch.TabIndex = 11;
             textSearch.Text = "Buscar";
+            textSearch.Visible = false;
+            textSearch.TextChanged += textSearch_TextChanged;
+            textSearch.Enter += textSearch_Enter;
+            textSearch.Leave += textSearch_Leave;
             // 
             // btnCloseTextSearch
             // 
@@ -685,6 +743,7 @@
             btnCloseTextSearch.Size = new Size(24, 24);
             btnCloseTextSearch.TabIndex = 10;
             btnCloseTextSearch.TabStop = false;
+            btnCloseTextSearch.Click += btnCloseTextSearch_Click;
             // 
             // label9
             // 
@@ -744,36 +803,36 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(label6);
-            panel3.Controls.Add(pictureBox1);
+            panel3.Controls.Add(pictureAlerta);
+            panel3.Controls.Add(labelAlerta);
             panel3.Dock = DockStyle.Right;
             panel3.Location = new Point(372, 0);
             panel3.Name = "panel3";
             panel3.Size = new Size(455, 57);
             panel3.TabIndex = 6;
             // 
-            // label6
+            // pictureAlerta
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.ForeColor = Color.Orange;
-            label6.Location = new Point(76, 16);
-            label6.Name = "label6";
-            label6.Size = new Size(168, 25);
-            label6.TabIndex = 9;
-            label6.Text = "Mensaje de alerta";
-            label6.Visible = false;
+            pictureAlerta.Image = Properties.Resources.Alert;
+            pictureAlerta.Location = new Point(14, 12);
+            pictureAlerta.Name = "pictureAlerta";
+            pictureAlerta.Size = new Size(30, 30);
+            pictureAlerta.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureAlerta.TabIndex = 12;
+            pictureAlerta.TabStop = false;
+            pictureAlerta.Visible = false;
             // 
-            // pictureBox1
+            // labelAlerta
             // 
-            pictureBox1.Image = Properties.Resources.Alert;
-            pictureBox1.Location = new Point(28, 8);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(42, 41);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            pictureBox1.Visible = false;
+            labelAlerta.AutoSize = true;
+            labelAlerta.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelAlerta.ForeColor = Color.Orange;
+            labelAlerta.Location = new Point(41, 17);
+            labelAlerta.Name = "labelAlerta";
+            labelAlerta.Size = new Size(117, 20);
+            labelAlerta.TabIndex = 13;
+            labelAlerta.Text = "Mensaje de alerta";
+            labelAlerta.Visible = false;
             // 
             // label5
             // 
@@ -805,29 +864,29 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(826, 542);
-            Controls.Add(tabControlMembership);
+            Controls.Add(tabControlPlanes);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormPlanEjercicio";
             Text = "FormPlanEjercicio";
-            tabControlMembership.ResumeLayout(false);
+            tabControlPlanes.ResumeLayout(false);
             tabGeneral.ResumeLayout(false);
             panelPlanEjercicio.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panelContenedorClient.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridClient).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridPlanEjercicio).EndInit();
             panelDownDataGrid.ResumeLayout(false);
             panelDownDataGrid.PerformLayout();
             panelTopDataGrid.ResumeLayout(false);
             panelTopDataGrid.PerformLayout();
             tabRegistro.ResumeLayout(false);
             panel7.ResumeLayout(false);
-            panel20.ResumeLayout(false);
-            panel20.PerformLayout();
+            panelDetallesPlanes.ResumeLayout(false);
+            panelDetallesPlanes.PerformLayout();
             panel19.ResumeLayout(false);
             panel19.PerformLayout();
-            panel18.ResumeLayout(false);
-            panel18.PerformLayout();
+            panelDatosBasicosPlan.ResumeLayout(false);
+            panelDatosBasicosPlan.PerformLayout();
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -843,30 +902,30 @@
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureAlerta).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private TabControl tabControlMembership;
+        private TabControl tabControlPlanes;
         private TabPage tabGeneral;
         private Panel panelPlanEjercicio;
         private Panel panel1;
         private FontAwesome.Sharp.IconButton btnProgreso;
-        private FontAwesome.Sharp.IconButton btnAddMembership;
-        private FontAwesome.Sharp.IconButton btnUpdateMembership;
+        private FontAwesome.Sharp.IconButton btnAddPlan;
+        private FontAwesome.Sharp.IconButton btnUpdatePlan;
         private Panel panelContenedorClient;
-        private DataGridView dataGridClient;
+        private DataGridView dataGridPlanEjercicio;
         private Panel panelDownDataGrid;
-        private TextBox textHombres;
+        private TextBox textVespertina;
         private Label label3;
         private TextBox textTotal;
-        private TextBox textMujeres;
+        private TextBox textMatutina;
         private Label label4;
         private Label label2;
         private Panel panelTopDataGrid;
-        private ComboBox comboFiltroSexo;
+        private ComboBox comboFiltroJornada;
         private Label label1;
         private TabPage tabRegistro;
         private Panel panel6;
@@ -879,37 +938,41 @@
         private Panel panel2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private Panel panel3;
-        private Label label6;
-        private PictureBox pictureBox1;
         private Label label5;
         private FontAwesome.Sharp.IconButton btnVolver;
         private Panel panel7;
-        private Panel panel18;
+        private Panel panelDatosBasicosPlan;
         private Panel panel9;
         private Label label18;
-        private Label label10;
         private PictureBox pictureBox3;
         private Panel panel8;
-        private FontAwesome.Sharp.IconButton iconButton2;
-        private Panel panel20;
+        private FontAwesome.Sharp.IconButton btnRegistrar;
+        private Panel panelDetallesPlanes;
         private Panel panel19;
         private Label label22;
-        private ComboBox comboBox2;
-        private DateTimePicker dateTimePicker1;
+        private ComboBox comboDiasMeses;
+        private DateTimePicker dateTimeFechaInicio;
         private Label label21;
-        private TextBox textBox7;
+        private TextBox textCatidadDiasMeses;
         private Label label20;
-        private ComboBox comboBox1;
+        private ComboBox comboJornada;
         private Label label19;
-        private TextBox textBox8;
+        private TextBox textObjetivo;
         private Label label23;
-        private TextBox textBox9;
+        private TextBox textDescripcion;
         private Label label24;
-        private ComboBox comboBox3;
+        private ComboBox comboEstado;
         private Label label25;
-        private ComboBox comboBox4;
+        private ComboBox comboCiclo;
         private Label label27;
-        private TextBox textBox10;
+        private TextBox textPrecio;
         private Label label26;
+        private DataGridViewImageColumn Eliminar;
+        private TextBox textNocturna;
+        private Label label8;
+        private Label labelCodigoPlan;
+        private PictureBox pictureAlerta;
+        private Label labelAlerta;
+        private FontAwesome.Sharp.IconButton btnModificar;
     }
 }

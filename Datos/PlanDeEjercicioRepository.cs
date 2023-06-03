@@ -21,8 +21,8 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into SERVICIO(Id_Plan_De_Ejercicio, Tipo_De_Tiempo, Numero_DiasMeses, Fecha_De_Entreno, Sesion, Objetivo, Estado, Ciclo, Id_Cliente, Tipo_Id_Cliente, Nombre_Cliente, Descripcion_Plan_Ejercicio, Precio) " +
-                    "Values (@Id_Plan_De_Ejercicio, @Tipo_De_Tiempo, @Numero_DiasMeses, @Fecha_De_Entreno, @Sesion, @Objetivo, @Estado, @Ciclo, @Id_Cliente, @Tipo_Id_Cliente, @Nombre_Cliente, @Descripcion_Plan_Ejercicio, @Precio)";
+                command.CommandText = "Insert Into PLAN_EJERCICIO(Id_Plan_De_Ejercicio, Tipo_De_Tiempo, Numero_DiasMeses, Fecha_De_Entreno, Jornada, Objetivo, Estado, Ciclo, Id_Cliente, Tipo_Id_Cliente, Nombre_Cliente, Descripcion_Plan_Ejercicio, Precio) " +
+                    "Values (@Id_Plan_De_Ejercicio, @Tipo_De_Tiempo, @Numero_DiasMeses, @Fecha_De_Entreno, @Jornada, @Objetivo, @Estado, @Ciclo, @Id_Cliente, @Tipo_Id_Cliente, @Nombre_Cliente, @Descripcion_Plan_Ejercicio, @Precio)";
                 //command.Parameters.Add("@Id", SqlDbType.VarChar).Value = persona.Identificacion;
                 command.Parameters.AddWithValue("@Id_Plan_De_Ejercicio", planDeEjercicio.IdPlanDeEjercicio);
                 command.Parameters.AddWithValue("@Tipo_De_Tiempo", planDeEjercicio.TipoDeTiempo);
@@ -42,8 +42,8 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"Insert Into SERVICIO (Id_Plan_De_Ejercicio, Tipo_De_Tiempo, Numero_DiasMeses, Fecha_De_Entreno, Sesion, Objetivo, Estado, Ciclo, Id_Cliente, Tipo_Id_Cliente, Nombre_Cliente, Descripcion_Plan_Ejercicio, Precio) 
-                                        values (@Id_Plan_De_Ejercicio, @Tipo_De_Tiempo, @Numero_DiasMeses, @Fecha_De_Entreno, @Sesion, @Objetivo, @Estado, @Ciclo, @Id_Cliente, @Tipo_Id_Cliente, @Nombre_Cliente, @Descripcion_Plan_Ejercicio, @Precio)";
+                command.CommandText = @"Insert Into PLAN_EJERCICIO (Id_Plan_De_Ejercicio, Tipo_De_Tiempo, Numero_DiasMeses, Fecha_De_Entreno, Jornada, Objetivo, Estado, Ciclo, Id_Cliente, Tipo_Id_Cliente, Nombre_Cliente, Descripcion_Plan_Ejercicio, Precio) 
+                                        values (@Id_Plan_De_Ejercicio, @Tipo_De_Tiempo, @Numero_DiasMeses, @Fecha_De_Entreno, @Jornada, @Objetivo, @Estado, @Ciclo, @Id_Cliente, @Tipo_Id_Cliente, @Nombre_Cliente, @Descripcion_Plan_Ejercicio, @Precio)";
                 command.Parameters.AddWithValue("@Id_Plan_De_Ejercicio", planDeEjercicio.IdPlanDeEjercicio);
                 command.Parameters.AddWithValue("@Tipo_De_Tiempo", planDeEjercicio.TipoDeTiempo);
                 command.Parameters.AddWithValue("@Numero_DiasMeses", planDeEjercicio.NumeroDiasMeses);
@@ -61,7 +61,7 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Delete from SERVICIO where Id_Plan_De_Ejercicio = @Id_Plan_De_Ejercicio";
+                command.CommandText = "Delete from PLAN_EJERCICIO where Id_Plan_De_Ejercicio = @Id_Plan_De_Ejercicio";
                 command.Parameters.AddWithValue("@Id_Plan_De_Ejercicio", planDeEjercicio.IdPlanDeEjercicio);
                 command.ExecuteNonQuery();
             }
@@ -71,7 +71,7 @@ namespace Datos
             List<PlanDeEjercicio> planesDeEjercicios = new List<PlanDeEjercicio>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select Id_Plan_De_Ejercicio, Tipo_De_Tiempo, Numero_DiasMeses, Fecha_De_Entreno, Sesion, Objetivo, Estado, Ciclo, Id_Cliente, Tipo_Id_Cliente, Nombre_Cliente, Descripcion_Plan_Ejercicio, Precio from SERVICIO";
+                command.CommandText = "Select Id_Plan_De_Ejercicio, Tipo_De_Tiempo, Numero_DiasMeses, Fecha_De_Entreno, Jornada, Objetivo, Estado, Ciclo, Descripcion_Plan_Ejercicio, Precio from PLAN_EJERCICIO";
                 var dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -89,8 +89,32 @@ namespace Datos
             SqlDataReader dataReader;
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "select * from SERVICIO where Id_Plan_De_Ejercicio = @Id_Plan_De_Ejercicio";
+                command.CommandText = "select * from PLAN_EJERCICIO where Id_Plan_De_Ejercicio = @Id_Plan_De_Ejercicio";
                 command.Parameters.AddWithValue("@Id_Plan_De_Ejercicio", id);
+                dataReader = command.ExecuteReader();
+                dataReader.Read();
+                return DataReaderMapToPlanDeEjercicio(dataReader);
+            }
+        }
+        public PlanDeEjercicio BuscarPorJornada(string jornada)
+        {
+            SqlDataReader dataReader;
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "select * from PLAN_EJERCICIO where Jornada = @Jornada";
+                command.Parameters.AddWithValue("@Jornada", jornada);
+                dataReader = command.ExecuteReader();
+                dataReader.Read();
+                return DataReaderMapToPlanDeEjercicio(dataReader);
+            }
+        }
+        public PlanDeEjercicio BuscarPorObjetivo(string Objetivo)
+        {
+            SqlDataReader dataReader;
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "select * from PLAN_EJERCICIO where Objetivo = @Objetivo";
+                command.Parameters.AddWithValue("@Objetivo", Objetivo);
                 dataReader = command.ExecuteReader();
                 dataReader.Read();
                 return DataReaderMapToPlanDeEjercicio(dataReader);
@@ -100,7 +124,7 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"update SERVICIO set Tipo_De_Tiempo=@Tipo_De_Tiempo, Numero_DiasMeses=@Numero_DiasMeses, Fecha_De_Entreno=@Fecha_De_Entreno, Sesion=@Sesion, Objetivo=@Objetivo, Estado=@Estado, Ciclo = @Ciclo, Id_Cliente=@Id_Cliente, Tipo_Id_Cliente=@Tipo_Id_Cliente, Nombre_Cliente=@Nombre_Cliente, Descripcion_Plan_Ejercicio=@Descripcion_Plan_Ejercicio, Precio=@Precio
+                command.CommandText = @"update PLAN_EJERCICIO set Tipo_De_Tiempo=@Tipo_De_Tiempo, Numero_DiasMeses=@Numero_DiasMeses, Fecha_De_Entreno=@Fecha_De_Entreno, Jornada=@Jornada, Objetivo=@Objetivo, Estado=@Estado, Ciclo = @Ciclo, Descripcion_Plan_Ejercicio=@Descripcion_Plan_Ejercicio, Precio=@Precio
                                         where Id_Plan_De_Ejercicio = @Id_Plan_De_Ejercicio";
                 command.Parameters.AddWithValue("@Id_Plan_De_Ejercicio", planDeEjercicio.IdPlanDeEjercicio);
                 command.Parameters.AddWithValue("@Tipo_De_Tiempo", planDeEjercicio.TipoDeTiempo);

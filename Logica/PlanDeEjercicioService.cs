@@ -108,6 +108,28 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
+        public BusquedaPlanDeEjercicioRespuesta BuscarPorJornada(string jornada)
+        {
+            BusquedaPlanDeEjercicioRespuesta respuesta = new BusquedaPlanDeEjercicioRespuesta();
+            try
+            {
+
+                conexion.Open();
+                respuesta.PlanDeEjercicio = repositorio.BuscarPorJornada(jornada);
+                conexion.Close();
+                respuesta.Mensaje = (respuesta.PlanDeEjercicio != null) ? "Se encontró el plan de ejercicio buscado" : "el plan de ejercicio buscada no existe";
+                respuesta.Error = false;
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { conexion.Close(); }
+        }
         public BusquedaPlanDeEjercicioRespuesta BuscarPorIdentificacion(string identificacion)
         {
             BusquedaPlanDeEjercicioRespuesta respuesta = new BusquedaPlanDeEjercicioRespuesta();
@@ -116,6 +138,28 @@ namespace Logica
 
                 conexion.Open();
                 respuesta.PlanDeEjercicio = repositorio.BuscarPorIdentificacion(identificacion);
+                conexion.Close();
+                respuesta.Mensaje = (respuesta.PlanDeEjercicio != null) ? "Se encontró el plan de ejercicio buscado" : "el plan de ejercicio buscada no existe";
+                respuesta.Error = false;
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { conexion.Close(); }
+        }
+        public BusquedaPlanDeEjercicioRespuesta BuscarPorObjetivo(string objetivo)
+        {
+            BusquedaPlanDeEjercicioRespuesta respuesta = new BusquedaPlanDeEjercicioRespuesta();
+            try
+            {
+
+                conexion.Open();
+                respuesta.PlanDeEjercicio = repositorio.BuscarPorObjetivo(objetivo);
                 conexion.Close();
                 respuesta.Mensaje = (respuesta.PlanDeEjercicio != null) ? "Se encontró el plan de ejercicio buscado" : "el plan de ejercicio buscada no existe";
                 respuesta.Error = false;

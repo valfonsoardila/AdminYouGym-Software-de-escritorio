@@ -1480,14 +1480,6 @@ namespace UI
                 textVigentes.Text = productoVencidoTxtService.TotalizarTipo("Vigente");
                 textCuarentena.Text = productoVencidoTxtService.TotalizarTipo("Cuaretena");
             }
-            else
-            {
-                if (productoVencidoTxtConsultaResponse.ProductoTxts.Count == 0)
-                {
-                    dataGridProductosVencidos.DataSource = null;
-                    labelAlerta.Visible = true;
-                }
-            }
         }
         private void ConsultarHistorialVencido()
         {
@@ -1714,7 +1706,6 @@ namespace UI
                 if (productoVendidoTxtConsultaResponse.ProductoTxts.Count == 0)
                 {
                     dataGridProductosVendidos.DataSource = null;
-                    labelAlerta.Visible = true;
                 }
             }
         }
