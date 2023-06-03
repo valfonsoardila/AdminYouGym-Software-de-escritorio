@@ -227,6 +227,7 @@
             dataGridPlanEjercicio.RowTemplate.Height = 25;
             dataGridPlanEjercicio.Size = new Size(813, 312);
             dataGridPlanEjercicio.TabIndex = 2;
+            dataGridPlanEjercicio.CellClick += dataGridPlanEjercicio_CellClick;
             // 
             // Eliminar
             // 

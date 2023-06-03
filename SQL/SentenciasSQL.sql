@@ -133,8 +133,8 @@ Fecha_De_Entreno datetime not null,
 Jornada varchar(30) not null,
 Objetivo varchar(40)not null,
 Descripcion_Plan_Ejercicio varchar(100) not null,
-Estado char(10),
-Ciclo char(1),
+Estado varchar(10),
+Ciclo varchar(25),
 Precio int
 );
 

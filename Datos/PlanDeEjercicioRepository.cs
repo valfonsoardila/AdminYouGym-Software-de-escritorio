@@ -42,8 +42,8 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"Insert Into PLAN_EJERCICIO (Id_Plan_De_Ejercicio, Tipo_De_Tiempo, Numero_DiasMeses, Fecha_De_Entreno, Jornada, Objetivo, Estado, Ciclo, Id_Cliente, Tipo_Id_Cliente, Nombre_Cliente, Descripcion_Plan_Ejercicio, Precio) 
-                                        values (@Id_Plan_De_Ejercicio, @Tipo_De_Tiempo, @Numero_DiasMeses, @Fecha_De_Entreno, @Jornada, @Objetivo, @Estado, @Ciclo, @Id_Cliente, @Tipo_Id_Cliente, @Nombre_Cliente, @Descripcion_Plan_Ejercicio, @Precio)";
+                command.CommandText = @"Insert Into PLAN_EJERCICIO (Id_Plan_De_Ejercicio, Tipo_De_Tiempo, Numero_DiasMeses, Fecha_De_Entreno, Jornada, Objetivo, Estado, Ciclo, Descripcion_Plan_Ejercicio, Precio) 
+                                        values (@Id_Plan_De_Ejercicio, @Tipo_De_Tiempo, @Numero_DiasMeses, @Fecha_De_Entreno, @Jornada, @Objetivo, @Estado, @Ciclo, @Descripcion_Plan_Ejercicio, @Precio)";
                 command.Parameters.AddWithValue("@Id_Plan_De_Ejercicio", planDeEjercicio.IdPlanDeEjercicio);
                 command.Parameters.AddWithValue("@Tipo_De_Tiempo", planDeEjercicio.TipoDeTiempo);
                 command.Parameters.AddWithValue("@Numero_DiasMeses", planDeEjercicio.NumeroDiasMeses);
@@ -152,7 +152,7 @@ namespace Datos
             planDeEjercicio.Estado = (string)dataReader["Estado"];
             planDeEjercicio.Ciclo = (string)dataReader["Ciclo"];
             planDeEjercicio.DescripcionPlanEjercicio = (string)dataReader["Descripcion_Plan_Ejercicio"];
-            planDeEjercicio.Precio = (double)dataReader["Precio"];
+            planDeEjercicio.Precio = (int)dataReader["Precio"];
             return planDeEjercicio;
         }
         public int Totalizar()

@@ -22,6 +22,7 @@ namespace UI
             planDeEjercicioService = new PlanDeEjercicioService(ConfigConnection.ConnectionString);
             InitializeComponent();
             CargarListaDePlanes();
+            GenerarIdPlan();
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -29,6 +30,12 @@ namespace UI
             this.Close();
         }
         //Consultar plan de ejercicio
+        private void GenerarIdPlan()
+        {
+            planDeEjercicio = new PlanDeEjercicio();
+            planDeEjercicio.GenerarIdPlanEjercicio();
+            labelCodigoPlan.Text = planDeEjercicio.IdPlanDeEjercicio;
+        }
         private void CargarListaDePlanes()
         {
             ConsultaPlanDeEjercicioRespuesta respuesta = new ConsultaPlanDeEjercicioRespuesta();
@@ -175,7 +182,7 @@ namespace UI
             planDeEjercicio.IdPlanDeEjercicio = labelCodigoPlan.Text;
             planDeEjercicio.Jornada = comboJornada.Text;
             planDeEjercicio.NumeroDiasMeses = Convert.ToInt32(textCatidadDiasMeses.Text);
-            planDeEjercicio.NumeroDiasMeses = Convert.ToInt32(comboDiasMeses.Text);
+            planDeEjercicio.TipoDeTiempo = comboDiasMeses.Text;
             planDeEjercicio.FechaDeEntreno = dateTimeFechaInicio.Value;
             planDeEjercicio.Objetivo = textObjetivo.Text;
             planDeEjercicio.DescripcionPlanEjercicio = textDescripcion.Text;
@@ -228,6 +235,37 @@ namespace UI
             btnSearch.Visible = true;
             btnCloseTextSearch.Visible = false;
             textSearch.Visible = false;
+        }
+        private void EliminarRegistro(string id)
+        {
+            string mensaje = planDeEjercicioService.Eliminar(id);
+            MessageBox.Show(mensaje, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void dataGridPlanEjercicio_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string id;
+            if (dataGridPlanEjercicio.DataSource != null)
+            {
+                if (dataGridPlanEjercicio.Columns[e.ColumnIndex].Name == "Eliminar")
+                {
+                    id = Convert.ToString(dataGridPlanEjercicio.CurrentRow.Cells["Id_Plan_De_Ejercicio"].Value.ToString());
+                    string msg = "Desea eliminar este registro " + id + "?";
+                    var respuesta = MessageBox.Show(msg, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (respuesta == DialogResult.OK)
+                    {
+                        EliminarRegistro(id);
+                        CargarListaDePlanes();
+                    }
+                }
+            }
+            else
+            {
+                if (dataGridPlanEjercicio.DataSource == null)
+                {
+                    string msg = "No hay registros disponibles";
+                    MessageBox.Show(msg, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }
 }

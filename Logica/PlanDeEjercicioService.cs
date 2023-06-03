@@ -22,8 +22,6 @@ namespace Logica
             try
             {
                 planDeEjercicio.CalcularPrecio();
-                planDeEjercicio.GenerarIdPlanEjercicio();
-
                 conexion.Open();
 
                 if (repositorio.BuscarPorIdentificacion(planDeEjercicio.IdPlanDeEjercicio) == null)
@@ -88,7 +86,6 @@ namespace Logica
             try
             {
                 planDeEjercicioNuevo.CalcularPrecio();
-                planDeEjercicioNuevo.GenerarIdPlanEjercicio();
                 conexion.Open();
                 var planDeEjercicioAntiguo = repositorio.BuscarPorIdentificacion(planDeEjercicioNuevo.IdPlanDeEjercicio);
                 if (planDeEjercicioAntiguo != null)
