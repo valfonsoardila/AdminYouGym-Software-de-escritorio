@@ -56,6 +56,7 @@
     <Compile Include="IdUsuarioTxtConsultaResponse.cs" />
     <Compile Include="IdUsuarioTxtService.cs" />
     <Compile Include="LicenciaService.cs" />
+    <Compile Include="MembresiaService.cs" />
     <Compile Include="PlanDeEjercicioService.cs" />
     <Compile Include="ProductoFacturaTxtConsultaResponse.cs" />
     <Compile Include="ProductoFacturaTxtService.cs" />

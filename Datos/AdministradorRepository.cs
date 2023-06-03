@@ -36,6 +36,18 @@ namespace Datos
                 var filas = command.ExecuteNonQuery();
             }
         }
+        public Administrador BuscarPorSexo(string sexo)
+        {
+            SqlDataReader dataReader;
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "select * from ADMINISTRADOR where Sexo=@Sexo";
+                command.Parameters.AddWithValue("@Sexo", sexo);
+                dataReader = command.ExecuteReader();
+                dataReader.Read();
+                return DataReaderMapToAdministrador(dataReader);
+            }
+        }
         public Administrador BuscarPorIdentificacion(string identificacion)
         {
             SqlDataReader dataReader;

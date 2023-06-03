@@ -54,6 +54,7 @@
     <Compile Include="FacturaRepository.cs" />
     <Compile Include="IdEmpleadoTxtRepository.cs" />
     <Compile Include="LicenciaRepository.cs" />
+    <Compile Include="MembresiaRepository.cs" />
     <Compile Include="PlanDeEjercicioRepository.cs" />
     <Compile Include="ProductoFacturaTxtRepository.cs" />
     <Compile Include="ProductoRepository.cs" />

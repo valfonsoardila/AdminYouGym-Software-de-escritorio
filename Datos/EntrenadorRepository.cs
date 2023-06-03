@@ -97,6 +97,18 @@ namespace Datos
             }
             return entrenadores;
         }
+        public Entrenador BuscarPorSexo(string sexo)
+        {
+            SqlDataReader dataReader;
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "select * from ENTRENADOR where Sexo=@Sexo";
+                command.Parameters.AddWithValue("@Sexo", sexo);
+                dataReader = command.ExecuteReader();
+                dataReader.Read();
+                return DataReaderMapToEntrenador(dataReader);
+            }
+        }
         public Entrenador BuscarPorIdentificacion(string id)
         {
             SqlDataReader dataReader;

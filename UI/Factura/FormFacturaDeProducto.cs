@@ -24,18 +24,18 @@ namespace UI
         CajaRegistradoraService cajaRegistradoraService;
         RutasTxtService rutasTxtService = new RutasTxtService();
         ClienteService clienteService;
-        //EmpleadoService empleadoService;
-        //DrogueriaService drogueriaService;
+        EmpleadoService empleadoService;
+        GimnasioService gimnasioService;
         Factura factura;
-        //Drogueria drogueria;
+        Gimnasio gimnasio;
         ProductoService productoService;
         FacturaService facturaService;
         ProductoFacturaTxtService productoTxtService = new ProductoFacturaTxtService();
         ProductoVendidoTxtService productoVendidoTxtService = new ProductoVendidoTxtService();
         List<Factura> facturas;
-        //List<Drogueria> droguerias;
+        List<Gimnasio> gimnasios;
         List<ProductoFacturaTxt> productosFactura = new List<ProductoFacturaTxt>();
-        //IdEmpleadoTxtService idEmpleadoTxtService = new IdEmpleadoTxtService();
+        IdUsuarioTxtService idUsuarioTxtService = new IdUsuarioTxtService();
         string fechaDeVenta;
         string rutasVendidos;
         string rutaTxtFacturaVenta;
@@ -44,10 +44,10 @@ namespace UI
         string notExistFileName;
         int cantidadProductoBD;
         int contadorProductosVendidos;
-        //Variables de drogueria
-        string idDrogueria = "#Drog";
-        string nombreDrogueria;
-        string nitDrogueria;
+        //Variables de gimnasio
+        string idGimnasio = "#Drog";
+        string nombreGimnasio;
+        string nitGimnasio;
         string codigoCamara;
         string fraseDistintiva;
         string regimen;
@@ -98,17 +98,17 @@ namespace UI
         {
             cajaRegistradoraService = new CajaRegistradoraService(ConfigConnection.ConnectionString);
             productoService = new ProductoService(ConfigConnection.ConnectionString);
-            //drogueriaService = new DrogueriaService(ConfigConnection.ConnectionString);
+            gimnasioService = new GimnasioService(ConfigConnection.ConnectionString);
             clienteService = new ClienteService(ConfigConnection.ConnectionString);
-            //empleadoService = new EmpleadoService(ConfigConnection.ConnectionString);
+            empleadoService = new EmpleadoService(ConfigConnection.ConnectionString);
             facturaService = new FacturaService(ConfigConnection.ConnectionString);
             InitializeComponent();
             ObtenerRutaDeVendido();
             CargarArchivo(productoTxtService);
             ConsultarCajaAbierta();
-            ConsultarDatosDrogueria();
+            ConsultarDatosGimnasio();
             SumatoriaDeFactura();
-            BuscararDrogueria();
+            BuscararGimnasio();
             BuscarInformacionDeEmpleado();
             BuscarSesionDeUsuario();
             CondicionesIniciales();
@@ -144,28 +144,28 @@ namespace UI
         }
         private void BuscarSesionDeUsuario()
         {
-            //IdEmpleadoTxtConsultaResponse idEmpleadoTxtConsultaResponse = idEmpleadoTxtService.Consultar();
-            //BusquedaEmpleadoRespuesta respuesta = new BusquedaEmpleadoRespuesta();
-            //string identificacion = "";
-            //if (idEmpleadoTxtConsultaResponse.Encontrado == true)
-            //{
-            //    foreach (var item in idEmpleadoTxtConsultaResponse.IdEmpleadoTxts)
-            //    {
-            //        identificacion = item.Identificacion;
-            //    }
-            //    respuesta = empleadoService.BuscarPorIdentificacion(identificacion);
-            //    if (respuesta.Empleado != null)
-            //    {
-            //        textNombreEmpleado.Text = respuesta.Empleado.Nombres;
-            //        textApellidoEmpleado.Text = respuesta.Empleado.Apellidos;
-            //        textIdentificacionEmpleado.Text = respuesta.Empleado.Identificacion;
-            //    }
-            //}
-            //else
-            //{
-            //    string mensaje = idEmpleadoTxtConsultaResponse.Mensaje;
-            //    MessageBox.Show(mensaje.ToString());
-            //}
+            IdUsuarioTxtConsultaResponse idEmpleadoTxtConsultaResponse = idUsuarioTxtService.Consultar();
+            BusquedaEmpleadoRespuesta respuesta = new BusquedaEmpleadoRespuesta();
+            string identificacion = "";
+            if (idEmpleadoTxtConsultaResponse.Encontrado == true)
+            {
+                foreach (var item in idEmpleadoTxtConsultaResponse.IdEmpleadoTxts)
+                {
+                    identificacion = item.Identificacion;
+                }
+                respuesta = empleadoService.BuscarPorIdentificacion(identificacion);
+                if (respuesta.Empleado != null)
+                {
+                    textNombreEmpleado.Text = respuesta.Empleado.Nombres;
+                    textApellidoEmpleado.Text = respuesta.Empleado.Apellidos;
+                    textIdentificacionEmpleado.Text = respuesta.Empleado.Identificacion;
+                }
+            }
+            else
+            {
+                string mensaje = idEmpleadoTxtConsultaResponse.Mensaje;
+                MessageBox.Show(mensaje.ToString());
+            }
         }
         private void MapearProductosVendidos(string referencia)
         {
@@ -406,52 +406,52 @@ namespace UI
             labelCash.Text = "Sin definir";
             labelBase.Text = "Sin definir";
         }
-        private void ConsultarDatosDrogueria()
+        private void ConsultarDatosGimnasio()
         {
-            //BusquedaDrogueriaRespuesta respuesta = new BusquedaDrogueriaRespuesta();
-            //string id_Drogueria = "#Drog";
-            //respuesta = drogueriaService.BuscarPorId(id_Drogueria);
-            //if (respuesta.Drogueria != null)
-            //{
-            //    var droguerias = new List<Drogueria> { respuesta.Drogueria };
-            //    var drogueria = respuesta.Drogueria;
-            //    nombreDrogueria = drogueria.NombreDrogueria;
-            //    codigoCamara = drogueria.CodigoDeCamara;
-            //}
-            //else
-            //{
-            //    if (respuesta.Drogueria == null)
-            //    {
-            //        labelCash.Text = "Sin definir";
-            //    }
-            //}
+            BusquedaGimnasioRespuesta respuesta = new BusquedaGimnasioRespuesta();
+            string id_Gimnasio = "#Drog";
+            respuesta = gimnasioService.BuscarPorId(id_Gimnasio);
+            if (respuesta.Gimnasio != null)
+            {
+                var gimnasios = new List<Gimnasio> { respuesta.Gimnasio };
+                var gimnasio = respuesta.Gimnasio;
+                nombreGimnasio = gimnasio.NombreGimnasio;
+                codigoCamara = gimnasio.CodigoDeCamara;
+            }
+            else
+            {
+                if (respuesta.Gimnasio == null)
+                {
+                    labelCash.Text = "Sin definir";
+                }
+            }
         }
-        private void BuscararDrogueria()
+        private void BuscararGimnasio()
         {
-            //BusquedaDrogueriaRespuesta respuesta = new BusquedaDrogueriaRespuesta();
-            //respuesta = drogueriaService.BuscarPorId(idDrogueria);
-            //if (respuesta.Drogueria != null)
-            //{
-            //    nombreDrogueria = respuesta.Drogueria.NombreDrogueria;
-            //    nitDrogueria = respuesta.Drogueria.NIT;
-            //    fraseDistintiva = respuesta.Drogueria.FraseDistintiva;
-            //    regimen = respuesta.Drogueria.Regimen;
-            //    pbx = respuesta.Drogueria.PBX;
-            //    direccion = respuesta.Drogueria.Direccion;
-            //    telefono = respuesta.Drogueria.Telefono;
-            //}
-            //else
-            //{
-            //    if (respuesta.Drogueria == null)
-            //    {
+            BusquedaGimnasioRespuesta respuesta = new BusquedaGimnasioRespuesta();
+            respuesta = gimnasioService.BuscarPorId(idGimnasio);
+            if (respuesta.Gimnasio != null)
+            {
+                nombreGimnasio = respuesta.Gimnasio.NombreGimnasio;
+                nitGimnasio = respuesta.Gimnasio.NIT;
+                fraseDistintiva = respuesta.Gimnasio.FraseDistintiva;
+                regimen = respuesta.Gimnasio.Regimen;
+                pbx = respuesta.Gimnasio.PBX;
+                direccion = respuesta.Gimnasio.Direccion;
+                telefono = respuesta.Gimnasio.Telefono;
+            }
+            else
+            {
+                if (respuesta.Gimnasio == null)
+                {
 
-            //    }
-            //}
+                }
+            }
         }
         private Factura MapearFactura()
         {
             factura = new Factura();
-            //Mapeamos Datos de Drogueria
+            //Mapeamos Datos de Gimnasio
             factura.Id_Factura = id_factura;
             //Mapeamos Datos de factura
             SecuenciaDeFactura();
@@ -544,28 +544,28 @@ namespace UI
         {
             if (textSearchEmpleado.Text != "")
             {
-                //BusquedaEmpleadoRespuesta respuesta = new BusquedaEmpleadoRespuesta();
-                //string Id_Empleado = textSearchEmpleado.Text;
-                //respuesta = empleadoService.BuscarPorIdentificacion(Id_Empleado);
-                //if (respuesta.Empleado != null)
-                //{
-                //    labelAdvertenciaEmpleado.Visible = false;
-                //    var empleados = new List<Empleado> { respuesta.Empleado };
-                //    var empleado = respuesta.Empleado;
-                //    textNombreEmpleado.Text = empleado.Nombres;
-                //    textApellidoEmpleado.Text = empleado.Apellidos;
-                //    textIdentificacionEmpleado.Text = empleado.Identificacion;
-                //}
-                //else
-                //{
-                //    if (respuesta.Empleado == null)
-                //    {
-                //        labelAdvertenciaEmpleado.Visible = true;
-                //        textNombreEmpleado.Text = "";
-                //        textApellidoEmpleado.Text = "";
-                //        textIdentificacionEmpleado.Text = "";
-                //    }
-                //}
+                BusquedaEmpleadoRespuesta respuesta = new BusquedaEmpleadoRespuesta();
+                string Id_Empleado = textSearchEmpleado.Text;
+                respuesta = empleadoService.BuscarPorIdentificacion(Id_Empleado);
+                if (respuesta.Empleado != null)
+                {
+                    labelAdvertenciaEmpleado.Visible = false;
+                    var empleados = new List<Empleado> { respuesta.Empleado };
+                    var empleado = respuesta.Empleado;
+                    textNombreEmpleado.Text = empleado.Nombres;
+                    textApellidoEmpleado.Text = empleado.Apellidos;
+                    textIdentificacionEmpleado.Text = empleado.Identificacion;
+                }
+                else
+                {
+                    if (respuesta.Empleado == null)
+                    {
+                        labelAdvertenciaEmpleado.Visible = true;
+                        textNombreEmpleado.Text = "";
+                        textApellidoEmpleado.Text = "";
+                        textIdentificacionEmpleado.Text = "";
+                    }
+                }
             }
         }
 
@@ -634,13 +634,13 @@ namespace UI
             stringFormatRight.Alignment = StringAlignment.Far;
             stringFormatRight.LineAlignment = StringAlignment.Far;
 
-            e.Graphics.DrawString(nombreDrogueria, font, Brushes.Black, new RectangleF(0, y, ancho, 20), stringFormatCenter);
+            e.Graphics.DrawString(nombreGimnasio, font, Brushes.Black, new RectangleF(0, y, ancho, 20), stringFormatCenter);
 
-            e.Graphics.DrawString("NIT: " + nitDrogueria, font, Brushes.Black, new RectangleF(0, y + 40, ancho, 13), stringFormatCenter);
+            e.Graphics.DrawString("NIT: " + nitGimnasio, font, Brushes.Black, new RectangleF(0, y + 40, ancho, 13), stringFormatCenter);
             e.Graphics.DrawString("Actividad economica: " + codigoCamara, font, Brushes.Black, new RectangleF(0, y + 53, ancho, 13), stringFormatCenter);
             e.Graphics.DrawString(fraseDistintiva, font, Brushes.Black, new RectangleF(0, y + 66, ancho, 13), stringFormatCenter);
             e.Graphics.DrawString("PBX: " + pbx, font, Brushes.Black, new RectangleF(0, y + 79, ancho, 13), stringFormatCenter);
-            //e.Graphics.DrawString("Regimen: " + regimen, font, Brushes.Black, new RectangleF(0, y + 92, ancho, 13), stringFormatCenter);
+            e.Graphics.DrawString("Regimen: " + regimen, font, Brushes.Black, new RectangleF(0, y + 92, ancho, 13), stringFormatCenter);
             e.Graphics.DrawString("Direccion: " + direccion, font, Brushes.Black, new RectangleF(0, y + 105, ancho, 13), stringFormatCenter);
             e.Graphics.DrawString("Telefono: " + telefono, font, Brushes.Black, new RectangleF(0, y + 118, ancho, 13), stringFormatCenter);
 

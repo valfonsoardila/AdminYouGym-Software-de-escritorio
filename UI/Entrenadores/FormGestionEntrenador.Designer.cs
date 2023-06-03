@@ -31,8 +31,8 @@
             panel2 = new Panel();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             panel3 = new Panel();
-            label6 = new Label();
-            pictureBox1 = new PictureBox();
+            pictureAlerta = new PictureBox();
+            labelAlerta = new Label();
             label5 = new Label();
             btnVolver = new FontAwesome.Sharp.IconButton();
             tabControlEntrenador = new TabControl();
@@ -43,7 +43,7 @@
             btnAddEntrenador = new FontAwesome.Sharp.IconButton();
             btnUpdateEntrenador = new FontAwesome.Sharp.IconButton();
             panelContenedorClient = new Panel();
-            dataGridClient = new DataGridView();
+            dataGridEntrenadores = new DataGridView();
             panelDownDataGrid = new Panel();
             textHombres = new TextBox();
             label3 = new Label();
@@ -57,48 +57,48 @@
             tabRegistro = new TabPage();
             panel7 = new Panel();
             btnCargarFoto = new FontAwesome.Sharp.IconButton();
-            iconButton5 = new FontAwesome.Sharp.IconButton();
-            iconButton2 = new FontAwesome.Sharp.IconButton();
+            btnModificarEntrenador = new FontAwesome.Sharp.IconButton();
+            btnRegistrarEntrenador = new FontAwesome.Sharp.IconButton();
             picturePerfil = new PictureBox();
-            comboBox2 = new ComboBox();
+            comboSexoRegistro = new ComboBox();
             label26 = new Label();
-            textBox12 = new TextBox();
+            textCorreo = new TextBox();
             label25 = new Label();
-            textBox11 = new TextBox();
+            textTelefono = new TextBox();
             label24 = new Label();
-            textBox10 = new TextBox();
+            textDireccion = new TextBox();
             label23 = new Label();
-            dateTimePicker1 = new DateTimePicker();
+            dateTimeFechaDeNacimiento = new DateTimePicker();
             label22 = new Label();
-            comboBox1 = new ComboBox();
+            comboTipoID = new ComboBox();
             label21 = new Label();
-            textBox9 = new TextBox();
+            textApellidos = new TextBox();
             label20 = new Label();
-            textBox8 = new TextBox();
+            textNombres = new TextBox();
             label19 = new Label();
-            textBox7 = new TextBox();
+            textID = new TextBox();
             label18 = new Label();
             panel6 = new Panel();
-            iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
-            textBox1 = new TextBox();
-            iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
+            btnSearch = new FontAwesome.Sharp.IconPictureBox();
+            textSearch = new TextBox();
+            btnCloseSearch = new FontAwesome.Sharp.IconPictureBox();
             label9 = new Label();
             panel4 = new Panel();
             label7 = new Label();
             tabContrato = new TabPage();
             panel12 = new Panel();
-            iconButton4 = new FontAwesome.Sharp.IconButton();
-            iconButton3 = new FontAwesome.Sharp.IconButton();
-            panel11 = new Panel();
-            label32 = new Label();
-            comboBox4 = new ComboBox();
+            btnModificarContrato = new FontAwesome.Sharp.IconButton();
+            btnRegistrarContrato = new FontAwesome.Sharp.IconButton();
+            panelContrato = new Panel();
+            labelPagoNomina = new Label();
+            comboTipoContrato = new ComboBox();
             label31 = new Label();
             label30 = new Label();
-            textBox13 = new TextBox();
+            textHorasExtrasContrato = new TextBox();
             label29 = new Label();
-            textBox6 = new TextBox();
+            textDiasContrato = new TextBox();
             label28 = new Label();
-            textBox5 = new TextBox();
+            textMesesContrato = new TextBox();
             label27 = new Label();
             pictureBox2 = new PictureBox();
             panel10 = new Panel();
@@ -106,51 +106,52 @@
             label16 = new Label();
             label11 = new Label();
             panel9 = new Panel();
-            pictureBox4 = new PictureBox();
-            comboBox3 = new ComboBox();
+            picturePerfilContrato = new PictureBox();
+            comboSexoContrato = new ComboBox();
             label14 = new Label();
-            dateTimePicker2 = new DateTimePicker();
+            dateFechaNacimientoContrato = new DateTimePicker();
             label15 = new Label();
             label13 = new Label();
-            textBox3 = new TextBox();
+            textApellidosContrato = new TextBox();
             label12 = new Label();
-            textBox2 = new TextBox();
+            textNombresContrato = new TextBox();
             panel8 = new Panel();
-            btnSearch = new FontAwesome.Sharp.IconPictureBox();
-            textSearch = new TextBox();
-            btnCloseTextSearch = new FontAwesome.Sharp.IconPictureBox();
+            btnSearchContrato = new FontAwesome.Sharp.IconPictureBox();
+            textSearchContrato = new TextBox();
+            btnCloseSearchContrato = new FontAwesome.Sharp.IconPictureBox();
             label10 = new Label();
             panel5 = new Panel();
             label8 = new Label();
+            Eliminar = new DataGridViewImageColumn();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureAlerta).BeginInit();
             tabControlEntrenador.SuspendLayout();
             tabGeneral.SuspendLayout();
             panelEntrenador.SuspendLayout();
             panel1.SuspendLayout();
             panelContenedorClient.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridClient).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridEntrenadores).BeginInit();
             panelDownDataGrid.SuspendLayout();
             panelTopDataGrid.SuspendLayout();
             tabRegistro.SuspendLayout();
             panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picturePerfil).BeginInit();
             panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnSearch).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnCloseSearch).BeginInit();
             panel4.SuspendLayout();
             tabContrato.SuspendLayout();
             panel12.SuspendLayout();
-            panel11.SuspendLayout();
+            panelContrato.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel10.SuspendLayout();
             panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picturePerfilContrato).BeginInit();
             panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)btnSearch).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)btnCloseTextSearch).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnSearchContrato).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnCloseSearchContrato).BeginInit();
             panel5.SuspendLayout();
             SuspendLayout();
             // 
@@ -180,36 +181,36 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(label6);
-            panel3.Controls.Add(pictureBox1);
+            panel3.Controls.Add(pictureAlerta);
+            panel3.Controls.Add(labelAlerta);
             panel3.Dock = DockStyle.Right;
             panel3.Location = new Point(436, 0);
             panel3.Name = "panel3";
             panel3.Size = new Size(391, 57);
             panel3.TabIndex = 6;
             // 
-            // label6
+            // pictureAlerta
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.ForeColor = Color.Orange;
-            label6.Location = new Point(76, 16);
-            label6.Name = "label6";
-            label6.Size = new Size(168, 25);
-            label6.TabIndex = 9;
-            label6.Text = "Mensaje de alerta";
-            label6.Visible = false;
+            pictureAlerta.Image = Properties.Resources.Alert;
+            pictureAlerta.Location = new Point(11, 12);
+            pictureAlerta.Name = "pictureAlerta";
+            pictureAlerta.Size = new Size(30, 30);
+            pictureAlerta.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureAlerta.TabIndex = 12;
+            pictureAlerta.TabStop = false;
+            pictureAlerta.Visible = false;
             // 
-            // pictureBox1
+            // labelAlerta
             // 
-            pictureBox1.Image = Properties.Resources.Alert;
-            pictureBox1.Location = new Point(28, 8);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(42, 41);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            pictureBox1.Visible = false;
+            labelAlerta.AutoSize = true;
+            labelAlerta.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelAlerta.ForeColor = Color.Orange;
+            labelAlerta.Location = new Point(38, 17);
+            labelAlerta.Name = "labelAlerta";
+            labelAlerta.Size = new Size(117, 20);
+            labelAlerta.TabIndex = 13;
+            labelAlerta.Text = "Mensaje de alerta";
+            labelAlerta.Visible = false;
             // 
             // label5
             // 
@@ -323,7 +324,7 @@
             // 
             // panelContenedorClient
             // 
-            panelContenedorClient.Controls.Add(dataGridClient);
+            panelContenedorClient.Controls.Add(dataGridEntrenadores);
             panelContenedorClient.Controls.Add(panelDownDataGrid);
             panelContenedorClient.Controls.Add(panelTopDataGrid);
             panelContenedorClient.Dock = DockStyle.Top;
@@ -332,15 +333,17 @@
             panelContenedorClient.Size = new Size(813, 368);
             panelContenedorClient.TabIndex = 0;
             // 
-            // dataGridClient
+            // dataGridEntrenadores
             // 
-            dataGridClient.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridClient.Dock = DockStyle.Fill;
-            dataGridClient.Location = new Point(0, 26);
-            dataGridClient.Name = "dataGridClient";
-            dataGridClient.RowTemplate.Height = 25;
-            dataGridClient.Size = new Size(813, 312);
-            dataGridClient.TabIndex = 2;
+            dataGridEntrenadores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridEntrenadores.Columns.AddRange(new DataGridViewColumn[] { Eliminar });
+            dataGridEntrenadores.Dock = DockStyle.Fill;
+            dataGridEntrenadores.Location = new Point(0, 26);
+            dataGridEntrenadores.Name = "dataGridEntrenadores";
+            dataGridEntrenadores.RowTemplate.Height = 25;
+            dataGridEntrenadores.Size = new Size(813, 312);
+            dataGridEntrenadores.TabIndex = 2;
+            dataGridEntrenadores.CellClick += dataGridEntrenadores_CellClick;
             // 
             // panelDownDataGrid
             // 
@@ -431,12 +434,13 @@
             // comboFiltroSexo
             // 
             comboFiltroSexo.FormattingEnabled = true;
-            comboFiltroSexo.Items.AddRange(new object[] { "M", "F", "Otro" });
+            comboFiltroSexo.Items.AddRange(new object[] { "Todos", "M", "F", "Otro" });
             comboFiltroSexo.Location = new Point(295, 2);
             comboFiltroSexo.Name = "comboFiltroSexo";
             comboFiltroSexo.Size = new Size(121, 23);
             comboFiltroSexo.TabIndex = 1;
             comboFiltroSexo.Text = "Filtro sexo";
+            comboFiltroSexo.SelectedIndexChanged += comboFiltroSexo_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -464,26 +468,26 @@
             // panel7
             // 
             panel7.Controls.Add(btnCargarFoto);
-            panel7.Controls.Add(iconButton5);
-            panel7.Controls.Add(iconButton2);
+            panel7.Controls.Add(btnModificarEntrenador);
+            panel7.Controls.Add(btnRegistrarEntrenador);
             panel7.Controls.Add(picturePerfil);
-            panel7.Controls.Add(comboBox2);
+            panel7.Controls.Add(comboSexoRegistro);
             panel7.Controls.Add(label26);
-            panel7.Controls.Add(textBox12);
+            panel7.Controls.Add(textCorreo);
             panel7.Controls.Add(label25);
-            panel7.Controls.Add(textBox11);
+            panel7.Controls.Add(textTelefono);
             panel7.Controls.Add(label24);
-            panel7.Controls.Add(textBox10);
+            panel7.Controls.Add(textDireccion);
             panel7.Controls.Add(label23);
-            panel7.Controls.Add(dateTimePicker1);
+            panel7.Controls.Add(dateTimeFechaDeNacimiento);
             panel7.Controls.Add(label22);
-            panel7.Controls.Add(comboBox1);
+            panel7.Controls.Add(comboTipoID);
             panel7.Controls.Add(label21);
-            panel7.Controls.Add(textBox9);
+            panel7.Controls.Add(textApellidos);
             panel7.Controls.Add(label20);
-            panel7.Controls.Add(textBox8);
+            panel7.Controls.Add(textNombres);
             panel7.Controls.Add(label19);
-            panel7.Controls.Add(textBox7);
+            panel7.Controls.Add(textID);
             panel7.Controls.Add(label18);
             panel7.Dock = DockStyle.Top;
             panel7.Location = new Point(3, 52);
@@ -504,31 +508,33 @@
             btnCargarFoto.UseVisualStyleBackColor = true;
             btnCargarFoto.Click += btnCargarFoto_Click;
             // 
-            // iconButton5
+            // btnModificarEntrenador
             // 
-            iconButton5.BackColor = Color.Black;
-            iconButton5.IconChar = FontAwesome.Sharp.IconChar.FilePdf;
-            iconButton5.IconColor = Color.White;
-            iconButton5.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            iconButton5.IconSize = 25;
-            iconButton5.Location = new Point(418, 238);
-            iconButton5.Name = "iconButton5";
-            iconButton5.Size = new Size(107, 33);
-            iconButton5.TabIndex = 23;
-            iconButton5.UseVisualStyleBackColor = false;
+            btnModificarEntrenador.BackColor = Color.Black;
+            btnModificarEntrenador.IconChar = FontAwesome.Sharp.IconChar.Pen;
+            btnModificarEntrenador.IconColor = Color.White;
+            btnModificarEntrenador.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnModificarEntrenador.IconSize = 25;
+            btnModificarEntrenador.Location = new Point(407, 260);
+            btnModificarEntrenador.Name = "btnModificarEntrenador";
+            btnModificarEntrenador.Size = new Size(107, 33);
+            btnModificarEntrenador.TabIndex = 23;
+            btnModificarEntrenador.UseVisualStyleBackColor = false;
+            btnModificarEntrenador.Click += btnModificarEntrenador_Click_1;
             // 
-            // iconButton2
+            // btnRegistrarEntrenador
             // 
-            iconButton2.BackColor = Color.Black;
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
-            iconButton2.IconColor = Color.White;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            iconButton2.IconSize = 28;
-            iconButton2.Location = new Point(305, 238);
-            iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(107, 33);
-            iconButton2.TabIndex = 22;
-            iconButton2.UseVisualStyleBackColor = false;
+            btnRegistrarEntrenador.BackColor = Color.Black;
+            btnRegistrarEntrenador.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
+            btnRegistrarEntrenador.IconColor = Color.White;
+            btnRegistrarEntrenador.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnRegistrarEntrenador.IconSize = 28;
+            btnRegistrarEntrenador.Location = new Point(294, 260);
+            btnRegistrarEntrenador.Name = "btnRegistrarEntrenador";
+            btnRegistrarEntrenador.Size = new Size(107, 33);
+            btnRegistrarEntrenador.TabIndex = 22;
+            btnRegistrarEntrenador.UseVisualStyleBackColor = false;
+            btnRegistrarEntrenador.Click += btnRegistrarEntrenador_Click_1;
             // 
             // picturePerfil
             // 
@@ -540,15 +546,15 @@
             picturePerfil.TabIndex = 18;
             picturePerfil.TabStop = false;
             // 
-            // comboBox2
+            // comboSexoRegistro
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "M", "F", "Otro" });
-            comboBox2.Location = new Point(454, 100);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(59, 23);
-            comboBox2.TabIndex = 17;
-            comboBox2.Text = "M";
+            comboSexoRegistro.FormattingEnabled = true;
+            comboSexoRegistro.Items.AddRange(new object[] { "M", "F", "Otro" });
+            comboSexoRegistro.Location = new Point(454, 100);
+            comboSexoRegistro.Name = "comboSexoRegistro";
+            comboSexoRegistro.Size = new Size(59, 23);
+            comboSexoRegistro.TabIndex = 17;
+            comboSexoRegistro.Text = "M";
             // 
             // label26
             // 
@@ -560,13 +566,13 @@
             label26.TabIndex = 16;
             label26.Text = "Sexo:";
             // 
-            // textBox12
+            // textCorreo
             // 
-            textBox12.BorderStyle = BorderStyle.FixedSingle;
-            textBox12.Location = new Point(106, 161);
-            textBox12.Name = "textBox12";
-            textBox12.Size = new Size(133, 23);
-            textBox12.TabIndex = 15;
+            textCorreo.BorderStyle = BorderStyle.FixedSingle;
+            textCorreo.Location = new Point(106, 161);
+            textCorreo.Name = "textCorreo";
+            textCorreo.Size = new Size(133, 23);
+            textCorreo.TabIndex = 15;
             // 
             // label25
             // 
@@ -578,13 +584,13 @@
             label25.TabIndex = 14;
             label25.Text = "Correo:";
             // 
-            // textBox11
+            // textTelefono
             // 
-            textBox11.BorderStyle = BorderStyle.FixedSingle;
-            textBox11.Location = new Point(352, 132);
-            textBox11.Name = "textBox11";
-            textBox11.Size = new Size(151, 23);
-            textBox11.TabIndex = 13;
+            textTelefono.BorderStyle = BorderStyle.FixedSingle;
+            textTelefono.Location = new Point(352, 132);
+            textTelefono.Name = "textTelefono";
+            textTelefono.Size = new Size(151, 23);
+            textTelefono.TabIndex = 13;
             // 
             // label24
             // 
@@ -596,13 +602,13 @@
             label24.TabIndex = 12;
             label24.Text = "Telefono:";
             // 
-            // textBox10
+            // textDireccion
             // 
-            textBox10.BorderStyle = BorderStyle.FixedSingle;
-            textBox10.Location = new Point(124, 131);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(151, 23);
-            textBox10.TabIndex = 11;
+            textDireccion.BorderStyle = BorderStyle.FixedSingle;
+            textDireccion.Location = new Point(124, 131);
+            textDireccion.Name = "textDireccion";
+            textDireccion.Size = new Size(151, 23);
+            textDireccion.TabIndex = 11;
             // 
             // label23
             // 
@@ -614,12 +620,12 @@
             label23.TabIndex = 10;
             label23.Text = "Direccion:";
             // 
-            // dateTimePicker1
+            // dateTimeFechaDeNacimiento
             // 
-            dateTimePicker1.Location = new Point(201, 99);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
-            dateTimePicker1.TabIndex = 9;
+            dateTimeFechaDeNacimiento.Location = new Point(201, 99);
+            dateTimeFechaDeNacimiento.Name = "dateTimeFechaDeNacimiento";
+            dateTimeFechaDeNacimiento.Size = new Size(200, 23);
+            dateTimeFechaDeNacimiento.TabIndex = 9;
             // 
             // label22
             // 
@@ -631,15 +637,15 @@
             label22.TabIndex = 8;
             label22.Text = "Fecha de nacimiento:";
             // 
-            // comboBox1
+            // comboTipoID
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "CC", "TI", "Otro" });
-            comboBox1.Location = new Point(447, 37);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(59, 23);
-            comboBox1.TabIndex = 7;
-            comboBox1.Text = "CC";
+            comboTipoID.FormattingEnabled = true;
+            comboTipoID.Items.AddRange(new object[] { "CC", "TI", "Otro" });
+            comboTipoID.Location = new Point(447, 37);
+            comboTipoID.Name = "comboTipoID";
+            comboTipoID.Size = new Size(59, 23);
+            comboTipoID.TabIndex = 7;
+            comboTipoID.Text = "CC";
             // 
             // label21
             // 
@@ -651,13 +657,13 @@
             label21.TabIndex = 6;
             label21.Text = "Tipo de identificacion:";
             // 
-            // textBox9
+            // textApellidos
             // 
-            textBox9.BorderStyle = BorderStyle.FixedSingle;
-            textBox9.Location = new Point(346, 65);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(151, 23);
-            textBox9.TabIndex = 5;
+            textApellidos.BorderStyle = BorderStyle.FixedSingle;
+            textApellidos.Location = new Point(346, 65);
+            textApellidos.Name = "textApellidos";
+            textApellidos.Size = new Size(151, 23);
+            textApellidos.TabIndex = 5;
             // 
             // label20
             // 
@@ -669,13 +675,13 @@
             label20.TabIndex = 4;
             label20.Text = "Apellidos:";
             // 
-            // textBox8
+            // textNombres
             // 
-            textBox8.BorderStyle = BorderStyle.FixedSingle;
-            textBox8.Location = new Point(115, 65);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(151, 23);
-            textBox8.TabIndex = 3;
+            textNombres.BorderStyle = BorderStyle.FixedSingle;
+            textNombres.Location = new Point(115, 65);
+            textNombres.Name = "textNombres";
+            textNombres.Size = new Size(151, 23);
+            textNombres.TabIndex = 3;
             // 
             // label19
             // 
@@ -687,13 +693,13 @@
             label19.TabIndex = 2;
             label19.Text = "Nombre:";
             // 
-            // textBox7
+            // textID
             // 
-            textBox7.BorderStyle = BorderStyle.FixedSingle;
-            textBox7.Location = new Point(148, 35);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(133, 23);
-            textBox7.TabIndex = 1;
+            textID.BorderStyle = BorderStyle.FixedSingle;
+            textID.Location = new Point(148, 35);
+            textID.Name = "textID";
+            textID.Size = new Size(133, 23);
+            textID.TabIndex = 1;
             // 
             // label18
             // 
@@ -707,9 +713,9 @@
             // 
             // panel6
             // 
-            panel6.Controls.Add(iconPictureBox2);
-            panel6.Controls.Add(textBox1);
-            panel6.Controls.Add(iconPictureBox3);
+            panel6.Controls.Add(btnSearch);
+            panel6.Controls.Add(textSearch);
+            panel6.Controls.Add(btnCloseSearch);
             panel6.Controls.Add(label9);
             panel6.Dock = DockStyle.Top;
             panel6.Location = new Point(3, 29);
@@ -717,43 +723,49 @@
             panel6.Size = new Size(813, 23);
             panel6.TabIndex = 5;
             // 
-            // iconPictureBox2
+            // btnSearch
             // 
-            iconPictureBox2.BackColor = Color.Transparent;
-            iconPictureBox2.ForeColor = Color.Black;
-            iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Sistrix;
-            iconPictureBox2.IconColor = Color.Black;
-            iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Brands;
-            iconPictureBox2.IconSize = 24;
-            iconPictureBox2.Location = new Point(789, 1);
-            iconPictureBox2.Name = "iconPictureBox2";
-            iconPictureBox2.Size = new Size(24, 24);
-            iconPictureBox2.TabIndex = 15;
-            iconPictureBox2.TabStop = false;
+            btnSearch.BackColor = Color.Transparent;
+            btnSearch.ForeColor = Color.Black;
+            btnSearch.IconChar = FontAwesome.Sharp.IconChar.Sistrix;
+            btnSearch.IconColor = Color.Black;
+            btnSearch.IconFont = FontAwesome.Sharp.IconFont.Brands;
+            btnSearch.IconSize = 24;
+            btnSearch.Location = new Point(789, -1);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(24, 24);
+            btnSearch.TabIndex = 15;
+            btnSearch.TabStop = false;
+            btnSearch.Click += btnSearch_Click;
             // 
-            // textBox1
+            // textSearch
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            textBox1.Location = new Point(644, -2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(146, 25);
-            textBox1.TabIndex = 14;
-            textBox1.Text = "Buscar";
+            textSearch.BorderStyle = BorderStyle.FixedSingle;
+            textSearch.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            textSearch.Location = new Point(644, -2);
+            textSearch.Name = "textSearch";
+            textSearch.Size = new Size(146, 25);
+            textSearch.TabIndex = 14;
+            textSearch.Text = "Buscar";
+            textSearch.Visible = false;
+            textSearch.TextChanged += textSearch_TextChanged;
+            textSearch.Enter += textSearch_Enter;
+            textSearch.Leave += textSearch_Leave;
             // 
-            // iconPictureBox3
+            // btnCloseSearch
             // 
-            iconPictureBox3.BackColor = Color.Transparent;
-            iconPictureBox3.ForeColor = Color.Red;
-            iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            iconPictureBox3.IconColor = Color.Red;
-            iconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox3.IconSize = 24;
-            iconPictureBox3.Location = new Point(789, 1);
-            iconPictureBox3.Name = "iconPictureBox3";
-            iconPictureBox3.Size = new Size(24, 24);
-            iconPictureBox3.TabIndex = 13;
-            iconPictureBox3.TabStop = false;
+            btnCloseSearch.BackColor = Color.Transparent;
+            btnCloseSearch.ForeColor = Color.Red;
+            btnCloseSearch.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            btnCloseSearch.IconColor = Color.Red;
+            btnCloseSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCloseSearch.IconSize = 24;
+            btnCloseSearch.Location = new Point(789, 1);
+            btnCloseSearch.Name = "btnCloseSearch";
+            btnCloseSearch.Size = new Size(24, 24);
+            btnCloseSearch.TabIndex = 13;
+            btnCloseSearch.TabStop = false;
+            btnCloseSearch.Click += btnCloseSearch_Click;
             // 
             // label9
             // 
@@ -790,7 +802,7 @@
             // tabContrato
             // 
             tabContrato.Controls.Add(panel12);
-            tabContrato.Controls.Add(panel11);
+            tabContrato.Controls.Add(panelContrato);
             tabContrato.Controls.Add(panel10);
             tabContrato.Controls.Add(panel9);
             tabContrato.Controls.Add(panel8);
@@ -804,80 +816,82 @@
             // 
             // panel12
             // 
-            panel12.Controls.Add(iconButton4);
-            panel12.Controls.Add(iconButton3);
+            panel12.Controls.Add(btnModificarContrato);
+            panel12.Controls.Add(btnRegistrarContrato);
             panel12.Dock = DockStyle.Top;
             panel12.Location = new Point(0, 361);
             panel12.Name = "panel12";
             panel12.Size = new Size(819, 65);
             panel12.TabIndex = 23;
             // 
-            // iconButton4
+            // btnModificarContrato
             // 
-            iconButton4.BackColor = Color.Black;
-            iconButton4.Enabled = false;
-            iconButton4.IconChar = FontAwesome.Sharp.IconChar.FilePdf;
-            iconButton4.IconColor = Color.White;
-            iconButton4.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            iconButton4.IconSize = 25;
-            iconButton4.Location = new Point(431, 17);
-            iconButton4.Name = "iconButton4";
-            iconButton4.Size = new Size(107, 33);
-            iconButton4.TabIndex = 23;
-            iconButton4.UseVisualStyleBackColor = false;
+            btnModificarContrato.BackColor = Color.Black;
+            btnModificarContrato.Enabled = false;
+            btnModificarContrato.IconChar = FontAwesome.Sharp.IconChar.PencilAlt;
+            btnModificarContrato.IconColor = Color.White;
+            btnModificarContrato.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnModificarContrato.IconSize = 25;
+            btnModificarContrato.Location = new Point(431, 17);
+            btnModificarContrato.Name = "btnModificarContrato";
+            btnModificarContrato.Size = new Size(107, 33);
+            btnModificarContrato.TabIndex = 23;
+            btnModificarContrato.UseVisualStyleBackColor = false;
+            btnModificarContrato.Click += btnModificarContrato_Click;
             // 
-            // iconButton3
+            // btnRegistrarContrato
             // 
-            iconButton3.BackColor = Color.Black;
-            iconButton3.Enabled = false;
-            iconButton3.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
-            iconButton3.IconColor = Color.White;
-            iconButton3.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            iconButton3.IconSize = 28;
-            iconButton3.Location = new Point(318, 17);
-            iconButton3.Name = "iconButton3";
-            iconButton3.Size = new Size(107, 33);
-            iconButton3.TabIndex = 22;
-            iconButton3.UseVisualStyleBackColor = false;
+            btnRegistrarContrato.BackColor = Color.Black;
+            btnRegistrarContrato.Enabled = false;
+            btnRegistrarContrato.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
+            btnRegistrarContrato.IconColor = Color.White;
+            btnRegistrarContrato.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnRegistrarContrato.IconSize = 28;
+            btnRegistrarContrato.Location = new Point(318, 17);
+            btnRegistrarContrato.Name = "btnRegistrarContrato";
+            btnRegistrarContrato.Size = new Size(107, 33);
+            btnRegistrarContrato.TabIndex = 22;
+            btnRegistrarContrato.UseVisualStyleBackColor = false;
+            btnRegistrarContrato.Click += btnRegistrarContrato_Click;
             // 
-            // panel11
+            // panelContrato
             // 
-            panel11.Controls.Add(label32);
-            panel11.Controls.Add(comboBox4);
-            panel11.Controls.Add(label31);
-            panel11.Controls.Add(label30);
-            panel11.Controls.Add(textBox13);
-            panel11.Controls.Add(label29);
-            panel11.Controls.Add(textBox6);
-            panel11.Controls.Add(label28);
-            panel11.Controls.Add(textBox5);
-            panel11.Controls.Add(label27);
-            panel11.Controls.Add(pictureBox2);
-            panel11.Dock = DockStyle.Top;
-            panel11.Enabled = false;
-            panel11.Location = new Point(0, 178);
-            panel11.Name = "panel11";
-            panel11.Size = new Size(819, 183);
-            panel11.TabIndex = 22;
+            panelContrato.Controls.Add(labelPagoNomina);
+            panelContrato.Controls.Add(comboTipoContrato);
+            panelContrato.Controls.Add(label31);
+            panelContrato.Controls.Add(label30);
+            panelContrato.Controls.Add(textHorasExtrasContrato);
+            panelContrato.Controls.Add(label29);
+            panelContrato.Controls.Add(textDiasContrato);
+            panelContrato.Controls.Add(label28);
+            panelContrato.Controls.Add(textMesesContrato);
+            panelContrato.Controls.Add(label27);
+            panelContrato.Controls.Add(pictureBox2);
+            panelContrato.Dock = DockStyle.Top;
+            panelContrato.Enabled = false;
+            panelContrato.Location = new Point(0, 178);
+            panelContrato.Name = "panelContrato";
+            panelContrato.Size = new Size(819, 183);
+            panelContrato.TabIndex = 22;
             // 
-            // label32
+            // labelPagoNomina
             // 
-            label32.AutoSize = true;
-            label32.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label32.ForeColor = Color.DarkGreen;
-            label32.Location = new Point(66, 117);
-            label32.Name = "label32";
-            label32.Size = new Size(100, 20);
-            label32.TabIndex = 34;
-            label32.Text = "$*                   ";
+            labelPagoNomina.AutoSize = true;
+            labelPagoNomina.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelPagoNomina.ForeColor = Color.DarkGreen;
+            labelPagoNomina.Location = new Point(66, 117);
+            labelPagoNomina.Name = "labelPagoNomina";
+            labelPagoNomina.Size = new Size(100, 20);
+            labelPagoNomina.TabIndex = 34;
+            labelPagoNomina.Text = "$*                   ";
             // 
-            // comboBox4
+            // comboTipoContrato
             // 
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(131, 35);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(170, 23);
-            comboBox4.TabIndex = 33;
+            comboTipoContrato.FormattingEnabled = true;
+            comboTipoContrato.Location = new Point(131, 35);
+            comboTipoContrato.Name = "comboTipoContrato";
+            comboTipoContrato.Size = new Size(170, 23);
+            comboTipoContrato.TabIndex = 33;
             // 
             // label31
             // 
@@ -899,13 +913,13 @@
             label30.TabIndex = 30;
             label30.Text = "Cantidad de horas extras:";
             // 
-            // textBox13
+            // textHorasExtrasContrato
             // 
-            textBox13.BorderStyle = BorderStyle.FixedSingle;
-            textBox13.Location = new Point(422, 74);
-            textBox13.Name = "textBox13";
-            textBox13.Size = new Size(111, 23);
-            textBox13.TabIndex = 29;
+            textHorasExtrasContrato.BorderStyle = BorderStyle.FixedSingle;
+            textHorasExtrasContrato.Location = new Point(422, 74);
+            textHorasExtrasContrato.Name = "textHorasExtrasContrato";
+            textHorasExtrasContrato.Size = new Size(111, 23);
+            textHorasExtrasContrato.TabIndex = 29;
             // 
             // label29
             // 
@@ -917,13 +931,13 @@
             label29.TabIndex = 28;
             label29.Text = "Dias de trabajo:";
             // 
-            // textBox6
+            // textDiasContrato
             // 
-            textBox6.BorderStyle = BorderStyle.FixedSingle;
-            textBox6.Location = new Point(123, 74);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(111, 23);
-            textBox6.TabIndex = 27;
+            textDiasContrato.BorderStyle = BorderStyle.FixedSingle;
+            textDiasContrato.Location = new Point(123, 74);
+            textDiasContrato.Name = "textDiasContrato";
+            textDiasContrato.Size = new Size(111, 23);
+            textDiasContrato.TabIndex = 27;
             // 
             // label28
             // 
@@ -935,13 +949,13 @@
             label28.TabIndex = 26;
             label28.Text = "Meses Contrato:";
             // 
-            // textBox5
+            // textMesesContrato
             // 
-            textBox5.BorderStyle = BorderStyle.FixedSingle;
-            textBox5.Location = new Point(424, 35);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(150, 23);
-            textBox5.TabIndex = 25;
+            textMesesContrato.BorderStyle = BorderStyle.FixedSingle;
+            textMesesContrato.Location = new Point(424, 35);
+            textMesesContrato.Name = "textMesesContrato";
+            textMesesContrato.Size = new Size(150, 23);
+            textMesesContrato.TabIndex = 25;
             // 
             // label27
             // 
@@ -1010,40 +1024,40 @@
             // panel9
             // 
             panel9.BackColor = Color.WhiteSmoke;
-            panel9.Controls.Add(pictureBox4);
-            panel9.Controls.Add(comboBox3);
+            panel9.Controls.Add(picturePerfilContrato);
+            panel9.Controls.Add(comboSexoContrato);
             panel9.Controls.Add(label14);
-            panel9.Controls.Add(dateTimePicker2);
+            panel9.Controls.Add(dateFechaNacimientoContrato);
             panel9.Controls.Add(label15);
             panel9.Controls.Add(label13);
-            panel9.Controls.Add(textBox3);
+            panel9.Controls.Add(textApellidosContrato);
             panel9.Controls.Add(label12);
-            panel9.Controls.Add(textBox2);
+            panel9.Controls.Add(textNombresContrato);
             panel9.Dock = DockStyle.Top;
             panel9.Location = new Point(0, 49);
             panel9.Name = "panel9";
             panel9.Size = new Size(819, 102);
             panel9.TabIndex = 20;
             // 
-            // pictureBox4
+            // picturePerfilContrato
             // 
-            pictureBox4.Image = Properties.Resources.User;
-            pictureBox4.Location = new Point(636, 4);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(128, 95);
-            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox4.TabIndex = 22;
-            pictureBox4.TabStop = false;
+            picturePerfilContrato.Image = Properties.Resources.User;
+            picturePerfilContrato.Location = new Point(649, 3);
+            picturePerfilContrato.Name = "picturePerfilContrato";
+            picturePerfilContrato.Size = new Size(95, 95);
+            picturePerfilContrato.SizeMode = PictureBoxSizeMode.Zoom;
+            picturePerfilContrato.TabIndex = 22;
+            picturePerfilContrato.TabStop = false;
             // 
-            // comboBox3
+            // comboSexoContrato
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "M", "F", "Otro" });
-            comboBox3.Location = new Point(413, 55);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(59, 23);
-            comboBox3.TabIndex = 21;
-            comboBox3.Text = "M";
+            comboSexoContrato.FormattingEnabled = true;
+            comboSexoContrato.Items.AddRange(new object[] { "M", "F", "Otro" });
+            comboSexoContrato.Location = new Point(413, 55);
+            comboSexoContrato.Name = "comboSexoContrato";
+            comboSexoContrato.Size = new Size(59, 23);
+            comboSexoContrato.TabIndex = 21;
+            comboSexoContrato.Text = "M";
             // 
             // label14
             // 
@@ -1055,12 +1069,12 @@
             label14.TabIndex = 20;
             label14.Text = "Sexo:";
             // 
-            // dateTimePicker2
+            // dateFechaNacimientoContrato
             // 
-            dateTimePicker2.Location = new Point(160, 54);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(200, 23);
-            dateTimePicker2.TabIndex = 19;
+            dateFechaNacimientoContrato.Location = new Point(160, 54);
+            dateFechaNacimientoContrato.Name = "dateFechaNacimientoContrato";
+            dateFechaNacimientoContrato.Size = new Size(200, 23);
+            dateFechaNacimientoContrato.TabIndex = 19;
             // 
             // label15
             // 
@@ -1082,13 +1096,13 @@
             label13.TabIndex = 3;
             label13.Text = "Apellidos:";
             // 
-            // textBox3
+            // textApellidosContrato
             // 
-            textBox3.BorderStyle = BorderStyle.FixedSingle;
-            textBox3.Location = new Point(345, 15);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(169, 23);
-            textBox3.TabIndex = 2;
+            textApellidosContrato.BorderStyle = BorderStyle.FixedSingle;
+            textApellidosContrato.Location = new Point(345, 15);
+            textApellidosContrato.Name = "textApellidosContrato";
+            textApellidosContrato.Size = new Size(169, 23);
+            textApellidosContrato.TabIndex = 2;
             // 
             // label12
             // 
@@ -1100,19 +1114,19 @@
             label12.TabIndex = 1;
             label12.Text = "Nombres:";
             // 
-            // textBox2
+            // textNombresContrato
             // 
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Location = new Point(82, 15);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(169, 23);
-            textBox2.TabIndex = 0;
+            textNombresContrato.BorderStyle = BorderStyle.FixedSingle;
+            textNombresContrato.Location = new Point(82, 15);
+            textNombresContrato.Name = "textNombresContrato";
+            textNombresContrato.Size = new Size(169, 23);
+            textNombresContrato.TabIndex = 0;
             // 
             // panel8
             // 
-            panel8.Controls.Add(btnSearch);
-            panel8.Controls.Add(textSearch);
-            panel8.Controls.Add(btnCloseTextSearch);
+            panel8.Controls.Add(btnSearchContrato);
+            panel8.Controls.Add(textSearchContrato);
+            panel8.Controls.Add(btnCloseSearchContrato);
             panel8.Controls.Add(label10);
             panel8.Dock = DockStyle.Top;
             panel8.Location = new Point(0, 26);
@@ -1120,43 +1134,50 @@
             panel8.Size = new Size(819, 23);
             panel8.TabIndex = 6;
             // 
-            // btnSearch
+            // btnSearchContrato
             // 
-            btnSearch.BackColor = Color.Transparent;
-            btnSearch.ForeColor = Color.Black;
-            btnSearch.IconChar = FontAwesome.Sharp.IconChar.Sistrix;
-            btnSearch.IconColor = Color.Black;
-            btnSearch.IconFont = FontAwesome.Sharp.IconFont.Brands;
-            btnSearch.IconSize = 24;
-            btnSearch.Location = new Point(794, 1);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(24, 24);
-            btnSearch.TabIndex = 15;
-            btnSearch.TabStop = false;
+            btnSearchContrato.BackColor = Color.Transparent;
+            btnSearchContrato.ForeColor = Color.Black;
+            btnSearchContrato.IconChar = FontAwesome.Sharp.IconChar.Sistrix;
+            btnSearchContrato.IconColor = Color.Black;
+            btnSearchContrato.IconFont = FontAwesome.Sharp.IconFont.Brands;
+            btnSearchContrato.IconSize = 24;
+            btnSearchContrato.Location = new Point(794, -1);
+            btnSearchContrato.Name = "btnSearchContrato";
+            btnSearchContrato.Size = new Size(24, 24);
+            btnSearchContrato.TabIndex = 15;
+            btnSearchContrato.TabStop = false;
+            btnSearchContrato.Click += btnSearchContrato_Click;
             // 
-            // textSearch
+            // textSearchContrato
             // 
-            textSearch.BorderStyle = BorderStyle.FixedSingle;
-            textSearch.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            textSearch.Location = new Point(649, -2);
-            textSearch.Name = "textSearch";
-            textSearch.Size = new Size(146, 25);
-            textSearch.TabIndex = 14;
-            textSearch.Text = "Buscar";
+            textSearchContrato.BorderStyle = BorderStyle.FixedSingle;
+            textSearchContrato.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            textSearchContrato.Location = new Point(649, -2);
+            textSearchContrato.Name = "textSearchContrato";
+            textSearchContrato.Size = new Size(146, 25);
+            textSearchContrato.TabIndex = 14;
+            textSearchContrato.Text = "Buscar";
+            textSearchContrato.Visible = false;
+            textSearchContrato.TextChanged += textSearchContrato_TextChanged;
+            textSearchContrato.Enter += textSearchContrato_Enter;
+            textSearchContrato.Leave += textSearchContrato_Leave;
             // 
-            // btnCloseTextSearch
+            // btnCloseSearchContrato
             // 
-            btnCloseTextSearch.BackColor = Color.Transparent;
-            btnCloseTextSearch.ForeColor = Color.Red;
-            btnCloseTextSearch.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            btnCloseTextSearch.IconColor = Color.Red;
-            btnCloseTextSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnCloseTextSearch.IconSize = 24;
-            btnCloseTextSearch.Location = new Point(794, 1);
-            btnCloseTextSearch.Name = "btnCloseTextSearch";
-            btnCloseTextSearch.Size = new Size(24, 24);
-            btnCloseTextSearch.TabIndex = 13;
-            btnCloseTextSearch.TabStop = false;
+            btnCloseSearchContrato.BackColor = Color.Transparent;
+            btnCloseSearchContrato.ForeColor = Color.Red;
+            btnCloseSearchContrato.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            btnCloseSearchContrato.IconColor = Color.Red;
+            btnCloseSearchContrato.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCloseSearchContrato.IconSize = 24;
+            btnCloseSearchContrato.Location = new Point(794, 1);
+            btnCloseSearchContrato.Name = "btnCloseSearchContrato";
+            btnCloseSearchContrato.Size = new Size(24, 24);
+            btnCloseSearchContrato.TabIndex = 13;
+            btnCloseSearchContrato.TabStop = false;
+            btnCloseSearchContrato.Visible = false;
+            btnCloseSearchContrato.Click += btnCloseSearchContrato_Click;
             // 
             // label10
             // 
@@ -1190,6 +1211,12 @@
             label8.TabIndex = 0;
             label8.Text = "Firma de contrato";
             // 
+            // Eliminar
+            // 
+            Eliminar.HeaderText = "Eliminar";
+            Eliminar.Image = Properties.Resources.deleRojBlack;
+            Eliminar.Name = "Eliminar";
+            // 
             // FormGestionEntrenador
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1205,13 +1232,13 @@
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureAlerta).EndInit();
             tabControlEntrenador.ResumeLayout(false);
             tabGeneral.ResumeLayout(false);
             panelEntrenador.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panelContenedorClient.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridClient).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridEntrenadores).EndInit();
             panelDownDataGrid.ResumeLayout(false);
             panelDownDataGrid.PerformLayout();
             panelTopDataGrid.ResumeLayout(false);
@@ -1222,24 +1249,24 @@
             ((System.ComponentModel.ISupportInitialize)picturePerfil).EndInit();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnSearch).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnCloseSearch).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             tabContrato.ResumeLayout(false);
             panel12.ResumeLayout(false);
-            panel11.ResumeLayout(false);
-            panel11.PerformLayout();
+            panelContrato.ResumeLayout(false);
+            panelContrato.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel10.ResumeLayout(false);
             panel10.PerformLayout();
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picturePerfilContrato).EndInit();
             panel8.ResumeLayout(false);
             panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)btnSearch).EndInit();
-            ((System.ComponentModel.ISupportInitialize)btnCloseTextSearch).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnSearchContrato).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnCloseSearchContrato).EndInit();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             ResumeLayout(false);
@@ -1249,8 +1276,6 @@
 
         private Panel panel2;
         private Panel panel3;
-        private Label label6;
-        private PictureBox pictureBox1;
         private Label label5;
         private FontAwesome.Sharp.IconButton btnVolver;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
@@ -1262,7 +1287,7 @@
         private FontAwesome.Sharp.IconButton btnAddEntrenador;
         private FontAwesome.Sharp.IconButton btnUpdateEntrenador;
         private Panel panelContenedorClient;
-        private DataGridView dataGridClient;
+        private DataGridView dataGridEntrenadores;
         private Panel panelDownDataGrid;
         private Panel panelTopDataGrid;
         private ComboBox comboFiltroSexo;
@@ -1273,19 +1298,19 @@
         private TabPage tabContrato;
         private Panel panel7;
         private PictureBox picturePerfil;
-        private TextBox textBox12;
+        private TextBox textCorreo;
         private Label label25;
-        private TextBox textBox11;
+        private TextBox textTelefono;
         private Label label24;
-        private TextBox textBox10;
+        private TextBox textDireccion;
         private Label label23;
-        private ComboBox comboBox1;
+        private ComboBox comboTipoID;
         private Label label21;
-        private TextBox textBox9;
+        private TextBox textApellidos;
         private Label label20;
-        private TextBox textBox8;
+        private TextBox textNombres;
         private Label label19;
-        private TextBox textBox7;
+        private TextBox textID;
         private Label label18;
         private Panel panel6;
         private Label label9;
@@ -1293,53 +1318,56 @@
         private Label label8;
         private Panel panel8;
         private Label label10;
-        private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton btnRegistrarEntrenador;
+        private FontAwesome.Sharp.IconPictureBox btnSearchContrato;
+        private TextBox textSearchContrato;
+        private FontAwesome.Sharp.IconPictureBox btnCloseSearchContrato;
         private FontAwesome.Sharp.IconPictureBox btnSearch;
         private TextBox textSearch;
-        private FontAwesome.Sharp.IconPictureBox btnCloseTextSearch;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
-        private TextBox textBox1;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
+        private FontAwesome.Sharp.IconPictureBox btnCloseSearch;
         private PictureBox pictureBox2;
         private Panel panel9;
-        private Panel panel11;
+        private Panel panelContrato;
         private Panel panel10;
         private Label label11;
         private Panel panel12;
-        private FontAwesome.Sharp.IconButton iconButton3;
-        private TextBox textBox2;
+        private FontAwesome.Sharp.IconButton btnRegistrarContrato;
+        private TextBox textNombresContrato;
         private Label label13;
-        private TextBox textBox3;
+        private TextBox textApellidosContrato;
         private Label label12;
-        private FontAwesome.Sharp.IconButton iconButton5;
-        private FontAwesome.Sharp.IconButton iconButton4;
-        private ComboBox comboBox2;
+        private FontAwesome.Sharp.IconButton btnModificarEntrenador;
+        private FontAwesome.Sharp.IconButton btnModificarContrato;
+        private ComboBox comboSexoRegistro;
         private Label label26;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTimeFechaDeNacimiento;
         private Label label22;
-        private ComboBox comboBox3;
+        private ComboBox comboSexoContrato;
         private Label label14;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker dateFechaNacimientoContrato;
         private Label label15;
-        private PictureBox pictureBox4;
+        private PictureBox picturePerfilContrato;
         private FontAwesome.Sharp.IconButton btnCargarFoto;
         private Label label17;
         private Label label16;
-        private ComboBox comboBox4;
+        private ComboBox comboTipoContrato;
         private Label label31;
         private Label label30;
-        private TextBox textBox13;
+        private TextBox textHorasExtrasContrato;
         private Label label29;
-        private TextBox textBox6;
+        private TextBox textDiasContrato;
         private Label label28;
-        private TextBox textBox5;
+        private TextBox textMesesContrato;
         private Label label27;
-        private Label label32;
+        private Label labelPagoNomina;
         private TextBox textHombres;
         private Label label3;
         private TextBox textMujeres;
         private Label label2;
         private Label label4;
         private TextBox textTotal;
+        private PictureBox pictureAlerta;
+        private Label labelAlerta;
+        private DataGridViewImageColumn Eliminar;
     }
 }

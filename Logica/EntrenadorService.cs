@@ -22,7 +22,6 @@ namespace Logica
             try
             {
                 entrenador.CalcularEdad();
-                entrenador.CalcularSalario();
                 entrenador.GenerarCodigoEntrenador();
                 conexion.Open();
                 if (repositorio.BuscarPorIdentificacion(entrenador.Identificacion) == null)
@@ -86,10 +85,7 @@ namespace Logica
         {
             try
             {
-                entrenadorNuevo.CalcularEdad();
                 entrenadorNuevo.CalcularSalario();
-                entrenadorNuevo.GenerarCodigoEntrenador();
-
                 conexion.Open();
                 var entrenadorAntiguo = repositorio.BuscarPorIdentificacion(entrenadorNuevo.Identificacion);
                 
@@ -107,6 +103,27 @@ namespace Logica
             {
 
                 return $"Error de la Aplicación: {e.Message}";
+            }
+            finally { conexion.Close(); }
+        }
+        public BusquedaEntrenadorRespuesta BuscarPorSexo(string sexo)
+        {
+            BusquedaEntrenadorRespuesta respuesta = new BusquedaEntrenadorRespuesta();
+            try
+            {
+
+                conexion.Open();
+                respuesta.Entrenador = repositorio.BuscarPorSexo(sexo);
+                conexion.Close();
+                respuesta.Mensaje = (respuesta.Entrenador != null) ? "Se encontró el entrenador buscado" : "el entrenador buscada no existe";
+                respuesta.Error = false;
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+                respuesta.Mensaje = $"Error de la Aplicacion aqui: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
             }
             finally { conexion.Close(); }
         }

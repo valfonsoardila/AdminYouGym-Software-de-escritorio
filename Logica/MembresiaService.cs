@@ -8,27 +8,27 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    public class AdministradorService
+    public class MembresiaService
     {
         private readonly ConnectionManager conexion;
-        private readonly AdministradorRepository repositorio;
-        public AdministradorService(string connectionString)
+        private readonly MembresiaRepository repositorio;
+        public MembresiaService(string connectionString)
         {
             conexion = new ConnectionManager(connectionString);
-            repositorio = new AdministradorRepository(conexion);
+            repositorio = new MembresiaRepository(conexion);
         }
-        public string Guardar(Administrador administrador)
+        public string Guardar(Membresia membresia)
         {
             try
             {
-                administrador.CalcularEdad();
+                membresia.ObtenerPizarraMiembro();
                 conexion.Open();
-                if (repositorio.BuscarPorIdentificacion(administrador.Identificacion) == null)
+                if (repositorio.BuscarPorIdentificacion(membresia.CodigoMiembro) == null)
                 {
-                    repositorio.Guardar(administrador);
-                    return $"Administrador registrado correctamente";
+                    repositorio.Guardar(membresia);
+                    return $"Membresia registrada correctamente";
                 }
-                return $"Esta id de administrador ya existe";
+                return $"Esta id de membresia ya existe";
             }
             catch (Exception e)
             {
@@ -36,17 +36,17 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
-        public ConsultaAdministradorRespuesta ConsultarTodos()
+        public ConsultaMembresiaRespuesta ConsultarTodos()
         {
-            ConsultaAdministradorRespuesta respuesta = new ConsultaAdministradorRespuesta();
+            ConsultaMembresiaRespuesta respuesta = new ConsultaMembresiaRespuesta();
             try
             {
 
                 conexion.Open();
-                respuesta.Administradores = repositorio.ConsultarTodos();
+                respuesta.Membresias = repositorio.ConsultarTodos();
                 conexion.Close();
                 respuesta.Error = false;
-                respuesta.Mensaje = (respuesta.Administradores.Count > 0) ? "Se consultan los Datos" : "No hay datos para consultar";
+                respuesta.Mensaje = (respuesta.Membresias.Count > 0) ? "Se consultan los Datos" : "No hay datos para consultar";
                 return respuesta;
             }
             catch (Exception e)
@@ -58,16 +58,15 @@ namespace Logica
             finally { conexion.Close(); }
 
         }
-        public BusquedaAdministradorRespuesta BuscarPorIdentificacion(string identificacion)
+        public BusquedaMembresiaRespuesta BuscarPorIdentificacion(string identificacion)
         {
-            BusquedaAdministradorRespuesta respuesta = new BusquedaAdministradorRespuesta();
+            BusquedaMembresiaRespuesta respuesta = new BusquedaMembresiaRespuesta();
             try
             {
-
                 conexion.Open();
-                respuesta.Administrador = repositorio.BuscarPorIdentificacion(identificacion);
+                respuesta.Membresia = repositorio.BuscarPorIdentificacion(identificacion);
                 conexion.Close();
-                respuesta.Mensaje = (respuesta.Administrador != null) ? "Se encontró la id de administrador buscado" : "la id de administrador buscada no existe";
+                respuesta.Mensaje = (respuesta.Membresia != null) ? "Se encontró la id de membresia buscado" : "la id de membresia buscada no existe";
                 respuesta.Error = false;
                 return respuesta;
             }
@@ -79,16 +78,16 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
-        public BusquedaAdministradorRespuesta BuscarPorSexo(string sexo)
+        public BusquedaMembresiaRespuesta BuscarPorCategoria(string categoria)
         {
-            BusquedaAdministradorRespuesta respuesta = new BusquedaAdministradorRespuesta();
+            BusquedaMembresiaRespuesta respuesta = new BusquedaMembresiaRespuesta();
             try
             {
 
                 conexion.Open();
-                respuesta.Administrador = repositorio.BuscarPorSexo(sexo);
+                respuesta.Membresia = repositorio.BuscarPorCategoria(categoria);
                 conexion.Close();
-                respuesta.Mensaje = (respuesta.Administrador != null) ? "Se encontró la id de administrador buscado" : "la id de administrador buscada no existe";
+                respuesta.Mensaje = (respuesta.Membresia != null) ? "Se encontró la id de membresia buscado" : "la id de membresia buscada no existe";
                 respuesta.Error = false;
                 return respuesta;
             }
@@ -100,37 +99,15 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
-        public BusquedaAdministradorRespuesta BuscarPorRol(string rol)
+        public BusquedaMembresiaRespuesta BuscarPorNombre(string nombre)
         {
-            BusquedaAdministradorRespuesta respuesta = new BusquedaAdministradorRespuesta();
+            BusquedaMembresiaRespuesta respuesta = new BusquedaMembresiaRespuesta();
             try
             {
-
                 conexion.Open();
-                respuesta.Administrador = repositorio.BuscarPorRol(rol);
+                respuesta.Membresia = repositorio.BuscarPorNombre(nombre);
                 conexion.Close();
-                respuesta.Mensaje = (respuesta.Administrador != null) ? "Se encontró la id de administrador buscado" : "la id de administrador buscada no existe";
-                respuesta.Error = false;
-                return respuesta;
-            }
-            catch (Exception e)
-            {
-                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
-                respuesta.Error = true;
-                return respuesta;
-            }
-            finally { conexion.Close(); }
-        }
-        public BusquedaAdministradorRespuesta BuscarPorNombreDeUsuario(string nombreDeUsuario)
-        {
-            BusquedaAdministradorRespuesta respuesta = new BusquedaAdministradorRespuesta();
-            try
-            {
-
-                conexion.Open();
-                respuesta.Administrador = repositorio.BuscarPorNombreDeUsuario(nombreDeUsuario);
-                conexion.Close();
-                respuesta.Mensaje = (respuesta.Administrador != null) ? "Se encontró la id de administrador buscado" : "la id de administrador buscada no existe";
+                respuesta.Mensaje = (respuesta.Membresia != null) ? "Se encontró la id de membresia buscado" : "la id de membresia buscada no existe";
                 respuesta.Error = false;
                 return respuesta;
             }
@@ -147,12 +124,12 @@ namespace Logica
             try
             {
                 conexion.Open();
-                var administrador = repositorio.BuscarPorIdentificacion(identificacion);
-                if (administrador != null)
+                var membresia = repositorio.BuscarPorIdentificacion(identificacion);
+                if (membresia != null)
                 {
-                    repositorio.Eliminar(administrador);
+                    repositorio.Eliminar(membresia);
                     conexion.Close();
-                    return ($"El registro {administrador.Identificacion} se ha eliminado satisfactoriamente.");
+                    return ($"El registro {membresia.CodigoMiembro} se ha eliminado satisfactoriamente.");
                 }
                 return ($"Lo sentimos, {identificacion} no se encuentra registrada.");
             }
@@ -164,21 +141,21 @@ namespace Logica
             finally { conexion.Close(); }
 
         }
-        public string Modificar(Administrador administradorNuevo)
+        public string Modificar(Membresia membresiaNuevo)
         {
             try
             {
-                administradorNuevo.CalcularEdad();
+                membresiaNuevo.ObtenerPizarraMiembro();
                 conexion.Open();
-                var cajaRegistradora = repositorio.BuscarPorIdentificacion(administradorNuevo.Identificacion);
+                var cajaRegistradora = repositorio.BuscarPorIdentificacion(membresiaNuevo.CodigoMiembro);
                 if (cajaRegistradora != null)
                 {
-                    repositorio.Modificar(administradorNuevo);
-                    return ($"El registro de {administradorNuevo.Identificacion} se ha modificado satisfactoriamente.");
+                    repositorio.Modificar(membresiaNuevo);
+                    return ($"El registro de {membresiaNuevo.CodigoMiembro} se ha modificado satisfactoriamente.");
                 }
                 else
                 {
-                    return ($"Lo sentimos, el administrador con Id {administradorNuevo.Identificacion} no se encuentra registrada.");
+                    return ($"Lo sentimos, el membresia con Id {membresiaNuevo.CodigoMiembro} no se encuentra registrada.");
                 }
             }
             catch (Exception e)
@@ -188,9 +165,9 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
-        public ConteoAdministradorRespuesta Totalizar()
+        public ConteoMembresiaRespuesta Totalizar()
         {
-            ConteoAdministradorRespuesta respuesta = new ConteoAdministradorRespuesta();
+            ConteoMembresiaRespuesta respuesta = new ConteoMembresiaRespuesta();
             try
             {
 
@@ -210,14 +187,14 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
-        public ConteoAdministradorRespuesta TotalizarTipoRol(string tipo)
+        public ConteoMembresiaRespuesta TotalizarTipoCategoria(string categoria)
         {
-            ConteoAdministradorRespuesta respuesta = new ConteoAdministradorRespuesta();
+            ConteoMembresiaRespuesta respuesta = new ConteoMembresiaRespuesta();
             try
             {
 
                 conexion.Open();
-                respuesta.Cuenta = repositorio.TotalizarTipoRol(tipo);
+                respuesta.Cuenta = repositorio.TotalizarTipoCategoria(categoria);
                 conexion.Close();
                 respuesta.Error = false;
                 respuesta.Mensaje = "Se consultan los Datos";
@@ -232,14 +209,14 @@ namespace Logica
             }
             finally { conexion.Close(); }
         }
-        public ConteoAdministradorRespuesta TotalizarTipo(string tipo)
+        public ConteoMembresiaRespuesta TotalizarTipoEstado(string estado)
         {
-            ConteoAdministradorRespuesta respuesta = new ConteoAdministradorRespuesta();
+            ConteoMembresiaRespuesta respuesta = new ConteoMembresiaRespuesta();
             try
             {
 
                 conexion.Open();
-                respuesta.Cuenta = repositorio.TotalizarTipo(tipo);
+                respuesta.Cuenta = repositorio.TotalizarTipoEstado(estado);
                 conexion.Close();
                 respuesta.Error = false;
                 respuesta.Mensaje = "Se consultan los Datos";
@@ -255,19 +232,19 @@ namespace Logica
             finally { conexion.Close(); }
         }
     }
-    public class ConsultaAdministradorRespuesta
+    public class ConsultaMembresiaRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public IList<Administrador> Administradores { get; set; }
+        public IList<Membresia> Membresias { get; set; }
     }
-    public class BusquedaAdministradorRespuesta
+    public class BusquedaMembresiaRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }
-        public Administrador Administrador { get; set; }
+        public Membresia Membresia { get; set; }
     }
-    public class ConteoAdministradorRespuesta
+    public class ConteoMembresiaRespuesta
     {
         public bool Error { get; set; }
         public string Mensaje { get; set; }

@@ -47,16 +47,6 @@ namespace UI
         {
             tabControlCliente.SelectedIndex = 2;
         }
-
-        private void btnCargarFoto_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ventanaCargar = new OpenFileDialog();
-            DialogResult dr = ventanaCargar.ShowDialog();
-            if (dr == DialogResult.OK)
-            {
-                picturePerfil.Image = Image.FromFile(ventanaCargar.FileName);
-            }
-        }
         //Consultar cliente
         private void CargarListaClientes()
         {
@@ -109,6 +99,32 @@ namespace UI
                 pictureAlerta.Visible = false;
             }
         }
+        private void dataGridClient_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string id;
+            if (dataGridClient.DataSource != null)
+            {
+                if (dataGridClient.Columns[e.ColumnIndex].Name == "Eliminar")
+                {
+                    id = Convert.ToString(dataGridClient.CurrentRow.Cells["Identificacion"].Value.ToString());
+                    string msg = "Desea eliminar este registro " + id + "?";
+                    var respuesta = MessageBox.Show(msg, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (respuesta == DialogResult.OK)
+                    {
+                        EliminarRegistro(id);
+                        CargarListaClientes();
+                    }
+                }
+            }
+            else
+            {
+                if (dataGridClient.DataSource == null)
+                {
+                    string msg = "No hay registros disponibles";
+                    MessageBox.Show(msg, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
         //Registrar cliente
         private Cliente MapearDatosCliente()
         {
@@ -131,11 +147,21 @@ namespace UI
             }
             return cliente;
         }
+        private void btnCargarFoto_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ventanaCargar = new OpenFileDialog();
+            DialogResult dr = ventanaCargar.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                picturePerfil.Image = Image.FromFile(ventanaCargar.FileName);
+            }
+        }
         private void btnRegistrarCliente_Click(object sender, EventArgs e)
         {
             Cliente cliente = MapearDatosCliente();
             string mensaje = clienteService.Guardar(cliente);
             MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            CargarListaClientes();
         }
 
         private void btnModificarCliente_Click(object sender, EventArgs e)
@@ -143,6 +169,7 @@ namespace UI
             Cliente cliente = MapearDatosCliente();
             string mensaje = clienteService.Modificar(cliente);
             MessageBox.Show(mensaje, "Mensaje de modificacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            CargarListaClientes();
         }
         private void BuscarPorId(string busqueda)
         {
@@ -606,33 +633,6 @@ namespace UI
             textSearchProgreso.Text = "Buscar";
             labelAlerta.Visible = false;
             pictureAlerta.Visible = false;
-        }
-
-        private void dataGridClient_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            string id;
-            if (dataGridClient.DataSource != null)
-            {
-                if (dataGridClient.Columns[e.ColumnIndex].Name == "Eliminar")
-                {
-                    id = Convert.ToString(dataGridClient.CurrentRow.Cells["Identificacion"].Value.ToString());
-                    string msg = "Desea eliminar este registro " + id + "?";
-                    var respuesta = MessageBox.Show(msg, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    if (respuesta == DialogResult.OK)
-                    {
-                        EliminarRegistro(id);
-                        CargarListaClientes();
-                    }
-                }
-            }
-            else
-            {
-                if (dataGridClient.DataSource == null)
-                {
-                    string msg = "No hay registros disponibles";
-                    MessageBox.Show(msg, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
         }
     }
 }
