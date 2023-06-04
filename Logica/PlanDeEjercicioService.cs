@@ -59,6 +59,27 @@ namespace Logica
             finally { conexion.Close(); }
 
         }
+        public ConsultaPlanDeEjercicioRespuesta ConsultarPorEstados(string activo)
+        {
+            ConsultaPlanDeEjercicioRespuesta respuesta = new ConsultaPlanDeEjercicioRespuesta();
+            try
+            {
+                conexion.Open();
+                respuesta.PlanesDeEjercicios = repositorio.ConsultarTodos();
+                conexion.Close();
+                respuesta.Error = false;
+                respuesta.Mensaje = (respuesta.PlanesDeEjercicios.Count > 0) ? "Se consultan los Datos" : "No hay datos para consultar";
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { conexion.Close(); }
+
+        }
         public string Eliminar(string identificacion)
         {
             try

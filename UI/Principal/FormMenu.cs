@@ -443,5 +443,12 @@ namespace UI
             iconThemeMoon.IconColor = Color.LightGray;
             iconThemeSun.IconColor = Color.Yellow;
         }
+
+        private void btnOutSesion_Click(object sender, EventArgs e)
+        {
+            FormInicioSesion formInicioSesion = new FormInicioSesion();
+            this.Hide();
+            formInicioSesion.Show();
+        }
     }
 }

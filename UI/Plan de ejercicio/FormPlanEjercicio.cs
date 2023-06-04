@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Logica;
 using Entidades;
 using DocumentFormat.OpenXml.Wordprocessing;
+using Microsoft.Win32;
 
 namespace UI
 {
@@ -58,7 +59,14 @@ namespace UI
         private void comboFiltroJornada_SelectedIndexChanged(object sender, EventArgs e)
         {
             string jornada = comboFiltroJornada.Text;
-            BuscarPorJornada(jornada);
+            if (comboFiltroJornada.Text == "Todos")
+            {
+                CargarListaDePlanes();
+            }
+            else
+            {
+                BuscarPorJornada(jornada);
+            }
         }
         private void BuscarPorJornada(string busqueda)
         {
@@ -68,7 +76,8 @@ namespace UI
             if (buscado != null)
             {
                 dataGridPlanEjercicio.DataSource = null;
-                dataGridPlanEjercicio.DataSource = buscado;
+                var planDeEjercicios = new List<PlanDeEjercicio> { buscado };
+                dataGridPlanEjercicio.DataSource = planDeEjercicios;
             }
             else
             {
@@ -77,6 +86,7 @@ namespace UI
                     labelAlerta.Text = "No hay registro relacionados a este filtro";
                     labelAlerta.Visible = true;
                     pictureAlerta.Visible = true;
+                    dataGridPlanEjercicio.DataSource = null;
                 }
             }
         }

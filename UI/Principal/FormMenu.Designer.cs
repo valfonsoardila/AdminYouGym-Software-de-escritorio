@@ -63,6 +63,7 @@ namespace UI
             labelLogoName = new Label();
             pictureLogo = new PictureBox();
             panelPerfil = new GroupBox();
+            btnOutSesion = new FontAwesome.Sharp.IconPictureBox();
             labelRolPerfil = new Label();
             pictureBox3 = new PictureBox();
             picturePerfil = new PictureBox();
@@ -80,8 +81,6 @@ namespace UI
             labelAvsio = new Label();
             labelHeaderRuta = new Label();
             iconThemeMoon = new FontAwesome.Sharp.IconPictureBox();
-            panelSalir = new GroupBox();
-            iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             panelHeaderbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnWindowMaximize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnWindowRestore).BeginInit();
@@ -97,6 +96,7 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)btnCloseSidebar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureLogo).BeginInit();
             panelPerfil.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)btnOutSesion).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picturePerfil).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnModeLight).BeginInit();
@@ -106,8 +106,6 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)pictureAlert).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconThemeSun).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconThemeMoon).BeginInit();
-            panelSalir.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panelHeaderbar
@@ -194,7 +192,6 @@ namespace UI
             // 
             panelSidebar.AutoScroll = true;
             panelSidebar.BackColor = SystemColors.ControlLight;
-            panelSidebar.Controls.Add(panelSalir);
             panelSidebar.Controls.Add(panelSelectionMembresia);
             panelSidebar.Controls.Add(panelSelectionAjustes);
             panelSidebar.Controls.Add(btnAjustes);
@@ -651,6 +648,7 @@ namespace UI
             // 
             // panelPerfil
             // 
+            panelPerfil.Controls.Add(btnOutSesion);
             panelPerfil.Controls.Add(labelRolPerfil);
             panelPerfil.Controls.Add(pictureBox3);
             panelPerfil.Controls.Add(picturePerfil);
@@ -664,6 +662,22 @@ namespace UI
             panelPerfil.TabIndex = 0;
             panelPerfil.TabStop = false;
             panelPerfil.Text = "Perfil de usuario";
+            // 
+            // btnOutSesion
+            // 
+            btnOutSesion.BackColor = SystemColors.ControlLight;
+            btnOutSesion.ForeColor = SystemColors.ControlText;
+            btnOutSesion.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
+            btnOutSesion.IconColor = SystemColors.ControlText;
+            btnOutSesion.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnOutSesion.IconSize = 26;
+            btnOutSesion.Location = new Point(152, 34);
+            btnOutSesion.Name = "btnOutSesion";
+            btnOutSesion.Rotation = 180D;
+            btnOutSesion.Size = new Size(26, 26);
+            btnOutSesion.TabIndex = 0;
+            btnOutSesion.TabStop = false;
+            btnOutSesion.Click += btnOutSesion_Click;
             // 
             // labelRolPerfil
             // 
@@ -892,33 +906,6 @@ namespace UI
             iconThemeMoon.TabIndex = 8;
             iconThemeMoon.TabStop = false;
             // 
-            // panelSalir
-            // 
-            panelSalir.Controls.Add(iconPictureBox1);
-            panelSalir.Dock = DockStyle.Bottom;
-            panelSalir.FlatStyle = FlatStyle.System;
-            panelSalir.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            panelSalir.Location = new Point(0, 616);
-            panelSalir.Name = "panelSalir";
-            panelSalir.Size = new Size(217, 61);
-            panelSalir.TabIndex = 25;
-            panelSalir.TabStop = false;
-            panelSalir.Text = "Salir";
-            // 
-            // iconPictureBox1
-            // 
-            iconPictureBox1.BackColor = SystemColors.ControlLight;
-            iconPictureBox1.ForeColor = SystemColors.ControlText;
-            iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
-            iconPictureBox1.IconColor = SystemColors.ControlText;
-            iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox1.Location = new Point(81, 17);
-            iconPictureBox1.Name = "iconPictureBox1";
-            iconPictureBox1.Rotation = 180D;
-            iconPictureBox1.Size = new Size(32, 32);
-            iconPictureBox1.TabIndex = 0;
-            iconPictureBox1.TabStop = false;
-            // 
             // FormMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -951,6 +938,7 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)pictureLogo).EndInit();
             panelPerfil.ResumeLayout(false);
             panelPerfil.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)btnOutSesion).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)picturePerfil).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnModeLight).EndInit();
@@ -961,8 +949,6 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)pictureAlert).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconThemeSun).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconThemeMoon).EndInit();
-            panelSalir.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -1018,8 +1004,7 @@ namespace UI
         private PictureBox pictureLogo;
         private GroupBox panelPerfil;
         private Label labelRolPerfil;
-        private GroupBox panelSalir;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private FontAwesome.Sharp.IconPictureBox btnOutSesion;
     }
 }
 

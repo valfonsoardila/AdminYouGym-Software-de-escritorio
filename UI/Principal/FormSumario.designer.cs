@@ -31,32 +31,32 @@
             components = new System.ComponentModel.Container();
             panel1 = new Panel();
             pictureBox2 = new PictureBox();
-            labelProductos = new FontAwesome.Sharp.IconButton();
+            labelCaja = new FontAwesome.Sharp.IconButton();
             panel2 = new Panel();
             labelTitleEntrenadores = new Label();
             lblFecha = new Label();
             lblhora = new Label();
             panel13 = new Panel();
             pictureBox5 = new PictureBox();
-            labelEstantes = new FontAwesome.Sharp.IconButton();
+            labelProductos = new FontAwesome.Sharp.IconButton();
             panel14 = new Panel();
             labelTitleAcerca = new Label();
             label15 = new Label();
             panel11 = new Panel();
             pictureBox3 = new PictureBox();
-            labelClientes = new FontAwesome.Sharp.IconButton();
+            labelPlanes = new FontAwesome.Sharp.IconButton();
             panel12 = new Panel();
             labelTitleServicios = new Label();
             panel9 = new Panel();
             pictureBox1 = new PictureBox();
-            labelCaja = new FontAwesome.Sharp.IconButton();
+            labelMiembros = new FontAwesome.Sharp.IconButton();
             panel10 = new Panel();
             label3 = new Label();
             label4 = new Label();
             labelTitleClientes = new Label();
             panel7 = new Panel();
             pictureBox4 = new PictureBox();
-            labelEmpleados = new FontAwesome.Sharp.IconButton();
+            labelEntrenadores = new FontAwesome.Sharp.IconButton();
             panel8 = new Panel();
             labelTitleCash = new Label();
             btnRefresh = new FontAwesome.Sharp.IconButton();
@@ -93,7 +93,7 @@
             panel1.BackColor = Color.Transparent;
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(pictureBox2);
-            panel1.Controls.Add(labelProductos);
+            panel1.Controls.Add(labelCaja);
             panel1.Controls.Add(panel2);
             panel1.ForeColor = Color.SeaGreen;
             panel1.Location = new Point(272, 39);
@@ -113,24 +113,24 @@
             pictureBox2.TabIndex = 32;
             pictureBox2.TabStop = false;
             // 
-            // labelProductos
+            // labelCaja
             // 
-            labelProductos.FlatAppearance.BorderSize = 0;
-            labelProductos.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            labelProductos.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            labelProductos.FlatStyle = FlatStyle.Flat;
-            labelProductos.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            labelProductos.ForeColor = Color.RoyalBlue;
-            labelProductos.IconChar = FontAwesome.Sharp.IconChar.None;
-            labelProductos.IconColor = Color.Black;
-            labelProductos.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            labelProductos.Location = new Point(4, 133);
-            labelProductos.Margin = new Padding(4, 3, 4, 3);
-            labelProductos.Name = "labelProductos";
-            labelProductos.Size = new Size(127, 35);
-            labelProductos.TabIndex = 31;
-            labelProductos.Text = "lbl1";
-            labelProductos.UseVisualStyleBackColor = true;
+            labelCaja.FlatAppearance.BorderSize = 0;
+            labelCaja.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            labelCaja.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            labelCaja.FlatStyle = FlatStyle.Flat;
+            labelCaja.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelCaja.ForeColor = Color.RoyalBlue;
+            labelCaja.IconChar = FontAwesome.Sharp.IconChar.None;
+            labelCaja.IconColor = Color.Black;
+            labelCaja.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            labelCaja.Location = new Point(4, 133);
+            labelCaja.Margin = new Padding(4, 3, 4, 3);
+            labelCaja.Name = "labelCaja";
+            labelCaja.Size = new Size(127, 35);
+            labelCaja.TabIndex = 31;
+            labelCaja.Text = "lbl1";
+            labelCaja.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -194,7 +194,7 @@
             panel13.Anchor = AnchorStyles.Top;
             panel13.BorderStyle = BorderStyle.FixedSingle;
             panel13.Controls.Add(pictureBox5);
-            panel13.Controls.Add(labelEstantes);
+            panel13.Controls.Add(labelProductos);
             panel13.Controls.Add(panel14);
             panel13.Location = new Point(772, 42);
             panel13.Margin = new Padding(4, 3, 4, 3);
@@ -213,24 +213,24 @@
             pictureBox5.TabIndex = 31;
             pictureBox5.TabStop = false;
             // 
-            // labelEstantes
+            // labelProductos
             // 
-            labelEstantes.FlatAppearance.BorderSize = 0;
-            labelEstantes.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            labelEstantes.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            labelEstantes.FlatStyle = FlatStyle.Flat;
-            labelEstantes.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            labelEstantes.ForeColor = Color.Orange;
-            labelEstantes.IconChar = FontAwesome.Sharp.IconChar.None;
-            labelEstantes.IconColor = Color.Black;
-            labelEstantes.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            labelEstantes.Location = new Point(0, 133);
-            labelEstantes.Margin = new Padding(4, 3, 4, 3);
-            labelEstantes.Name = "labelEstantes";
-            labelEstantes.Size = new Size(127, 35);
-            labelEstantes.TabIndex = 30;
-            labelEstantes.Text = "lbl1";
-            labelEstantes.UseVisualStyleBackColor = true;
+            labelProductos.FlatAppearance.BorderSize = 0;
+            labelProductos.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            labelProductos.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            labelProductos.FlatStyle = FlatStyle.Flat;
+            labelProductos.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelProductos.ForeColor = Color.Orange;
+            labelProductos.IconChar = FontAwesome.Sharp.IconChar.None;
+            labelProductos.IconColor = Color.Black;
+            labelProductos.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            labelProductos.Location = new Point(0, 133);
+            labelProductos.Margin = new Padding(4, 3, 4, 3);
+            labelProductos.Name = "labelProductos";
+            labelProductos.Size = new Size(127, 35);
+            labelProductos.TabIndex = 30;
+            labelProductos.Text = "lbl1";
+            labelProductos.UseVisualStyleBackColor = true;
             // 
             // panel14
             // 
@@ -274,7 +274,7 @@
             panel11.BackColor = Color.Transparent;
             panel11.BorderStyle = BorderStyle.FixedSingle;
             panel11.Controls.Add(pictureBox3);
-            panel11.Controls.Add(labelClientes);
+            panel11.Controls.Add(labelPlanes);
             panel11.Controls.Add(panel12);
             panel11.Location = new Point(441, 40);
             panel11.Margin = new Padding(4, 3, 4, 3);
@@ -293,24 +293,24 @@
             pictureBox3.TabIndex = 33;
             pictureBox3.TabStop = false;
             // 
-            // labelClientes
+            // labelPlanes
             // 
-            labelClientes.FlatAppearance.BorderSize = 0;
-            labelClientes.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            labelClientes.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            labelClientes.FlatStyle = FlatStyle.Flat;
-            labelClientes.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            labelClientes.ForeColor = Color.Crimson;
-            labelClientes.IconChar = FontAwesome.Sharp.IconChar.None;
-            labelClientes.IconColor = Color.Black;
-            labelClientes.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            labelClientes.Location = new Point(0, 133);
-            labelClientes.Margin = new Padding(4, 3, 4, 3);
-            labelClientes.Name = "labelClientes";
-            labelClientes.Size = new Size(127, 35);
-            labelClientes.TabIndex = 32;
-            labelClientes.Text = "lbl1";
-            labelClientes.UseVisualStyleBackColor = true;
+            labelPlanes.FlatAppearance.BorderSize = 0;
+            labelPlanes.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            labelPlanes.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            labelPlanes.FlatStyle = FlatStyle.Flat;
+            labelPlanes.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelPlanes.ForeColor = Color.Crimson;
+            labelPlanes.IconChar = FontAwesome.Sharp.IconChar.None;
+            labelPlanes.IconColor = Color.Black;
+            labelPlanes.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            labelPlanes.Location = new Point(0, 133);
+            labelPlanes.Margin = new Padding(4, 3, 4, 3);
+            labelPlanes.Name = "labelPlanes";
+            labelPlanes.Size = new Size(127, 35);
+            labelPlanes.TabIndex = 32;
+            labelPlanes.Text = "lbl1";
+            labelPlanes.UseVisualStyleBackColor = true;
             // 
             // panel12
             // 
@@ -342,7 +342,7 @@
             panel9.BackColor = Color.Transparent;
             panel9.BorderStyle = BorderStyle.FixedSingle;
             panel9.Controls.Add(pictureBox1);
-            panel9.Controls.Add(labelCaja);
+            panel9.Controls.Add(labelMiembros);
             panel9.Controls.Add(panel10);
             panel9.Location = new Point(104, 38);
             panel9.Margin = new Padding(4, 3, 4, 3);
@@ -361,24 +361,24 @@
             pictureBox1.TabIndex = 30;
             pictureBox1.TabStop = false;
             // 
-            // labelCaja
+            // labelMiembros
             // 
-            labelCaja.FlatAppearance.BorderSize = 0;
-            labelCaja.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            labelCaja.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            labelCaja.FlatStyle = FlatStyle.Flat;
-            labelCaja.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            labelCaja.ForeColor = Color.SeaGreen;
-            labelCaja.IconChar = FontAwesome.Sharp.IconChar.None;
-            labelCaja.IconColor = Color.Black;
-            labelCaja.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            labelCaja.Location = new Point(0, 134);
-            labelCaja.Margin = new Padding(4, 3, 4, 3);
-            labelCaja.Name = "labelCaja";
-            labelCaja.Size = new Size(127, 35);
-            labelCaja.TabIndex = 30;
-            labelCaja.Text = "lbl1";
-            labelCaja.UseVisualStyleBackColor = true;
+            labelMiembros.FlatAppearance.BorderSize = 0;
+            labelMiembros.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            labelMiembros.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            labelMiembros.FlatStyle = FlatStyle.Flat;
+            labelMiembros.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelMiembros.ForeColor = Color.SeaGreen;
+            labelMiembros.IconChar = FontAwesome.Sharp.IconChar.None;
+            labelMiembros.IconColor = Color.Black;
+            labelMiembros.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            labelMiembros.Location = new Point(0, 134);
+            labelMiembros.Margin = new Padding(4, 3, 4, 3);
+            labelMiembros.Name = "labelMiembros";
+            labelMiembros.Size = new Size(127, 35);
+            labelMiembros.TabIndex = 30;
+            labelMiembros.Text = "lbl1";
+            labelMiembros.UseVisualStyleBackColor = true;
             // 
             // panel10
             // 
@@ -435,7 +435,7 @@
             panel7.Anchor = AnchorStyles.Top;
             panel7.BorderStyle = BorderStyle.FixedSingle;
             panel7.Controls.Add(pictureBox4);
-            panel7.Controls.Add(labelEmpleados);
+            panel7.Controls.Add(labelEntrenadores);
             panel7.Controls.Add(panel8);
             panel7.Location = new Point(606, 42);
             panel7.Margin = new Padding(4, 3, 4, 3);
@@ -454,25 +454,25 @@
             pictureBox4.TabIndex = 31;
             pictureBox4.TabStop = false;
             // 
-            // labelEmpleados
+            // labelEntrenadores
             // 
-            labelEmpleados.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            labelEmpleados.FlatAppearance.BorderSize = 0;
-            labelEmpleados.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            labelEmpleados.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            labelEmpleados.FlatStyle = FlatStyle.Flat;
-            labelEmpleados.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            labelEmpleados.ForeColor = Color.MidnightBlue;
-            labelEmpleados.IconChar = FontAwesome.Sharp.IconChar.None;
-            labelEmpleados.IconColor = Color.Black;
-            labelEmpleados.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            labelEmpleados.Location = new Point(0, 132);
-            labelEmpleados.Margin = new Padding(4, 3, 4, 3);
-            labelEmpleados.Name = "labelEmpleados";
-            labelEmpleados.Size = new Size(127, 35);
-            labelEmpleados.TabIndex = 29;
-            labelEmpleados.Text = "lbl1";
-            labelEmpleados.UseVisualStyleBackColor = true;
+            labelEntrenadores.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            labelEntrenadores.FlatAppearance.BorderSize = 0;
+            labelEntrenadores.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            labelEntrenadores.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            labelEntrenadores.FlatStyle = FlatStyle.Flat;
+            labelEntrenadores.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelEntrenadores.ForeColor = Color.MidnightBlue;
+            labelEntrenadores.IconChar = FontAwesome.Sharp.IconChar.None;
+            labelEntrenadores.IconColor = Color.Black;
+            labelEntrenadores.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            labelEntrenadores.Location = new Point(0, 132);
+            labelEntrenadores.Margin = new Padding(4, 3, 4, 3);
+            labelEntrenadores.Name = "labelEntrenadores";
+            labelEntrenadores.Size = new Size(127, 35);
+            labelEntrenadores.TabIndex = 29;
+            labelEntrenadores.Text = "lbl1";
+            labelEntrenadores.UseVisualStyleBackColor = true;
             // 
             // panel8
             // 
@@ -678,11 +678,11 @@
         private Panel panel7;
         private Label labelTitleCash;
         private Panel panel8;
-        private FontAwesome.Sharp.IconButton labelEmpleados;
-        private FontAwesome.Sharp.IconButton labelProductos;
-        private FontAwesome.Sharp.IconButton labelEstantes;
-        private FontAwesome.Sharp.IconButton labelClientes;
+        private FontAwesome.Sharp.IconButton labelEntrenadores;
         private FontAwesome.Sharp.IconButton labelCaja;
+        private FontAwesome.Sharp.IconButton labelProductos;
+        private FontAwesome.Sharp.IconButton labelPlanes;
+        private FontAwesome.Sharp.IconButton labelMiembros;
         private FontAwesome.Sharp.IconButton btnRefresh;
         private Label labelRefresh;
         private Panel panel4;

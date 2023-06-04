@@ -36,6 +36,7 @@ namespace UI
             cajaRegistradoraService = new CajaRegistradoraService(ConfigConnection.ConnectionString);
             InitializeComponent();
             CargarListaMiembros();
+            CargarDatosPlanes();
             ConsultarCajaAbierta();
         }
 
@@ -76,6 +77,11 @@ namespace UI
                     labelBase.Text = "Sin definir";
                 }
             }
+        }
+        private void CargarDatosPlanes()
+        {
+            ConsultaPlanDeEjercicioRespuesta respuesta = new ConsultaPlanDeEjercicioRespuesta();
+            respuesta = planDeEjercicioService.ConsultarPorEstados("Activo");
         }
         private void CargarListaMiembros()
         {
