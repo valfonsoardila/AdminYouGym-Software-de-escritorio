@@ -122,7 +122,7 @@ Salario int,
 Horas_Extras_De_Trabajo int,
 Dias_De_Trabajo int,
 Meses_De_Contrato int,
-Tipo_De_Contrato varchar(20)
+Tipo_De_Contrato varchar(30)
 );
 
 create table PLAN_EJERCICIO(

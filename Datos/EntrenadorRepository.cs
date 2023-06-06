@@ -141,6 +141,31 @@ namespace Datos
                 var filas = command.ExecuteNonQuery();
             }
         }
+        public void ModificarDatosContrato(Entrenador entrenador)
+        {
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = @"update ENTRENADOR set Tipo_De_Id = @Tipo_De_Id, ImagenPerfil=@ImagenPerfil, Nombres = @Nombres, Apellidos = @Apellidos, Fecha_De_Nacimiento = @Fecha_De_Nacimiento, Edad = @Edad, Sexo = @Sexo, Direccion_Domicilio = @Direccion_Domicilio, Telefono = @Telefono, Correo = @Correo, Salario=@Salario, Horas_Extras_De_Trabajo=@Horas_Extras_De_Trabajo, Dias_De_Trabajo=@Dias_De_Trabajo, Meses_De_Contrato=@Meses_De_Contrato, Tipo_De_Contrato=@Tipo_De_Contrato
+                                        where Id=@Id";
+                command.Parameters.AddWithValue("@Id", entrenador.Identificacion);
+                command.Parameters.AddWithValue("@Tipo_De_Id", entrenador.TipoDeIdentificacion);
+                command.Parameters.AddWithValue("@ImagenPerfil", entrenador.ImagenPerfil);
+                command.Parameters.AddWithValue("@Nombres", entrenador.Nombres);
+                command.Parameters.AddWithValue("@Apellidos", entrenador.Apellidos);
+                command.Parameters.AddWithValue("@Fecha_De_Nacimiento", entrenador.FechaDeNacimiento);
+                command.Parameters.AddWithValue("@Edad", entrenador.Edad);
+                command.Parameters.AddWithValue("@Sexo", entrenador.Sexo);
+                command.Parameters.AddWithValue("@Direccion_Domicilio", entrenador.Direccion);
+                command.Parameters.AddWithValue("@Telefono", entrenador.Telefono);
+                command.Parameters.AddWithValue("@Correo", entrenador.CorreoElectronico);
+                command.Parameters.AddWithValue("@Salario", entrenador.PagoDeSalario);
+                command.Parameters.AddWithValue("@Horas_Extras_De_Trabajo", entrenador.HorasExtrasDeTrabajo);
+                command.Parameters.AddWithValue("@Dias_De_Trabajo", entrenador.DiasDeTrabajo);
+                command.Parameters.AddWithValue("@Meses_De_Contrato", entrenador.MesesDeContrato);
+                command.Parameters.AddWithValue("@Tipo_De_Contrato", entrenador.TipoDeContrato);
+                var filas = command.ExecuteNonQuery();
+            }
+        }
         private Entrenador DataReaderMapToEntrenador(SqlDataReader dataReader)
         {
             if (!dataReader.HasRows) return null;

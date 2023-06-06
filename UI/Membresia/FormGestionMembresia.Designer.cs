@@ -37,6 +37,8 @@
             btnUpdateMembership = new FontAwesome.Sharp.IconButton();
             panelContenedorClient = new Panel();
             dataGridMiembro = new DataGridView();
+            Eliminar = new DataGridViewImageColumn();
+            Deshacer = new DataGridViewImageColumn();
             panelDownDataGrid = new Panel();
             textHombres = new TextBox();
             label3 = new Label();
@@ -107,8 +109,6 @@
             iconCash = new FontAwesome.Sharp.IconPictureBox();
             label5 = new Label();
             btnVolver = new FontAwesome.Sharp.IconButton();
-            Eliminar = new DataGridViewImageColumn();
-            Deshacer = new DataGridViewImageColumn();
             tabControlMembership.SuspendLayout();
             tabGeneral.SuspendLayout();
             panelMembresia.SuspendLayout();
@@ -249,6 +249,20 @@
             dataGridMiembro.Size = new Size(813, 312);
             dataGridMiembro.TabIndex = 2;
             dataGridMiembro.CellClick += dataGridMiembro_CellClick;
+            // 
+            // Eliminar
+            // 
+            Eliminar.HeaderText = "Eliminar";
+            Eliminar.Image = Properties.Resources.deleRojBlack;
+            Eliminar.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Eliminar.Name = "Eliminar";
+            Eliminar.Resizable = DataGridViewTriState.False;
+            // 
+            // Deshacer
+            // 
+            Deshacer.HeaderText = "Deshacer";
+            Deshacer.Image = Properties.Resources.Regresar;
+            Deshacer.Name = "Deshacer";
             // 
             // panelDownDataGrid
             // 
@@ -713,7 +727,6 @@
             // 
             comboPlan.Enabled = false;
             comboPlan.FormattingEnabled = true;
-            comboPlan.Items.AddRange(new object[] { "Principiante", "Elite", "Profesional" });
             comboPlan.Location = new Point(11, 120);
             comboPlan.Name = "comboPlan";
             comboPlan.Size = new Size(189, 23);
@@ -1087,20 +1100,6 @@
             btnVolver.TabIndex = 5;
             btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click;
-            // 
-            // Eliminar
-            // 
-            Eliminar.HeaderText = "Eliminar";
-            Eliminar.Image = Properties.Resources.deleRojBlack;
-            Eliminar.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Eliminar.Name = "Eliminar";
-            Eliminar.Resizable = DataGridViewTriState.False;
-            // 
-            // Deshacer
-            // 
-            Deshacer.HeaderText = "Deshacer";
-            Deshacer.Image = Properties.Resources.Regresar;
-            Deshacer.Name = "Deshacer";
             // 
             // FormMembresia
             // 

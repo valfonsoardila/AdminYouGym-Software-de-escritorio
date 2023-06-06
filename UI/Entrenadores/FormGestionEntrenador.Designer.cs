@@ -103,7 +103,7 @@
             label27 = new Label();
             pictureBox2 = new PictureBox();
             panel10 = new Panel();
-            label17 = new Label();
+            labelCodigoEntrenador = new Label();
             label16 = new Label();
             label11 = new Label();
             panel9 = new Panel();
@@ -528,7 +528,7 @@
             btnModificarEntrenador.Size = new Size(107, 33);
             btnModificarEntrenador.TabIndex = 23;
             btnModificarEntrenador.UseVisualStyleBackColor = false;
-            btnModificarEntrenador.Click += btnModificarEntrenador_Click_1;
+            btnModificarEntrenador.Click += btnModificarEntrenador_Click;
             // 
             // btnRegistrarEntrenador
             // 
@@ -542,7 +542,7 @@
             btnRegistrarEntrenador.Size = new Size(107, 33);
             btnRegistrarEntrenador.TabIndex = 22;
             btnRegistrarEntrenador.UseVisualStyleBackColor = false;
-            btnRegistrarEntrenador.Click += btnRegistrarEntrenador_Click_1;
+            btnRegistrarEntrenador.Click += btnRegistrarEntrenador_Click;
             // 
             // picturePerfil
             // 
@@ -850,7 +850,6 @@
             // btnRegistrarContrato
             // 
             btnRegistrarContrato.BackColor = Color.Black;
-            btnRegistrarContrato.Enabled = false;
             btnRegistrarContrato.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
             btnRegistrarContrato.IconColor = Color.White;
             btnRegistrarContrato.IconFont = FontAwesome.Sharp.IconFont.Solid;
@@ -876,7 +875,6 @@
             panelContrato.Controls.Add(label27);
             panelContrato.Controls.Add(pictureBox2);
             panelContrato.Dock = DockStyle.Top;
-            panelContrato.Enabled = false;
             panelContrato.Location = new Point(0, 178);
             panelContrato.Name = "panelContrato";
             panelContrato.Size = new Size(819, 183);
@@ -896,10 +894,13 @@
             // comboTipoContrato
             // 
             comboTipoContrato.FormattingEnabled = true;
+            comboTipoContrato.Items.AddRange(new object[] { "Prestacion de servicios", "Contrato a termino fijo" });
             comboTipoContrato.Location = new Point(131, 35);
             comboTipoContrato.Name = "comboTipoContrato";
             comboTipoContrato.Size = new Size(170, 23);
             comboTipoContrato.TabIndex = 33;
+            comboTipoContrato.Text = "Seleccione tipo contrato";
+            comboTipoContrato.SelectedIndexChanged += comboTipoContrato_SelectedIndexChanged;
             // 
             // label31
             // 
@@ -928,6 +929,8 @@
             textHorasExtrasContrato.Name = "textHorasExtrasContrato";
             textHorasExtrasContrato.Size = new Size(111, 23);
             textHorasExtrasContrato.TabIndex = 29;
+            textHorasExtrasContrato.Text = "0";
+            textHorasExtrasContrato.TextChanged += textHorasExtrasContrato_TextChanged;
             // 
             // label29
             // 
@@ -946,6 +949,8 @@
             textDiasContrato.Name = "textDiasContrato";
             textDiasContrato.Size = new Size(111, 23);
             textDiasContrato.TabIndex = 27;
+            textDiasContrato.Text = "0";
+            textDiasContrato.TextChanged += textDiasContrato_TextChanged;
             // 
             // label28
             // 
@@ -964,6 +969,8 @@
             textMesesContrato.Name = "textMesesContrato";
             textMesesContrato.Size = new Size(150, 23);
             textMesesContrato.TabIndex = 25;
+            textMesesContrato.Text = "0";
+            textMesesContrato.TextChanged += textMesesContrato_TextChanged;
             // 
             // label27
             // 
@@ -987,7 +994,7 @@
             // 
             // panel10
             // 
-            panel10.Controls.Add(label17);
+            panel10.Controls.Add(labelCodigoEntrenador);
             panel10.Controls.Add(label16);
             panel10.Controls.Add(label11);
             panel10.Dock = DockStyle.Top;
@@ -996,16 +1003,16 @@
             panel10.Size = new Size(819, 27);
             panel10.TabIndex = 21;
             // 
-            // label17
+            // labelCodigoEntrenador
             // 
-            label17.AutoSize = true;
-            label17.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label17.ForeColor = Color.Black;
-            label17.Location = new Point(661, 3);
-            label17.Name = "label17";
-            label17.Size = new Size(105, 21);
-            label17.TabIndex = 18;
-            label17.Text = "*                      ";
+            labelCodigoEntrenador.AutoSize = true;
+            labelCodigoEntrenador.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelCodigoEntrenador.ForeColor = Color.Black;
+            labelCodigoEntrenador.Location = new Point(661, 3);
+            labelCodigoEntrenador.Name = "labelCodigoEntrenador";
+            labelCodigoEntrenador.Size = new Size(105, 21);
+            labelCodigoEntrenador.TabIndex = 18;
+            labelCodigoEntrenador.Text = "*                      ";
             // 
             // label16
             // 
@@ -1350,7 +1357,7 @@
         private Label label15;
         private PictureBox picturePerfilContrato;
         private FontAwesome.Sharp.IconButton btnCargarFoto;
-        private Label label17;
+        private Label labelCodigoEntrenador;
         private Label label16;
         private ComboBox comboTipoContrato;
         private Label label31;

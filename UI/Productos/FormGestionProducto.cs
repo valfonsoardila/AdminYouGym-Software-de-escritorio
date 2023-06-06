@@ -82,7 +82,7 @@ namespace UI
             InitializeComponent();
             IniciarOperaciones();
             ConsultarGimnasio();
-            ConsultarMarcas();
+            //ConsultarMarcas();
             ObtenerRutaDeVendido();
             cargarArchivoVendido(productoVendidoTxtService, rutasVendidos);
             CuadreDeventas();
@@ -154,7 +154,7 @@ namespace UI
             string ubicacion = comboFiltroUbicacion.Text;
             string estado = comboFiltroEstado.Text;
             string tipo = comboFiltroTipo.Text;
-            if (ubicacion == "Todos" && estado == "Todos" && tipo == "Todos")
+            if (ubicacion == "Todos" && estado == "Todos" && tipo == "Todos" || ubicacion=="Filtro ubicacion" || estado=="Filtro estado" || tipo=="Filtro tipo")
             {
                 textTotal.Enabled = true;
                 textCuarentena.Enabled = true;

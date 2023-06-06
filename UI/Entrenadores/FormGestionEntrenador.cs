@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI.Properties;
 
 namespace UI
 {
@@ -18,6 +19,8 @@ namespace UI
         Entrenador entrenador;
         bool busquedaEntrenador = false;
         string idEntrenador;
+        byte[] imagenConsultada;
+        Image antiguaPicture;
         public FormGestionEntrenador()
         {
             entrenadorService = new EntrenadorService(ConfigConnection.ConnectionString);
@@ -144,29 +147,45 @@ namespace UI
             entrenador.Sexo = comboSexoRegistro.Text;
             entrenador.Telefono = textTelefono.Text;
             entrenador.CorreoElectronico = textCorreo.Text;
-            entrenador.HorasExtrasDeTrabajo = 0;
-            entrenador.DiasDeTrabajo = 0;
-            entrenador.MesesDeContrato = 0;
-            entrenador.TipoDeContrato = "Ninguno";
-            using (MemoryStream ms = new MemoryStream())
+            entrenador.HorasExtrasDeTrabajo = Convert.ToInt32(textHorasExtrasContrato.Text);
+            entrenador.DiasDeTrabajo = Convert.ToInt32(textDiasContrato.Text);
+            entrenador.MesesDeContrato = Convert.ToInt32(textMesesContrato.Text);
+            if (comboTipoContrato.Text != "" && comboTipoContrato.Text != "Seleccione tipo contrato")
             {
-                picturePerfil.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                entrenador.ImagenPerfil = ms.ToArray();
+                entrenador.TipoDeContrato = comboTipoContrato.Text;
+                entrenador.PagoDeSalario = Convert.ToInt32(labelPagoNomina.Text);
+            }
+            else
+            {
+                entrenador.TipoDeContrato = "Ninguno";
+            }
+            if (picturePerfil.Image != Resources.User && picturePerfil.Image != null && picturePerfil.Image != antiguaPicture)
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    picturePerfil.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    entrenador.ImagenPerfil = ms.ToArray();
+                }
+            }
+            else
+            {
+                entrenador.ImagenPerfil = imagenConsultada;
             }
             return entrenador;
         }
-        private void btnRegistrarEntrenador_Click_1(object sender, EventArgs e)
+        private void btnRegistrarEntrenador_Click(object sender, EventArgs e)
         {
             Entrenador entrenador = MapearDatosEntrenador();
             string mensaje = entrenadorService.Guardar(entrenador);
             MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            CargarListaEntrenadores();
         }
-        private void btnModificarEntrenador_Click_1(object sender, EventArgs e)
+        private void btnModificarEntrenador_Click(object sender, EventArgs e)
         {
             Entrenador entrenador = MapearDatosEntrenador();
             string mensaje = entrenadorService.Modificar(entrenador);
             MessageBox.Show(mensaje, "Mensaje de modificacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-
+            CargarListaEntrenadores();
         }
         private void BuscarPorId(string busqueda)
         {
@@ -184,7 +203,7 @@ namespace UI
                 textDireccion.Text = buscado.Direccion;
                 textTelefono.Text = buscado.Telefono;
                 textCorreo.Text = buscado.CorreoElectronico;
-
+                imagenConsultada = buscado.ImagenPerfil;
                 busquedaEntrenador = true;
                 using (MemoryStream ms = new MemoryStream(buscado.ImagenPerfil))
                 {
@@ -192,6 +211,7 @@ namespace UI
                     Image imagen = Image.FromStream(ms);
                     // Asigna la imagen al control PictureBox
                     picturePerfil.Image = imagen;
+                    antiguaPicture = picturePerfil.Image;
                 }
             }
         }
@@ -218,13 +238,14 @@ namespace UI
                     Image imagen = Image.FromStream(ms);
                     // Asigna la imagen al control PictureBox
                     picturePerfil.Image = imagen;
+                    antiguaPicture = picturePerfil.Image;
                 }
             }
         }
         private void textSearch_TextChanged(object sender, EventArgs e)
         {
-            string busqueda = textSearchContrato.Text;
-            if (textSearchContrato.Text != "" && textSearchContrato.Text != "Buscar")
+            string busqueda = textSearch.Text;
+            if (textSearch.Text != "" && textSearch.Text != "Buscar")
             {
                 BuscarPorId(busqueda);
                 BuscarPorNombre(busqueda);
@@ -307,11 +328,13 @@ namespace UI
             {
                 panelContrato.Enabled = true;
                 idEntrenador = buscado.Identificacion;
+                labelCodigoEntrenador.Text = buscado.CodigoEntrenador;
                 textNombresContrato.Text = buscado.Nombres;
                 textApellidosContrato.Text = buscado.Apellidos;
                 dateFechaNacimientoContrato.Value = buscado.FechaDeNacimiento;
                 comboSexoContrato.Text = buscado.Sexo;
                 busquedaEntrenador = true;
+                btnRegistrarContrato.Enabled = true;
                 using (MemoryStream ms = new MemoryStream(buscado.ImagenPerfil))
                 {
                     // Carga la imagen desde el MemoryStream
@@ -342,6 +365,7 @@ namespace UI
                     // Asigna la imagen al control PictureBox
                     picturePerfilContrato.Image = imagen;
                 }
+                btnRegistrarContrato.Enabled = true;
             }
         }
 
@@ -364,6 +388,8 @@ namespace UI
                     {
                         labelAlerta.Visible = false;
                         pictureAlerta.Visible = false;
+                        btnRegistrarContrato.Enabled = false;
+                        btnModificarContrato.Enabled = true;
                     }
                 }
             }
@@ -404,31 +430,89 @@ namespace UI
 
         private void btnRegistrarContrato_Click(object sender, EventArgs e)
         {
+            Entrenador entrenador = MapearDatosEntrenador();
+            string mensaje = entrenadorService.Guardar(entrenador);
+            MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            CargarListaEntrenadores();
+        }
+        private void btnModificarContrato_Click(object sender, EventArgs e)
+        {
+            Entrenador entrenador = MapearDatosEntrenador();
             BusquedaEntrenadorRespuesta respuesta = new BusquedaEntrenadorRespuesta();
             respuesta = entrenadorService.BuscarPorIdentificacion(idEntrenador);
-            var buscado = respuesta.Entrenador;
-            if (buscado != null)
+            var entrenadorBuscado = respuesta.Entrenador;
+            if (entrenadorBuscado != null)
             {
-                string mensaje = entrenadorService.Modificar(buscado);
+                entrenador.CodigoEntrenador = entrenadorBuscado.CodigoEntrenador;
+                entrenador.Identificacion = entrenadorBuscado.Identificacion;
+                entrenador.TipoDeIdentificacion = entrenadorBuscado.TipoDeIdentificacion;
+                entrenador.Nombres = entrenadorBuscado.Nombres;
+                entrenador.Apellidos = entrenadorBuscado.Apellidos;
+                entrenador.Sexo = entrenadorBuscado.Sexo;
+                entrenador.FechaDeNacimiento = entrenadorBuscado.FechaDeNacimiento;
+                entrenador.Edad = entrenadorBuscado.Edad;
+                entrenador.Direccion = entrenadorBuscado.Direccion;
+                entrenador.Telefono = entrenadorBuscado.Telefono;
+                entrenador.CorreoElectronico = entrenadorBuscado.CorreoElectronico;
+                string mensaje = entrenadorService.ModificarDatosContrato(entrenador);
                 MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 CargarListaEntrenadores();
             }
         }
-        private void btnModificarContrato_Click(object sender, EventArgs e)
+
+        private void comboTipoContrato_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BusquedaEntrenadorRespuesta respuesta = new BusquedaEntrenadorRespuesta();
-            respuesta = entrenadorService.BuscarPorIdentificacion(idEntrenador);
-            var buscado = respuesta.Entrenador;
-            if (buscado != null)
+            if (comboTipoContrato.Text != "Seleccione tipo contrato" && comboTipoContrato.Text != "")
             {
-                buscado.TipoDeContrato = comboTipoContrato.Text;
-                buscado.MesesDeContrato = Convert.ToInt32(textMesesContrato.Text);
-                buscado.DiasDeTrabajo = Convert.ToInt32(textDiasContrato.Text);
-                buscado.HorasExtrasDeTrabajo = Convert.ToInt32(textHorasExtrasContrato.Text);
-                buscado.PagoDeSalario = Convert.ToInt32(labelPagoNomina.Text);
-                string mensaje = entrenadorService.Modificar(buscado);
-                MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                CargarListaEntrenadores();
+                entrenador = new Entrenador();
+                entrenador.TipoDeContrato = comboTipoContrato.Text;
+                entrenador.DiasDeTrabajo = Convert.ToInt32(textDiasContrato.Text);
+                entrenador.HorasExtrasDeTrabajo = Convert.ToInt32(textHorasExtrasContrato.Text);
+                entrenador.MesesDeContrato = Convert.ToInt32(textMesesContrato.Text);
+                entrenador.CalcularSalario();
+                labelPagoNomina.Text = entrenador.PagoDeSalario.ToString();
+            }
+        }
+
+        private void textMesesContrato_TextChanged(object sender, EventArgs e)
+        {
+            if (textMesesContrato.Text != "")
+            {
+                entrenador = new Entrenador();
+                entrenador.TipoDeContrato = comboTipoContrato.Text;
+                entrenador.DiasDeTrabajo = Convert.ToInt32(textDiasContrato.Text);
+                entrenador.HorasExtrasDeTrabajo = Convert.ToInt32(textHorasExtrasContrato.Text);
+                entrenador.MesesDeContrato = Convert.ToInt32(textMesesContrato.Text);
+                entrenador.CalcularSalario();
+                labelPagoNomina.Text = entrenador.PagoDeSalario.ToString();
+            }
+        }
+
+        private void textDiasContrato_TextChanged(object sender, EventArgs e)
+        {
+            if (textDiasContrato.Text != "")
+            {
+                entrenador = new Entrenador();
+                entrenador.TipoDeContrato = comboTipoContrato.Text;
+                entrenador.DiasDeTrabajo = Convert.ToInt32(textDiasContrato.Text);
+                entrenador.HorasExtrasDeTrabajo = Convert.ToInt32(textHorasExtrasContrato.Text);
+                entrenador.MesesDeContrato = Convert.ToInt32(textMesesContrato.Text);
+                entrenador.CalcularSalario();
+                labelPagoNomina.Text = entrenador.PagoDeSalario.ToString();
+            }
+        }
+
+        private void textHorasExtrasContrato_TextChanged(object sender, EventArgs e)
+        {
+            if (textHorasExtrasContrato.Text != "")
+            {
+                entrenador = new Entrenador();
+                entrenador.TipoDeContrato = comboTipoContrato.Text;
+                entrenador.DiasDeTrabajo = Convert.ToInt32(textDiasContrato.Text);
+                entrenador.HorasExtrasDeTrabajo = Convert.ToInt32(textHorasExtrasContrato.Text);
+                entrenador.MesesDeContrato = Convert.ToInt32(textMesesContrato.Text);
+                entrenador.CalcularSalario();
+                labelPagoNomina.Text = entrenador.PagoDeSalario.ToString();
             }
         }
     }

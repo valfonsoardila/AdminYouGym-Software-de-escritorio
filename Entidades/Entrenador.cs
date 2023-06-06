@@ -59,15 +59,15 @@ namespace Entidades
         {
             string TipoC="";
             TipoC = TipoDeContrato;
-            if (TipoC == "Ps" || TipoC == "Ps(Prestacion-de-servicios)")
+            if (TipoC == "Ps" || TipoC == "Prestacion de servicios")
             {
-                PagoDeSalario = (60000 * DiasDeTrabajo) + (HorasExtrasDeTrabajo * 100000);
+                PagoDeSalario = (30000 * DiasDeTrabajo) + (HorasExtrasDeTrabajo * 7800);
             }
             else
             {
-                if (TipoC == "Cf" || TipoC == "Cf(Contrato-a-termino-fijo)")
+                if (TipoC == "Cf" || TipoC == "Contrato a termino fijo")
                 {
-                    PagoDeSalario = (2000000* MesesDeContrato) + (HorasExtrasDeTrabajo * 100000);
+                    PagoDeSalario = (2000000 * MesesDeContrato) + (HorasExtrasDeTrabajo * 7800);
                 }
             }
         }

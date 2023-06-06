@@ -82,6 +82,14 @@ namespace UI
         {
             ConsultaPlanDeEjercicioRespuesta respuesta = new ConsultaPlanDeEjercicioRespuesta();
             respuesta = planDeEjercicioService.ConsultarPorEstados("Activo");
+            var planesDeEjercicios = respuesta.PlanesDeEjercicios.ToList();
+            if (planesDeEjercicios.Count > 0)
+            {
+                for (int i = 0; i < planesDeEjercicios.Count; i++)
+                {
+                    comboPlan.Items.Add(planesDeEjercicios[i].Objetivo);
+                }
+            }
         }
         private void CargarListaMiembros()
         {
@@ -242,6 +250,7 @@ namespace UI
                 textNombres.Text = clienteBuscado.Nombres;
                 textApellidos.Text = clienteBuscado.Apellidos;
                 comboEstado.Enabled = true;
+                comboPlan.Enabled = true;
                 busquedaCliente = true;
                 using (MemoryStream ms = new MemoryStream(clienteBuscado.ImagenPerfil))
                 {
@@ -324,6 +333,7 @@ namespace UI
                 textApellidos.Text = clienteBuscado.Apellidos;
                 textCodigoMiembro.Text = clienteBuscado.CodigoCliente;
                 comboEstado.Enabled = true;
+                comboPlan.Enabled = true;
                 busquedaCliente = true;
                 using (MemoryStream ms = new MemoryStream(clienteBuscado.ImagenPerfil))
                 {

@@ -86,12 +86,39 @@ namespace Logica
             try
             {
                 entrenadorNuevo.CalcularSalario();
+                entrenadorNuevo.CalcularEdad();
                 conexion.Open();
                 var entrenadorAntiguo = repositorio.BuscarPorIdentificacion(entrenadorNuevo.Identificacion);
                 
                 if (entrenadorAntiguo != null)
                 {
                     repositorio.Modificar(entrenadorNuevo);
+                    return ($"El registro de {entrenadorNuevo.Nombres} se ha modificado satisfactoriamente.");
+                }
+                else
+                {
+                    return ($"Lo sentimos, el entrenador con Identificación {entrenadorNuevo.Identificacion} no se encuentra registrado.");
+                }
+            }
+            catch (Exception e)
+            {
+
+                return $"Error de la Aplicación: {e.Message}";
+            }
+            finally { conexion.Close(); }
+        }
+        public string ModificarDatosContrato(Entrenador entrenadorNuevo)
+        {
+            try
+            {
+                entrenadorNuevo.CalcularSalario();
+                entrenadorNuevo.CalcularEdad();
+                conexion.Open();
+                var entrenadorAntiguo = repositorio.BuscarPorIdentificacion(entrenadorNuevo.Identificacion);
+
+                if (entrenadorAntiguo != null)
+                {
+                    repositorio.ModificarDatosContrato(entrenadorNuevo);
                     return ($"El registro de {entrenadorNuevo.Nombres} se ha modificado satisfactoriamente.");
                 }
                 else
