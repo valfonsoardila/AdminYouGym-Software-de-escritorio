@@ -28,6 +28,7 @@ namespace UI
         string idCajaAbierta;
         double montoActualCaja;
         double montoActualVenta;
+        bool estadoCaja;
         public FormMembresia()
         {
             clienteService = new ClienteService(ConfigConnection.ConnectionString);
@@ -35,9 +36,9 @@ namespace UI
             planDeEjercicioService = new PlanDeEjercicioService(ConfigConnection.ConnectionString);
             cajaRegistradoraService = new CajaRegistradoraService(ConfigConnection.ConnectionString);
             InitializeComponent();
+            ConsultarCajaAbierta();
             CargarListaMiembros();
             CargarDatosPlanes();
-            ConsultarCajaAbierta();
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -57,11 +58,13 @@ namespace UI
         //Consultar cliente
         public void ConsultarCajaAbierta()
         {
+            estadoCaja = false;
             BusquedaCajaRegistradoraRespuesta respuesta = new BusquedaCajaRegistradoraRespuesta();
             string estado = "Abierta";
             respuesta = cajaRegistradoraService.BuscarPorEstado(estado);
             if (respuesta.CajaRegistradora != null)
             {
+                estadoCaja = true;
                 var cajasRegistradoras = new List<Caja> { respuesta.CajaRegistradora };
                 labelCash.Text = respuesta.CajaRegistradora.VentaDelDia.ToString();
                 labelBase.Text = respuesta.CajaRegistradora.MontoInicial.ToString();
@@ -89,6 +92,11 @@ namespace UI
                 {
                     comboPlan.Items.Add(planesDeEjercicios[i].Objetivo);
                 }
+            }
+            else
+            {
+                labelAlerta.Visible = true;
+                labelAlerta.Text = "No ha registrado ningun plan";
             }
         }
         private void CargarListaMiembros()
@@ -273,6 +281,7 @@ namespace UI
                     textSaldo.Text = membresiaBuscada.Saldo.ToString();
                     btnModificarCliente.Enabled = true;
                     pictureCategoria.Visible = true;
+                    btnEnviarReporte.Visible = true;
                     if (membresia.Categoria == "Principiante")
                     {
                         pictureCategoria.Image = Resources.bronze_;
@@ -356,6 +365,7 @@ namespace UI
                     textSaldo.Text = membresiaBuscada.Saldo.ToString();
                     labelCantidadCreditos.Text = membresiaBuscada.Creditos.ToString();
                     btnModificarCliente.Enabled = true;
+                    btnEnviarReporte.Visible = true;
                     if (membresia.Categoria == "Principiante")
                     {
                         pictureCategoria.Image = Resources.bronze_;
@@ -471,19 +481,27 @@ namespace UI
         }
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if (comboEstado.Text == "Activo" || comboEstado.Text == "Inactivo" && comboPlan.Text != "Seleccione el plan")
+            if (estadoCaja == true)
             {
-                Membresia membresia = MapearMiembro();
-                string mensaje = membresiaService.Guardar(membresia);
-                if (mensaje == "Membresia registrada correctamente")
+                if (comboEstado.Text == "Activo" && comboPlan.Text != "Seleccione el plan")
                 {
-                    MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                    btnEnviarReporte.Visible = true;
-                    CargarListaMiembros();
-                    btnModificarCliente.Enabled = true;
-                    SumarACaja();
-                    //Limpiar();
+                    Membresia membresia = MapearMiembro();
+                    string mensaje = membresiaService.Guardar(membresia);
+                    if (mensaje == "Membresia registrada correctamente")
+                    {
+                        MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                        btnEnviarReporte.Visible = true;
+                        CargarListaMiembros();
+                        btnModificarCliente.Enabled = true;
+                        SumarACaja();
+                        //Limpiar();
+                    }
                 }
+            }
+            else
+            {
+                labelAlerta.Visible = true;
+                labelAlerta.Text = "La caja todavia no tiene apertura";
             }
         }
         private void SumarACaja()
@@ -561,17 +579,25 @@ namespace UI
 
         private void btnModificarCliente_Click(object sender, EventArgs e)
         {
-            if (comboEstado.Text == "Activo" || comboEstado.Text == "Inactivo" && comboPlan.Text != "Seleccione el plan")
+            if (estadoCaja == true)
             {
-                Membresia membresia = MapearMiembro();
-                string mensaje = membresiaService.Modificar(membresia);
-                MessageBox.Show(mensaje, "Mensaje de modificacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                labelValorInscripcion.Text = membresia.ValorInscripcion.ToString();
-                labelValorMensualidad.Text = membresia.ValorMensual.ToString();
-                labelCantidadCreditos.Text = membresia.Creditos.ToString();
-                int Total = membresia.ValorInscripcion + membresia.ValorMensual;
-                labelTotalAPagar.Text = Total.ToString();
-                CargarListaMiembros();
+                if (comboEstado.Text == "Activo" || comboEstado.Text == "Inactivo" && comboPlan.Text != "Seleccione el plan")
+                {
+                    Membresia membresia = MapearMiembro();
+                    string mensaje = membresiaService.Modificar(membresia);
+                    MessageBox.Show(mensaje, "Mensaje de modificacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    labelValorInscripcion.Text = membresia.ValorInscripcion.ToString();
+                    labelValorMensualidad.Text = membresia.ValorMensual.ToString();
+                    labelCantidadCreditos.Text = membresia.Creditos.ToString();
+                    int Total = membresia.ValorInscripcion + membresia.ValorMensual;
+                    labelTotalAPagar.Text = Total.ToString();
+                    CargarListaMiembros();
+                }
+            }
+            else
+            {
+                labelAlerta.Visible = true;
+                labelAlerta.Text = "La caja todavia no tiene apertura";
             }
         }
 

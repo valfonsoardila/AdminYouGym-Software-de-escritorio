@@ -458,6 +458,7 @@ namespace UI
             comboFiltroEstado.Size = new Size(100, 23);
             comboFiltroEstado.TabIndex = 52;
             comboFiltroEstado.Text = "Todos";
+            comboFiltroEstado.SelectedIndexChanged += comboFiltroEstado_SelectedIndexChanged_1;
             // 
             // labelFiltro
             // 

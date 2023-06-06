@@ -154,46 +154,6 @@ namespace UI
             textTotalCajasAbiertas.Text = "0";
             textTotalCajasCerradas.Text = "0";
         }
-        private void comboFiltroEstado_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ConsultaCajaRegistradoraRespuesta respuesta = new ConsultaCajaRegistradoraRespuesta();
-            string estado = comboFiltroEstado.Text;
-            if (estado != "Todos")
-            {
-                textTotalCajas.Enabled = true;
-                textTotalCajasAbiertas.Enabled = true;
-                textTotalCajasCerradas.Enabled = true;
-                respuesta = cajaRegistradoraService.ConsultarPorEstadosCajas(estado);
-                cajasRegistradoras = respuesta.CajasRegistradoras.ToList();
-                dataGridFarmacos.DataSource = null;
-                if (respuesta.CajasRegistradoras.Count != 0 && respuesta.CajasRegistradoras != null)
-                {
-                    dataGridFarmacos.DataSource = respuesta.CajasRegistradoras;
-                    Eliminar.Visible = true;
-                    textTotalCajas.Text = cajaRegistradoraService.Totalizar().Cuenta.ToString();
-                    textTotalCajasAbiertas.Text = cajaRegistradoraService.TotalizarTipo("Abierta").Cuenta.ToString();
-                    textTotalCajasCerradas.Text = cajaRegistradoraService.TotalizarTipo("Cerrada").Cuenta.ToString();
-                    labelAdvertencia.Visible = false;
-                }
-                else
-                {
-                    if (respuesta.CajasRegistradoras == null || respuesta.CajasRegistradoras.Count == 0)
-                    {
-                        MostrarAviso();
-                        btnHistorial.Enabled = false;
-                        Eliminar.Visible = false;
-                        labelAdvertencia.Visible = true;
-                    }
-                }
-            }
-            else
-            {
-                if (comboFiltroEstado.Text == "Todos")
-                {
-                    ConsultarYLlenarGridDeCajas();
-                }
-            }
-        }
         private Caja MapearCaja()
         {
             cajaRegistradora = new Caja();
@@ -529,6 +489,47 @@ namespace UI
                 {
                     string msg = "No hay registros disponibles";
                     MessageBox.Show(msg, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void comboFiltroEstado_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            ConsultaCajaRegistradoraRespuesta respuesta = new ConsultaCajaRegistradoraRespuesta();
+            string estado = comboFiltroEstado.Text;
+            if (estado != "Todos")
+            {
+                textTotalCajas.Enabled = true;
+                textTotalCajasAbiertas.Enabled = true;
+                textTotalCajasCerradas.Enabled = true;
+                respuesta = cajaRegistradoraService.ConsultarPorEstadosCajas(estado);
+                cajasRegistradoras = respuesta.CajasRegistradoras.ToList();
+                dataGridFarmacos.DataSource = null;
+                if (respuesta.CajasRegistradoras.Count != 0 && respuesta.CajasRegistradoras != null)
+                {
+                    dataGridFarmacos.DataSource = respuesta.CajasRegistradoras;
+                    Eliminar.Visible = true;
+                    textTotalCajas.Text = cajaRegistradoraService.Totalizar().Cuenta.ToString();
+                    textTotalCajasAbiertas.Text = cajaRegistradoraService.TotalizarTipo("Abierta").Cuenta.ToString();
+                    textTotalCajasCerradas.Text = cajaRegistradoraService.TotalizarTipo("Cerrada").Cuenta.ToString();
+                    labelAdvertencia.Visible = false;
+                }
+                else
+                {
+                    if (respuesta.CajasRegistradoras == null || respuesta.CajasRegistradoras.Count == 0)
+                    {
+                        MostrarAviso();
+                        btnHistorial.Enabled = false;
+                        Eliminar.Visible = false;
+                        labelAdvertencia.Visible = true;
+                    }
+                }
+            }
+            else
+            {
+                if (comboFiltroEstado.Text == "Todos")
+                {
+                    ConsultarYLlenarGridDeCajas();
                 }
             }
         }

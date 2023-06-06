@@ -22,6 +22,7 @@ namespace UI
         {
             empleadoService = new EmpleadoService(ConfigConnection.ConnectionString);
             InitializeComponent();
+            CargarListaEmpleados();
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -150,6 +151,7 @@ namespace UI
             Empleado empleado = MapearDatosEmpleado();
             string mensaje = empleadoService.Guardar(empleado);
             MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            CargarListaEmpleados();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -157,6 +159,7 @@ namespace UI
             Empleado empleado = MapearDatosEmpleado();
             string mensaje = empleadoService.Modificar(empleado);
             MessageBox.Show(mensaje, "Mensaje de modificacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            CargarListaEmpleados();
         }
         private void BuscarPorId(string busqueda)
         {

@@ -22,6 +22,7 @@ namespace UI
         {
             administradorService = new AdministradorService(ConfigConnection.ConnectionString);
             InitializeComponent();
+            CargarListaAdministradores();
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -153,6 +154,7 @@ namespace UI
             Administrador administrador = MapearDatosAdministrador();
             string mensaje = administradorService.Guardar(administrador);
             MessageBox.Show(mensaje, "Mensaje de registro", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            CargarListaAdministradores();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -160,6 +162,7 @@ namespace UI
             Administrador administrador = MapearDatosAdministrador();
             string mensaje = administradorService.Modificar(administrador);
             MessageBox.Show(mensaje, "Mensaje de modificacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            CargarListaAdministradores();
         }
         private void BuscarPorId(string busqueda)
         {
