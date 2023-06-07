@@ -15,32 +15,32 @@ File Sentencia.sql  in repository<br>
 ## Clean layers arquitecture
 Layers<br>
 &nbsp;&nbsp;| Logica<br>
-  | Datos<br> 
-  | Entidades<br> 
-  | UI<br> 
-  | Consola<br> 
-  | SQL<br> 
-  | Pruebas Unitarias<br>
+&nbsp;&nbsp;| Datos<br> 
+&nbsp;&nbsp;| Entidades<br> 
+&nbsp;&nbsp;| UI<br> 
+&nbsp;&nbsp;| Consola<br> 
+&nbsp;&nbsp;| SQL<br> 
+&nbsp;&nbsp;| Pruebas Unitarias<br>
 
 ## Project specifications
 Layer UI Forms<br>
-  Folders<br>
-    | Administrador<br> 
-    | Ajuste<br>
-    | Caja Registradora<br> 
-    | Cliente<br> 
-    | Empleado<br> 
-    | Entrenador<br> 
-    | Factura<br> 
-    | Licencia<br> 
-    | Login<br> 
-    | Membresia<br> 
-    | Plan De Ejercicio<br>
-    | Principal<br> 
-    | Productos<br>
-    | Resources<br>
-  Files src<br>
-    | app.config<br>
-    | ConfigConnection.cs<br>
-    | Validaciones.cs<br>
-    | Program.cs<br>
+&nbsp;&nbsp;Folders<br>
+&nbsp;&nbsp;&nbsp;&nbsp;| Administrador<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;| Ajuste<br>
+&nbsp;&nbsp;&nbsp;&nbsp;| Caja Registradora<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;| Cliente<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;| Empleado<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;| Entrenador<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;| Factura<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;| Licencia<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;| Login<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;| Membresia<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;| Plan De Ejercicio<br>
+&nbsp;&nbsp;&nbsp;&nbsp;| Principal<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;| Productos<br>
+&nbsp;&nbsp;&nbsp;&nbsp;| Resources<br>
+&nbsp;&nbsp;Files src<br>
+&nbsp;&nbsp;&nbsp;&nbsp;| app.config<br>
+&nbsp;&nbsp;&nbsp;&nbsp;| ConfigConnection.cs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;| Validaciones.cs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;| Program.cs<br>
