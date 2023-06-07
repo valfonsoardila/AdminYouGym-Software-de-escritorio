@@ -14,7 +14,7 @@ File Sentencia.sql  in repository<br>
 
 ## Clean layers arquitecture
 Layers<br>
-  | Logica<br>
+&nbsp;&nbsp;| Logica<br>
   | Datos<br> 
   | Entidades<br> 
   | UI<br> 
