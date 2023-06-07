@@ -1,9 +1,9 @@
-# AdminYouGym App
+# `AdminYouGym App`
 [Español]<br>
 Sistema de información para la gestión de un gimnasio con Base de datos SQL Server<br>
 [English]<br>
 
-##  Development Language and Environments
+## `Development Language and Environments`
 Development Language: C#<br>
 Arquitecture Framework: .Net Framework v6.0 stable<br>
 Environment: Visual Studio Community 2022<br>
@@ -12,8 +12,8 @@ Server method: Local<br>
 ### SQL Sentences
 File Sentencia.sql  in repository<br>
 
-## Clean layers arquitecture
-Layers<br>
+## `Clean layers arquitecture`
+### `Layers`<br>
 &nbsp;&nbsp;| Logica<br>
 &nbsp;&nbsp;| Datos<br> 
 &nbsp;&nbsp;| Entidades<br> 
@@ -23,8 +23,8 @@ Layers<br>
 &nbsp;&nbsp;| Pruebas Unitarias<br>
 
 ## Project specifications
-Layer UI Forms<br>
-&nbsp;&nbsp;Folders<br>
+### `Layer UI Forms`<br>
+&nbsp;&nbsp;`Folders`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;| Administrador<br> 
 &nbsp;&nbsp;&nbsp;&nbsp;| Ajuste<br>
 &nbsp;&nbsp;&nbsp;&nbsp;| Caja Registradora<br> 
