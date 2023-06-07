@@ -551,6 +551,7 @@
             textEstaturaCorporal.TabIndex = 5;
             textEstaturaCorporal.Text = "0";
             textEstaturaCorporal.TextAlign = HorizontalAlignment.Center;
+            textEstaturaCorporal.KeyPress += textEstaturaCorporal_KeyPress;
             // 
             // label28
             // 
@@ -572,6 +573,7 @@
             textPesoCorporal.TabIndex = 3;
             textPesoCorporal.Text = "0";
             textPesoCorporal.TextAlign = HorizontalAlignment.Center;
+            textPesoCorporal.KeyPress += textPesoCorporal_KeyPress;
             // 
             // label27
             // 
@@ -699,6 +701,7 @@
             textTelefono.Name = "textTelefono";
             textTelefono.Size = new Size(151, 23);
             textTelefono.TabIndex = 13;
+            textTelefono.KeyPress += textTelefono_KeyPress;
             // 
             // label24
             // 
@@ -772,6 +775,7 @@
             textApellidos.Name = "textApellidos";
             textApellidos.Size = new Size(151, 23);
             textApellidos.TabIndex = 5;
+            textApellidos.TextChanged += textApellidos_TextChanged;
             // 
             // label20
             // 
@@ -790,6 +794,8 @@
             textNombres.Name = "textNombres";
             textNombres.Size = new Size(151, 23);
             textNombres.TabIndex = 3;
+            textNombres.TextChanged += textNombres_TextChanged;
+            textNombres.KeyPress += textNombres_KeyPress;
             // 
             // label19
             // 
@@ -805,9 +811,12 @@
             // 
             textID.BorderStyle = BorderStyle.FixedSingle;
             textID.Location = new Point(108, 13);
+            textID.MaxLength = 10;
             textID.Name = "textID";
             textID.Size = new Size(133, 23);
             textID.TabIndex = 1;
+            textID.TextChanged += textID_TextChanged;
+            textID.KeyPress += textID_KeyPress;
             // 
             // label18
             // 

@@ -19,6 +19,7 @@ namespace UI
 {
     public partial class FormRegistrarUsuario : Form
     {
+        public readonly Validaciones validaciones;
         UsuarioService usuarioService;
         EmpleadoService empleadoService;
         AdministradorService administradorService;
@@ -36,6 +37,7 @@ namespace UI
             empleadoService = new EmpleadoService(ConfigConnection.ConnectionString);
             InitializeComponent();
             ImagenCircular();
+            validaciones = new Validaciones();
         }
         //Drag Form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -362,8 +364,17 @@ namespace UI
             DialogResult dr = ventanaCargar.ShowDialog();
             if (dr == DialogResult.OK)
             {
-                picturePerfil.Image = Image.FromFile(ventanaCargar.FileName);
-                ImagenCircular();
+                if (validaciones.ValidarImagen(ventanaCargar.FileName) == true)
+                {
+                    // La imagen cargada en picturePerfil es válida
+                    picturePerfil.Image = Image.FromFile(ventanaCargar.FileName);
+                    ImagenCircular();
+                }
+                else
+                {
+                    labelAdvertencia.Visible = true;
+                    labelAdvertencia.Text = "Formato de imagen incorrecta";
+                }
             }
         }
 
@@ -374,6 +385,93 @@ namespace UI
             using (Pen pen = new Pen(Color.White, 2))
             {
                 e.Graphics.DrawEllipse(pen, 0, 0, pictureBox.Width - 1, pictureBox.Height - 1);
+            }
+        }
+
+        private void textCorreo_TextChanged(object sender, EventArgs e)
+        {
+            if (textCorreo.Text != "" && textCorreo.Text != "@gmail.com")
+            {
+                if (validaciones.ValidacionEmail(textCorreo.Text) == false)
+                {
+                    labelAdvertencia.Visible = true;
+                    labelAdvertencia.Text = "Correo Invalido";
+                    textCorreo.ForeColor = Color.Maroon;
+                }
+                else
+                {
+                    labelAdvertencia.Visible = false;
+                    textCorreo.ForeColor = Color.Black;
+                }
+            }
+        }
+
+        private void textContraseña_TextChanged(object sender, EventArgs e)
+        {
+            if (validaciones.ValidacionContrasena(textContraseña.Text) == false)
+            {
+                labelAdvertencia.Visible = true;
+                labelAdvertencia.Text = "la contraseña es minimo de 8";
+                textContraseña.ForeColor = Color.Maroon;
+            }
+            else
+            {
+                labelAdvertencia.Visible = false;
+                textContraseña.ForeColor = Color.Black;
+            }
+        }
+
+        private void textIdentificacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si la tecla presionada no es un número o la tecla de retroceso
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cancelar la pulsación del carácter
+            }
+        }
+
+        private void textTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si la tecla presionada no es un número o la tecla de retroceso
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cancelar la pulsación del carácter
+            }
+        }
+
+        private void textNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si la tecla presionada no es una letra o la tecla de retroceso
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true; // Cancelar la pulsación del carácter
+            }
+        }
+
+        private void textApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si la tecla presionada no es una letra o la tecla de retroceso
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true; // Cancelar la pulsación del carácter
+            }
+        }
+
+        private void textUsuario_TextChanged(object sender, EventArgs e)
+        {
+            if (textUsuario.Text != "")
+            {
+                if (validaciones.ValidacionUsuario(textUsuario.Text) == false)
+                {
+                    labelAdvertencia.Visible = true;
+                    labelAdvertencia.Text = "formato de usuario incorrecto";
+                    textContraseña.ForeColor = Color.Maroon;
+                }
+                else
+                {
+                    labelAdvertencia.Visible = true;
+                    textContraseña.ForeColor = Color.Black;
+                }
             }
         }
     }

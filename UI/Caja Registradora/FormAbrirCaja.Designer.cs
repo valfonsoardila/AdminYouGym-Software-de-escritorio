@@ -124,11 +124,12 @@ namespace UI
             textMonto.TabIndex = 46;
             textMonto.Text = "0";
             textMonto.Enter += textUsuario_Enter;
+            textMonto.KeyPress += textMonto_KeyPress;
             textMonto.Leave += textUsuario_Leave;
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = UI.Properties.Resources.Caja_Registradora;
+            pictureBox1.Image = Properties.Resources.Caja_Registradora;
             pictureBox1.Location = new Point(63, 34);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";

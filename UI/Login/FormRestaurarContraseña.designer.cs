@@ -194,6 +194,7 @@ namespace UI
             textUsuario.Name = "textUsuario";
             textUsuario.Size = new Size(153, 23);
             textUsuario.TabIndex = 57;
+            textUsuario.TextChanged += textUsuario_TextChanged;
             // 
             // labelUsuario
             // 
@@ -207,12 +208,12 @@ namespace UI
             // 
             // btnBuscar
             // 
-            btnBuscar.BackColor = Color.FromArgb(62, 178, 191);
+            btnBuscar.BackColor = Color.Black;
             btnBuscar.FlatAppearance.MouseDownBackColor = Color.White;
             btnBuscar.FlatAppearance.MouseOverBackColor = Color.Silver;
             btnBuscar.FlatStyle = FlatStyle.Flat;
             btnBuscar.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnBuscar.ForeColor = Color.Black;
+            btnBuscar.ForeColor = Color.White;
             btnBuscar.Location = new Point(141, 365);
             btnBuscar.Margin = new Padding(4, 3, 4, 3);
             btnBuscar.Name = "btnBuscar";
@@ -232,6 +233,7 @@ namespace UI
             textContraseña.Size = new Size(158, 23);
             textContraseña.TabIndex = 60;
             textContraseña.Text = "Contraseña";
+            textContraseña.TextChanged += textContraseña_TextChanged;
             textContraseña.Enter += textContraseña_Enter;
             textContraseña.Leave += textContraseña_Leave;
             // 
@@ -266,7 +268,7 @@ namespace UI
             btnRestaurar.FlatStyle = FlatStyle.Flat;
             btnRestaurar.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnRestaurar.ForeColor = Color.White;
-            btnRestaurar.Location = new Point(141, 365);
+            btnRestaurar.Location = new Point(141, 364);
             btnRestaurar.Margin = new Padding(4, 3, 4, 3);
             btnRestaurar.Name = "btnRestaurar";
             btnRestaurar.Size = new Size(128, 32);

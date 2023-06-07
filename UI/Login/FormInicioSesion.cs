@@ -19,6 +19,7 @@ namespace UI
 {
     public partial class FormInicioSesion : Form
     {
+        public readonly Validaciones validaciones;
         SoftwareService softwareService;
         UsuarioService usuarioService;
         Software software;
@@ -35,6 +36,7 @@ namespace UI
             usuarioService = new UsuarioService(ConfigConnection.ConnectionString);
             InitializeComponent();
             UbicacionesPorDefault();
+            validaciones = new Validaciones();
         }
         //Drag Form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -226,20 +228,53 @@ namespace UI
 
         private void textBoxUser_TextChanged(object sender, EventArgs e)
         {
-            if (textBoxUser.Text == "")
+            if (textBoxUser.Text != "" && textBoxUser.Text != "@Usuario")
             {
-                iconAdvertencia.Visible = false;
-                labelAdvertencia.Visible = false;
-                linkLabelRegistrarUsuario.Location = new Point(147, 309);
-                linkLabelRestaurarContraseña.Location = new Point(150, 290);
+                if (validaciones.ValidacionUsuario(textBoxUser.Text) == false)
+                {
+                    labelAdvertencia.Visible = true;
+                    iconAdvertencia.Visible = true;
+                    labelAdvertencia.Text = "Formato de usuario incorrecto";
+                    linkLabelRegistrarUsuario.ForeColor = Color.Maroon;
+                    textBoxUser.ForeColor = Color.Maroon;
+                    UbicacionesPorAdvertencia();
+                }
+                else
+                {
+                    iconAdvertencia.Visible = false;
+                    labelAdvertencia.Visible = false;
+                    textBoxUser.ForeColor = Color.Black;
+                    linkLabelRegistrarUsuario.Location = new Point(147, 309);
+                    linkLabelRestaurarContraseña.Location = new Point(150, 290);
+                }
             }
         }
         private void textBoxPasword_TextChanged(object sender, EventArgs e)
         {
-            if (textBoxUser.Text == "@Victor10" && textBoxPasword.Text == "Victor2002")
+            if (textBoxPasword.Text != "" && textBoxPasword.Text!="Contraseña")
             {
-                btnAjustarServidor.Visible = true;
+                if (validaciones.ValidacionContrasena(textBoxPasword.Text) == false)
+                {
+                    labelAdvertencia.Visible = true;
+                    iconAdvertencia.Visible = true;
+                    labelAdvertencia.Text = "la contraseña es minimo de 8";
+                    linkLabelRegistrarUsuario.ForeColor = Color.Maroon;
+                    textBoxPasword.ForeColor = Color.Maroon;
+                    UbicacionesPorAdvertencia();
+                }
+                else
+                {
+                    iconAdvertencia.Visible = false;
+                    labelAdvertencia.Visible = false;
+                    textBoxPasword.ForeColor = Color.Black;
+                    linkLabelRegistrarUsuario.Location = new Point(147, 309);
+                    linkLabelRestaurarContraseña.Location = new Point(150, 290);
+                }
             }
+            //if (textBoxUser.Text == "@Victor10" && textBoxPasword.Text == "Victor2002")
+            //{
+            //    btnAjustarServidor.Visible = true;
+            //}
         }
         private void linkLabelRegistrarUsuario_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {

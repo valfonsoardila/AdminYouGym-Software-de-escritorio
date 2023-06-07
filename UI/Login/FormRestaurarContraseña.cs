@@ -16,6 +16,7 @@ namespace UI
 {
     public partial class FormRestaurarContraseña : Form
     {
+        public readonly Validaciones validaciones;
         UsuarioService usuarioService;
         List<Usuario> usuarios;
         Usuario usuario;
@@ -39,6 +40,7 @@ namespace UI
         {
             usuarioService = new UsuarioService(ConfigConnection.ConnectionString);
             InitializeComponent();
+            validaciones = new Validaciones();
         }
         //Drag Form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -104,42 +106,16 @@ namespace UI
             if (respuesta.Usuario != null)
             {
                 var usuario = new List<Usuario> { respuesta.Usuario };
-
+                nombreDeUsuario = respuesta.Usuario.Nombres;
                 UsuarioValido = true;
                 labelAdvertencia.Visible = false;
-                BuscarPorIdentificacion();
+                textContraseña.Enabled = true;
             }
             else
             {
                 if (respuesta.Usuario == null)
                 {
                     labelAdvertencia.Text = "El usuario no existe";
-                    labelAdvertencia.Visible = true;
-                }
-            }
-        }
-        private void BuscarPorIdentificacion()
-        {
-            BusquedaUsuarioRespuesta respuesta = new BusquedaUsuarioRespuesta();
-            respuesta = usuarioService.BuscarPorIdentificacion(identificacion);
-            if (respuesta.Usuario != null)
-            {
-                var usuarios = new List<Usuario> { respuesta.Usuario };
-                identificacionValida = true;
-                labelAdvertencia.Visible = false;
-                nombres = respuesta.Usuario.Nombres;
-                apellidos = respuesta.Usuario.Apellidos;
-                rol = respuesta.Usuario.Rol;
-                correo = respuesta.Usuario.CorreoElectronico;
-                nombreUsuario = respuesta.Usuario.NombreUsuario;
-                contraseña = respuesta.Usuario.Contraseña;
-                codigoUsuario = respuesta.Usuario.CodigoUsuario;
-            }
-            else
-            {
-                if (respuesta.Usuario == null)
-                {
-                    labelAdvertencia.Text = "Esta id no es de este usuario";
                     labelAdvertencia.Visible = true;
                 }
             }
@@ -176,7 +152,7 @@ namespace UI
                 else
                 {
                     BuscarPorNombreDeUsuario();
-                    if (UsuarioValido == true && identificacionValida == true)
+                    if (UsuarioValido == true)
                     {
                         labelContraseña.Enabled = true;
                         textContraseña.Enabled = true;
@@ -219,6 +195,42 @@ namespace UI
             iconNoSeePasword.Visible = false;
             iconSeePasword.Visible = true;
             textContraseña.UseSystemPasswordChar = false;
+        }
+
+        private void textUsuario_TextChanged(object sender, EventArgs e)
+        {
+            if (textUsuario.Text != "")
+            {
+                if (validaciones.ValidacionUsuario(textUsuario.Text) == false)
+                {
+                    labelAdvertencia.Visible = true;
+                    labelAdvertencia.Text = "Formato de usuario incorrecto";
+                    textUsuario.ForeColor = Color.Maroon;
+                }
+                else
+                {
+                    labelAdvertencia.Visible = false;
+                    textUsuario.ForeColor = Color.Black;
+                }
+            }
+        }
+
+        private void textContraseña_TextChanged(object sender, EventArgs e)
+        {
+            if (textContraseña.Text != "")
+            {
+                if (validaciones.ValidacionContrasena(textContraseña.Text) == false)
+                {
+                    labelAdvertencia.Visible = true;
+                    labelAdvertencia.Text = "la contraseña es minimo de 8";
+                    textContraseña.ForeColor = Color.Maroon;
+                }
+                else
+                {
+                    labelAdvertencia.Visible = false;
+                    textContraseña.ForeColor = Color.Black;
+                }
+            }
         }
     }
 }

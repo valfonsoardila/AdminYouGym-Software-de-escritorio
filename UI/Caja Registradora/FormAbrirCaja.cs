@@ -75,5 +75,14 @@ namespace UI
             btnAbrirCaja.Enabled = false;
             this.Close();
         }
+
+        private void textMonto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si la tecla presionada no es un número o la tecla de retroceso
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cancelar la pulsación del carácter
+            }
+        }
     }
 }

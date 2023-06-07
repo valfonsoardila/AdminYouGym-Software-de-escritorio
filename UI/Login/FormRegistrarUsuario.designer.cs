@@ -137,10 +137,12 @@ namespace UI
             textCorreo.ForeColor = SystemColors.WindowFrame;
             textCorreo.Location = new Point(120, 233);
             textCorreo.Margin = new Padding(4, 3, 4, 3);
+            textCorreo.MaxLength = 61;
             textCorreo.Name = "textCorreo";
+            textCorreo.PlaceholderText = "@gmail.com";
             textCorreo.Size = new Size(188, 23);
             textCorreo.TabIndex = 4;
-            textCorreo.Text = "@gmail.com";
+            textCorreo.TextChanged += textCorreo_TextChanged;
             textCorreo.Enter += textCorreo_Enter;
             textCorreo.Leave += textCorreo_Leave;
             // 
@@ -149,10 +151,12 @@ namespace UI
             textUsuario.ForeColor = SystemColors.WindowFrame;
             textUsuario.Location = new Point(72, 263);
             textUsuario.Margin = new Padding(4, 3, 4, 3);
+            textUsuario.MaxLength = 20;
             textUsuario.Name = "textUsuario";
+            textUsuario.PlaceholderText = "@Bryan10";
             textUsuario.Size = new Size(166, 23);
             textUsuario.TabIndex = 6;
-            textUsuario.Text = "@Bryan10";
+            textUsuario.TextChanged += textUsuario_TextChanged;
             textUsuario.Enter += textUsuario_Enter;
             textUsuario.Leave += textUsuario_Leave;
             // 
@@ -175,6 +179,7 @@ namespace UI
             textContraseña.Size = new Size(177, 23);
             textContraseña.TabIndex = 8;
             textContraseña.Text = "Mayor a 6 caracteres";
+            textContraseña.TextChanged += textContraseña_TextChanged;
             textContraseña.Enter += textContraseña_Enter;
             textContraseña.Leave += textContraseña_Leave;
             // 
@@ -214,9 +219,12 @@ namespace UI
             textIdentificacion.ForeColor = Color.Black;
             textIdentificacion.Location = new Point(92, 294);
             textIdentificacion.Margin = new Padding(4, 3, 4, 3);
+            textIdentificacion.MaxLength = 10;
             textIdentificacion.Name = "textIdentificacion";
+            textIdentificacion.PlaceholderText = "Id";
             textIdentificacion.Size = new Size(131, 23);
             textIdentificacion.TabIndex = 36;
+            textIdentificacion.KeyPress += textIdentificacion_KeyPress;
             // 
             // labelIdentificacion
             // 
@@ -234,6 +242,7 @@ namespace UI
             comboTipoDeId.Items.AddRange(new object[] { "CC", "TI" });
             comboTipoDeId.Location = new Point(291, 294);
             comboTipoDeId.Margin = new Padding(4, 3, 4, 3);
+            comboTipoDeId.MaxLength = 2;
             comboTipoDeId.Name = "comboTipoDeId";
             comboTipoDeId.Size = new Size(72, 23);
             comboTipoDeId.TabIndex = 37;
@@ -254,9 +263,12 @@ namespace UI
             textNombre.ForeColor = Color.Black;
             textNombre.Location = new Point(69, 323);
             textNombre.Margin = new Padding(4, 3, 4, 3);
+            textNombre.MaxLength = 34;
             textNombre.Name = "textNombre";
+            textNombre.PlaceholderText = "Nombre completo";
             textNombre.Size = new Size(140, 23);
             textNombre.TabIndex = 40;
+            textNombre.KeyPress += textNombre_KeyPress;
             // 
             // label4
             // 
@@ -283,9 +295,12 @@ namespace UI
             textApellido.ForeColor = Color.Black;
             textApellido.Location = new Point(269, 324);
             textApellido.Margin = new Padding(4, 3, 4, 3);
+            textApellido.MaxLength = 34;
             textApellido.Name = "textApellido";
+            textApellido.PlaceholderText = "Apellidos completos";
             textApellido.Size = new Size(140, 23);
             textApellido.TabIndex = 42;
+            textApellido.KeyPress += textApellido_KeyPress;
             // 
             // label6
             // 
@@ -321,6 +336,7 @@ namespace UI
             comboSexo.Items.AddRange(new object[] { "M", "F" });
             comboSexo.Location = new Point(409, 353);
             comboSexo.Margin = new Padding(4, 3, 4, 3);
+            comboSexo.MaxLength = 1;
             comboSexo.Name = "comboSexo";
             comboSexo.Size = new Size(72, 23);
             comboSexo.TabIndex = 46;
@@ -331,7 +347,9 @@ namespace UI
             textDireccion.ForeColor = Color.Black;
             textDireccion.Location = new Point(77, 381);
             textDireccion.Margin = new Padding(4, 3, 4, 3);
+            textDireccion.MaxLength = 101;
             textDireccion.Name = "textDireccion";
+            textDireccion.PlaceholderText = "Direccion y localidad";
             textDireccion.Size = new Size(140, 23);
             textDireccion.TabIndex = 48;
             // 
@@ -350,9 +368,12 @@ namespace UI
             textTelefono.ForeColor = Color.Black;
             textTelefono.Location = new Point(285, 382);
             textTelefono.Margin = new Padding(4, 3, 4, 3);
+            textTelefono.MaxLength = 10;
             textTelefono.Name = "textTelefono";
+            textTelefono.PlaceholderText = "Celular";
             textTelefono.Size = new Size(140, 23);
             textTelefono.TabIndex = 50;
+            textTelefono.KeyPress += textTelefono_KeyPress;
             // 
             // label9
             // 
@@ -388,6 +409,7 @@ namespace UI
             comboRol.Items.AddRange(new object[] { "Administrador", "Empleado" });
             comboRol.Location = new Point(407, 297);
             comboRol.Margin = new Padding(4, 3, 4, 3);
+            comboRol.MaxLength = 12;
             comboRol.Name = "comboRol";
             comboRol.Size = new Size(109, 23);
             comboRol.TabIndex = 53;

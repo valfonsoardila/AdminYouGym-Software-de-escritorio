@@ -14,19 +14,23 @@ using System.Windows.Interop;
 using MessageBox = System.Windows.Forms.MessageBox;
 using UI.Properties;
 using DocumentFormat.OpenXml.Office2010.Excel;
+using System.Windows.Media;
 
 namespace UI
 {
     public partial class FormGestionCliente : Form
     {
+        public readonly Validaciones validaciones;
         ClienteService clienteService;
         Cliente cliente;
         bool busquedaCliente = false;
+        bool continuar = false;
         public FormGestionCliente()
         {
             clienteService = new ClienteService(ConfigConnection.ConnectionString);
             InitializeComponent();
             CargarListaClientes();
+            validaciones = new Validaciones();
         }
         private void btnVolver_Click(object sender, EventArgs e)
         {
@@ -153,7 +157,16 @@ namespace UI
             DialogResult dr = ventanaCargar.ShowDialog();
             if (dr == DialogResult.OK)
             {
-                picturePerfil.Image = Image.FromFile(ventanaCargar.FileName);
+                if (validaciones.ValidarImagen(ventanaCargar.FileName) == true)
+                {
+                    // La imagen cargada en picturePerfil es válida
+                    picturePerfil.Image = Image.FromFile(ventanaCargar.FileName);
+                }
+                else
+                {
+                    labelAlerta.Visible = true;
+                    labelAlerta.Text = "Formato de imagen incorrecta";
+                }
             }
         }
         private void btnRegistrarCliente_Click(object sender, EventArgs e)
@@ -633,6 +646,103 @@ namespace UI
             textSearchProgreso.Text = "Buscar";
             labelAlerta.Visible = false;
             pictureAlerta.Visible = false;
+        }
+
+        private void textNombres_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si la tecla presionada no es una letra o la tecla de retroceso
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true; // Cancelar la pulsación del carácter
+            }
+        }
+
+        private void textID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si la tecla presionada no es un número o la tecla de retroceso
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cancelar la pulsación del carácter
+            }
+        }
+
+        private void textTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si la tecla presionada no es un número o la tecla de retroceso
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cancelar la pulsación del carácter
+            }
+        }
+
+        private void textPesoCorporal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si la tecla presionada no es un número o la tecla de retroceso
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cancelar la pulsación del carácter
+            }
+        }
+
+        private void textEstaturaCorporal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si la tecla presionada no es un número o la tecla de retroceso
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cancelar la pulsación del carácter
+            }
+        }
+
+        private void textID_TextChanged(object sender, EventArgs e)
+        {
+            if (textID.Text != "")
+            {
+                if (validaciones.RangoCampos(textID, textID.Text, labelAlerta, 10) == false)
+                {
+                    pictureAlerta.Visible = true;
+                    labelAlerta.Visible = true;
+                }
+                else
+                {
+                    pictureAlerta.Visible = false;
+                    labelAlerta.Visible = false;
+                }
+            }
+        }
+
+        private void textNombres_TextChanged(object sender, EventArgs e)
+        {
+            if (textNombres.Text != "")
+            {
+                if (validaciones.RangoCampos(textNombres, textNombres.Text, labelAlerta, 2) == false)
+                {
+                    pictureAlerta.Visible = true;
+                    labelAlerta.Visible = true;
+
+                }
+                else
+                {
+                    pictureAlerta.Visible = false;
+                    labelAlerta.Visible = false;
+                }
+            }
+        }
+
+        private void textApellidos_TextChanged(object sender, EventArgs e)
+        {
+            if (textApellidos.Text != "")
+            {
+                if (validaciones.RangoCampos(textApellidos, textApellidos.Text, labelAlerta, 2) == false)
+                {
+                    pictureAlerta.Visible = true;
+                    labelAlerta.Visible = true;
+                }
+                else
+                {
+                    pictureAlerta.Visible = false;
+                    labelAlerta.Visible = false;
+                }
+            }
         }
     }
 }
