@@ -24,7 +24,7 @@ File Sentencia.sql  in repository<br>
 
 ## Project specifications
 ### `Layer UI Forms`<br>
-&nbsp;&nbsp; ## `Folders`<br>
+&nbsp;&nbsp; ### `Folders`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;| Administrador<br> 
 &nbsp;&nbsp;&nbsp;&nbsp;| Ajuste<br>
 &nbsp;&nbsp;&nbsp;&nbsp;| Caja Registradora<br> 
@@ -39,7 +39,7 @@ File Sentencia.sql  in repository<br>
 &nbsp;&nbsp;&nbsp;&nbsp;| Principal<br> 
 &nbsp;&nbsp;&nbsp;&nbsp;| Productos<br>
 &nbsp;&nbsp;&nbsp;&nbsp;| Resources<br>
-&nbsp;&nbsp; ## `Files src`<br>
+&nbsp;&nbsp; ### `Files src`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;| app.config<br>
 &nbsp;&nbsp;&nbsp;&nbsp;| ConfigConnection.cs<br>
 &nbsp;&nbsp;&nbsp;&nbsp;| Validaciones.cs<br>
