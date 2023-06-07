@@ -50,6 +50,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pruebas\GimnasioTest.cs" />
+    <Compile Include="Pruebas\MembresiaTest.cs" />
+    <Compile Include="Pruebas\ProductoTest.cs" />
+    <Compile Include="Pruebas\EntrenadorTets.cs" />
+    <Compile Include="Pruebas\CajaTest.cs" />
     <Compile Include="Pruebas\AdministradorTest.cs" />
     <Compile Include="ConfigConection.cs" />
     <Compile Include="Pruebas\EmpleadoTest.cs" />
