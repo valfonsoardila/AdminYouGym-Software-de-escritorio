@@ -1,7 +1,7 @@
 # AdminYouGym App
-[Español]
-Sistema de información para la gestión de un gimnasio con Base de datos SQL Server
-[English]
+[Español]<br>
+Sistema de información para la gestión de un gimnasio con Base de datos SQL Server<br>
+[English]<br>
 
 ##  Development Language and Environments
 Development Language: C#
