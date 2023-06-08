@@ -5,12 +5,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{739C7AFC-3AF6-4E56-A141-D3DB52ECDBC8}</ProjectGuid>
+    <ProjectGuid>{7DA9C84B-6628-4093-9DE1-F08D22702903}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PruebasUnitarias</RootNamespace>
-    <AssemblyName>PruebasUnitarias</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <RootNamespace>UnitTesting</RootNamespace>
+    <AssemblyName>UnitTesting</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
@@ -46,14 +46,34 @@
       <HintPath>..\packages\MSTest.TestFramework.2.2.10\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Pruebas\GimnasioTest.cs" />
+    <Compile Include="Pruebas\MembresiaTest.cs" />
+    <Compile Include="Pruebas\ProductoTest.cs" />
+    <Compile Include="Pruebas\EntrenadorTets.cs" />
+    <Compile Include="Pruebas\CajaTest.cs" />
+    <Compile Include="Pruebas\AdministradorTest.cs" />
+    <Compile Include="ConfigConection.cs" />
+    <Compile Include="Pruebas\EmpleadoTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Pruebas\UsuarioTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{449c5e43-0958-42e8-841d-615038f52d14}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logica\Logica.csproj">
+      <Project>{394c0540-f1df-4f8f-aaab-d6e7951abb2b}</Project>
+      <Name>Logica</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
