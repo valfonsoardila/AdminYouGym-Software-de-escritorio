@@ -45,5 +45,5 @@ File Sentencia.sql  in repository<br>
 &nbsp;&nbsp;&nbsp;&nbsp;| Validaciones.cs<br>
 &nbsp;&nbsp;&nbsp;&nbsp;| Program.cs<br>
 
-## `Pruebas unitarias`
+## `Unit Test`
 Proyecto de pruebas unitaria(.NetFramework) v6.0 
