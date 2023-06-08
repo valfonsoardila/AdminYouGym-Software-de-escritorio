@@ -8,13 +8,14 @@ namespace Entidades
 {
     public class Membresia
     {
-        public Membresia(string codigoMiembro, string categoria, string estado, string nombres, string apellidos, int creditos, int valorInscripcion, int valorMensual, int abono, int saldo)
+        public Membresia(string codigoMiembro, string categoria, string estado, string nombres, string apellidos, string nombreDePlan, int creditos, int valorInscripcion, int valorMensual, int abono, int saldo)
         {
             CodigoMiembro = codigoMiembro;
             Categoria = categoria;
             Estado = estado;
             Nombres = nombres;
             Apellidos = apellidos;
+            NombreDePlan = nombreDePlan;
             Creditos = creditos;
             ValorInscripcion = valorInscripcion;
             ValorMensual = valorMensual;

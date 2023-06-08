@@ -10,7 +10,7 @@ namespace Entidades
     {
 
         //Constructor
-        public Entrenador(string identificacion, string tipoDeIdentificacion, byte[] imagenPerfil, string nombres, string apellidos, DateTime fechaDeNacimiento, int edad,string direccion, string sexo,string telefono,string correoElectronico)
+        public Entrenador(string identificacion, string tipoDeIdentificacion, byte[] imagenPerfil, string nombres, string apellidos, DateTime fechaDeNacimiento, int edad, string sexo, string direccion, string telefono,string correoElectronico, string codigoEntrenador, int pagoDeSalario, int horasExtrasDeTrabajo, int diasDeTrabajo, int mesesDeContrato, string tipoDeContrato)
         {
             Identificacion = identificacion;
             TipoDeIdentificacion = tipoDeIdentificacion;
@@ -23,6 +23,12 @@ namespace Entidades
             Direccion = direccion;
             Telefono = telefono;
             CorreoElectronico = correoElectronico;
+            CodigoEntrenador = codigoEntrenador;
+            PagoDeSalario = pagoDeSalario;
+            HorasExtrasDeTrabajo = horasExtrasDeTrabajo;
+            DiasDeTrabajo = diasDeTrabajo;
+            MesesDeContrato = mesesDeContrato;
+            TipoDeContrato = tipoDeContrato;
         }
 
         public Entrenador()

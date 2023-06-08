@@ -5,24 +5,21 @@ using Entidades;
 
 namespace PruebasUnitarias
 {
-    public class EntrenadorTets
+    [TestClass]
+    public class EntrenadorTest
     {
-        [TestClass]
-        public class EntrenadorTest
-        {
-            private Entrenador empleado;
-            public EntrenadorService empleadoService;
+        private Entrenador entrenador;
+        public EntrenadorService entrenadorService;
 
-            [TestMethod]
-            public void TestMethod1()
-            {
-                byte[] imagen = new byte[0];
-                empleado = new Entrenador("1003239264", "CC", imagen, "Angel David", "Bolaño Aroca", DateTime.Now, 20, "Manzana A casa 6", "M", "3147133334", "Entrenador", "valfonsoardila@unicesar.edu.co");
-                empleadoService = new EntrenadorService(ConfigConnection.ConnectionString);
-                string resultado = empleadoService.Guardar(empleado);
-                string esperado = "Entrenador registrado correctamente";
-                Assert.AreEqual(esperado, resultado);
-            }
+        [TestMethod]
+        public void TestMethod1()
+        {
+            byte[] imagen = new byte[0];
+            entrenador = new Entrenador("1003339262", "CC", imagen, "Angel David", "Bolaño Aroca", DateTime.Now, 20, "M", "Manzana A casa 6", "3147133334", "valfonsoardila@unicesar.edu.co", "#Ent24352", 2000000, 12, 30, 1, "Contrato a termino fijo");
+            entrenadorService = new EntrenadorService(ConfigConnection.ConnectionString);
+            string resultado = entrenadorService.Guardar(entrenador);
+            string esperado = "Entrenador registrado correctamente";
+            Assert.AreEqual(esperado, resultado);
         }
     }
 }

@@ -20,8 +20,8 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"Insert Into PRODUCTO (Cantidad, Referencia, Precio_De_Venta, Nombre, Detalle, Fecha_De_Registro, Fecha_De_Vencimiento, Lote, Marca, Estado, Tipo, Valor_Por_Unidad, Valor_Por_Blister, Valor_Por_Caja, Porcentaje_De_Venta, Precio_De_Negocio, Ganancia_Por_Producto, Ubicacion) 
-                                        values (@Cantidad, @Referencia, @Precio_De_Venta, @Nombre, @Detalle, @Fecha_De_Registro, @Fecha_De_Vencimiento, @Lote, @Marca, @Estado, @Tipo, @Valor_Por_Unidad, @Valor_Por_Blister, @Valor_Por_Caja, @Porcentaje_De_Venta, @Precio_De_Negocio, @Ganancia_Por_Producto, @Ubicacion)";
+                command.CommandText = @"Insert Into PRODUCTO (Cantidad, Referencia, Precio_De_Venta, Nombre, Detalle, Fecha_De_Registro, Fecha_De_Vencimiento, Lote, Marca, Estado, Tipo, Valor_Por_Unidad, Valor_Por_Blister, Valor_Por_Caja, Precio_De_Negocio, Ganancia_Por_Producto, Ubicacion) 
+                                        values (@Cantidad, @Referencia, @Precio_De_Venta, @Nombre, @Detalle, @Fecha_De_Registro, @Fecha_De_Vencimiento, @Lote, @Marca, @Estado, @Tipo, @Valor_Por_Unidad, @Valor_Por_Blister, @Valor_Por_Caja, @Precio_De_Negocio, @Ganancia_Por_Producto, @Ubicacion)";
                 command.Parameters.AddWithValue("@Cantidad", producto.Cantidad);
                 command.Parameters.AddWithValue("@Referencia", producto.Referencia);
                 command.Parameters.AddWithValue("@Nombre", producto.Nombre);
@@ -36,7 +36,6 @@ namespace Datos
                 command.Parameters.AddWithValue("@Valor_Por_Unidad", producto.ValorPorUnidad);
                 command.Parameters.AddWithValue("@Valor_Por_Blister", producto.ValorPorBlister);
                 command.Parameters.AddWithValue("@Valor_Por_Caja", producto.ValorPorPaquete);
-                command.Parameters.AddWithValue("@Porcentaje_De_Venta", producto.PorcentajeDeVenta);
                 command.Parameters.AddWithValue("@Precio_De_Negocio", producto.PrecioDeNegocio);
                 command.Parameters.AddWithValue("@Ganancia_Por_Producto", producto.GananciaPorProducto);
                 command.Parameters.AddWithValue("@Ubicacion", producto.Ubicacion);
@@ -94,7 +93,7 @@ namespace Datos
             List<Producto> productos = new List<Producto>();
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select Cantidad, Referencia, Precio_De_Venta, Nombre, Detalle, Fecha_De_Registro, Fecha_De_Vencimiento, Lote, Marca, Estado, Tipo, Valor_Por_Unidad, Valor_Por_Blister, Valor_Por_Caja, Porcentaje_De_Venta, Precio_De_Negocio, Ganancia_Por_Producto, Ubicacion from PRODUCTO";
+                command.CommandText = "Select Cantidad, Referencia, Precio_De_Venta, Nombre, Detalle, Fecha_De_Registro, Fecha_De_Vencimiento, Lote, Marca, Estado, Tipo, Valor_Por_Unidad, Valor_Por_Blister, Valor_Por_Caja, Precio_De_Negocio, Ganancia_Por_Producto, Ubicacion from PRODUCTO";
                 var dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
@@ -214,7 +213,7 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = @"update PRODUCTO set Cantidad=@Cantidad, Nombre=@Nombre, Detalle=@Detalle, Fecha_De_Registro=@Fecha_De_Registro, Fecha_De_Vencimiento=@Fecha_De_Vencimiento, Lote=@Lote, Marca=@Marca, Estado=@Estado, Tipo=@Tipo, Valor_Por_Unidad=@Valor_Por_Unidad, Valor_Por_Blister=@Valor_Por_Blister, Valor_Por_Caja=@Valor_Por_Caja, Porcentaje_De_Venta=@Porcentaje_De_Venta, Precio_De_Negocio=@Precio_De_Negocio, Precio_De_Venta=@Precio_De_Venta, Ganancia_Por_Producto=@Ganancia_Por_Producto, Ubicacion=@Ubicacion
+                command.CommandText = @"update PRODUCTO set Cantidad=@Cantidad, Nombre=@Nombre, Detalle=@Detalle, Fecha_De_Registro=@Fecha_De_Registro, Fecha_De_Vencimiento=@Fecha_De_Vencimiento, Lote=@Lote, Marca=@Marca, Estado=@Estado, Tipo=@Tipo, Valor_Por_Unidad=@Valor_Por_Unidad, Valor_Por_Blister=@Valor_Por_Blister, Valor_Por_Caja=@Valor_Por_Caja, Precio_De_Negocio=@Precio_De_Negocio, Precio_De_Venta=@Precio_De_Venta, Ganancia_Por_Producto=@Ganancia_Por_Producto, Ubicacion=@Ubicacion
                                         where Referencia=@Referencia";
                 command.Parameters.AddWithValue("@Cantidad", producto.Cantidad);
                 command.Parameters.AddWithValue("@Referencia", producto.Referencia);
@@ -229,7 +228,6 @@ namespace Datos
                 command.Parameters.AddWithValue("@Valor_Por_Unidad", producto.ValorPorUnidad);
                 command.Parameters.AddWithValue("@Valor_Por_Blister", producto.ValorPorBlister);
                 command.Parameters.AddWithValue("@Valor_Por_Caja", producto.ValorPorPaquete);
-                command.Parameters.AddWithValue("@Porcentaje_De_Venta", producto.PorcentajeDeVenta);
                 command.Parameters.AddWithValue("@Precio_De_Negocio", producto.PrecioDeNegocio);
                 command.Parameters.AddWithValue("@Precio_De_Venta", producto.PrecioDeVenta);
                 command.Parameters.AddWithValue("@Ganancia_Por_Producto", producto.GananciaPorProducto);
@@ -255,7 +253,6 @@ namespace Datos
             producto.ValorPorUnidad = (int)dataReader["Valor_Por_Unidad"];
             producto.ValorPorBlister = (int)dataReader["Valor_Por_Blister"];
             producto.ValorPorPaquete = (int)dataReader["Valor_Por_Caja"];
-            producto.PorcentajeDeVenta = (int)dataReader["Porcentaje_De_Venta"];
             producto.PrecioDeNegocio = (int)dataReader["Precio_De_Negocio"];
             producto.GananciaPorProducto = (int)dataReader["Ganancia_Por_Producto"];
             producto.Ubicacion = (string)dataReader["Ubicacion"];

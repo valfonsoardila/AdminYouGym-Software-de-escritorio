@@ -49,7 +49,6 @@ namespace Entidades
         public double ValorPorUnidad { get; set; }
         public double ValorPorBlister { get; set; }
         public double ValorPorPaquete { get; set; }
-        public double PorcentajeDeVenta { get; set; }
         public double PrecioDeNegocio { get; set; }
         public double GananciaPorProducto { get; set; }
         public string Ubicacion { get; set; }
@@ -140,14 +139,12 @@ namespace Entidades
             if (PrecioDeNegocio != 0)
             {
                 GananciaPorProducto = PrecioDeVenta - PrecioDeNegocio;
-                PorcentajeDeVenta = (GananciaPorProducto * 100) / PrecioDeVenta;
             }
             else
             {
                 if (PrecioDeNegocio == 0)
                 {
                     GananciaPorProducto = 0;
-                    PorcentajeDeVenta =0;
                 }
             }
         }

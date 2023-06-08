@@ -27,7 +27,7 @@ namespace Logica
                 if (repositorio.BuscarPorIdentificacion(entrenador.Identificacion) == null)
                 {
                     repositorio.Guardar(entrenador);
-                    return $"Se guardaron los datos satisfactoriamente";
+                    return $"Entrenador registrado correctamente";
                 }
                 return $"El entrenador ya existe";
             }

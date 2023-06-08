@@ -35,7 +35,13 @@ namespace Entidades
         public string Telefono { get; set; }
         public void GenerarIdGimnasio()
         {
-            IdGimnasio = "#Gym";
+            string a = "#Gym";
+            int b;
+            string codigo;
+            Random aleatorio = new Random();
+            b = aleatorio.Next(01, 99);
+            codigo = a + b;
+            IdGimnasio = codigo;
         }
     }
 }

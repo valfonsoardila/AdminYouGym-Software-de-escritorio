@@ -26,7 +26,7 @@ namespace Logica
                 if (repositorio.BuscarPorId(gimnasio.NIT) == null)
                 {
                     repositorio.Guardar(gimnasio);
-                    return $"Gimnasio registrada correctamente";
+                    return $"Gimnasio registrado correctamente";
                 }
                 return $"Esta id de gimnasio ya existe";
             }
